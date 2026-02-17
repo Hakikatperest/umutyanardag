@@ -709,7 +709,7 @@
             white-space: nowrap;
         }
 
-        /* SEO METİN STİLİ */
+        /* SEO METİN STİLİ - GÜNCELLENDİ (Google Ads danışmanlığı linklendi) */
         .hero-seo-text {
             max-width: 850px;
             margin: 40px auto 0;
@@ -721,6 +721,20 @@
 
         .hero-seo-text strong {
             color: var(--primary-dark);
+            font-weight: 700;
+        }
+        
+        .hero-seo-text a {
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .hero-seo-text a:hover {
+            color: var(--primary-blue);
+            border-bottom-color: var(--primary-blue);
         }
 
         /* Services Section */
@@ -878,7 +892,7 @@
             gap: 10px;
         }
 
-        /* FAQ Section */
+        /* FAQ Section - GÜNCELLENDİ */
         .faq {
             padding: 90px 40px;
             background: #f9fafb;
@@ -908,8 +922,8 @@
             background: white;
             border: none;
             text-align: left;
-            font-size: 1.05rem;
-            font-weight: 600;
+            font-size: 1.1rem;
+            font-weight: 700;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -932,6 +946,8 @@
             overflow: hidden;
             transition: max-height 0.5s ease;
             padding: 0 25px;
+            color: var(--text-gray);
+            line-height: 1.7;
         }
 
         .faq-item.active .faq-answer {
@@ -940,29 +956,24 @@
         }
 
         .faq-answer p {
-            margin-top: 10px;
-            color: var(--text-gray);
-            line-height: 1.7;
+            margin-bottom: 15px;
         }
-
-        .faq-cta {
-            margin-top: 20px;
-            padding: 15px;
-            background: linear-gradient(135deg, #3B82F6, #4F46E5);
-            color: white;
-            border-radius: 10px;
-            font-size: 0.95rem;
-        }
-
-        .faq-cta a {
-            color: white;
-            font-weight: 700;
-            margin-left: 8px;
+        
+        .faq-answer a {
+            color: var(--primary-blue);
             text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
-
-        .faq-cta a:hover {
+        
+        .faq-answer a:hover {
+            color: var(--modern-blue);
             text-decoration: underline;
+        }
+        
+        .faq-answer strong {
+            color: var(--primary-dark);
+            font-weight: 700;
         }
 
         /* CTA Section */
@@ -1565,7 +1576,6 @@
                 <i class="fas fa-rocket" aria-hidden="true"></i> Hizmetlerim <i class="fas fa-chevron-down submenu-icon" aria-hidden="true"></i>
             </a>
             <div class="submenu" id="servicesSubmenu">
-                <!-- GÜNCELLENMİŞ LİNKLER (Göreceli yol) -->
                 <a href="/hizmetlerim/google-reklam-yonetimi">
                     <i class="fab fa-google" aria-hidden="true"></i> Google Reklamları
                 </a>
@@ -1580,17 +1590,17 @@
                 </a>
             </div>
 
-            <!-- Blog Yazılarım - GÜNCELLENMİŞ LİNK -->
+            <!-- Blog Yazılarım -->
             <a href="/blog-yazilarim/">
                 <i class="fas fa-blog" aria-hidden="true"></i> Blog Yazılarım
             </a>
 
-            <!-- Hakkımda - GÜNCELLENMİŞ LİNK -->
+            <!-- Hakkımda -->
             <a href="/hakkimda">
                 <i class="fas fa-user-circle" aria-hidden="true"></i> Hakkımda
             </a>
             
-            <!-- Referanslarım - GÜNCELLENMİŞ LİNK -->
+            <!-- Referanslarım -->
             <a href="/referanslar">
                 <i class="fas fa-star" aria-hidden="true"></i> Referanslarım
             </a>
@@ -1650,26 +1660,18 @@
                         </div>
                     </div>
 
-                    <!-- SEO METNİ - GÜNCELLENMİŞ LİNKLER -->
+                    <!-- SEO METNİ - Google Ads danışmanlığı linklendi -->
                     <div class="hero-seo-text">
                         <p>
                             Sertifikalı <strong>Google Reklam Uzmanı Umut Yanardağ</strong> olarak,
-                            <a href="/hizmetlerim/google-reklam-yonetimi">
-                            Google Ads danışmanlığı
-                            </a> ve
-                            <a href="/hizmetlerim/instagram-reklam-yonetimi">
-                            Meta reklam yönetimi
-                            </a>
+                            <a href="/hizmetlerim/google-reklam-yonetimi"><strong>Google Ads danışmanlığı</strong></a> ve
+                            <strong>Meta reklam yönetimi</strong>
                             alanında 8+ yıllık deneyimle işletmelerin dijitalde büyümesine yardımcı oluyorum.
                         </p>
 
                         <p>
-                            Arama ağı reklamları, görüntülü reklamlar, alışveriş kampanyaları ve yeniden pazarlama stratejileriyle reklam bütçenizi en verimli şekilde yönetiyorum.
-                            Ayrıca
-                            <a href="/hizmetlerim/web-site-tasarimi">
-                            SEO uyumlu web site tasarımı
-                            </a>
-                            hizmetiyle dönüşüm oranlarınızı artırıyorum.
+                            <strong>Arama ağı reklamları, görüntülü reklamlar, alışveriş kampanyaları</strong> ve <strong>yeniden pazarlama</strong> stratejileriyle reklam bütçenizi en verimli şekilde yönetiyorum.
+                            Ayrıca <strong>SEO uyumlu web site tasarımı</strong> hizmetiyle dönüşüm oranlarınızı artırıyorum.
                         </p>
                     </div>
                 </div>
@@ -1689,7 +1691,7 @@
                 </div>
 
                 <div class="services-grid">
-                    <!-- Google Reklam Yönetimi - GÜNCELLENMİŞ LİNK -->
+                    <!-- Google Reklam Yönetimi -->
                     <div class="service-card" onclick="window.location.href='/hizmetlerim/google-reklam-yonetimi'">
                         <div class="service-icon">
                             <img src="https://www.umutyanardag.com/resimler/google-icon.webp" alt="Google Reklam Uzmanı Google Ads Kampanya Yönetimi Hizmeti">
@@ -1701,7 +1703,7 @@
                         </a>
                     </div>
 
-                    <!-- Instagram Reklam Yönetimi - GÜNCELLENMİŞ LİNK -->
+                    <!-- Instagram Reklam Yönetimi -->
                     <div class="service-card" onclick="window.location.href='/hizmetlerim/instagram-reklam-yonetimi'">
                         <div class="service-icon">
                             <img src="https://www.umutyanardag.com/resimler/instagram-icon.webp" alt="Google Reklam Uzmanı Instagram Reklam Yönetimi Hizmeti">
@@ -1713,7 +1715,7 @@
                         </a>
                     </div>
 
-                    <!-- Facebook Reklam Yönetimi - GÜNCELLENMİŞ LİNK -->
+                    <!-- Facebook Reklam Yönetimi -->
                     <div class="service-card" onclick="window.location.href='/hizmetlerim/facebook-reklam-yonetimi'">
                         <div class="service-icon">
                             <img src="https://www.umutyanardag.com/resimler/facebook-icon.webp" alt="Google Reklam Uzmanı Facebook Reklam Yönetimi Hizmeti">
@@ -1725,7 +1727,7 @@
                         </a>
                     </div>
 
-                    <!-- Web Site Tasarımı - GÜNCELLENMİŞ LİNK -->
+                    <!-- Web Site Tasarımı -->
                     <div class="service-card" onclick="window.location.href='/hizmetlerim/web-site-tasarimi'">
                         <div class="service-icon">
                             <img src="https://www.umutyanardag.com/resimler/web-site-icon.webp" alt="Google Reklam Uzmanı SEO Uyumlu Web Site Tasarımı Hizmeti">
@@ -1750,48 +1752,67 @@
 
                 <div class="faq-item">
                     <button class="faq-question" aria-expanded="false">
-                        Google Reklam Uzmanı ne iş yapar?
+                        Hangi sektörlerlerde hizmet veriyorsunuz?
                         <span class="faq-icon" aria-hidden="true">+</span>
                     </button>
                     <div class="faq-answer">
                         <p>
-                            Google Reklam Uzmanı; Google Ads kampanyalarının kurulumu, anahtar kelime analizi, hedefleme ve dönüşüm optimizasyonu süreçlerini yönetir ve reklam bütçesinden maksimum verim almayı hedefler.
-                        </p>
-
-                        <div class="faq-cta">
-                            Reklam bütçenizi profesyonel yönetmek ister misiniz?
-                            <a href="tel:+905303158752">Hemen İletişime Geçin →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
-                        Google Ads reklam bütçesi ne kadar olmalı?
-                        <span class="faq-icon" aria-hidden="true">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>
-                            Reklam bütçesi sektör ve rekabete göre değişir. Genellikle test süreciyle başlanır ve performansa göre ölçeklendirilir.
+                            Başta <strong>Google Ads reklamları</strong> olmak üzere, <strong>Instagram & Facebook reklamları</strong>, <strong>Web site tasarımları</strong> ve <strong>Google Maps Kaydı (İşletme Konumu)</strong> hizmetleri vermekteyim.
                         </p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <button class="faq-question" aria-expanded="false">
-                        Google Ads mi Meta reklamları mı daha etkili?
+                        Sektör deneyimleriniz neler? Referanslarınız var mı?
                         <span class="faq-icon" aria-hidden="true">+</span>
                     </button>
                     <div class="faq-answer">
                         <p>
-                            Google Ads aktif talebi yakalar. Meta reklamları marka bilinirliği oluşturur. En güçlü sonuç iki platformun birlikte kullanılmasıyla alınır.
+                            Tabii ki, 8 yıldan uzun süredir dijital pazarlama alanında hizmet veriyorum. Bu süreçte sosyal medya hesapları, web siteleri, reklam platformları, grafik tasarım... Her alanda kendimi geliştirdim. Aynı zamanda <strong>Google Sertifikalı</strong> bir hizmet sağlayıcısıyım. 6 adet eğitim programına katıldım ve bunların sınavlarını başarılı bir şekilde geçerek sertifika kazandım. <strong>Armut uygulaması</strong> üzerinden de +100 iş teslimi yaptım. <a href="/hakkimda">Hakkımda</a> sayfamdan sertifikalarımı, <a href="/referanslar">Referanslarım</a> sayfamdan da iş ortaklarımı inceleyebilirsiniz.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        Bir şirket bünyesinde mi çalışıyorsunuz?
+                        <span class="faq-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Evet, <strong>Web4Medya</strong> şirketi bünyesinde dijital pazarlama uzmanı olarak hizmet veriyorum. Aynı zamanda freelance olarak da hizmet verdiğim alanlar ve kendi müşteri portföyüm var. Yıllardır birlikte çalıştığım büyük ve küçük ölçekli firmalar var.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        Ödeme yönteminiz neler?
+                        <span class="faq-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Ödeme yöntemleri İbana Havale/EFT'nin haricinde <strong>kartla ödeme</strong> de yapabilirsiniz. Kartla ödemelerde 3 taksit seçeneğim vardır. İş öncesi ücretin yarısını, iş tesliminde diğer yarısını ödeyebilirsiniz. Her ne kadar kendimi ispat etmiş bir <strong>Google Reklam Uzmanı</strong> olsam da sizler için kolaylık olabilecek her adımı atmaya hazırım.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        Hizmet teslim süreniz nedir?
+                        <span class="faq-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Bu yapılan işe göre değişmekle birlikte genelde tüm hizmetleri <strong>aynı gün içinde teslim</strong> etmekteyim. Örneğin yerel, küçük ölçekli bir işletmeyseniz web sitenizi aynı gün içinde kurabilir, reklamlarınızı yine aynı gün içinde yayına alabilirim.
                         </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- FAQ SCHEMA (Rich Result İçin) - CEVAPLAR HTML İLE BİREBİR UYUMLU -->
+        <!-- FAQ SCHEMA -->
         <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -1799,26 +1820,42 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Google Reklam Uzmanı ne iş yapar?",
+      "name": "Hangi sektörlerlerde hizmet veriyorsunuz?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Google Reklam Uzmanı; Google Ads kampanyalarının kurulumu, anahtar kelime analizi, hedefleme ve dönüşüm optimizasyonu süreçlerini yönetir ve reklam bütçesinden maksimum verim almayı hedefler."
+        "text": "Başta Google Ads reklamları olmak üzere, Instagram & Facebook reklamları, Web site tasarımları ve Google Maps Kaydı (İşletme Konumu) hizmetleri vermekteyim."
       }
     },
     {
       "@type": "Question",
-      "name": "Google Ads reklam bütçesi ne kadar olmalı?",
+      "name": "Sektör deneyimleriniz neler? Referanslarınız var mı?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Reklam bütçesi sektör ve rekabete göre değişir. Genellikle test süreciyle başlanır ve performansa göre ölçeklendirilir."
+        "text": "8 yıldan uzun süredir dijital pazarlama alanında hizmet veriyorum. Google Sertifikalı bir hizmet sağlayıcısıyım. 6 adet eğitim programına katıldım. Armut uygulaması üzerinden +100 iş teslimi yaptım. Hakkımda sayfamdan sertifikalarımı, Referanslarım sayfamdan iş ortaklarımı inceleyebilirsiniz."
       }
     },
     {
       "@type": "Question",
-      "name": "Google Ads mi Meta reklamları mı daha etkili?",
+      "name": "Bir şirket bünyesinde mi çalışıyorsunuz?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Google Ads aktif talebi yakalar. Meta reklamları marka bilinirliği oluşturur. En güçlü sonuç iki platformun birlikte kullanılmasıyla alınır."
+        "text": "Evet, Web4Medya şirketi bünyesinde dijital pazarlama uzmanı olarak hizmet veriyorum. Aynı zamanda freelance olarak da hizmet veriyorum."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ödeme yönteminiz neler?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Havale/EFT ve kartla ödeme (3 taksit) seçeneklerim var. İş öncesi ücretin yarısı, iş tesliminde diğer yarısı şeklinde ödeme alıyorum."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hizmet teslim süreniz nedir?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Genelde tüm hizmetleri aynı gün içinde teslim etmekteyim. Web sitesi ve reklam kurulumları aynı gün yapılabilmektedir."
       }
     }
   ]
@@ -1870,7 +1907,6 @@
                 <div class="footer-col">
                     <h4>Hizmetlerim</h4>
                     <ul class="footer-links">
-                        <!-- GÜNCELLENMİŞ LİNKLER -->
                         <li><a href="/hizmetlerim/google-reklam-yonetimi"><i class="bi bi-chevron-right" aria-hidden="true"></i> Google Reklamları</a></li>
                         <li><a href="/hizmetlerim/instagram-reklam-yonetimi"><i class="bi bi-chevron-right" aria-hidden="true"></i> Instagram Reklamları</a></li>
                         <li><a href="/hizmetlerim/facebook-reklam-yonetimi"><i class="bi bi-chevron-right" aria-hidden="true"></i> Facebook Reklamları</a></li>
@@ -1881,7 +1917,6 @@
                 <div class="footer-col">
                     <h4>Kurumsal</h4>
                     <ul class="footer-links">
-                        <!-- GÜNCELLENMİŞ LİNKLER -->
                         <li><a href="/hakkimda"><i class="bi bi-chevron-right" aria-hidden="true"></i> Hakkımda</a></li>
                         <li><a href="/referanslar"><i class="bi bi-chevron-right" aria-hidden="true"></i> Referanslarım</a></li>
                         <li><a href="/blog-yazilarim"><i class="bi bi-chevron-right" aria-hidden="true"></i> Blog Yazılarım</a></li>
@@ -1901,7 +1936,6 @@
             <div class="footer-bottom">
                 <p>©2018-2026 | Google Reklam Uzmanı Umut Yanardağ | Bu sitede <a href="https://policies.google.com/privacy" target="_blank">Google Gizlilik Politikası</a> ve <a href="https://policies.google.com/terms" target="_blank">Hizmet Şartları</a> geçerlidir.</p>
                 <div class="legal-links">
-                    <!-- GÜNCELLENMİŞ LİNKLER -->
                     <a href="/sorumluluk-reddi">Sorumluluk Reddi</a>
                     <span class="separator" aria-hidden="true">|</span>
                     <a href="/kullanim-sartlari">Kullanım Şartları</a>
