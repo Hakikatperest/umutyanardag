@@ -949,20 +949,18 @@
             gap: 10px;
         }
 
-        /* 3D CERTIFICATE CAROUSEL - YENİ */
-        .cert-3d-section {
-            padding: 100px 20px;
-            text-align: center;
+        /* PREMIUM CERTIFICATE GRID - YENİ */
+        .cert-premium-section {
+            padding: 100px 40px;
             background: #f8fafc;
-            overflow: hidden;
         }
 
-        .cert-title-area {
-            max-width: 700px;
-            margin: 0 auto 50px;
+        .cert-premium-header {
+            text-align: center;
+            margin-bottom: 60px;
         }
 
-        .cert-title-area .cert-badge {
+        .cert-premium-header .cert-badge {
             display: inline-block;
             background: var(--soft-blue);
             color: var(--primary-blue);
@@ -976,59 +974,46 @@
             border: 1px solid rgba(59,130,246,0.2);
         }
 
-        .cert-title-area h2 {
-            font-size: 2.5rem;
+        .cert-premium-header h2 {
+            font-size: 2.6rem;
             font-weight: 700;
             color: var(--primary-dark);
             margin-bottom: 10px;
         }
 
-        .cert-title-area p {
+        .cert-premium-header p {
             font-size: 1.1rem;
             color: var(--text-gray);
         }
 
-        .carousel-container {
-            perspective: 1200px;
-            margin-top: 60px;
-            position: relative;
-            height: 320px;
+        .cert-premium-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
-        .carousel-track {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transform-style: preserve-3d;
-            transition: transform 1s ease;
-        }
-
-        .carousel-card {
-            position: absolute;
-            width: 240px;
-            height: 280px;
+        .cert-premium-card {
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-            left: 50%;
-            top: 50%;
-            transform-style: preserve-3d;
-            transition: transform 1s ease, opacity 1s ease;
-            text-align: center;
-            padding: 25px 20px;
-            cursor: pointer;
-            border: 1px solid rgba(59,130,246,0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            border: 1px solid rgba(37,99,235,0.1);
         }
 
-        .carousel-card::before {
+        .cert-premium-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 40px 80px rgba(37,99,235,0.25);
+        }
+
+        .cert-premium-card::after {
             content: '';
             position: absolute;
             inset: 0;
-            border-radius: 20px;
+            border-radius: 18px;
             padding: 2px;
             background: linear-gradient(145deg, #2563EB, transparent);
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -1039,51 +1024,45 @@
             transition: opacity 0.5s ease;
         }
 
-        .carousel-card:hover::before {
+        .cert-premium-card:hover::after {
             opacity: 1;
         }
 
-        .carousel-card img {
-            width: 120px;
-            height: auto;
-            margin-bottom: 20px;
+        .cert-premium-card img {
+            width: 100%;
+            display: block;
+            cursor: pointer;
             transition: transform 0.5s ease;
         }
 
-        .carousel-card:hover img {
+        .cert-premium-card:hover img {
             transform: scale(1.05);
         }
 
-        .carousel-card h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--primary-dark);
-        }
-
-        .verify-btn {
-            margin-top: 60px;
+        .cert-premium-card button {
+            width: 100%;
+            padding: 16px;
+            border: none;
             background: linear-gradient(135deg, #2563EB, #1E40AF);
             color: white;
-            border: none;
-            padding: 14px 32px;
-            border-radius: 10px;
             font-weight: 600;
             font-size: 1rem;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 20px -5px rgba(37,99,235,0.4);
-            display: inline-flex;
+            transition: all 0.3s ease;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
         }
 
-        .verify-btn:hover {
-            transform: scale(1.08) translateY(-3px);
-            box-shadow: 0 20px 30px -8px rgba(37,99,235,0.6);
+        .cert-premium-card button i {
+            font-size: 1.1rem;
         }
 
-        .verify-btn i {
-            font-size: 1.2rem;
+        .cert-premium-card button:hover {
+            background: #1E40AF;
+            letter-spacing: 0.5px;
         }
 
         /* FAQ Section - GÜNCELLENDİ */
@@ -1777,12 +1756,9 @@
             .footer-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .carousel-card {
-                width: 220px;
-                height: 260px;
-            }
-            .carousel-card img {
-                width: 100px;
+            .cert-premium-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
             }
         }
 
@@ -1837,22 +1813,11 @@
             .cert-content {
                 height: 75vh;
             }
-            .cert-3d-section {
-                padding: 60px 15px;
+            .cert-premium-section {
+                padding: 60px 20px;
             }
-            .carousel-container {
-                height: 280px;
-            }
-            .carousel-card {
-                width: 180px;
-                height: 220px;
-                padding: 15px;
-            }
-            .carousel-card img {
-                width: 80px;
-            }
-            .carousel-card h3 {
-                font-size: 0.9rem;
+            .cert-premium-header h2 {
+                font-size: 2rem;
             }
         }
 
@@ -1888,23 +1853,15 @@
             .cert-content {
                 height: 70vh;
             }
-            .cert-title-area h2 {
-                font-size: 2rem;
+            .cert-premium-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
-            .carousel-container {
-                height: 240px;
+            .cert-premium-header h2 {
+                font-size: 1.8rem;
             }
-            .carousel-card {
-                width: 150px;
-                height: 190px;
-                padding: 12px;
-            }
-            .carousel-card img {
-                width: 70px;
-                margin-bottom: 10px;
-            }
-            .verify-btn {
-                padding: 12px 24px;
+            .cert-premium-card button {
+                padding: 14px;
                 font-size: 0.9rem;
             }
         }
@@ -2119,54 +2076,78 @@
             </div>
         </section>
 
-        <!-- YENİ 3D CERTIFICATE CAROUSEL -->
-        <section class="cert-3d-section">
+        <!-- YENİ PREMIUM SERTİFİKA GRID -->
+        <section class="cert-premium-section" id="google-certifications">
 
-            <div class="cert-title-area">
+            <div class="cert-premium-header">
                 <span class="cert-badge">Google Onaylı</span>
                 <h2>Google Sertifikalarım</h2>
-                <p>Google tarafından resmi olarak doğrulanmış uzmanlık belgelerim</p>
+                <p>Google tarafından resmi olarak doğrulanmış uzmanlık belgelerim.</p>
             </div>
 
-            <div class="carousel-container">
-                <div class="carousel-track" id="carouselTrack">
+            <div class="cert-premium-grid">
 
-                    <div class="carousel-card" data-id="180065a0-2793-4684-8e37-da53bf08f129">
-                        <img src="/resimler/google-ads-video-sertifikasi.webp" alt="Google Ads Video Sertifikası">
-                        <h3>Google Ads Video</h3>
-                    </div>
-
-                    <div class="carousel-card" data-id="8faf9361-2ac5-4f25-a82c-98be167c5755">
-                        <img src="/resimler/google-analytics-sertifikasyonu.webp" alt="Google Analytics 4 Sertifikası">
-                        <h3>Google Analytics 4</h3>
-                    </div>
-
-                    <div class="carousel-card" data-id="b90121e4-3a19-4378-88dc-963b80c477b0">
-                        <img src="/resimler/donusum-optimizasyonu-sertifikasi.webp" alt="Dönüşüm Optimizasyonu Sertifikası">
-                        <h3>Dönüşüm Optimizasyonu</h3>
-                    </div>
-
-                    <div class="carousel-card" data-id="09a902dc-802c-44ba-a4d4-23544e4915fe">
-                        <img src="/resimler/google-ads-goruntulu-reklam-agi-sertifikasi.webp" alt="Google Ads Görüntülü Reklam Ağı Sertifikası">
-                        <h3>Görüntülü Reklam Ağı</h3>
-                    </div>
-
-                    <div class="carousel-card" data-id="f410fcc6-44ca-4d31-9a0b-b89d6c68dd82">
-                        <img src="/resimler/google-ads-arama-agi-sertifikasi.webp" alt="Google Ads Arama Ağı Sertifikası">
-                        <h3>Arama Ağı</h3>
-                    </div>
-
-                    <div class="carousel-card" data-id="499d1171-c0eb-496d-b5a2-a8238b9140ed">
-                        <img src="/resimler/cevrimdisi-satislari-arttirma-sertifikasi.webp" alt="Çevrimdışı Satışları Artırma Sertifikası">
-                        <h3>Offline Satış Artırma</h3>
-                    </div>
-
+                <!-- 1 -->
+                <div class="cert-premium-card">
+                    <img src="/resimler/google-ads-video-sertifikasi.webp" 
+                         alt="Google Ads Video Sertifikası"
+                         onclick="openCert('180065a0-2793-4684-8e37-da53bf08f129')">
+                    <button onclick="openCert('180065a0-2793-4684-8e37-da53bf08f129')">
+                        <i class="bi bi-patch-check-fill"></i> Google Üzerinde Doğrula
+                    </button>
                 </div>
-            </div>
 
-            <button class="verify-btn" id="verifyBtn">
-                <i class="bi bi-patch-check-fill"></i> Google Üzerinde Doğrula
-            </button>
+                <!-- 2 -->
+                <div class="cert-premium-card">
+                    <img src="/resimler/google-analytics-sertifikasyonu.webp" 
+                         alt="Google Analytics 4 Sertifikası"
+                         onclick="openCert('8faf9361-2ac5-4f25-a82c-98be167c5755')">
+                    <button onclick="openCert('8faf9361-2ac5-4f25-a82c-98be167c5755')">
+                        <i class="bi bi-patch-check-fill"></i> Google Üzerinde Doğrula
+                    </button>
+                </div>
+
+                <!-- 3 -->
+                <div class="cert-premium-card">
+                    <img src="/resimler/donusum-optimizasyonu-sertifikasi.webp"
+                         alt="Dönüşüm Optimizasyonu Sertifikası"
+                         onclick="openCert('b90121e4-3a19-4378-88dc-963b80c477b0')">
+                    <button onclick="openCert('b90121e4-3a19-4378-88dc-963b80c477b0')">
+                        <i class="bi bi-patch-check-fill"></i> Google Üzerinde Doğrula
+                    </button>
+                </div>
+
+                <!-- 4 -->
+                <div class="cert-premium-card">
+                    <img src="/resimler/google-ads-goruntulu-reklam-agi-sertifikasi.webp"
+                         alt="Google Ads Görüntülü Reklam Ağı Sertifikası"
+                         onclick="openCert('09a902dc-802c-44ba-a4d4-23544e4915fe')">
+                    <button onclick="openCert('09a902dc-802c-44ba-a4d4-23544e4915fe')">
+                        <i class="bi bi-patch-check-fill"></i> Google Üzerinde Doğrula
+                    </button>
+                </div>
+
+                <!-- 5 -->
+                <div class="cert-premium-card">
+                    <img src="/resimler/google-ads-arama-agi-sertifikasi.webp"
+                         alt="Google Ads Arama Ağı Sertifikası"
+                         onclick="openCert('f410fcc6-44ca-4d31-9a0b-b89d6c68dd82')">
+                    <button onclick="openCert('f410fcc6-44ca-4d31-9a0b-b89d6c68dd82')">
+                        <i class="bi bi-patch-check-fill"></i> Google Üzerinde Doğrula
+                    </button>
+                </div>
+
+                <!-- 6 -->
+                <div class="cert-premium-card">
+                    <img src="/resimler/cevrimdisi-satislari-arttirma-sertifikasi.webp"
+                         alt="Çevrimdışı Satışları Artırma Sertifikası"
+                         onclick="openCert('499d1171-c0eb-496d-b5a2-a8238b9140ed')">
+                    <button onclick="openCert('499d1171-c0eb-496d-b5a2-a8238b9140ed')">
+                        <i class="bi bi-patch-check-fill"></i> Google Üzerinde Doğrula
+                    </button>
+                </div>
+
+            </div>
 
         </section>
 
@@ -2625,73 +2606,6 @@
                 }
             });
         }
-
-        // ===== 3D CAROUSEL JAVASCRIPT =====
-        const cards = document.querySelectorAll(".carousel-card");
-        const track = document.getElementById("carouselTrack");
-        const verifyBtn = document.getElementById("verifyBtn");
-
-        let currentIndex = 0;
-        let angle = 360 / cards.length;
-
-        function updateCarousel() {
-            cards.forEach((card, i) => {
-                const rotation = angle * (i - currentIndex);
-                card.style.transform =
-                    `rotateY(${rotation}deg) translateZ(400px) translate(-50%, -50%)`;
-                card.style.opacity = i === currentIndex ? "1" : "0.6";
-                card.style.filter = i === currentIndex ? "blur(0)" : "blur(1px)";
-                card.style.zIndex = i === currentIndex ? "10" : "1";
-            });
-
-            verifyBtn.onclick = () => {
-                const id = cards[currentIndex].dataset.id;
-                openCert(id);
-            };
-        }
-
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % cards.length;
-            updateCarousel();
-        }
-
-        function prevSlide() {
-            currentIndex = (currentIndex - 1 + cards.length) % cards.length;
-            updateCarousel();
-        }
-
-        /* AUTO SLIDE */
-        let autoSlide = setInterval(nextSlide, 3000);
-
-        /* HOVER DURDUR */
-        if (track) {
-            track.addEventListener("mouseenter", () => clearInterval(autoSlide));
-            track.addEventListener("mouseleave", () => {
-                autoSlide = setInterval(nextSlide, 3000);
-            });
-        }
-
-        /* CLICK */
-        cards.forEach((card, index) => {
-            card.addEventListener("click", () => {
-                currentIndex = index;
-                updateCarousel();
-            });
-        });
-
-        /* TOUCH SWIPE */
-        let startX = 0;
-        if (track) {
-            track.addEventListener("touchstart", e => startX = e.touches[0].clientX);
-            track.addEventListener("touchend", e => {
-                let endX = e.changedTouches[0].clientX;
-                if (startX > endX + 50) nextSlide();
-                if (startX < endX - 50) prevSlide();
-            });
-        }
-
-        // İlk yüklemede carousel'i güncelle
-        updateCarousel();
 
         // Certificate Modal Functions
         function openCert(id){
