@@ -196,7 +196,7 @@
             --primary-green: #10B981;
             --primary-yellow: #FBBF24;
             --modern-blue: #2563EB;
-            --soft-blue: #EFF6FF;
+            --soft-blue: #EFF6FE;
             --bg-light: #F9FAFB;
             --text-dark: #111827;
             --text-gray: #6B7280;
@@ -949,113 +949,141 @@
             gap: 10px;
         }
 
-        /* CERTIFICATES SECTION - YENİ */
-        .home-certificates {
-            padding: 90px 40px;
-            background: #f8fafc;
-        }
-
-        .cert-container {
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .cert-header {
+        /* 3D CERTIFICATE CAROUSEL - YENİ */
+        .cert-3d-section {
+            padding: 100px 20px;
             text-align: center;
-            margin-bottom: 50px;
+            background: #f8fafc;
+            overflow: hidden;
         }
 
-        .cert-badge {
+        .cert-title-area {
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+
+        .cert-title-area .cert-badge {
             display: inline-block;
-            background: #E0F2FE;
-            color: #2563EB;
+            background: var(--soft-blue);
+            color: var(--primary-blue);
             padding: 6px 14px;
-            border-radius: 30px;
+            border-radius: 40px;
             font-weight: 600;
             font-size: 0.85rem;
             margin-bottom: 16px;
-            border: 1px solid rgba(37,99,235,0.2);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(59,130,246,0.2);
         }
 
-        .cert-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .cert-card {
-            background: white;
-            padding: 25px;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            transition: 0.4s ease;
-            text-align: center;
-            border: 1px solid rgba(37,99,235,0.1);
-        }
-
-        .cert-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px rgba(37,99,235,0.2);
-            border-color: transparent;
-        }
-
-        .cert-card img {
-            width: 120px;
-            height: auto;
-            margin-bottom: 15px;
-        }
-
-        .cert-card h3 {
-            font-size: 1.1rem;
+        .cert-title-area h2 {
+            font-size: 2.5rem;
             font-weight: 700;
             color: var(--primary-dark);
             margin-bottom: 10px;
         }
 
-        .cert-card p {
+        .cert-title-area p {
+            font-size: 1.1rem;
             color: var(--text-gray);
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-            line-height: 1.5;
         }
 
-        .cert-buttons {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 15px;
+        .carousel-container {
+            perspective: 1200px;
+            margin-top: 60px;
+            position: relative;
+            height: 320px;
         }
 
-        .cert-buttons a,
-        .cert-buttons button {
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            border: none;
+        .carousel-track {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 1s ease;
+        }
+
+        .carousel-card {
+            position: absolute;
+            width: 240px;
+            height: 280px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            left: 50%;
+            top: 50%;
+            transform-style: preserve-3d;
+            transition: transform 1s ease, opacity 1s ease;
+            text-align: center;
+            padding: 25px 20px;
             cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s ease;
+            border: 1px solid rgba(59,130,246,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
-        .cert-buttons a {
-            background: #2563EB;
-            color: white;
+        .carousel-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            padding: 2px;
+            background: linear-gradient(145deg, #2563EB, transparent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.5s ease;
         }
 
-        .cert-buttons a:hover {
-            background: #1D4ED8;
-            transform: translateY(-2px);
+        .carousel-card:hover::before {
+            opacity: 1;
         }
 
-        .cert-buttons button {
-            background: #E5E7EB;
+        .carousel-card img {
+            width: 120px;
+            height: auto;
+            margin-bottom: 20px;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .carousel-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
             color: var(--primary-dark);
         }
 
-        .cert-buttons button:hover {
-            background: #D1D5DB;
-            transform: translateY(-2px);
+        .verify-btn {
+            margin-top: 60px;
+            background: linear-gradient(135deg, #2563EB, #1E40AF);
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 20px -5px rgba(37,99,235,0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .verify-btn:hover {
+            transform: scale(1.08) translateY(-3px);
+            box-shadow: 0 20px 30px -8px rgba(37,99,235,0.6);
+        }
+
+        .verify-btn i {
+            font-size: 1.2rem;
         }
 
         /* FAQ Section - GÜNCELLENDİ */
@@ -1625,6 +1653,113 @@
             color: #3B82F6;
         }
 
+        /* ===== PREMIUM CERTIFICATE MODAL ===== */
+        .cert-modal {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.4s ease;
+            z-index: 9999;
+        }
+
+        .cert-modal.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .cert-overlay {
+            position: absolute;
+            inset: 0;
+            backdrop-filter: blur(14px);
+            background: rgba(15,23,42,0.65);
+        }
+
+        .cert-content {
+            position: relative;
+            width: 95%;
+            max-width: 1200px;
+            height: 88vh;
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            transform: scale(0.85);
+            transition: 0.4s cubic-bezier(.77,0,.18,1);
+            box-shadow: 0 50px 120px -30px rgba(0,0,0,0.6);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cert-modal.active .cert-content {
+            transform: scale(1);
+        }
+
+        .cert-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 28px;
+            background: linear-gradient(135deg,#2563EB,#1E40AF);
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .cert-header i {
+            color: #FBBF24;
+            margin-right: 8px;
+        }
+
+        .cert-close {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 22px;
+            cursor: pointer;
+            color: white;
+            transition: 0.3s ease;
+        }
+
+        .cert-close:hover {
+            background: rgba(255,255,255,0.4);
+            transform: rotate(90deg);
+        }
+
+        #certFrame {
+            flex: 1;
+            width: 100%;
+            border: none;
+        }
+
+        .cert-loader {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            z-index: 5;
+        }
+
+        .cert-loader::after {
+            content: "";
+            width: 55px;
+            height: 55px;
+            border: 5px solid #E5E7EB;
+            border-top: 5px solid #2563EB;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
         /* Responsive */
         @media screen and (max-width: 1200px) {
             .hero-title {
@@ -1641,6 +1776,13 @@
             }
             .footer-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            .carousel-card {
+                width: 220px;
+                height: 260px;
+            }
+            .carousel-card img {
+                width: 100px;
             }
         }
 
@@ -1692,8 +1834,25 @@
                 right: 20px;
                 padding: 10px 16px;
             }
-            .cert-grid {
-                grid-template-columns: 1fr;
+            .cert-content {
+                height: 75vh;
+            }
+            .cert-3d-section {
+                padding: 60px 15px;
+            }
+            .carousel-container {
+                height: 280px;
+            }
+            .carousel-card {
+                width: 180px;
+                height: 220px;
+                padding: 15px;
+            }
+            .carousel-card img {
+                width: 80px;
+            }
+            .carousel-card h3 {
+                font-size: 0.9rem;
             }
         }
 
@@ -1725,6 +1884,28 @@
             }
             .logo a {
                 font-size: 1.2rem;
+            }
+            .cert-content {
+                height: 70vh;
+            }
+            .cert-title-area h2 {
+                font-size: 2rem;
+            }
+            .carousel-container {
+                height: 240px;
+            }
+            .carousel-card {
+                width: 150px;
+                height: 190px;
+                padding: 12px;
+            }
+            .carousel-card img {
+                width: 70px;
+                margin-bottom: 10px;
+            }
+            .verify-btn {
+                padding: 12px 24px;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -1938,87 +2119,55 @@
             </div>
         </section>
 
-        <!-- Certificates Section - Google Sertifikaları -->
-        <section class="home-certificates" id="google-certifications">
-            <div class="cert-container">
-                
-                <div class="cert-header">
-                    <span class="cert-badge">Google Onaylı</span>
-                    <h2 class="section-title">Google Sertifikalarım</h2>
-                    <p class="section-description">
-                        2026 yılı itibarıyla Google tarafından resmi olarak doğrulanmış
-                        uzmanlık sertifikalarım aşağıda yer almaktadır.
-                    </p>
-                </div>
+        <!-- YENİ 3D CERTIFICATE CAROUSEL -->
+        <section class="cert-3d-section">
 
-                <div class="cert-grid">
-                    <!-- 1 -->
-                    <div class="cert-card">
+            <div class="cert-title-area">
+                <span class="cert-badge">Google Onaylı</span>
+                <h2>Google Sertifikalarım</h2>
+                <p>Google tarafından resmi olarak doğrulanmış uzmanlık belgelerim</p>
+            </div>
+
+            <div class="carousel-container">
+                <div class="carousel-track" id="carouselTrack">
+
+                    <div class="carousel-card" data-id="180065a0-2793-4684-8e37-da53bf08f129">
                         <img src="/resimler/google-ads-video-sertifikasi.webp" alt="Google Ads Video Sertifikası">
-                        <h3>Google Ads Video Sertifikası</h3>
-                        <p>Video reklam stratejisi, hedefleme ve performans optimizasyonu uzmanlığı.</p>
-                        <div class="cert-buttons">
-                            <a href="https://skillshop.credential.net/180065a0-2793-4684-8e37-da53bf08f129" target="_blank">Doğrula</a>
-                            <button onclick="openCertModal('180065a0-2793-4684-8e37-da53bf08f129')">Görüntüle</button>
-                        </div>
+                        <h3>Google Ads Video</h3>
                     </div>
 
-                    <!-- 2 -->
-                    <div class="cert-card">
-                        <img src="/resimler/google-analytics-sertifikasyonu.webp" alt="Google Analytics Sertifikasyonu">
-                        <h3>Google Analytics 4 Sertifikası</h3>
-                        <p>GA4 ile veri analizi, ölçümleme ve performans optimizasyonu uzmanlığı.</p>
-                        <div class="cert-buttons">
-                            <a href="https://skillshop.credential.net/8faf9361-2ac5-4f25-a82c-98be167c5755" target="_blank">Doğrula</a>
-                            <button onclick="openCertModal('8faf9361-2ac5-4f25-a82c-98be167c5755')">Görüntüle</button>
-                        </div>
+                    <div class="carousel-card" data-id="8faf9361-2ac5-4f25-a82c-98be167c5755">
+                        <img src="/resimler/google-analytics-sertifikasyonu.webp" alt="Google Analytics 4 Sertifikası">
+                        <h3>Google Analytics 4</h3>
                     </div>
 
-                    <!-- 3 -->
-                    <div class="cert-card">
+                    <div class="carousel-card" data-id="b90121e4-3a19-4378-88dc-963b80c477b0">
                         <img src="/resimler/donusum-optimizasyonu-sertifikasi.webp" alt="Dönüşüm Optimizasyonu Sertifikası">
-                        <h3>Dönüşüm Optimizasyonu Sertifikası</h3>
-                        <p>Mobil kullanıcı yolculuğu analizi ve dönüşüm oranı artırma uzmanlığı.</p>
-                        <div class="cert-buttons">
-                            <a href="https://skillshop.credential.net/b90121e4-3a19-4378-88dc-963b80c477b0" target="_blank">Doğrula</a>
-                            <button onclick="openCertModal('b90121e4-3a19-4378-88dc-963b80c477b0')">Görüntüle</button>
-                        </div>
+                        <h3>Dönüşüm Optimizasyonu</h3>
                     </div>
 
-                    <!-- 4 -->
-                    <div class="cert-card">
+                    <div class="carousel-card" data-id="09a902dc-802c-44ba-a4d4-23544e4915fe">
                         <img src="/resimler/google-ads-goruntulu-reklam-agi-sertifikasi.webp" alt="Google Ads Görüntülü Reklam Ağı Sertifikası">
-                        <h3>Google Ads Görüntülü Reklam Ağı</h3>
-                        <p>Görüntülü reklam yatırımlarını stratejik ve ölçülebilir şekilde yönetme.</p>
-                        <div class="cert-buttons">
-                            <a href="https://skillshop.credential.net/09a902dc-802c-44ba-a4d4-23544e4915fe" target="_blank">Doğrula</a>
-                            <button onclick="openCertModal('09a902dc-802c-44ba-a4d4-23544e4915fe')">Görüntüle</button>
-                        </div>
+                        <h3>Görüntülü Reklam Ağı</h3>
                     </div>
 
-                    <!-- 5 -->
-                    <div class="cert-card">
+                    <div class="carousel-card" data-id="f410fcc6-44ca-4d31-9a0b-b89d6c68dd82">
                         <img src="/resimler/google-ads-arama-agi-sertifikasi.webp" alt="Google Ads Arama Ağı Sertifikası">
-                        <h3>Google Ads Arama Ağı</h3>
-                        <p>Arama kampanyalarında maksimum ROI stratejisi.</p>
-                        <div class="cert-buttons">
-                            <a href="https://skillshop.credential.net/f410fcc6-44ca-4d31-9a0b-b89d6c68dd82" target="_blank">Doğrula</a>
-                            <button onclick="openCertModal('f410fcc6-44ca-4d31-9a0b-b89d6c68dd82')">Görüntüle</button>
-                        </div>
+                        <h3>Arama Ağı</h3>
                     </div>
 
-                    <!-- 6 -->
-                    <div class="cert-card">
+                    <div class="carousel-card" data-id="499d1171-c0eb-496d-b5a2-a8238b9140ed">
                         <img src="/resimler/cevrimdisi-satislari-arttirma-sertifikasi.webp" alt="Çevrimdışı Satışları Artırma Sertifikası">
-                        <h3>Çevrimdışı Satışları Artırma</h3>
-                        <p>Online kampanyaları mağaza satışına dönüştürme uzmanlığı.</p>
-                        <div class="cert-buttons">
-                            <a href="https://skillshop.credential.net/499d1171-c0eb-496d-b5a2-a8238b9140ed" target="_blank">Doğrula</a>
-                            <button onclick="openCertModal('499d1171-c0eb-496d-b5a2-a8238b9140ed')">Görüntüle</button>
-                        </div>
+                        <h3>Offline Satış Artırma</h3>
                     </div>
+
                 </div>
             </div>
+
+            <button class="verify-btn" id="verifyBtn">
+                <i class="bi bi-patch-check-fill"></i> Google Üzerinde Doğrula
+            </button>
+
         </section>
 
         <!-- FAQ Section -->
@@ -2261,11 +2410,24 @@
         </div>
     </div>
 
-    <!-- Certificate Modal (Embedded) -->
-    <div id="certModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:9999;">
-        <div style="background:white; width:90%; max-width:900px; padding:20px; border-radius:20px; position:relative;">
-            <button onclick="closeCertModal()" style="position:absolute; right:15px; top:15px; background:transparent; border:none; font-size:24px; cursor:pointer; width:40px; height:40px; display:flex; align-items:center; justify-content:center; border-radius:50%; transition:all 0.3s ease;" onmouseover="this.style.background='rgba(0,0,0,0.1)'" onmouseout="this.style.background='transparent'">×</button>
-            <iframe id="certFrame" width="100%" height="600" frameborder="0"></iframe>
+    <!-- PREMIUM CERTIFICATE MODAL -->
+    <div class="cert-modal" id="certModal">
+        <div class="cert-overlay" onclick="closeCert()"></div>
+
+        <div class="cert-content">
+            
+            <div class="cert-header">
+                <div>
+                    <i class="bi bi-patch-check-fill"></i>
+                    Google Tarafından Doğrulanmış Sertifika
+                </div>
+                <button class="cert-close" onclick="closeCert()">×</button>
+            </div>
+
+            <div class="cert-loader" id="certLoader"></div>
+
+            <iframe id="certFrame" onload="hideLoader()"></iframe>
+
         </div>
     </div>
 
@@ -2322,6 +2484,7 @@
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeMenu();
+                closeCert();
             }
         });
 
@@ -2463,15 +2626,97 @@
             });
         }
 
-        // Certificate Modal Functions
-        function openCertModal(id){
-            document.getElementById("certModal").style.display = "flex";
-            document.getElementById("certFrame").src = "https://skillshop.credential.net/embed/"+id;
+        // ===== 3D CAROUSEL JAVASCRIPT =====
+        const cards = document.querySelectorAll(".carousel-card");
+        const track = document.getElementById("carouselTrack");
+        const verifyBtn = document.getElementById("verifyBtn");
+
+        let currentIndex = 0;
+        let angle = 360 / cards.length;
+
+        function updateCarousel() {
+            cards.forEach((card, i) => {
+                const rotation = angle * (i - currentIndex);
+                card.style.transform =
+                    `rotateY(${rotation}deg) translateZ(400px) translate(-50%, -50%)`;
+                card.style.opacity = i === currentIndex ? "1" : "0.6";
+                card.style.filter = i === currentIndex ? "blur(0)" : "blur(1px)";
+                card.style.zIndex = i === currentIndex ? "10" : "1";
+            });
+
+            verifyBtn.onclick = () => {
+                const id = cards[currentIndex].dataset.id;
+                openCert(id);
+            };
         }
-        
-        function closeCertModal(){
-            document.getElementById("certModal").style.display = "none";
-            document.getElementById("certFrame").src = "";
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % cards.length;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+            updateCarousel();
+        }
+
+        /* AUTO SLIDE */
+        let autoSlide = setInterval(nextSlide, 3000);
+
+        /* HOVER DURDUR */
+        if (track) {
+            track.addEventListener("mouseenter", () => clearInterval(autoSlide));
+            track.addEventListener("mouseleave", () => {
+                autoSlide = setInterval(nextSlide, 3000);
+            });
+        }
+
+        /* CLICK */
+        cards.forEach((card, index) => {
+            card.addEventListener("click", () => {
+                currentIndex = index;
+                updateCarousel();
+            });
+        });
+
+        /* TOUCH SWIPE */
+        let startX = 0;
+        if (track) {
+            track.addEventListener("touchstart", e => startX = e.touches[0].clientX);
+            track.addEventListener("touchend", e => {
+                let endX = e.changedTouches[0].clientX;
+                if (startX > endX + 50) nextSlide();
+                if (startX < endX - 50) prevSlide();
+            });
+        }
+
+        // İlk yüklemede carousel'i güncelle
+        updateCarousel();
+
+        // Certificate Modal Functions
+        function openCert(id){
+            const modal = document.getElementById("certModal");
+            const frame = document.getElementById("certFrame");
+            const loader = document.getElementById("certLoader");
+
+            loader.style.display = "flex";
+            frame.src = "https://skillshop.credential.net/embed/" + id;
+
+            modal.classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
+
+        function hideLoader(){
+            document.getElementById("certLoader").style.display = "none";
+        }
+
+        function closeCert(){
+            const modal = document.getElementById("certModal");
+            const frame = document.getElementById("certFrame");
+
+            modal.classList.remove("active");
+            frame.src = "";
+            document.body.style.overflow = "";
         }
     </script>
 </body>
