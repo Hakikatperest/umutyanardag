@@ -949,44 +949,39 @@
             gap: 10px;
         }
 
-        /* PREMIUM CERTIFICATE GRID - YENİ */
-        .cert-premium-section {
+        /* YENİ SERTİFİKA ALANI - GÜNCELLENDİ (cert-ultra-section) */
+        .cert-ultra-section {
             padding: 100px 40px;
-            background: #f8fafc;
+            background: radial-gradient(circle at top left, rgba(37,99,235,0.08), transparent 40%), #f8fafc;
         }
 
-        .cert-premium-header {
+        .cert-ultra-header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 70px;
         }
 
-        .cert-premium-header .cert-badge {
-            display: inline-block;
-            background: var(--soft-blue);
-            color: var(--primary-blue);
-            padding: 6px 14px;
+        .cert-ultra-badge {
+            background: #EFF6FF;
+            color: #2563EB;
+            padding: 8px 18px;
             border-radius: 40px;
             font-weight: 600;
             font-size: 0.85rem;
-            margin-bottom: 16px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border: 1px solid rgba(59,130,246,0.2);
+            border: 1px solid rgba(37,99,235,0.2);
         }
 
-        .cert-premium-header h2 {
+        .cert-ultra-header h2 {
             font-size: 2.6rem;
-            font-weight: 700;
-            color: var(--primary-dark);
-            margin-bottom: 10px;
+            margin: 20px 0 10px;
+            font-weight: 800;
+            color: #111827;
         }
 
-        .cert-premium-header p {
-            font-size: 1.1rem;
-            color: var(--text-gray);
+        .cert-ultra-header p {
+            color: #6B7280;
         }
 
-        .cert-premium-grid {
+        .cert-ultra-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 40px;
@@ -994,75 +989,71 @@
             margin: 0 auto;
         }
 
-        .cert-premium-card {
-            background: white;
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.08);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        .cert-ultra-card {
             position: relative;
-            border: 1px solid rgba(37,99,235,0.1);
+            display: block;
+            border-radius: 20px;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.1);
+            text-decoration: none;
         }
 
-        .cert-premium-card:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 40px 80px rgba(37,99,235,0.25);
+        .cert-ultra-card:hover {
+            transform: rotateY(6deg) rotateX(4deg) scale(1.04);
+            box-shadow: 0 50px 100px rgba(37,99,235,0.35);
         }
 
-        .cert-premium-card::after {
-            content: '';
+        .cert-ultra-card img {
+            width: 100%;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .cert-ultra-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .cert-badge-top {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg,#2563EB,#1E40AF);
+            color: white;
+            padding: 8px 14px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            z-index: 3;
+        }
+
+        .cert-ultra-overlay {
             position: absolute;
             inset: 0;
-            border-radius: 18px;
-            padding: 2px;
-            background: linear-gradient(145deg, #2563EB, transparent);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent 60%);
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding-bottom: 30px;
             opacity: 0;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.4s ease;
         }
 
-        .cert-premium-card:hover::after {
+        .cert-ultra-card:hover .cert-ultra-overlay {
             opacity: 1;
         }
 
-        .cert-premium-card img {
-            width: 100%;
-            display: block;
-            cursor: pointer;
-            transition: transform 0.5s ease;
-        }
-
-        .cert-premium-card:hover img {
-            transform: scale(1.05);
-        }
-
-        .cert-premium-card button {
-            width: 100%;
-            padding: 16px;
-            border: none;
-            background: linear-gradient(135deg, #2563EB, #1E40AF);
-            color: white;
+        .cert-ultra-overlay span {
+            background: white;
+            color: #2563EB;
+            padding: 10px 20px;
+            border-radius: 40px;
             font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .cert-premium-card button i {
-            font-size: 1.1rem;
-        }
-
-        .cert-premium-card button:hover {
-            background: #1E40AF;
-            letter-spacing: 0.5px;
+            font-size: 0.9rem;
         }
 
         /* FAQ Section - GÜNCELLENDİ */
@@ -1756,7 +1747,7 @@
             .footer-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .cert-premium-grid {
+            .cert-ultra-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 30px;
             }
@@ -1813,10 +1804,10 @@
             .cert-content {
                 height: 75vh;
             }
-            .cert-premium-section {
+            .cert-ultra-section {
                 padding: 60px 20px;
             }
-            .cert-premium-header h2 {
+            .cert-ultra-header h2 {
                 font-size: 2rem;
             }
         }
@@ -1853,16 +1844,12 @@
             .cert-content {
                 height: 70vh;
             }
-            .cert-premium-grid {
+            .cert-ultra-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
-            .cert-premium-header h2 {
+            .cert-ultra-header h2 {
                 font-size: 1.8rem;
-            }
-            .cert-premium-card button {
-                padding: 14px;
-                font-size: 0.9rem;
             }
         }
     </style>
@@ -2076,79 +2063,132 @@
             </div>
         </section>
 
-        <!-- YENİ PREMIUM SERTİFİKA GRID -->
-        <section class="cert-premium-section" id="google-certifications">
+        <!-- YENİ SERTİFİKA ALANI (cert-ultra-section) -->
+        <section class="cert-ultra-section" id="google-certifications">
 
-            <div class="cert-premium-header">
-                <span class="cert-badge">Google Onaylı</span>
+            <div class="cert-ultra-header">
+                <span class="cert-ultra-badge">Google Onaylı Uzmanlık Belgeleri</span>
                 <h2>Google Sertifikalarım</h2>
-                <p>Google tarafından resmi olarak doğrulanmış uzmanlık belgelerim.</p>
+                <p>Tüm sertifikalar Google Skillshop üzerinden resmi olarak doğrulanabilir.</p>
             </div>
 
-            <div class="cert-premium-grid">
+            <div class="cert-ultra-grid">
 
                 <!-- 1 -->
-                <div class="cert-premium-card">
-                    <img src="/resimler/google-ads-video-sertifikasi.webp" 
-                         alt="Google Ads Video Sertifikası"
-                         onclick="openCert('180065a0-2793-4684-8e37-da53bf08f129')">
-                    <button onclick="openCert('180065a0-2793-4684-8e37-da53bf08f129')">
-                        <i class="bi bi-patch-check-fill"></i> Google Üzerinde Doğrula
-                    </button>
-                </div>
+                <a href="https://skillshop.credential.net/180065a0-2793-4684-8e37-da53bf08f129"
+                   target="_blank"
+                   rel="noopener"
+                   class="cert-ultra-card">
+
+                    <div class="cert-badge-top">
+                        <i class="bi bi-patch-check-fill"></i>
+                        Google Tarafından Doğrulandı
+                    </div>
+
+                    <img src="/resimler/google-ads-video-sertifikasi.webp"
+                         alt="Google Ads Video Sertifikası - Umut Yanardağ">
+
+                    <div class="cert-ultra-overlay">
+                        <span>Resmi Olarak Doğrula</span>
+                    </div>
+                </a>
 
                 <!-- 2 -->
-                <div class="cert-premium-card">
-                    <img src="/resimler/google-analytics-sertifikasyonu.webp" 
-                         alt="Google Analytics 4 Sertifikası"
-                         onclick="openCert('8faf9361-2ac5-4f25-a82c-98be167c5755')">
-                    <button onclick="openCert('8faf9361-2ac5-4f25-a82c-98be167c5755')">
-                        <i class="bi bi-patch-check-fill"></i> Google Üzerinde Doğrula
-                    </button>
-                </div>
+                <a href="https://skillshop.credential.net/8faf9361-2ac5-4f25-a82c-98be167c5755"
+                   target="_blank"
+                   rel="noopener"
+                   class="cert-ultra-card">
+
+                    <div class="cert-badge-top">
+                        <i class="bi bi-patch-check-fill"></i>
+                        Google Tarafından Doğrulandı
+                    </div>
+
+                    <img src="/resimler/google-analytics-sertifikasyonu.webp"
+                         alt="Google Analytics 4 Sertifikası - Umut Yanardağ">
+
+                    <div class="cert-ultra-overlay">
+                        <span>Resmi Olarak Doğrula</span>
+                    </div>
+                </a>
 
                 <!-- 3 -->
-                <div class="cert-premium-card">
+                <a href="https://skillshop.credential.net/b90121e4-3a19-4378-88dc-963b80c477b0"
+                   target="_blank"
+                   rel="noopener"
+                   class="cert-ultra-card">
+
+                    <div class="cert-badge-top">
+                        <i class="bi bi-patch-check-fill"></i>
+                        Google Tarafından Doğrulandı
+                    </div>
+
                     <img src="/resimler/donusum-optimizasyonu-sertifikasi.webp"
-                         alt="Dönüşüm Optimizasyonu Sertifikası"
-                         onclick="openCert('b90121e4-3a19-4378-88dc-963b80c477b0')">
-                    <button onclick="openCert('b90121e4-3a19-4378-88dc-963b80c477b0')">
-                        <i class="bi bi-patch-check-fill"></i> Google Üzerinde Doğrula
-                    </button>
-                </div>
+                         alt="Dönüşüm Optimizasyonu Sertifikası - Umut Yanardağ">
+
+                    <div class="cert-ultra-overlay">
+                        <span>Resmi Olarak Doğrula</span>
+                    </div>
+                </a>
 
                 <!-- 4 -->
-                <div class="cert-premium-card">
+                <a href="https://skillshop.credential.net/09a902dc-802c-44ba-a4d4-23544e4915fe"
+                   target="_blank"
+                   rel="noopener"
+                   class="cert-ultra-card">
+
+                    <div class="cert-badge-top">
+                        <i class="bi bi-patch-check-fill"></i>
+                        Google Tarafından Doğrulandı
+                    </div>
+
                     <img src="/resimler/google-ads-goruntulu-reklam-agi-sertifikasi.webp"
-                         alt="Google Ads Görüntülü Reklam Ağı Sertifikası"
-                         onclick="openCert('09a902dc-802c-44ba-a4d4-23544e4915fe')">
-                    <button onclick="openCert('09a902dc-802c-44ba-a4d4-23544e4915fe')">
-                        <i class="bi bi-patch-check-fill"></i> Google Üzerinde Doğrula
-                    </button>
-                </div>
+                         alt="Google Ads Görüntülü Reklam Ağı Sertifikası - Umut Yanardağ">
+
+                    <div class="cert-ultra-overlay">
+                        <span>Resmi Olarak Doğrula</span>
+                    </div>
+                </a>
 
                 <!-- 5 -->
-                <div class="cert-premium-card">
+                <a href="https://skillshop.credential.net/f410fcc6-44ca-4d31-9a0b-b89d6c68dd82"
+                   target="_blank"
+                   rel="noopener"
+                   class="cert-ultra-card">
+
+                    <div class="cert-badge-top">
+                        <i class="bi bi-patch-check-fill"></i>
+                        Google Tarafından Doğrulandı
+                    </div>
+
                     <img src="/resimler/google-ads-arama-agi-sertifikasi.webp"
-                         alt="Google Ads Arama Ağı Sertifikası"
-                         onclick="openCert('f410fcc6-44ca-4d31-9a0b-b89d6c68dd82')">
-                    <button onclick="openCert('f410fcc6-44ca-4d31-9a0b-b89d6c68dd82')">
-                        <i class="bi bi-patch-check-fill"></i> Google Üzerinde Doğrula
-                    </button>
-                </div>
+                         alt="Google Ads Arama Ağı Sertifikası - Umut Yanardağ">
+
+                    <div class="cert-ultra-overlay">
+                        <span>Resmi Olarak Doğrula</span>
+                    </div>
+                </a>
 
                 <!-- 6 -->
-                <div class="cert-premium-card">
+                <a href="https://skillshop.credential.net/499d1171-c0eb-496d-b5a2-a8238b9140ed"
+                   target="_blank"
+                   rel="noopener"
+                   class="cert-ultra-card">
+
+                    <div class="cert-badge-top">
+                        <i class="bi bi-patch-check-fill"></i>
+                        Google Tarafından Doğrulandı
+                    </div>
+
                     <img src="/resimler/cevrimdisi-satislari-arttirma-sertifikasi.webp"
-                         alt="Çevrimdışı Satışları Artırma Sertifikası"
-                         onclick="openCert('499d1171-c0eb-496d-b5a2-a8238b9140ed')">
-                    <button onclick="openCert('499d1171-c0eb-496d-b5a2-a8238b9140ed')">
-                        <i class="bi bi-patch-check-fill"></i> Google Üzerinde Doğrula
-                    </button>
-                </div>
+                         alt="Çevrimdışı Satışları Artırma Sertifikası - Umut Yanardağ">
+
+                    <div class="cert-ultra-overlay">
+                        <span>Resmi Olarak Doğrula</span>
+                    </div>
+                </a>
 
             </div>
-
         </section>
 
         <!-- FAQ Section -->
