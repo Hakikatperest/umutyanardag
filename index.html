@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+    <!-- SCHEMA 1: Person (worksFor eklendi) -->
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -10,7 +11,80 @@
   "jobTitle": "Google Reklam Uzmanı",
   "sameAs": [
     "https://www.linkedin.com/in/umutyanardag/"
+  ],
+  "worksFor": {
+    "@type": "ProfessionalService",
+    "name": "Umut Yanardağ - Google Reklam Uzmanı",
+    "url": "https://www.umutyanardag.com"
+  }
+}
+</script>
+
+    <!-- SCHEMA 2: ProfessionalService (id, openingHours, contactPoint eklendi) -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://www.umutyanardag.com/#business",
+  "name": "Umut Yanardağ - Google Reklam Uzmanı",
+  "image": "https://www.umutyanardag.com/resimler/google-reklam-uzmani-ofisi.webp",
+  "url": "https://www.umutyanardag.com",
+  "telephone": "+905303158752",
+  "priceRange": "$$",
+  "openingHours": "Mo-Fr 09:00-18:00",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "İstanbul",
+    "addressRegion": "Bahçeşehir",
+    "addressCountry": "TR"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Turkey"
+  },
+  "founder": {
+    "@type": "Person",
+    "name": "Umut Yanardağ"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+905303158752",
+    "contactType": "customer service",
+    "areaServed": "TR",
+    "availableLanguage": "Turkish"
+  },
+  "makesOffer": [
+    {
+      "@type": "Service",
+      "name": "Google Ads Danışmanlığı",
+      "description": "Arama ağı, görüntülü reklamlar, alışveriş kampanyaları ve dönüşüm optimizasyonu hizmeti."
+    },
+    {
+      "@type": "Service",
+      "name": "Meta Reklam Yönetimi",
+      "description": "Instagram ve Facebook reklam kampanya kurulumu ve optimizasyonu."
+    },
+    {
+      "@type": "Service",
+      "name": "Web Site Tasarımı",
+      "description": "SEO uyumlu, mobil responsive, dönüşüm odaklı web tasarım hizmeti."
+    }
   ]
+}
+</script>
+
+    <!-- SCHEMA 3: WebSite (YENİ) -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "https://www.umutyanardag.com",
+  "name": "Umut Yanardağ",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.umutyanardag.com/?s={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
 }
 </script>
     
@@ -137,8 +211,8 @@
             font-weight: 700;
         }
 
-        /* ÜST BAR */
-        .top-bar {
+        /* ÜST BAR - header semantic olarak düzenlendi */
+        .site-header {
             position: fixed;
             top: 0;
             left: 0;
@@ -155,7 +229,7 @@
             border-bottom: 1px solid rgba(59, 130, 246, 0.1);
         }
 
-        /* Logo - Mavi renk (gradient kaldırıldı) */
+        /* Logo - Mavi renk */
         .logo a {
             font-size: 1.5rem;
             font-weight: 800;
@@ -169,8 +243,8 @@
             transform: translateY(-1px);
         }
 
-        /* Hamburger Menü Butonu */
-        .menu-toggle {
+        /* Ana navigasyon menüsü */
+        .main-nav .menu-toggle {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -183,7 +257,7 @@
             z-index: 2001;
         }
 
-        .menu-toggle span {
+        .main-nav .menu-toggle span {
             width: 100%;
             height: 3px;
             background: linear-gradient(90deg, var(--primary-blue), #4F46E5);
@@ -191,22 +265,22 @@
             transition: all 0.3s ease;
         }
 
-        .menu-toggle.active span:nth-child(1) {
+        .main-nav .menu-toggle.active span:nth-child(1) {
             transform: rotate(45deg) translate(6px, 6px);
             background: var(--primary-blue);
         }
 
-        .menu-toggle.active span:nth-child(2) {
+        .main-nav .menu-toggle.active span:nth-child(2) {
             opacity: 0;
         }
 
-        .menu-toggle.active span:nth-child(3) {
+        .main-nav .menu-toggle.active span:nth-child(3) {
             transform: rotate(-45deg) translate(7px, -6px);
             background: var(--primary-blue);
         }
 
-        /* Yandan Açılır Menü */
-        .sidebar-menu {
+        /* Yandan Açılır Menü - nav semantic */
+        .sidebar-nav {
             position: fixed;
             top: 0;
             right: -350px;
@@ -221,7 +295,7 @@
             border-left: 1px solid rgba(59, 130, 246, 0.1);
         }
 
-        .sidebar-menu.active {
+        .sidebar-nav.active {
             right: 0;
         }
 
@@ -308,7 +382,7 @@
             font-weight: 900;
         }
 
-        /* Facebook ikonu mavi (kalsın) */
+        /* Facebook ikonu mavi */
         .submenu a:nth-child(3) i {
             color: #1877F2 !important;
         }
@@ -415,7 +489,7 @@
         }
 
         /* Ana içerik için üst boşluk */
-        .main-wrapper {
+        .main-content {
             margin-top: 70px;
         }
 
@@ -471,7 +545,7 @@
             width: 100%;
         }
 
-        /* Badge güncellendi - Dijital Pazarlama Uzmanı */
+        /* Badge */
         .hero-badge {
             display: inline-flex;
             align-items: center;
@@ -501,7 +575,7 @@
             margin-bottom: 20px;
         }
 
-        /* Google Reklam Uzmanı - Daha Modern ve Yumuşak Highlight (DÜZENLENDİ) */
+        /* Google Reklam Uzmanı - Daha Modern ve Yumuşak Highlight */
         .hero-title .gradient-special {
             background:
                 linear-gradient(transparent 72%, rgba(59,130,246,0.15) 72%),
@@ -510,7 +584,6 @@
             background-clip: text;
             color: transparent;
             display: inline-block;
-            /* Metin kırılmalarında gradient'in düzgün görünmesi için */
             -webkit-box-decoration-break: clone;
             box-decoration-break: clone;
         }
@@ -574,7 +647,6 @@
             box-shadow: 0 8px 12px -4px rgba(59, 130, 246, 0.4);
         }
 
-        /* Hizmetleri İncele Butonu - Arka plan eklendi ve düzenlendi */
         .btn-secondary {
             background: rgba(255, 255, 255, 0.9);
             color: var(--primary-dark);
@@ -632,7 +704,7 @@
             white-space: nowrap;
         }
 
-        /* EKLENEN SEO METİN STİLİ */
+        /* SEO METİN STİLİ */
         .hero-seo-text {
             max-width: 850px;
             margin: 40px auto 0;
@@ -720,7 +792,6 @@
             border-color: transparent;
         }
 
-        /* İkon boyutları daha da büyütüldü */
         .service-icon {
             width: 90px;
             height: 90px;
@@ -1030,7 +1101,7 @@
         }
 
         /* Footer Section */
-        .footer {
+        .site-footer {
             background: white;
             color: var(--text-dark);
             padding: 60px 40px 30px;
@@ -1039,7 +1110,7 @@
             overflow: hidden;
         }
 
-        .footer::before {
+        .site-footer::before {
             content: '';
             position: absolute;
             top: -50%;
@@ -1073,7 +1144,6 @@
             margin-bottom: 48px;
         }
 
-        /* Footer Logo - Mavi renk */
         .footer-logo a {
             font-size: 1.8rem;
             font-weight: 800;
@@ -1387,12 +1457,12 @@
                 grid-template-columns: 1fr;
             }
             .service-icon {
-               width: 80px;
-        height: 80px;
+                width: 80px;
+                height: 80px;
             }
             .service-icon img {
-                width: 120px;
-                height: 120px;
+                width: 50px;
+                height: 50px;
             }
             .cta-buttons {
                 flex-direction: column;
@@ -1405,7 +1475,7 @@
             .footer-grid {
                 grid-template-columns: 1fr;
             }
-            .sidebar-menu {
+            .sidebar-nav {
                 width: 280px;
             }
             .scroll-percentage {
@@ -1438,7 +1508,7 @@
             .cta-title {
                 font-size: 2rem;
             }
-            .top-bar {
+            .site-header {
                 padding: 10px 15px;
             }
             .logo a {
@@ -1457,22 +1527,24 @@
         <span class="percentage-value" id="percentageValue">%0</span>
     </div>
 
-    <!-- ÜST BAR -->
-    <div class="top-bar">
+    <!-- SEMANTIC HEADER -->
+    <header class="site-header">
         <div class="logo">
-            <a href="#home">Umut Yanardağ</a>
+            <a href="#home" aria-label="Umut Yanardağ Ana Sayfa">Umut Yanardağ</a>
         </div>
-        <button class="menu-toggle" id="menuToggle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </div>
+        <nav class="main-nav" aria-label="Ana menü">
+            <button class="menu-toggle" id="menuToggle" aria-label="Menüyü aç/kapat" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
 
-    <!-- Sidebar Menü -->
-    <div class="sidebar-menu" id="sidebarMenu">
+    <!-- SEMANTIC NAV - Sidebar Menü -->
+    <nav class="sidebar-nav" id="sidebarMenu" aria-label="Ana navigasyon">
         <div class="sidebar-header">
-            <button class="sidebar-close" id="sidebarClose">
+            <button class="sidebar-close" id="sidebarClose" aria-label="Menüyü kapat">
                 <i class="fas fa-times"></i>
             </button>
         </div>
@@ -1480,87 +1552,87 @@
         <div class="sidebar-links">
             <!-- Ana Sayfa -->
             <a href="#home">
-                <i class="fas fa-home"></i> Ana Sayfa
+                <i class="fas fa-home" aria-hidden="true"></i> Ana Sayfa
             </a>
             
             <!-- Hizmetlerim (ana menü) -->
-            <a href="#" class="has-submenu" id="servicesMenu">
-                <i class="fas fa-rocket"></i> Hizmetlerim <i class="fas fa-chevron-down submenu-icon"></i>
+            <a href="#" class="has-submenu" id="servicesMenu" aria-expanded="false">
+                <i class="fas fa-rocket" aria-hidden="true"></i> Hizmetlerim <i class="fas fa-chevron-down submenu-icon" aria-hidden="true"></i>
             </a>
             <div class="submenu" id="servicesSubmenu">
                 <a href="https://www.umutyanardag.com/hizmetlerim/google-reklam-yonetimi">
-                    <i class="fab fa-google"></i> Google Reklamları
+                    <i class="fab fa-google" aria-hidden="true"></i> Google Reklamları
                 </a>
                 <a href="https://www.umutyanardag.com/hizmetlerim/instagram-reklam-yonetimi">
-                    <i class="fab fa-instagram"></i> Instagram Reklamları
+                    <i class="fab fa-instagram" aria-hidden="true"></i> Instagram Reklamları
                 </a>
                 <a href="https://www.umutyanardag.com/hizmetlerim/facebook-reklam-yonetimi">
-                    <i class="fab fa-facebook"></i> Facebook Reklamları
+                    <i class="fab fa-facebook" aria-hidden="true"></i> Facebook Reklamları
                 </a>
                 <a href="https://www.umutyanardag.com/hizmetlerim/web-site-tasarimi">
-                    <i class="fas fa-code"></i> Web Site Tasarımı
+                    <i class="fas fa-code" aria-hidden="true"></i> Web Site Tasarımı
                 </a>
             </div>
 
-            <!-- Blog Yazılarım - Link -->
+            <!-- Blog Yazılarım -->
             <a href="https://www.umutyanardag.com/blog-yazilarim/">
-                <i class="fas fa-blog"></i> Blog Yazılarım
+                <i class="fas fa-blog" aria-hidden="true"></i> Blog Yazılarım
             </a>
 
             <!-- Hakkımda -->
             <a href="https://www.umutyanardag.com/hakkimda">
-                <i class="fas fa-user-circle"></i> Hakkımda
+                <i class="fas fa-user-circle" aria-hidden="true"></i> Hakkımda
             </a>
             
             <!-- Referanslarım -->
             <a href="https://www.umutyanardag.com/referanslar">
-                <i class="fas fa-star"></i> Referanslarım
+                <i class="fas fa-star" aria-hidden="true"></i> Referanslarım
             </a>
         </div>
 
         <div class="sidebar-cta">
             <a href="https://wa.me/905303158752" target="_blank" class="sidebar-btn whatsapp">
-                <i class="fab fa-whatsapp"></i> WhatsApp
+                <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
             </a>
             <a href="tel:05303158752" class="sidebar-btn phone">
-                <i class="fas fa-phone"></i> 0530 315 87 52
+                <i class="fas fa-phone" aria-hidden="true"></i> 0530 315 87 52
             </a>
         </div>
-    </div>
+    </nav>
 
     <!-- Overlay -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-    <!-- Ana İçerik Wrapper -->
-    <div class="main-wrapper">
+    <!-- SEMANTIC MAIN -->
+    <main class="main-content" id="main">
         <!-- Hero Section -->
-        <section class="hero" id="home">
+        <section class="hero" id="home" aria-labelledby="hero-heading">
             <div class="hero-inner">
                 <div class="hero-content">
                     <div class="hero-badge">
-                        <i class="bi bi-lightning-charge-fill"></i> Dijital Pazarlama Uzmanı
+                        <i class="bi bi-lightning-charge-fill" aria-hidden="true"></i> Dijital Pazarlama Uzmanı
                     </div>
-                    <h1 class="hero-title">
-                        <span class="gradient-special">Google Reklam Uzmanı</span> ile İşletmenizi Dijitalde Büyütün
+                    <h1 class="hero-title" id="hero-heading">
+                        Google Reklam Uzmanı & Google Ads Danışmanı ile
+                        <span class="gradient-special">Reklam Bütçenizi Kâra Dönüştürün</span>
                     </h1>
                     <p class="hero-description">
-                        Google Ads, Meta Ads ve profesyonel web tasarım çözümleriyle 
-                        daha az bütçeyle daha fazla müşteri kazanın.
+                        Tıklama değil müşteri kazanın. Arama ağı, görüntülü reklamlar ve dönüşüm optimizasyonu stratejileriyle reklam harcamalarınızı ölçülebilir kâra dönüştürüyorum.
                     </p>
                     <div class="hero-cta">
                         <a href="#contact" class="btn-primary">
-                            <i class="bi bi-calendar-check"></i>
-                            Ücretsiz Danışmanlık
+                            <i class="bi bi-calendar-check" aria-hidden="true"></i>
+                            Ücretsiz Hesap Analizi
                         </a>
                         <a href="#services" class="btn-secondary">
-                            <i class="bi bi-arrow-right"></i>
+                            <i class="bi bi-arrow-right" aria-hidden="true"></i>
                             Hizmetleri İncele
                         </a>
                     </div>
                     <div class="hero-stats">
                         <div class="stat-item">
-                            <span class="stat-number">250+</span>
-                            <span class="stat-label">Mutlu Müşteri</span>
+                            <span class="stat-number">5M+</span>
+                            <span class="stat-label">Yönetilen Reklam Bütçesi</span>
                         </div>
                         <div class="stat-item">
                             <span class="stat-number">8+</span>
@@ -1572,23 +1644,26 @@
                         </div>
                     </div>
 
-                    <!-- EKLENEN SEO METNİ -->
+                    <!-- SEO METNİ -->
                     <div class="hero-seo-text">
                         <p>
                             Sertifikalı <strong>Google Reklam Uzmanı Umut Yanardağ</strong> olarak,
-                            Google Ads ve Meta reklam yönetimi alanında 8+ yıllık deneyimle
-                            işletmelerin dijitalde büyümesine yardımcı oluyorum.
-                            Arama ağı, görüntülü reklamlar, alışveriş kampanyaları,
-                            yeniden pazarlama (remarketing) ve dönüşüm optimizasyonu
-                            stratejileriyle reklam bütçenizi en verimli şekilde yönetiyorum.
+                            <a href="https://www.umutyanardag.com/hizmetlerim/google-reklam-yonetimi">
+                            Google Ads danışmanlığı
+                            </a> ve
+                            <a href="https://www.umutyanardag.com/hizmetlerim/instagram-reklam-yonetimi">
+                            Meta reklam yönetimi
+                            </a>
+                            alanında 8+ yıllık deneyimle işletmelerin dijitalde büyümesine yardımcı oluyorum.
                         </p>
 
                         <p>
-                            Küçük işletmelerden kurumsal markalara kadar farklı sektörlerde
-                            performans odaklı kampanyalar kuruyor, veri analizi ve
-                            dönüşüm takibi (GA4 entegrasyonu) ile sürdürülebilir büyüme sağlıyorum.
-                            Eğer siz de işletmeniz için profesyonel bir Google Ads danışmanı
-                            arıyorsanız doğru yerdesiniz. İşinizi şansa bırakmak istemiyorsanız birlikte çalışabiliriz.
+                            Arama ağı reklamları, görüntülü reklamlar, alışveriş kampanyaları ve yeniden pazarlama stratejileriyle reklam bütçenizi en verimli şekilde yönetiyorum.
+                            Ayrıca
+                            <a href="https://www.umutyanardag.com/hizmetlerim/web-site-tasarimi">
+                            SEO uyumlu web site tasarımı
+                            </a>
+                            hizmetiyle dönüşüm oranlarınızı artırıyorum.
                         </p>
                     </div>
                 </div>
@@ -1596,11 +1671,11 @@
         </section>
 
         <!-- Services Section -->
-        <section class="services" id="services">
+        <section class="services" id="services" aria-labelledby="services-heading">
             <div class="services-container">
                 <div class="section-header">
                     <div class="section-badge">Uzmanlık Alanlarım</div>
-                    <h2 class="section-title">Profesyonel Dijital Çözümler</h2>
+                    <h2 class="section-title" id="services-heading">Profesyonel Dijital Çözümler</h2>
                     <p class="section-description">
                         6+ Google sertifikası ve 8 yıllık deneyimle işletmenizi 
                         dijital dünyada bir adım öne taşıyorum.
@@ -1608,51 +1683,51 @@
                 </div>
 
                 <div class="services-grid">
-                    <!-- Google Reklam Yönetimi -->
+                    <!-- Google Reklam Yönetimi - ALT TAG GÜNCELLENDİ -->
                     <div class="service-card" onclick="window.location.href='https://www.umutyanardag.com/hizmetlerim/google-reklam-yonetimi'">
                         <div class="service-icon">
-                            <img src="https://www.umutyanardag.com/resimler/google-icon.webp" alt="Google Ads Reklam İkonu">
+                            <img src="https://www.umutyanardag.com/resimler/google-icon.webp" alt="Google Reklam Uzmanı Google Ads Kampanya Yönetimi Hizmeti">
                         </div>
                         <h3>Google Reklamları</h3>
                         <p>Arama, görüntülü, alışveriş ve remarketing kampanyalarıyla müşterilerinizi bulun. Sizin için reklamlarınızı kuruyor ve yönetiyorum.</p>
                         <a href="https://www.umutyanardag.com/hizmetlerim/google-reklam-yonetimi" class="service-link">
-                            Detaylı Bilgi <i class="bi bi-arrow-right"></i>
+                            Detaylı Bilgi <i class="bi bi-arrow-right" aria-hidden="true"></i>
                         </a>
                     </div>
 
-                    <!-- Instagram Reklam Yönetimi -->
+                    <!-- Instagram Reklam Yönetimi - ALT TAG GÜNCELLENDİ -->
                     <div class="service-card" onclick="window.location.href='https://www.umutyanardag.com/hizmetlerim/instagram-reklam-yonetimi'">
                         <div class="service-icon">
-                            <img src="https://www.umutyanardag.com/resimler/instagram-icon.webp" alt="Instagram Ads Reklam İkonu">
+                            <img src="https://www.umutyanardag.com/resimler/instagram-icon.webp" alt="Google Reklam Uzmanı Instagram Reklam Yönetimi Hizmeti">
                         </div>
                         <h3>Instagram Reklamları</h3>
                         <p>Görsel odaklı, hikaye ve keşfet reklamlarıyla markanızı büyütün. Instagram'da profilinizi geliştirmeniz ve doğru kitleye ulaşmanız için yanınızdayım.</p>
                         <a href="https://www.umutyanardag.com/hizmetlerim/instagram-reklam-yonetimi" class="service-link">
-                            Detaylı Bilgi <i class="bi bi-arrow-right"></i>
+                            Detaylı Bilgi <i class="bi bi-arrow-right" aria-hidden="true"></i>
                         </a>
                     </div>
 
-                    <!-- Facebook Reklam Yönetimi -->
+                    <!-- Facebook Reklam Yönetimi - ALT TAG GÜNCELLENDİ -->
                     <div class="service-card" onclick="window.location.href='https://www.umutyanardag.com/hizmetlerim/facebook-reklam-yonetimi'">
                         <div class="service-icon">
-                            <img src="https://www.umutyanardag.com/resimler/facebook-icon.webp" alt="Facebook Ads Reklam İkonu">
+                            <img src="https://www.umutyanardag.com/resimler/facebook-icon.webp" alt="Google Reklam Uzmanı Facebook Reklam Yönetimi Hizmeti">
                         </div>
                         <h3>Facebook Reklamları</h3>
                         <p>Hedef kitle odaklı, dönüşüm bazlı reklamlarla satışlarınızı artırın. Facebook'ta daha çok görünür olmak için benimle çalışabilirsiniz.</p>
                         <a href="https://www.umutyanardag.com/hizmetlerim/facebook-reklam-yonetimi" class="service-link">
-                            Detaylı Bilgi <i class="bi bi-arrow-right"></i>
+                            Detaylı Bilgi <i class="bi bi-arrow-right" aria-hidden="true"></i>
                         </a>
                     </div>
 
-                    <!-- Web Site Tasarımı -->
+                    <!-- Web Site Tasarımı - ALT TAG GÜNCELLENDİ -->
                     <div class="service-card" onclick="window.location.href='https://www.umutyanardag.com/hizmetlerim/web-site-tasarimi'">
                         <div class="service-icon">
-                            <img src="https://www.umutyanardag.com/resimler/web-site-icon.webp" alt="Web Tasarım İkonu">
+                            <img src="https://www.umutyanardag.com/resimler/web-site-icon.webp" alt="Google Reklam Uzmanı SEO Uyumlu Web Site Tasarımı Hizmeti">
                         </div>
                         <h3>Web Site Tasarımı</h3>
                         <p>Kurumsal web siteniz, mobil uyumlu tasarım ve SEO optimizasyonu. Sektörünüz için modern, kullanıcı dostu web sitenizi hazırlayabilirim.</p>
                         <a href="https://www.umutyanardag.com/hizmetlerim/web-site-tasarimi" class="service-link">
-                            Detaylı Bilgi <i class="bi bi-arrow-right"></i>
+                            Detaylı Bilgi <i class="bi bi-arrow-right" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
@@ -1660,23 +1735,21 @@
         </section>
 
         <!-- FAQ Section -->
-        <section class="faq">
+        <section class="faq" id="faq" aria-labelledby="faq-heading">
             <div class="faq-container">
                 <div class="section-header">
                     <div class="section-badge">Sık Sorulan Sorular</div>
-                    <h2 class="section-title">Google Reklam Yönetimi Hakkında Merak Edilenler</h2>
+                    <h2 class="section-title" id="faq-heading">Google Reklam Yönetimi Hakkında Merak Edilenler</h2>
                 </div>
 
                 <div class="faq-item">
-                    <button class="faq-question">
+                    <button class="faq-question" aria-expanded="false">
                         Google Reklam Uzmanı ne iş yapar?
-                        <span class="faq-icon">+</span>
+                        <span class="faq-icon" aria-hidden="true">+</span>
                     </button>
                     <div class="faq-answer">
                         <p>
-                            Google Reklam Uzmanı; Google Ads kampanyalarının kurulumu,
-                            anahtar kelime analizi, hedefleme ve dönüşüm optimizasyonu süreçlerini yönetir.
-                            Amaç reklam bütçesinden maksimum verim almaktır. Bütçeniz doğrultusunda en iyi dönüşümleri almak ve işletmenizi internet üzerinde güçlü göstermek için birlikte çalışalım.
+                            Google Reklam Uzmanı; Google Ads kampanyalarının kurulumu, anahtar kelime analizi, hedefleme ve dönüşüm optimizasyonu süreçlerini yönetir ve reklam bütçesinden maksimum verim almayı hedefler.
                         </p>
 
                         <div class="faq-cta">
@@ -1687,148 +1760,179 @@
                 </div>
 
                 <div class="faq-item">
-                    <button class="faq-question">
+                    <button class="faq-question" aria-expanded="false">
                         Google Ads reklam bütçesi ne kadar olmalı?
-                        <span class="faq-icon">+</span>
+                        <span class="faq-icon" aria-hidden="true">+</span>
                     </button>
                     <div class="faq-answer">
                         <p>
-                            Reklam bütçesi sektör ve rekabete göre değişir.
-                            Genellikle test süreciyle başlanır ve performansa göre ölçeklenir. İlk günden reklamlarınızı yayına alırız ancak özellikle ilk 1 hafta reklamlarımız için test sürecidir. Bu süreç ve sonrasında reklam analizi yapar, birlikte yol haritası oluştururuz.
+                            Reklam bütçesi sektör ve rekabete göre değişir. Genellikle test süreciyle başlanır ve performansa göre ölçeklendirilir.
                         </p>
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <button class="faq-question">
+                    <button class="faq-question" aria-expanded="false">
                         Google Ads mi Meta reklamları mı daha etkili?
-                        <span class="faq-icon">+</span>
+                        <span class="faq-icon" aria-hidden="true">+</span>
                     </button>
                     <div class="faq-answer">
                         <p>
-                            Google Ads aktif talebi yakalar.
-                            Meta reklamları ise marka bilinirliği oluşturur.
-                            En güçlü sonuç iki platformun birlikte kullanılmasıyla alınır. Ancak burada en önemli etken Müşteri Pazarı. Örneğin bir taksi durağıysanız Meta Ads değil, Google Ads reklamları ile çalışmalısınız.
+                            Google Ads aktif talebi yakalar. Meta reklamları marka bilinirliği oluşturur. En güçlü sonuç iki platformun birlikte kullanılmasıyla alınır.
                         </p>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- FAQ SCHEMA (Rich Result İçin) - CEVAPLAR HTML İLE BİREBİR UYUMLU -->
+        <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Google Reklam Uzmanı ne iş yapar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Google Reklam Uzmanı; Google Ads kampanyalarının kurulumu, anahtar kelime analizi, hedefleme ve dönüşüm optimizasyonu süreçlerini yönetir ve reklam bütçesinden maksimum verim almayı hedefler."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Google Ads reklam bütçesi ne kadar olmalı?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Reklam bütçesi sektör ve rekabete göre değişir. Genellikle test süreciyle başlanır ve performansa göre ölçeklendirilir."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Google Ads mi Meta reklamları mı daha etkili?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Google Ads aktif talebi yakalar. Meta reklamları marka bilinirliği oluşturur. En güçlü sonuç iki platformun birlikte kullanılmasıyla alınır."
+      }
+    }
+  ]
+}
+</script>
+
         <!-- CTA Section -->
-        <section class="cta" id="contact">
+        <section class="cta" id="contact" aria-labelledby="cta-heading">
             <div class="cta-container">
-                <h2 class="cta-title">Reklam Bütçenizi Boşa Harcamayın</h2>
+                <h2 class="cta-title" id="cta-heading">Reklam Bütçenizi Boşa Harcamayın</h2>
                 <p class="cta-description">
                     Ücretsiz danışmanlık görüşmesi için hemen benimle iletişime geçin, 
                     size özel strateji oluşturalım. İşinizi internette büyütelim!
                 </p>
                 <div class="cta-buttons">
                     <a href="tel:+905303158752" class="btn-white">
-                        <i class="bi bi-telephone"></i>
+                        <i class="bi bi-telephone" aria-hidden="true"></i>
                         0530 315 87 52
                     </a>
                     <a href="https://wa.me/905303158752?text=Merhaba%20Umut%20Bey,%20dijital%20pazarlama%20danışmanlığı%20hakkında%20bilgi%20almak%20istiyorum." class="btn-outline-white" target="_blank">
-                        <i class="bi bi-whatsapp"></i>
+                        <i class="bi bi-whatsapp" aria-hidden="true"></i>
                         WhatsApp'tan Yaz
                     </a>
                 </div>
             </div>
         </section>
+    </main>
 
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="footer-container">
-                <div class="footer-grid">
-                    <div class="footer-col">
-                        <div class="footer-logo">
-                            <a href="#home">Umut Yanardağ</a>
-                        </div>
-                        <p class="footer-about">
-                            Google ve Meta sertifikalı dijital pazarlama uzmanı. 
-                            8+ yıl deneyim, 250+ mutlu müşteri.
-                        </p>
-                        <div class="footer-social">
-                            <a href="#"><i class="bi bi-instagram"></i></a>
-                            <a href="#"><i class="bi bi-linkedin"></i></a>
-                            <a href="#"><i class="bi bi-facebook"></i></a>
-                            <a href="#"><i class="bi bi-twitter-x"></i></a>
-                        </div>
+    <!-- SEMANTIC FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <a href="#home">Umut Yanardağ</a>
                     </div>
-
-                    <div class="footer-col">
-                        <h4>Hizmetlerim</h4>
-                        <ul class="footer-links">
-                            <li><a href="https://www.umutyanardag.com/hizmetlerim/google-reklam-yonetimi"><i class="bi bi-chevron-right"></i> Google Reklamları</a></li>
-                            <li><a href="https://www.umutyanardag.com/hizmetlerim/instagram-reklam-yonetimi"><i class="bi bi-chevron-right"></i> Instagram Reklamları</a></li>
-                            <li><a href="https://www.umutyanardag.com/hizmetlerim/facebook-reklam-yonetimi"><i class="bi bi-chevron-right"></i> Facebook Reklamları</a></li>
-                            <li><a href="https://www.umutyanardag.com/hizmetlerim/web-site-tasarimi"><i class="bi bi-chevron-right"></i> Web Site Tasarımı</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer-col">
-                        <h4>Kurumsal</h4>
-                        <ul class="footer-links">
-                            <li><a href="https://www.umutyanardag.com/hakkimda"><i class="bi bi-chevron-right"></i> Hakkımda</a></li>
-                            <li><a href="https://www.umutyanardag.com/referanslarim"><i class="bi bi-chevron-right"></i> Referanslarım</a></li>
-                            <li><a href="https://www.umutyanardag.com/blog-yazilarim"><i class="bi bi-chevron-right"></i> Blog Yazılarım</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer-col">
-                        <h4>İletişim</h4>
-                        <div class="footer-contact">
-                            <p><i class="bi bi-geo-alt"></i> İstanbul / Bahçeşehir</p>
-                            <p><i class="bi bi-telephone"></i> <a href="tel:+905303158752">0530 315 87 52</a></p>
-                            <p><i class="bi bi-envelope"></i> info@umutyanardag.com</p>
-                        </div>
+                    <p class="footer-about">
+                        Google ve Meta sertifikalı dijital pazarlama uzmanı. 
+                        8+ yıl deneyim, 5M+ yönetilen reklam bütçesi.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
                     </div>
                 </div>
 
-                <div class="footer-bottom">
-                    <p>©2018-2026 | Google Reklam Uzmanı Umut Yanardağ | Bu sitede <a href="https://policies.google.com/privacy" target="_blank">Google Gizlilik Politikası</a> ve <a href="https://policies.google.com/terms" target="_blank">Hizmet Şartları</a> geçerlidir.</p>
-                    <div class="legal-links">
-                        <a href="https://www.umutyanardag.com/sorumluluk-reddi">Sorumluluk Reddi</a>
-                        <span class="separator">|</span>
-                        <a href="https://www.umutyanardag.com/kullanim-sartlari">Kullanım Şartları</a>
+                <div class="footer-col">
+                    <h4>Hizmetlerim</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://www.umutyanardag.com/hizmetlerim/google-reklam-yonetimi"><i class="bi bi-chevron-right" aria-hidden="true"></i> Google Reklamları</a></li>
+                        <li><a href="https://www.umutyanardag.com/hizmetlerim/instagram-reklam-yonetimi"><i class="bi bi-chevron-right" aria-hidden="true"></i> Instagram Reklamları</a></li>
+                        <li><a href="https://www.umutyanardag.com/hizmetlerim/facebook-reklam-yonetimi"><i class="bi bi-chevron-right" aria-hidden="true"></i> Facebook Reklamları</a></li>
+                        <li><a href="https://www.umutyanardag.com/hizmetlerim/web-site-tasarimi"><i class="bi bi-chevron-right" aria-hidden="true"></i> Web Site Tasarımı</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Kurumsal</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://www.umutyanardag.com/hakkimda"><i class="bi bi-chevron-right" aria-hidden="true"></i> Hakkımda</a></li>
+                        <li><a href="https://www.umutyanardag.com/referanslarim"><i class="bi bi-chevron-right" aria-hidden="true"></i> Referanslarım</a></li>
+                        <li><a href="https://www.umutyanardag.com/blog-yazilarim"><i class="bi bi-chevron-right" aria-hidden="true"></i> Blog Yazılarım</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>İletişim</h4>
+                    <div class="footer-contact">
+                        <p><i class="bi bi-geo-alt" aria-hidden="true"></i> İstanbul / Bahçeşehir</p>
+                        <p><i class="bi bi-telephone" aria-hidden="true"></i> <a href="tel:+905303158752">0530 315 87 52</a></p>
+                        <p><i class="bi bi-envelope" aria-hidden="true"></i> info@umutyanardag.com</p>
                     </div>
                 </div>
             </div>
-        </footer>
 
-        <!-- Modern Premium Modal -->
-        <div class="hero-modal" id="heroModal">
-            <div class="hero-modal-content">
-                <h2>Dijital Büyüme Stratejim</h2>
-                <p>
-                    Tanıtım ve müşteri odaklı kampanya kurulumu,
-                    dönüşüm optimizasyonu ve veri analizi ile işletmenizi
-                    sürdürülebilir şekilde büyütüyorum.
-                </p>
+            <div class="footer-bottom">
+                <p>©2018-2026 | Google Reklam Uzmanı Umut Yanardağ | Bu sitede <a href="https://policies.google.com/privacy" target="_blank">Google Gizlilik Politikası</a> ve <a href="https://policies.google.com/terms" target="_blank">Hizmet Şartları</a> geçerlidir.</p>
+                <div class="legal-links">
+                    <a href="https://www.umutyanardag.com/sorumluluk-reddi">Sorumluluk Reddi</a>
+                    <span class="separator" aria-hidden="true">|</span>
+                    <a href="https://www.umutyanardag.com/kullanim-sartlari">Kullanım Şartları</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-                <!-- Mini Dashboard - Canvas -->
-                <canvas id="growthChart" height="140"></canvas>
+    <!-- Modern Premium Modal -->
+    <div class="hero-modal" id="heroModal">
+        <div class="hero-modal-content">
+            <h2>Dijital Büyüme Stratejim</h2>
+            <p>
+                Tanıtım ve müşteri odaklı kampanya kurulumu,
+                dönüşüm optimizasyonu ve veri analizi ile işletmenizi
+                sürdürülebilir şekilde büyütüyorum.
+            </p>
 
-                <!-- Premium Ads Mockup -->
-                <div class="ads-mockup">
-                    <div class="ads-header">
-                        <span>Google Ads Campaign</span>
-                        <span class="live-dot"></span>
+            <!-- Mini Dashboard - Canvas -->
+            <canvas id="growthChart" height="140" aria-label="Gelir artış grafiği"></canvas>
+
+            <!-- Premium Ads Mockup -->
+            <div class="ads-mockup">
+                <div class="ads-header">
+                    <span>Google Ads Campaign</span>
+                    <span class="live-dot" aria-label="Canlı kampanya"></span>
+                </div>
+
+                <div class="ads-metrics">
+                    <div>
+                        <strong>₺42.300</strong>
+                        <span>Gelir</span>
                     </div>
-
-                    <div class="ads-metrics">
-                        <div>
-                            <strong>₺42.300</strong>
-                            <span>Gelir</span>
-                        </div>
-                        <div>
-                            <strong>4.3X</strong>
-                            <span>ROAS</span>
-                        </div>
-                        <div>
-                            <strong>%6.2</strong>
-                            <span>CTR</span>
-                        </div>
+                    <div>
+                        <strong>4.3X</strong>
+                        <span>ROAS</span>
+                    </div>
+                    <div>
+                        <strong>%6.2</strong>
+                        <span>CTR</span>
                     </div>
                 </div>
             </div>
@@ -1845,16 +1949,21 @@
         // Menü aç
         if (menuToggle) {
             menuToggle.addEventListener('click', function() {
+                const expanded = this.getAttribute('aria-expanded') === 'true' ? false : true;
+                this.setAttribute('aria-expanded', expanded);
                 this.classList.toggle('active');
                 sidebarMenu.classList.toggle('active');
                 sidebarOverlay.classList.toggle('active');
-                document.body.style.overflow = 'hidden';
+                document.body.style.overflow = expanded ? 'hidden' : '';
             });
         }
 
         // Menü kapat
         function closeMenu() {
-            if (menuToggle) menuToggle.classList.remove('active');
+            if (menuToggle) {
+                menuToggle.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
             if (sidebarMenu) sidebarMenu.classList.remove('active');
             if (sidebarOverlay) sidebarOverlay.classList.remove('active');
             document.body.style.overflow = '';
@@ -1872,7 +1981,6 @@
         const sidebarLinks = document.querySelectorAll('.sidebar-links a');
         sidebarLinks.forEach(link => {
             link.addEventListener('click', function(e) {
-                // Blog linki için özel kontrol (submenu değil)
                 if (this.getAttribute('href') !== '#' && 
                     !this.classList.contains('has-submenu')) {
                     closeMenu();
@@ -1894,6 +2002,8 @@
         if (servicesMenu && servicesSubmenu) {
             servicesMenu.addEventListener('click', function(e) {
                 e.preventDefault();
+                const expanded = this.getAttribute('aria-expanded') === 'true' ? false : true;
+                this.setAttribute('aria-expanded', expanded);
                 this.classList.toggle('active');
                 servicesSubmenu.classList.toggle('active');
             });
@@ -1946,10 +2056,18 @@
             const timer = setInterval(() => {
                 start += increment;
                 if (start >= target) {
-                    el.textContent = target + '+';
+                    if (target === 5) {
+                        el.textContent = '5M+';
+                    } else {
+                        el.textContent = target + '+';
+                    }
                     clearInterval(timer);
                 } else {
-                    el.textContent = Math.floor(start);
+                    if (target === 5) {
+                        el.textContent = Math.floor(start) + 'M+';
+                    } else {
+                        el.textContent = Math.floor(start);
+                    }
                 }
             }, 16);
         }
@@ -1959,10 +2077,15 @@
             const statNumbers = document.querySelectorAll('.stat-number');
             statNumbers.forEach(el => {
                 const text = el.textContent;
-                const value = parseInt(text.replace('+', ''));
-                if (!isNaN(value)) {
-                    el.textContent = '0';
-                    animateCounter(el, value, 2000);
+                if (text.includes('5M+')) {
+                    el.textContent = '0M+';
+                    animateCounter(el, 5, 2000);
+                } else {
+                    const value = parseInt(text.replace('+', ''));
+                    if (!isNaN(value)) {
+                        el.textContent = '0';
+                        animateCounter(el, value, 2000);
+                    }
                 }
             });
         });
@@ -1973,6 +2096,8 @@
         faqItems.forEach(item => {
             const question = item.querySelector('.faq-question');
             question.addEventListener('click', () => {
+                const expanded = question.getAttribute('aria-expanded') === 'true' ? false : true;
+                question.setAttribute('aria-expanded', expanded);
                 item.classList.toggle('active');
             });
         });
