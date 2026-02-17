@@ -72,7 +72,7 @@
             --icon-web: #000000;
         }
 
-        /* Gradient Text Stili */
+        /* Gradient Text Stili - Ana Başlık için */
         .gradient-text {
             font-size: 1.8rem;
             font-weight: 800;
@@ -155,14 +155,18 @@
             border-bottom: 1px solid rgba(59, 130, 246, 0.1);
         }
 
+        /* Logo - Mavi renk (gradient kaldırıldı) */
         .logo a {
             font-size: 1.5rem;
             font-weight: 800;
-            background: linear-gradient(90deg, #4285F4, #34A853, #FBBC05, #EA4335);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: var(--primary-blue);
             text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logo a:hover {
+            color: var(--modern-blue);
+            transform: translateY(-1px);
         }
 
         /* Hamburger Menü Butonu */
@@ -467,6 +471,7 @@
             width: 100%;
         }
 
+        /* Badge güncellendi - Dijital Pazarlama Uzmanı */
         .hero-badge {
             display: inline-flex;
             align-items: center;
@@ -496,13 +501,17 @@
             margin-bottom: 20px;
         }
 
-        .hero-title span {
-            color: var(--primary-blue);
-            position: relative;
+        /* Google Reklam Uzmanı - Gradient Renkler (Üst menüdeki gradient'in aynısı) */
+        .hero-title .gradient-special {
+            background: linear-gradient(90deg, #4285F4, #34A853, #FBBC05, #EA4335);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
             display: inline-block;
+            position: relative;
         }
 
-        .hero-title span::after {
+        .hero-title .gradient-special::after {
             content: '';
             position: absolute;
             bottom: 8px;
@@ -572,10 +581,11 @@
             box-shadow: 0 8px 12px -4px rgba(59, 130, 246, 0.4);
         }
 
+        /* Hizmetleri İncele Butonu - Arka plan eklendi ve düzenlendi */
         .btn-secondary {
-            background: transparent;
+            background: rgba(255, 255, 255, 0.9);
             color: var(--primary-dark);
-            border: 1px solid #e5e7eb;
+            border: 1px solid rgba(59, 130, 246, 0.3);
             padding: 14px 32px;
             border-radius: 8px;
             font-weight: 600;
@@ -588,13 +598,15 @@
             gap: 8px;
             backdrop-filter: blur(5px);
             white-space: nowrap;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
         }
 
         .btn-secondary:hover {
+            background: white;
             border-color: var(--primary-blue);
             color: var(--primary-blue);
             transform: translateY(-2px);
-            box-shadow: 0 8px 12px -4px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 8px 20px -4px rgba(59, 130, 246, 0.15);
         }
 
         .hero-stats {
@@ -627,7 +639,7 @@
             white-space: nowrap;
         }
 
-        /* YENİ EKLENEN SEO METİN STİLİ */
+        /* EKLENEN SEO METİN STİLİ */
         .hero-seo-text {
             max-width: 850px;
             margin: 40px auto 0;
@@ -643,7 +655,7 @@
 
         /* Services Section */
         .services {
-            padding: 60px 0 100px;
+            padding: 120px 0 100px;
             background: #ffffff;
             position: relative;
             z-index: 1;
@@ -715,11 +727,12 @@
             border-color: transparent;
         }
 
+        /* İkon boyutları daha da büyütüldü */
         .service-icon {
-            width: 56px;
-            height: 56px;
+            width: 70px;
+            height: 70px;
             background: rgba(59, 130, 246, 0.1);
-            border-radius: 12px;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -745,8 +758,8 @@
         }
 
         .service-card:hover .service-icon::before {
-            width: 150px;
-            height: 150px;
+            width: 180px;
+            height: 180px;
             background: rgba(255, 255, 255, 0.3);
         }
 
@@ -755,8 +768,8 @@
         }
 
         .service-icon img {
-            width: 32px;
-            height: 32px;
+            width: 120px;
+            height: 120px;
             object-fit: contain;
             position: relative;
             z-index: 4;
@@ -794,6 +807,93 @@
 
         .service-link:hover {
             gap: 10px;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 90px 40px;
+            background: #f9fafb;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 18px;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid rgba(59,130,246,0.15);
+            background: white;
+            transition: 0.4s ease;
+        }
+
+        .faq-item.active {
+            box-shadow: 0 20px 40px -15px rgba(59,130,246,0.3);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 22px 25px;
+            background: white;
+            border: none;
+            text-align: left;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--primary-dark);
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            transition: 0.3s ease;
+            color: var(--primary-blue);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            padding: 0 25px;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding-bottom: 25px;
+        }
+
+        .faq-answer p {
+            margin-top: 10px;
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        .faq-cta {
+            margin-top: 20px;
+            padding: 15px;
+            background: linear-gradient(135deg, #3B82F6, #4F46E5);
+            color: white;
+            border-radius: 10px;
+            font-size: 0.95rem;
+        }
+
+        .faq-cta a {
+            color: white;
+            font-weight: 700;
+            margin-left: 8px;
+            text-decoration: none;
+        }
+
+        .faq-cta a:hover {
+            text-decoration: underline;
         }
 
         /* CTA Section */
@@ -980,16 +1080,20 @@
             margin-bottom: 48px;
         }
 
+        /* Footer Logo - Mavi renk */
         .footer-logo a {
             font-size: 1.8rem;
             font-weight: 800;
-            background: linear-gradient(90deg, #4285F4, #34A853, #FBBC05, #EA4335);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: var(--primary-blue);
             text-decoration: none;
             display: inline-block;
             margin-bottom: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-logo a:hover {
+            color: var(--modern-blue);
+            transform: translateY(-2px);
         }
 
         .footer-about {
@@ -1289,6 +1393,14 @@
             .services-grid {
                 grid-template-columns: 1fr;
             }
+            .service-icon {
+                width: 80px;
+                height: 80px;
+            }
+            .service-icon img {
+                width: 50px;
+                height: 50px;
+            }
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
@@ -1355,7 +1467,7 @@
     <!-- ÜST BAR -->
     <div class="top-bar">
         <div class="logo">
-            <a href="/">Umut Yanardağ</a>
+            <a href="#home">Umut Yanardağ</a>
         </div>
         <button class="menu-toggle" id="menuToggle">
             <span></span>
@@ -1433,12 +1545,11 @@
             <div class="hero-inner">
                 <div class="hero-content">
                     <div class="hero-badge">
-                        <i class="bi bi-lightning-charge-fill"></i> Google Reklam Uzmanı
+                        <i class="bi bi-lightning-charge-fill"></i> Dijital Pazarlama Uzmanı
                     </div>
-                 <h1 class="hero-title">
-    Umut Yanardağ<br>
-    <span>Google Reklam Uzmanı</span> ile İşletmenizi Dijitalde Büyütün
-</h1>
+                    <h1 class="hero-title">
+                        <span class="gradient-special">Google Reklam Uzmanı</span> ile İşletmenizi Dijitalde Büyütün
+                    </h1>
                     <p class="hero-description">
                         Google Ads, Meta Ads ve profesyonel web tasarım çözümleriyle 
                         daha az bütçeyle daha fazla müşteri kazanın.
@@ -1555,6 +1666,62 @@
             </div>
         </section>
 
+        <!-- FAQ Section -->
+        <section class="faq">
+            <div class="faq-container">
+                <div class="section-header">
+                    <div class="section-badge">Sık Sorulan Sorular</div>
+                    <h2 class="section-title">Google Reklam Yönetimi Hakkında Merak Edilenler</h2>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Google Reklam Uzmanı ne iş yapar?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Google Reklam Uzmanı; Google Ads kampanyalarının kurulumu,
+                            anahtar kelime analizi, hedefleme ve dönüşüm optimizasyonu süreçlerini yönetir.
+                            Amaç reklam bütçesinden maksimum verim almaktır. Bütçeniz doğrultusunda en iyi dönüşümleri almak ve işletmenizi internet üzerinde güçlü göstermek için birlikte çalışalım.
+                        </p>
+
+                        <div class="faq-cta">
+                            Reklam bütçenizi profesyonel yönetmek ister misiniz?
+                            <a href="tel:+905303158752">Hemen İletişime Geçin →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Google Ads reklam bütçesi ne kadar olmalı?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Reklam bütçesi sektör ve rekabete göre değişir.
+                            Genellikle test süreciyle başlanır ve performansa göre ölçeklenir. İlk günden reklamlarınızı yayına alırız ancak özellikle ilk 1 hafta reklamlarımız için test sürecidir. Bu süreç ve sonrasında reklam analizi yapar, birlikte yol haritası oluştururuz.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Google Ads mi Meta reklamları mı daha etkili?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Google Ads aktif talebi yakalar.
+                            Meta reklamları ise marka bilinirliği oluşturur.
+                            En güçlü sonuç iki platformun birlikte kullanılmasıyla alınır. Ancak burada en önemli etken Müşteri Pazarı. Örneğin bir taksi durağıysanız Meta Ads değil, Google Ads reklamları ile çalışmalısınız.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- CTA Section -->
         <section class="cta" id="contact">
             <div class="cta-container">
@@ -1582,7 +1749,7 @@
                 <div class="footer-grid">
                     <div class="footer-col">
                         <div class="footer-logo">
-                            <a href="/">Umut Yanardağ</a>
+                            <a href="#home">Umut Yanardağ</a>
                         </div>
                         <p class="footer-about">
                             Google ve Meta sertifikalı dijital pazarlama uzmanı. 
@@ -1631,8 +1798,6 @@
                         <a href="https://www.umutyanardag.com/sorumluluk-reddi">Sorumluluk Reddi</a>
                         <span class="separator">|</span>
                         <a href="https://www.umutyanardag.com/kullanim-sartlari">Kullanım Şartları</a>
-                        <span class="separator">|</span>
-                        <a href="https://www.umutyanardag.com/gizlilik-politikasi">Gizlilik Politikası</a>
                     </div>
                 </div>
             </div>
@@ -1806,6 +1971,16 @@
                     el.textContent = '0';
                     animateCounter(el, value, 2000);
                 }
+            });
+        });
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                item.classList.toggle('active');
             });
         });
 
