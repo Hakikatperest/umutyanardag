@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <!-- SCHEMA 1: Person (worksFor eklendi) -->
+    <!-- SCHEMA 1: Person (worksFor + hasCredential eklendi) -->
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": "https://www.umutyanardag.com/#person",
   "name": "Umut Yanardağ",
   "url": "https://www.umutyanardag.com",
   "jobTitle": "Google Reklam Uzmanı",
@@ -16,7 +17,63 @@
     "@type": "ProfessionalService",
     "name": "Umut Yanardağ - Google Reklam Uzmanı",
     "url": "https://www.umutyanardag.com"
-  }
+  },
+  "hasCredential": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Google Ads Video Sertifikası",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "Google"
+      },
+      "url": "https://skillshop.credential.net/180065a0-2793-4684-8e37-da53bf08f129"
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Google Analytics 4 Sertifikası",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "Google"
+      },
+      "url": "https://skillshop.credential.net/8faf9361-2ac5-4f25-a82c-98be167c5755"
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Dönüşüm Optimizasyonu Sertifikası",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "Google"
+      },
+      "url": "https://skillshop.credential.net/b90121e4-3a19-4378-88dc-963b80c477b0"
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Google Ads Görüntülü Reklam Ağı Sertifikası",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "Google"
+      },
+      "url": "https://skillshop.credential.net/09a902dc-802c-44ba-a4d4-23544e4915fe"
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Google Ads Arama Ağı Sertifikası",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "Google"
+      },
+      "url": "https://skillshop.credential.net/f410fcc6-44ca-4d31-9a0b-b89d6c68dd82"
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Çevrimdışı Satışları Artırma Sertifikası",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "Google"
+      },
+      "url": "https://skillshop.credential.net/499d1171-c0eb-496d-b5a2-a8238b9140ed"
+    }
+  ]
 }
 </script>
 
@@ -892,6 +949,115 @@
             gap: 10px;
         }
 
+        /* CERTIFICATES SECTION - YENİ */
+        .home-certificates {
+            padding: 90px 40px;
+            background: #f8fafc;
+        }
+
+        .cert-container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .cert-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .cert-badge {
+            display: inline-block;
+            background: #E0F2FE;
+            color: #2563EB;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+            border: 1px solid rgba(37,99,235,0.2);
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .cert-card {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: 0.4s ease;
+            text-align: center;
+            border: 1px solid rgba(37,99,235,0.1);
+        }
+
+        .cert-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(37,99,235,0.2);
+            border-color: transparent;
+        }
+
+        .cert-card img {
+            width: 120px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        .cert-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+        }
+
+        .cert-card p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .cert-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .cert-buttons a,
+        .cert-buttons button {
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .cert-buttons a {
+            background: #2563EB;
+            color: white;
+        }
+
+        .cert-buttons a:hover {
+            background: #1D4ED8;
+            transform: translateY(-2px);
+        }
+
+        .cert-buttons button {
+            background: #E5E7EB;
+            color: var(--primary-dark);
+        }
+
+        .cert-buttons button:hover {
+            background: #D1D5DB;
+            transform: translateY(-2px);
+        }
+
         /* FAQ Section - GÜNCELLENDİ */
         .faq {
             padding: 90px 40px;
@@ -1114,6 +1280,29 @@
             background: rgba(255, 255, 255, 0.1);
             transform: translateY(-2px) scale(1.05);
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+            box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 15px 30px -8px rgba(0, 0, 0, 0.4);
         }
 
         /* Footer Section */
@@ -1460,9 +1649,9 @@
                 padding: 40px 0 60px;
             }
             .btn-whatsapp {
-    width: 100%;
-    justify-content: center;
-}
+                width: 100%;
+                justify-content: center;
+            }
             .hero-title {
                 font-size: 2.5rem;
             }
@@ -1488,7 +1677,7 @@
                 flex-direction: column;
                 align-items: center;
             }
-            .btn-white, .btn-outline-white {
+            .btn-white, .btn-outline-white, .btn-whatsapp {
                 width: 100%;
                 justify-content: center;
             }
@@ -1502,6 +1691,9 @@
                 bottom: 20px;
                 right: 20px;
                 padding: 10px 16px;
+            }
+            .cert-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -1535,28 +1727,6 @@
                 font-size: 1.2rem;
             }
         }
-        .btn-whatsapp {
-    background: linear-gradient(135deg, #25D366, #128C7E);
-    color: white;
-    border: none;
-    padding: 16px 40px;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    white-space: nowrap;
-    box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.2);
-}
-
-.btn-whatsapp:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 15px 30px -8px rgba(0, 0, 0, 0.4);
-}
     </style>
 </head>
 <body>
@@ -1763,6 +1933,89 @@
                         <a href="/hizmetlerim/web-site-tasarimi" class="service-link">
                             Detaylı Bilgi <i class="bi bi-arrow-right" aria-hidden="true"></i>
                         </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certificates Section - Google Sertifikaları -->
+        <section class="home-certificates" id="google-certifications">
+            <div class="cert-container">
+                
+                <div class="cert-header">
+                    <span class="cert-badge">Google Onaylı</span>
+                    <h2 class="section-title">Google Sertifikalarım</h2>
+                    <p class="section-description">
+                        2026 yılı itibarıyla Google tarafından resmi olarak doğrulanmış
+                        uzmanlık sertifikalarım aşağıda yer almaktadır.
+                    </p>
+                </div>
+
+                <div class="cert-grid">
+                    <!-- 1 -->
+                    <div class="cert-card">
+                        <img src="/resimler/google-ads-video-sertifikasi.webp" alt="Google Ads Video Sertifikası">
+                        <h3>Google Ads Video Sertifikası</h3>
+                        <p>Video reklam stratejisi, hedefleme ve performans optimizasyonu uzmanlığı.</p>
+                        <div class="cert-buttons">
+                            <a href="https://skillshop.credential.net/180065a0-2793-4684-8e37-da53bf08f129" target="_blank">Doğrula</a>
+                            <button onclick="openCertModal('180065a0-2793-4684-8e37-da53bf08f129')">Görüntüle</button>
+                        </div>
+                    </div>
+
+                    <!-- 2 -->
+                    <div class="cert-card">
+                        <img src="/resimler/google-analytics-sertifikasyonu.webp" alt="Google Analytics Sertifikasyonu">
+                        <h3>Google Analytics 4 Sertifikası</h3>
+                        <p>GA4 ile veri analizi, ölçümleme ve performans optimizasyonu uzmanlığı.</p>
+                        <div class="cert-buttons">
+                            <a href="https://skillshop.credential.net/8faf9361-2ac5-4f25-a82c-98be167c5755" target="_blank">Doğrula</a>
+                            <button onclick="openCertModal('8faf9361-2ac5-4f25-a82c-98be167c5755')">Görüntüle</button>
+                        </div>
+                    </div>
+
+                    <!-- 3 -->
+                    <div class="cert-card">
+                        <img src="/resimler/donusum-optimizasyonu-sertifikasi.webp" alt="Dönüşüm Optimizasyonu Sertifikası">
+                        <h3>Dönüşüm Optimizasyonu Sertifikası</h3>
+                        <p>Mobil kullanıcı yolculuğu analizi ve dönüşüm oranı artırma uzmanlığı.</p>
+                        <div class="cert-buttons">
+                            <a href="https://skillshop.credential.net/b90121e4-3a19-4378-88dc-963b80c477b0" target="_blank">Doğrula</a>
+                            <button onclick="openCertModal('b90121e4-3a19-4378-88dc-963b80c477b0')">Görüntüle</button>
+                        </div>
+                    </div>
+
+                    <!-- 4 -->
+                    <div class="cert-card">
+                        <img src="/resimler/google-ads-goruntulu-reklam-agi-sertifikasi.webp" alt="Google Ads Görüntülü Reklam Ağı Sertifikası">
+                        <h3>Google Ads Görüntülü Reklam Ağı</h3>
+                        <p>Görüntülü reklam yatırımlarını stratejik ve ölçülebilir şekilde yönetme.</p>
+                        <div class="cert-buttons">
+                            <a href="https://skillshop.credential.net/09a902dc-802c-44ba-a4d4-23544e4915fe" target="_blank">Doğrula</a>
+                            <button onclick="openCertModal('09a902dc-802c-44ba-a4d4-23544e4915fe')">Görüntüle</button>
+                        </div>
+                    </div>
+
+                    <!-- 5 -->
+                    <div class="cert-card">
+                        <img src="/resimler/google-ads-arama-agi-sertifikasi.webp" alt="Google Ads Arama Ağı Sertifikası">
+                        <h3>Google Ads Arama Ağı</h3>
+                        <p>Arama kampanyalarında maksimum ROI stratejisi.</p>
+                        <div class="cert-buttons">
+                            <a href="https://skillshop.credential.net/f410fcc6-44ca-4d31-9a0b-b89d6c68dd82" target="_blank">Doğrula</a>
+                            <button onclick="openCertModal('f410fcc6-44ca-4d31-9a0b-b89d6c68dd82')">Görüntüle</button>
+                        </div>
+                    </div>
+
+                    <!-- 6 -->
+                    <div class="cert-card">
+                        <img src="/resimler/cevrimdisi-satislari-arttirma-sertifikasi.webp" alt="Çevrimdışı Satışları Artırma Sertifikası">
+                        <h3>Çevrimdışı Satışları Artırma</h3>
+                        <p>Online kampanyaları mağaza satışına dönüştürme uzmanlığı.</p>
+                        <div class="cert-buttons">
+                            <a href="https://skillshop.credential.net/499d1171-c0eb-496d-b5a2-a8238b9140ed" target="_blank">Doğrula</a>
+                            <button onclick="openCertModal('499d1171-c0eb-496d-b5a2-a8238b9140ed')">Görüntüle</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2008,6 +2261,14 @@
         </div>
     </div>
 
+    <!-- Certificate Modal (Embedded) -->
+    <div id="certModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:9999;">
+        <div style="background:white; width:90%; max-width:900px; padding:20px; border-radius:20px; position:relative;">
+            <button onclick="closeCertModal()" style="position:absolute; right:15px; top:15px; background:transparent; border:none; font-size:24px; cursor:pointer; width:40px; height:40px; display:flex; align-items:center; justify-content:center; border-radius:50%; transition:all 0.3s ease;" onmouseover="this.style.background='rgba(0,0,0,0.1)'" onmouseout="this.style.background='transparent'">×</button>
+            <iframe id="certFrame" width="100%" height="600" frameborder="0"></iframe>
+        </div>
+    </div>
+
     <script>
         // Hamburger Menü
         const menuToggle = document.getElementById('menuToggle');
@@ -2200,6 +2461,17 @@
                     }
                 }
             });
+        }
+
+        // Certificate Modal Functions
+        function openCertModal(id){
+            document.getElementById("certModal").style.display = "flex";
+            document.getElementById("certFrame").src = "https://skillshop.credential.net/embed/"+id;
+        }
+        
+        function closeCertModal(){
+            document.getElementById("certModal").style.display = "none";
+            document.getElementById("certFrame").src = "";
         }
     </script>
 </body>
