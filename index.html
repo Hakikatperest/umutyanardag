@@ -394,12 +394,13 @@
             cursor: pointer;
             z-index: 10002;
             position: relative;
+            pointer-events: none; /* Varsayılan olarak tıklanamaz */
         }
 
         .verify-button.active {
             opacity: 1;
             visibility: visible;
-            cursor: pointer;
+            pointer-events: auto; /* Aktif olduğunda tıklanabilir */
         }
 
         .verify-button:hover {
@@ -2041,7 +2042,7 @@
         <div class="cert-image-container">
             <img src="" alt="Sertifika Tam Boy" class="cert-full-image" id="certFullImage" onclick="toggleVerifyButton()">
             <button class="cert-modal-close" onclick="closeCertImageModal()">✕</button>
-            <a href="#" id="verifyButton" class="verify-button" target="_blank">
+            <a href="#" id="verifyButton" class="verify-button" target="_blank" onclick="return handleVerifyClick(event)">
                 <i class="bi bi-patch-check-fill"></i> Doğrulamayı Gör
             </a>
         </div>
@@ -2791,7 +2792,7 @@
             document.body.style.overflow = "";
         }
 
-        // SERTİFİKA GÖRÜNTÜLEME FONKSİYONLARI - DÜZELTİLDİ
+        // SERTİFİKA GÖRÜNTÜLEME FONKSİYONLARI - SON DÜZELTME
         let currentVerifyUrl = '';
         let verifyButtonVisible = false;
 
@@ -2815,13 +2816,26 @@
             const verifyButton = document.getElementById('verifyButton');
             
             if (verifyButtonVisible) {
+                // Buton zaten görünür, tıklandığında doğrulama sayfasına git
                 window.open(currentVerifyUrl, '_blank');
-                verifyButton.classList.remove('active');
-                verifyButtonVisible = false;
+                // İsteğe bağlı: butonu gizle
+                // verifyButton.classList.remove('active');
+                // verifyButtonVisible = false;
             } else {
+                // Butonu göster
                 verifyButton.classList.add('active');
                 verifyButtonVisible = true;
             }
+        }
+
+        // Doğrulama butonuna tıklandığında doğrudan yönlendirme yap
+        function handleVerifyClick(event) {
+            if (verifyButtonVisible && currentVerifyUrl) {
+                event.preventDefault(); // Varsayılan # davranışını engelle
+                window.open(currentVerifyUrl, '_blank');
+                return false;
+            }
+            return true;
         }
 
         function closeCertImageModal() {
