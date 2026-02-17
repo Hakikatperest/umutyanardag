@@ -240,18 +240,18 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: rgba(184, 134, 11, 0.95); /* Koyu sarı arkaplan */
+            background: rgba(184, 134, 11, 0.95);
             backdrop-filter: blur(10px);
             padding: 12px 20px;
             border-radius: 50px;
             box-shadow: 0 10px 30px rgba(184, 134, 11, 0.3);
-            z-index: 9997; /* WhatsApp butonunun altında */
+            z-index: 9997;
             display: flex;
             align-items: center;
             gap: 10px;
             border: 1px solid rgba(184, 134, 11, 0.3);
             font-weight: 600;
-            color: white; /* Yazı rengi beyaz */
+            color: white;
             transition: all 0.3s ease;
             pointer-events: auto;
         }
@@ -259,7 +259,7 @@
         .scroll-percentage:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 40px rgba(184, 134, 11, 0.4);
-            background: #9e7b0e; /* Daha koyu sarı hover */
+            background: #9e7b0e;
         }
 
         .scroll-percentage i {
@@ -273,10 +273,10 @@
             color: white;
         }
 
-        /* WHATSAPP BUTONU - Yeşil, scroll-percentage'ın ÜSTÜNDE */
+        /* WHATSAPP BUTONU */
         .whatsapp-float-button {
             position: fixed;
-            bottom: 110px; /* Scroll % altta olduğu için yukarı */
+            bottom: 110px;
             right: 30px;
             width: 60px;
             height: 60px;
@@ -298,7 +298,7 @@
             box-shadow: 0 25px 45px rgba(0,0,0,0.35);
         }
 
-        /* YENİ SERTİFİKA TAM BOY MODAL - Beyaz arkaplan, çerçeveli */
+        /* SERTİFİKA TAM BOY MODAL - DÜZELTİLDİ */
         .cert-image-modal {
             position: fixed;
             inset: 0;
@@ -373,6 +373,7 @@
             background: linear-gradient(135deg, #1E40AF, #2563EB);
         }
 
+        /* DOĞRULAMA BUTONU - DÜZELTİLDİ */
         .verify-button {
             margin-top: 20px;
             background: linear-gradient(135deg, #25D366, #128C7E);
@@ -382,7 +383,7 @@
             font-weight: 600;
             font-size: 1.1rem;
             text-decoration: none;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 10px;
             box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
@@ -390,15 +391,15 @@
             border: 2px solid white;
             opacity: 0;
             visibility: hidden;
-            pointer-events: none;
-            white-space: nowrap;
+            cursor: pointer;
             z-index: 10002;
+            position: relative;
         }
 
         .verify-button.active {
             opacity: 1;
             visibility: visible;
-            pointer-events: auto;
+            cursor: pointer;
         }
 
         .verify-button:hover {
@@ -410,7 +411,7 @@
             font-size: 1.3rem;
         }
 
-        /* ÜST BAR - header semantic olarak düzenlendi */
+        /* ÜST BAR */
         .site-header {
             position: fixed;
             top: 0;
@@ -428,7 +429,6 @@
             border-bottom: 1px solid rgba(59, 130, 246, 0.1);
         }
 
-        /* Logo - Mavi renk */
         .logo a {
             font-size: 1.5rem;
             font-weight: 800;
@@ -442,7 +442,6 @@
             transform: translateY(-1px);
         }
 
-        /* Ana navigasyon menüsü */
         .main-nav .menu-toggle {
             display: flex;
             flex-direction: column;
@@ -478,7 +477,6 @@
             background: var(--primary-blue);
         }
 
-        /* Yandan Açılır Menü - nav semantic */
         .sidebar-nav {
             position: fixed;
             top: 0;
@@ -552,7 +550,6 @@
             padding-left: 30px;
         }
 
-        /* Ana menü ikonları mavi */
         .sidebar-links > a > i:not(.submenu-icon) {
             width: 24px;
             text-align: center;
@@ -560,19 +557,16 @@
             transition: all 0.3s ease;
         }
 
-        /* Submenu ikonları özel renkler */
         .submenu a i {
             width: 24px;
             text-align: center;
             transition: all 0.3s ease;
         }
 
-        /* Google ikonu yeşil */
         .submenu a:nth-child(1) i {
             color: var(--icon-google) !important;
         }
 
-        /* Instagram ikonu gradient */
         .submenu a:nth-child(2) i {
             background: var(--icon-instagram);
             -webkit-background-clip: text;
@@ -581,12 +575,10 @@
             font-weight: 900;
         }
 
-        /* Facebook ikonu mavi */
         .submenu a:nth-child(3) i {
             color: #1877F2 !important;
         }
 
-        /* Web Tasarım ikonu siyah */
         .submenu a:nth-child(4) i {
             color: var(--icon-web) !important;
         }
@@ -595,7 +587,6 @@
             transform: scale(1.1);
         }
 
-        /* Submenu Styles */
         .submenu {
             max-height: 0;
             overflow: hidden;
@@ -667,7 +658,6 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
-        /* Overlay */
         .sidebar-overlay {
             position: fixed;
             top: 0;
@@ -687,12 +677,10 @@
             visibility: visible;
         }
 
-        /* Ana içerik için üst boşluk */
         .main-content {
             margin-top: 70px;
         }
 
-        /* Hero Section */
         .hero {
             padding: 60px 0 80px;
             background:
@@ -744,7 +732,6 @@
             width: 100%;
         }
 
-        /* Badge */
         .hero-badge {
             display: inline-flex;
             align-items: center;
@@ -766,7 +753,6 @@
             font-size: 1.1rem;
         }
 
-        /* HERO TITLE - Premium Parallax Light + Buton ışık efekti */
         .hero-title {
             font-size: 3.2rem;
             font-weight: 800;
@@ -778,7 +764,6 @@
             overflow: hidden;
         }
 
-        /* Mavi gradient keyword */
         .hero-keyword {
             background: linear-gradient(90deg, #2563EB, #1E40AF);
             -webkit-background-clip: text;
@@ -786,7 +771,6 @@
             color: transparent;
         }
 
-        /* Işık efekti - butonlardakiyle aynı */
         .hero-title {
             position: relative;
             overflow: hidden;
@@ -908,20 +892,19 @@
         .stat-number {
             font-size: 2rem;
             font-weight: 700;
-            color: var(--dark-yellow); /* Koyu sarı renk */
+            color: var(--dark-yellow);
             line-height: 1.2;
         }
 
         .stat-label {
             font-size: 0.85rem;
-            color: var(--dark-yellow); /* Koyu sarı renk */
+            color: var(--dark-yellow);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             font-weight: 500;
             white-space: nowrap;
         }
 
-        /* SEO METNİ - Kalın kelimeler normal yapıldı */
         .hero-seo-text {
             max-width: 850px;
             margin: 40px auto 0;
@@ -933,7 +916,7 @@
 
         .hero-seo-text strong {
             color: var(--primary-dark);
-            font-weight: 400; /* Normal yazı ağırlığı */
+            font-weight: 400;
         }
         
         .hero-seo-text a {
@@ -949,7 +932,6 @@
             border-bottom-color: var(--primary-blue);
         }
 
-        /* Services Section */
         .services {
             padding: 60px 0 100px;
             background: #ffffff;
@@ -984,7 +966,6 @@
             border: 1px solid rgba(59,130,246,0.2);
         }
 
-        /* GÜNCELLENMİŞ BAŞLIK - Reklam Uzmanı ile Profesyonal Dijital Çözümler */
         .section-title {
             font-size: 2.5rem;
             font-weight: 700;
@@ -1105,7 +1086,6 @@
             gap: 10px;
         }
 
-        /* YENİ SERTİFİKA ALANI - GÜNCELLENDİ (cert-ultra-section) */
         .cert-ultra-section {
             padding: 100px 40px;
             background: radial-gradient(circle at top left, rgba(37,99,235,0.08), transparent 40%), #f8fafc;
@@ -1126,7 +1106,6 @@
             border: 1px solid rgba(37,99,235,0.2);
         }
 
-        /* GÜNCELLENMİŞ BAŞLIK - Google Başarı Sertifikalarım */
         .cert-ultra-header h2 {
             font-size: 2.6rem;
             margin: 20px 0 10px;
@@ -1219,7 +1198,6 @@
             font-size: 0.9rem;
         }
 
-        /* FAQ Section - GÜNCELLENDİ */
         .faq {
             padding: 90px 40px;
             background: #f9fafb;
@@ -1303,7 +1281,6 @@
             font-weight: 700;
         }
 
-        /* CTA Section */
         .cta {
             padding: 100px 40px;
             background: linear-gradient(135deg, var(--modern-blue), #1E40AF);
@@ -1466,7 +1443,6 @@
             box-shadow: 0 15px 30px -8px rgba(0, 0, 0, 0.4);
         }
 
-        /* Footer Section */
         .site-footer {
             background: white;
             color: var(--text-dark);
@@ -1695,7 +1671,6 @@
             opacity: 0.5;
         }
 
-        /* Modal */
         .hero-modal {
             position: fixed;
             inset: 0;
@@ -1786,7 +1761,6 @@
             color: #3B82F6;
         }
 
-        /* ===== PREMIUM CERTIFICATE MODAL ===== */
         .cert-modal {
             position: fixed;
             inset: 0;
@@ -1893,7 +1867,6 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Responsive */
         @media screen and (max-width: 1200px) {
             .hero-title {
                 font-size: 3rem;
@@ -1960,7 +1933,6 @@
                 width: 280px;
             }
             
-            /* WhatsApp butonu mobil düzenleme */
             .whatsapp-float-button {
                 bottom: 90px;
                 right: 20px;
@@ -2050,13 +2022,13 @@
     <!-- SCROLL PROGRESS BAR -->
     <div class="scroll-progress" id="scrollProgress"></div>
     
-    <!-- SCROLL PERCENTAGE INDICATOR - KOYU SARI (ALTTA) -->
+    <!-- SCROLL PERCENTAGE INDICATOR -->
     <div class="scroll-percentage" id="scrollPercentage">
         <i class="fas fa-arrow-up"></i>
         <span class="percentage-value" id="percentageValue">%0</span>
     </div>
 
-    <!-- WHATSAPP BUTONU - Yeşil, scroll-percentage'ın ÜSTÜNDE -->
+    <!-- WHATSAPP BUTONU -->
     <a href="https://wa.me/905303158752"
        class="whatsapp-float-button"
        target="_blank"
@@ -2064,7 +2036,7 @@
        <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- YENİ SERTİFİKA TAM BOY MODAL - Beyaz arkaplan, çerçeveli -->
+    <!-- SERTİFİKA TAM BOY MODAL -->
     <div class="cert-image-modal" id="certImageModal">
         <div class="cert-image-container">
             <img src="" alt="Sertifika Tam Boy" class="cert-full-image" id="certFullImage" onclick="toggleVerifyButton()">
@@ -2098,12 +2070,10 @@
         </div>
 
         <div class="sidebar-links">
-            <!-- Ana Sayfa -->
             <a href="#home">
                 <i class="fas fa-home" aria-hidden="true"></i> Ana Sayfa
             </a>
             
-            <!-- Hizmetlerim (ana menü) -->
             <a href="#" class="has-submenu" id="servicesMenu" aria-expanded="false">
                 <i class="fas fa-rocket" aria-hidden="true"></i> Hizmetlerim <i class="fas fa-chevron-down submenu-icon" aria-hidden="true"></i>
             </a>
@@ -2122,17 +2092,14 @@
                 </a>
             </div>
 
-            <!-- Blog Yazılarım -->
             <a href="/blog-yazilarim/">
                 <i class="fas fa-blog" aria-hidden="true"></i> Blog Yazılarım
             </a>
 
-            <!-- Hakkımda -->
             <a href="/hakkimda">
                 <i class="fas fa-user-circle" aria-hidden="true"></i> Hakkımda
             </a>
             
-            <!-- Referanslarım -->
             <a href="/referanslar">
                 <i class="fas fa-star" aria-hidden="true"></i> Referanslarım
             </a>
@@ -2161,7 +2128,6 @@
                         <i class="bi bi-lightning-charge-fill" aria-hidden="true"></i> Dijital Pazarlama Uzmanı
                     </div>
                     
-                    <!-- HERO TITLE - Premium Parallax Light + Buton ışık efekti -->
                     <h1 class="hero-title" id="hero-heading">
                         <span class="hero-keyword">Google Reklam Uzmanı</span>
                         <br>
@@ -2196,7 +2162,6 @@
                         </div>
                     </div>
 
-                    <!-- SEO METNİ - Kalın kelimeler normal yapıldı -->
                     <div class="hero-seo-text">
                         <p>
                             Sertifikalı Google Reklam Uzmanı Umut Yanardağ olarak,
@@ -2219,7 +2184,6 @@
             <div class="services-container">
                 <div class="section-header">
                     <div class="section-badge">Uzmanlık Alanlarım</div>
-                    <!-- GÜNCELLENMİŞ BAŞLIK -->
                     <h2 class="section-title" id="services-heading">Reklam Uzmanı ile Profesyonal Dijital Çözümler</h2>
                     <p class="section-description">
                         6+ Google sertifikası ve 8 yıllık deneyimle işletmenizi 
@@ -2228,7 +2192,6 @@
                 </div>
 
                 <div class="services-grid">
-                    <!-- Google Reklam Yönetimi -->
                     <div class="service-card" onclick="window.location.href='/hizmetlerim/google-reklam-yonetimi'">
                         <div class="service-icon">
                             <img src="https://www.umutyanardag.com/resimler/google-icon.webp" alt="Google Reklam Uzmanı Google Ads Kampanya Yönetimi Hizmeti">
@@ -2240,7 +2203,6 @@
                         </a>
                     </div>
 
-                    <!-- Instagram Reklam Yönetimi -->
                     <div class="service-card" onclick="window.location.href='/hizmetlerim/instagram-reklam-yonetimi'">
                         <div class="service-icon">
                             <img src="https://www.umutyanardag.com/resimler/instagram-icon.webp" alt="Google Reklam Uzmanı Instagram Reklam Yönetimi Hizmeti">
@@ -2252,7 +2214,6 @@
                         </a>
                     </div>
 
-                    <!-- Facebook Reklam Yönetimi -->
                     <div class="service-card" onclick="window.location.href='/hizmetlerim/facebook-reklam-yonetimi'">
                         <div class="service-icon">
                             <img src="https://www.umutyanardag.com/resimler/facebook-icon.webp" alt="Google Reklam Uzmanı Facebook Reklam Yönetimi Hizmeti">
@@ -2264,7 +2225,6 @@
                         </a>
                     </div>
 
-                    <!-- Web Site Tasarımı -->
                     <div class="service-card" onclick="window.location.href='/hizmetlerim/web-site-tasarimi'">
                         <div class="service-icon">
                             <img src="https://www.umutyanardag.com/resimler/web-site-icon.webp" alt="Google Reklam Uzmanı SEO Uyumlu Web Site Tasarımı Hizmeti">
@@ -2279,29 +2239,22 @@
             </div>
         </section>
 
-        <!-- YENİ SERTİFİKA ALANI (cert-ultra-section) -->
+        <!-- SERTİFİKA ALANI -->
         <section class="cert-ultra-section" id="google-certifications">
-
             <div class="cert-ultra-header">
                 <span class="cert-ultra-badge">Google Onaylı Uzmanlık Belgeleri</span>
-                <!-- GÜNCELLENMİŞ BAŞLIK -->
                 <h2>Google Başarı Sertifikalarım</h2>
                 <p>Tüm sertifikalar Google Skillshop üzerinden resmi olarak doğrulanabilir.</p>
             </div>
 
             <div class="cert-ultra-grid">
-
                 <!-- 1 -->
                 <button class="cert-ultra-card" onclick="openCertImage('/resimler/google-ads-video-sertifikasi.webp', 'https://skillshop.credential.net/180065a0-2793-4684-8e37-da53bf08f129')">
-
                     <div class="cert-badge-top">
                         <i class="bi bi-patch-check-fill"></i>
                         Google Tarafından Doğrulandı
                     </div>
-
-                    <img src="/resimler/google-ads-video-sertifikasi.webp"
-                         alt="Google Ads Video Sertifikası - Umut Yanardağ">
-
+                    <img src="/resimler/google-ads-video-sertifikasi.webp" alt="Google Ads Video Sertifikası - Umut Yanardağ">
                     <div class="cert-ultra-overlay">
                         <span>Büyütmek İçin Tıkla</span>
                     </div>
@@ -2309,15 +2262,11 @@
 
                 <!-- 2 -->
                 <button class="cert-ultra-card" onclick="openCertImage('/resimler/google-analytics-sertifikasyonu.webp', 'https://skillshop.credential.net/8faf9361-2ac5-4f25-a82c-98be167c5755')">
-
                     <div class="cert-badge-top">
                         <i class="bi bi-patch-check-fill"></i>
                         Google Tarafından Doğrulandı
                     </div>
-
-                    <img src="/resimler/google-analytics-sertifikasyonu.webp"
-                         alt="Google Analytics 4 Sertifikası - Umut Yanardağ">
-
+                    <img src="/resimler/google-analytics-sertifikasyonu.webp" alt="Google Analytics 4 Sertifikası - Umut Yanardağ">
                     <div class="cert-ultra-overlay">
                         <span>Büyütmek İçin Tıkla</span>
                     </div>
@@ -2325,15 +2274,11 @@
 
                 <!-- 3 -->
                 <button class="cert-ultra-card" onclick="openCertImage('/resimler/donusum-optimizasyonu-sertifikasi.webp', 'https://skillshop.credential.net/b90121e4-3a19-4378-88dc-963b80c477b0')">
-
                     <div class="cert-badge-top">
                         <i class="bi bi-patch-check-fill"></i>
                         Google Tarafından Doğrulandı
                     </div>
-
-                    <img src="/resimler/donusum-optimizasyonu-sertifikasi.webp"
-                         alt="Dönüşüm Optimizasyonu Sertifikası - Umut Yanardağ">
-
+                    <img src="/resimler/donusum-optimizasyonu-sertifikasi.webp" alt="Dönüşüm Optimizasyonu Sertifikası - Umut Yanardağ">
                     <div class="cert-ultra-overlay">
                         <span>Büyütmek İçin Tıkla</span>
                     </div>
@@ -2341,15 +2286,11 @@
 
                 <!-- 4 -->
                 <button class="cert-ultra-card" onclick="openCertImage('/resimler/google-ads-goruntulu-reklam-agi-sertifikasi.webp', 'https://skillshop.credential.net/09a902dc-802c-44ba-a4d4-23544e4915fe')">
-
                     <div class="cert-badge-top">
                         <i class="bi bi-patch-check-fill"></i>
                         Google Tarafından Doğrulandı
                     </div>
-
-                    <img src="/resimler/google-ads-goruntulu-reklam-agi-sertifikasi.webp"
-                         alt="Google Ads Görüntülü Reklam Ağı Sertifikası - Umut Yanardağ">
-
+                    <img src="/resimler/google-ads-goruntulu-reklam-agi-sertifikasi.webp" alt="Google Ads Görüntülü Reklam Ağı Sertifikası - Umut Yanardağ">
                     <div class="cert-ultra-overlay">
                         <span>Büyütmek İçin Tıkla</span>
                     </div>
@@ -2357,15 +2298,11 @@
 
                 <!-- 5 -->
                 <button class="cert-ultra-card" onclick="openCertImage('/resimler/google-ads-arama-agi-sertifikasi.webp', 'https://skillshop.credential.net/f410fcc6-44ca-4d31-9a0b-b89d6c68dd82')">
-
                     <div class="cert-badge-top">
                         <i class="bi bi-patch-check-fill"></i>
                         Google Tarafından Doğrulandı
                     </div>
-
-                    <img src="/resimler/google-ads-arama-agi-sertifikasi.webp"
-                         alt="Google Ads Arama Ağı Sertifikası - Umut Yanardağ">
-
+                    <img src="/resimler/google-ads-arama-agi-sertifikasi.webp" alt="Google Ads Arama Ağı Sertifikası - Umut Yanardağ">
                     <div class="cert-ultra-overlay">
                         <span>Büyütmek İçin Tıkla</span>
                     </div>
@@ -2373,20 +2310,15 @@
 
                 <!-- 6 -->
                 <button class="cert-ultra-card" onclick="openCertImage('/resimler/cevrimdisi-satislari-arttirma-sertifikasi.webp', 'https://skillshop.credential.net/499d1171-c0eb-496d-b5a2-a8238b9140ed')">
-
                     <div class="cert-badge-top">
                         <i class="bi bi-patch-check-fill"></i>
                         Google Tarafından Doğrulandı
                     </div>
-
-                    <img src="/resimler/cevrimdisi-satislari-arttirma-sertifikasi.webp"
-                         alt="Çevrimdışı Satışları Artırma Sertifikası - Umut Yanardağ">
-
+                    <img src="/resimler/cevrimdisi-satislari-arttirma-sertifikasi.webp" alt="Çevrimdışı Satışları Artırma Sertifikası - Umut Yanardağ">
                     <div class="cert-ultra-overlay">
                         <span>Büyütmek İçin Tıkla</span>
                     </div>
                 </button>
-
             </div>
         </section>
 
@@ -2395,7 +2327,6 @@
             <div class="faq-container">
                 <div class="section-header">
                     <div class="section-badge">Sık Sorulan Sorular</div>
-                    <!-- GÜNCELLENMİŞ BAŞLIK -->
                     <h2 class="section-title" id="faq-heading">En Çok Sorulan Sorular</h2>
                 </div>
 
@@ -2661,7 +2592,6 @@
         const sidebarClose = document.getElementById('sidebarClose');
         const sidebarOverlay = document.getElementById('sidebarOverlay');
 
-        // Menü aç
         if (menuToggle) {
             menuToggle.addEventListener('click', function() {
                 const expanded = this.getAttribute('aria-expanded') === 'true' ? false : true;
@@ -2673,7 +2603,6 @@
             });
         }
 
-        // Menü kapat
         function closeMenu() {
             if (menuToggle) {
                 menuToggle.classList.remove('active');
@@ -2692,7 +2621,6 @@
             sidebarOverlay.addEventListener('click', closeMenu);
         }
 
-        // Menü linklerine tıklayınca menüyü kapat
         const sidebarLinks = document.querySelectorAll('.sidebar-links a');
         sidebarLinks.forEach(link => {
             link.addEventListener('click', function(e) {
@@ -2703,7 +2631,6 @@
             });
         });
 
-        // ESC tuşu ile menüyü kapat
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeMenu();
@@ -2712,7 +2639,6 @@
             }
         });
 
-        // Hizmetlerim submenu toggle
         const servicesMenu = document.getElementById('servicesMenu');
         const servicesSubmenu = document.getElementById('servicesSubmenu');
 
@@ -2726,7 +2652,6 @@
             });
         }
 
-        // SCROLL PROGRESS BAR
         const scrollProgress = document.getElementById('scrollProgress');
         const percentageValue = document.getElementById('percentageValue');
 
@@ -2735,14 +2660,10 @@
             const docHeight = document.documentElement.scrollHeight - window.innerHeight;
             const scrollPercent = (scrollTop / docHeight) * 100;
             
-            // Progress bar'ı güncelle
             scrollProgress.style.transform = `scaleX(${scrollPercent / 100})`;
-            
-            // Yüzde değerini güncelle
             percentageValue.textContent = `%${Math.round(scrollPercent)}`;
         });
 
-        // SMOOTH SCROLL
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -2757,7 +2678,6 @@
             });
         });
 
-        // MODAL KAPATMA
         const heroModal = document.getElementById('heroModal');
         
         heroModal.addEventListener('click', (e) => {
@@ -2766,7 +2686,6 @@
             }
         });
 
-        // SAYI ANİMASYONU
         function animateCounter(el, target, duration = 2000) {
             let start = 0;
             const increment = target / (duration / 16);
@@ -2789,7 +2708,6 @@
             }, 16);
         }
 
-        // Sayfa yüklendiğinde istatistik sayılarını canlandır
         document.addEventListener('DOMContentLoaded', function() {
             const statNumbers = document.querySelectorAll('.stat-number');
             statNumbers.forEach(el => {
@@ -2807,7 +2725,6 @@
             });
         });
 
-        // FAQ Accordion
         const faqItems = document.querySelectorAll('.faq-item');
 
         faqItems.forEach(item => {
@@ -2819,7 +2736,6 @@
             });
         });
 
-        // Chart.js Grafik Animasyonu
         const ctx = document.getElementById('growthChart');
 
         if(ctx){
@@ -2850,7 +2766,6 @@
             });
         }
 
-        // Certificate Modal Functions (iframe)
         function openCert(id){
             const modal = document.getElementById("certModal");
             const frame = document.getElementById("certFrame");
@@ -2876,7 +2791,7 @@
             document.body.style.overflow = "";
         }
 
-        // YENİ: Sertifika tam boy görüntüleme fonksiyonları - Beyaz arkaplan, çerçeveli
+        // SERTİFİKA GÖRÜNTÜLEME FONKSİYONLARI - DÜZELTİLDİ
         let currentVerifyUrl = '';
         let verifyButtonVisible = false;
 
@@ -2889,7 +2804,6 @@
             verifyButton.href = verifyUrl;
             currentVerifyUrl = verifyUrl;
             
-            // Doğrulama butonunu gizle
             verifyButton.classList.remove('active');
             verifyButtonVisible = false;
             
@@ -2901,13 +2815,10 @@
             const verifyButton = document.getElementById('verifyButton');
             
             if (verifyButtonVisible) {
-                // Eğer buton görünürse, doğrulama sayfasına yönlendir
                 window.open(currentVerifyUrl, '_blank');
-                // Butonu gizle
                 verifyButton.classList.remove('active');
                 verifyButtonVisible = false;
             } else {
-                // Butonu göster
                 verifyButton.classList.add('active');
                 verifyButtonVisible = true;
             }
