@@ -201,6 +201,7 @@
             --text-dark: #111827;
             --text-gray: #6B7280;
             --white: #ffffff;
+            --dark-yellow: #B8860B; /* Koyu sarı */
             
             /* Özel ikon renkleri */
             --icon-google: #34A853;
@@ -234,43 +235,330 @@
             box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
         }
 
-        /* SCROLL PERCENTAGE INDICATOR */
+        /* SCROLL PERCENTAGE INDICATOR - KOYU SARI (ALTTA) */
         .scroll-percentage {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(184, 134, 11, 0.95); /* Koyu sarı arkaplan */
             backdrop-filter: blur(10px);
             padding: 12px 20px;
             border-radius: 50px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            z-index: 9998;
+            box-shadow: 0 10px 30px rgba(184, 134, 11, 0.3);
+            z-index: 9997; /* WhatsApp butonunun altında */
             display: flex;
             align-items: center;
             gap: 10px;
-            border: 1px solid rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(184, 134, 11, 0.3);
             font-weight: 600;
-            color: var(--primary-dark);
+            color: white; /* Yazı rengi beyaz */
             transition: all 0.3s ease;
+            pointer-events: auto;
         }
 
         .scroll-percentage:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.2);
+            box-shadow: 0 15px 40px rgba(184, 134, 11, 0.4);
+            background: #9e7b0e; /* Daha koyu sarı hover */
         }
 
         .scroll-percentage i {
-            color: var(--primary-blue);
+            color: white;
             font-size: 1.2rem;
         }
 
         .percentage-value {
             font-size: 1.1rem;
-            background: linear-gradient(135deg, var(--primary-blue), #4F46E5);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
             font-weight: 700;
+            color: white;
+        }
+
+        /* WHATSAPP BUTONU - Yeşil, scroll-percentage'ın ÜSTÜNDE */
+        .whatsapp-float-button {
+            position: fixed;
+            bottom: 110px; /* Scroll % altta olduğu için yukarı */
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+            z-index: 9998;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-float-button:hover {
+            transform: translateY(-6px) scale(1.1);
+            box-shadow: 0 25px 45px rgba(0,0,0,0.35);
+        }
+
+        /* SOHBET BALONU */
+        .chat-bubble {
+            position: fixed;
+            bottom: 180px; /* WhatsApp butonunun üstünde kalacak şekilde */
+            right: 30px;
+            width: 320px;
+            background: white;
+            border-radius: 24px 24px 24px 8px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px) scale(0.9);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            overflow: hidden;
+        }
+
+        .chat-bubble.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .chat-avatar {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #25D366;
+            font-size: 1.8rem;
+        }
+
+        .chat-info h4 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .chat-info p {
+            font-size: 0.75rem;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .online-dot {
+            width: 8px;
+            height: 8px;
+            background: #4ade80;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        .chat-body {
+            padding: 20px;
+            background: #f0f2f5;
+        }
+
+        .chat-message {
+            background: white;
+            padding: 12px 16px;
+            border-radius: 18px 18px 18px 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            font-size: 0.95rem;
+            color: #1f2937;
+            position: relative;
+        }
+
+        .chat-message::before {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            left: -8px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 10px 10px 0;
+            border-color: transparent white transparent transparent;
+            filter: drop-shadow(-2px 2px 2px rgba(0,0,0,0.05));
+        }
+
+        .chat-input-area {
+            display: flex;
+            gap: 10px;
+            background: white;
+            border-radius: 30px;
+            padding: 5px;
+        }
+
+        .chat-input {
+            flex: 1;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .chat-send {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-send:hover {
+            transform: scale(1.1);
+        }
+
+        .chat-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: white;
+            background: rgba(255,255,255,0.2);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .chat-close:hover {
+            background: rgba(255,255,255,0.3);
+            transform: rotate(90deg);
+        }
+
+        /* SERTİFİKA TAM BOY MODAL */
+        .cert-image-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 10001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .cert-image-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .cert-image-container {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .cert-full-image {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .cert-full-image:hover {
+            transform: scale(1.02);
+            border-color: rgba(37, 99, 235, 0.5);
+        }
+
+        .cert-modal-close {
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #2563EB, #1E40AF);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            z-index: 10002;
+        }
+
+        .cert-modal-close:hover {
+            transform: rotate(90deg) scale(1.1);
+            background: linear-gradient(135deg, #1E40AF, #2563EB);
+        }
+
+        .verify-button {
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            white-space: nowrap;
+            z-index: 10002;
+        }
+
+        .verify-button.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .verify-button:hover {
+            transform: translateX(-50%) scale(1.05);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6);
+        }
+
+        .verify-button i {
+            font-size: 1.4rem;
         }
 
         /* ÜST BAR - header semantic olarak düzenlendi */
@@ -997,7 +1285,11 @@
             transform-style: preserve-3d;
             transition: transform 0.4s ease, box-shadow 0.4s ease;
             box-shadow: 0 25px 60px rgba(0,0,0,0.1);
-            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            background: none;
+            width: 100%;
+            padding: 0;
         }
 
         .cert-ultra-card:hover {
@@ -1029,6 +1321,7 @@
             align-items: center;
             gap: 6px;
             z-index: 3;
+            pointer-events: none;
         }
 
         .cert-ultra-overlay {
@@ -1041,6 +1334,7 @@
             padding-bottom: 30px;
             opacity: 0;
             transition: opacity 0.4s ease;
+            pointer-events: none;
         }
 
         .cert-ultra-card:hover .cert-ultra-overlay {
@@ -1796,11 +2090,28 @@
             .sidebar-nav {
                 width: 280px;
             }
+            
+            /* WhatsApp butonu mobil düzenleme */
+            .whatsapp-float-button {
+                bottom: 90px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
+                font-size: 22px;
+            }
+            
             .scroll-percentage {
                 bottom: 20px;
                 right: 20px;
                 padding: 10px 16px;
             }
+            
+            .chat-bubble {
+                bottom: 160px; /* Mobilde WhatsApp butonunun üstünde */
+                right: 20px;
+                width: 280px;
+            }
+            
             .cert-content {
                 height: 75vh;
             }
@@ -1858,10 +2169,54 @@
     <!-- SCROLL PROGRESS BAR -->
     <div class="scroll-progress" id="scrollProgress"></div>
     
-    <!-- SCROLL PERCENTAGE INDICATOR -->
+    <!-- SCROLL PERCENTAGE INDICATOR - KOYU SARI (ALTTA) -->
     <div class="scroll-percentage" id="scrollPercentage">
         <i class="fas fa-arrow-up"></i>
         <span class="percentage-value" id="percentageValue">%0</span>
+    </div>
+
+    <!-- WHATSAPP BUTONU - Yeşil, scroll-percentage'ın ÜSTÜNDE -->
+    <a href="https://wa.me/905303158752"
+       class="whatsapp-float-button"
+       target="_blank"
+       aria-label="WhatsApp ile iletişime geç">
+       <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- SOHBET BALONU -->
+    <div class="chat-bubble" id="chatBubble">
+        <div class="chat-header">
+            <div class="chat-avatar">
+                <i class="fab fa-whatsapp"></i>
+            </div>
+            <div class="chat-info">
+                <h4>Umut Yanardağ</h4>
+                <p><span class="online-dot"></span> Çevrimiçi</p>
+            </div>
+            <button class="chat-close" onclick="closeChat()">✕</button>
+        </div>
+        <div class="chat-body">
+            <div class="chat-message">
+                Merhaba, şuan müsaitim. Bir mesaj kadar uzağınızdayım :)
+            </div>
+            <div class="chat-input-area">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Mesajınızı yazın..." onkeypress="handleKeyPress(event)">
+                <button class="chat-send" onclick="sendMessage()">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SERTİFİKA TAM BOY MODAL -->
+    <div class="cert-image-modal" id="certImageModal">
+        <div class="cert-image-container">
+            <img src="" alt="Sertifika Tam Boy" class="cert-full-image" id="certFullImage" onclick="toggleVerifyButton()">
+            <button class="cert-modal-close" onclick="closeCertImageModal()">✕</button>
+            <a href="#" id="verifyButton" class="verify-button" target="_blank">
+                <i class="bi bi-patch-check-fill"></i> Doğrulamayı Gör
+            </a>
+        </div>
     </div>
 
     <!-- SEMANTIC HEADER -->
@@ -2075,10 +2430,7 @@
             <div class="cert-ultra-grid">
 
                 <!-- 1 -->
-                <a href="https://skillshop.credential.net/180065a0-2793-4684-8e37-da53bf08f129"
-                   target="_blank"
-                   rel="noopener"
-                   class="cert-ultra-card">
+                <button class="cert-ultra-card" onclick="openCertImage('/resimler/google-ads-video-sertifikasi.webp', 'https://skillshop.credential.net/180065a0-2793-4684-8e37-da53bf08f129')">
 
                     <div class="cert-badge-top">
                         <i class="bi bi-patch-check-fill"></i>
@@ -2089,15 +2441,12 @@
                          alt="Google Ads Video Sertifikası - Umut Yanardağ">
 
                     <div class="cert-ultra-overlay">
-                        <span>Resmi Olarak Doğrula</span>
+                        <span>Büyütmek İçin Tıkla</span>
                     </div>
-                </a>
+                </button>
 
                 <!-- 2 -->
-                <a href="https://skillshop.credential.net/8faf9361-2ac5-4f25-a82c-98be167c5755"
-                   target="_blank"
-                   rel="noopener"
-                   class="cert-ultra-card">
+                <button class="cert-ultra-card" onclick="openCertImage('/resimler/google-analytics-sertifikasyonu.webp', 'https://skillshop.credential.net/8faf9361-2ac5-4f25-a82c-98be167c5755')">
 
                     <div class="cert-badge-top">
                         <i class="bi bi-patch-check-fill"></i>
@@ -2108,15 +2457,12 @@
                          alt="Google Analytics 4 Sertifikası - Umut Yanardağ">
 
                     <div class="cert-ultra-overlay">
-                        <span>Resmi Olarak Doğrula</span>
+                        <span>Büyütmek İçin Tıkla</span>
                     </div>
-                </a>
+                </button>
 
                 <!-- 3 -->
-                <a href="https://skillshop.credential.net/b90121e4-3a19-4378-88dc-963b80c477b0"
-                   target="_blank"
-                   rel="noopener"
-                   class="cert-ultra-card">
+                <button class="cert-ultra-card" onclick="openCertImage('/resimler/donusum-optimizasyonu-sertifikasi.webp', 'https://skillshop.credential.net/b90121e4-3a19-4378-88dc-963b80c477b0')">
 
                     <div class="cert-badge-top">
                         <i class="bi bi-patch-check-fill"></i>
@@ -2127,15 +2473,12 @@
                          alt="Dönüşüm Optimizasyonu Sertifikası - Umut Yanardağ">
 
                     <div class="cert-ultra-overlay">
-                        <span>Resmi Olarak Doğrula</span>
+                        <span>Büyütmek İçin Tıkla</span>
                     </div>
-                </a>
+                </button>
 
                 <!-- 4 -->
-                <a href="https://skillshop.credential.net/09a902dc-802c-44ba-a4d4-23544e4915fe"
-                   target="_blank"
-                   rel="noopener"
-                   class="cert-ultra-card">
+                <button class="cert-ultra-card" onclick="openCertImage('/resimler/google-ads-goruntulu-reklam-agi-sertifikasi.webp', 'https://skillshop.credential.net/09a902dc-802c-44ba-a4d4-23544e4915fe')">
 
                     <div class="cert-badge-top">
                         <i class="bi bi-patch-check-fill"></i>
@@ -2146,15 +2489,12 @@
                          alt="Google Ads Görüntülü Reklam Ağı Sertifikası - Umut Yanardağ">
 
                     <div class="cert-ultra-overlay">
-                        <span>Resmi Olarak Doğrula</span>
+                        <span>Büyütmek İçin Tıkla</span>
                     </div>
-                </a>
+                </button>
 
                 <!-- 5 -->
-                <a href="https://skillshop.credential.net/f410fcc6-44ca-4d31-9a0b-b89d6c68dd82"
-                   target="_blank"
-                   rel="noopener"
-                   class="cert-ultra-card">
+                <button class="cert-ultra-card" onclick="openCertImage('/resimler/google-ads-arama-agi-sertifikasi.webp', 'https://skillshop.credential.net/f410fcc6-44ca-4d31-9a0b-b89d6c68dd82')">
 
                     <div class="cert-badge-top">
                         <i class="bi bi-patch-check-fill"></i>
@@ -2165,15 +2505,12 @@
                          alt="Google Ads Arama Ağı Sertifikası - Umut Yanardağ">
 
                     <div class="cert-ultra-overlay">
-                        <span>Resmi Olarak Doğrula</span>
+                        <span>Büyütmek İçin Tıkla</span>
                     </div>
-                </a>
+                </button>
 
                 <!-- 6 -->
-                <a href="https://skillshop.credential.net/499d1171-c0eb-496d-b5a2-a8238b9140ed"
-                   target="_blank"
-                   rel="noopener"
-                   class="cert-ultra-card">
+                <button class="cert-ultra-card" onclick="openCertImage('/resimler/cevrimdisi-satislari-arttirma-sertifikasi.webp', 'https://skillshop.credential.net/499d1171-c0eb-496d-b5a2-a8238b9140ed')">
 
                     <div class="cert-badge-top">
                         <i class="bi bi-patch-check-fill"></i>
@@ -2184,9 +2521,9 @@
                          alt="Çevrimdışı Satışları Artırma Sertifikası - Umut Yanardağ">
 
                     <div class="cert-ultra-overlay">
-                        <span>Resmi Olarak Doğrula</span>
+                        <span>Büyütmek İçin Tıkla</span>
                     </div>
-                </a>
+                </button>
 
             </div>
         </section>
@@ -2431,7 +2768,7 @@
         </div>
     </div>
 
-    <!-- PREMIUM CERTIFICATE MODAL -->
+    <!-- PREMIUM CERTIFICATE MODAL (iframe) -->
     <div class="cert-modal" id="certModal">
         <div class="cert-overlay" onclick="closeCert()"></div>
 
@@ -2506,6 +2843,7 @@
             if (e.key === 'Escape') {
                 closeMenu();
                 closeCert();
+                closeCertImageModal();
             }
         });
 
@@ -2647,7 +2985,7 @@
             });
         }
 
-        // Certificate Modal Functions
+        // Certificate Modal Functions (iframe)
         function openCert(id){
             const modal = document.getElementById("certModal");
             const frame = document.getElementById("certFrame");
@@ -2671,6 +3009,88 @@
             modal.classList.remove("active");
             frame.src = "";
             document.body.style.overflow = "";
+        }
+
+        // YENİ: Sertifika tam boy görüntüleme fonksiyonları
+        let currentVerifyUrl = '';
+        let verifyButtonVisible = false;
+
+        function openCertImage(imagePath, verifyUrl) {
+            const modal = document.getElementById('certImageModal');
+            const fullImage = document.getElementById('certFullImage');
+            const verifyButton = document.getElementById('verifyButton');
+            
+            fullImage.src = imagePath;
+            verifyButton.href = verifyUrl;
+            currentVerifyUrl = verifyUrl;
+            
+            // Doğrulama butonunu gizle
+            verifyButton.classList.remove('active');
+            verifyButtonVisible = false;
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function toggleVerifyButton() {
+            const verifyButton = document.getElementById('verifyButton');
+            
+            if (verifyButtonVisible) {
+                // Eğer buton görünürse, doğrulama sayfasına yönlendir
+                window.open(currentVerifyUrl, '_blank');
+                // Butonu gizle
+                verifyButton.classList.remove('active');
+                verifyButtonVisible = false;
+            } else {
+                // Butonu göster
+                verifyButton.classList.add('active');
+                verifyButtonVisible = true;
+            }
+        }
+
+        function closeCertImageModal() {
+            const modal = document.getElementById('certImageModal');
+            const verifyButton = document.getElementById('verifyButton');
+            
+            modal.classList.remove('active');
+            verifyButton.classList.remove('active');
+            verifyButtonVisible = false;
+            document.body.style.overflow = '';
+        }
+
+        // CHAT BUBBLE FUNCTIONS
+        let chatBubble = document.getElementById('chatBubble');
+        let chatInput = document.getElementById('chatInput');
+
+        // Sayfa yüklendikten 5 saniye sonra sohbet balonunu aç
+        setTimeout(function() {
+            chatBubble.classList.add('active');
+        }, 5000);
+
+        // Sohbet balonunu kapat
+        window.closeChat = function() {
+            chatBubble.classList.remove('active');
+        }
+
+        // Enter tuşuna basınca mesaj gönder
+        window.handleKeyPress = function(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        // Mesaj gönder
+        window.sendMessage = function() {
+            let message = chatInput.value.trim();
+            if (message === '') return;
+
+            // WhatsApp'a yönlendir
+            let whatsappUrl = 'https://wa.me/905303158752?text=' + encodeURIComponent(message);
+            window.open(whatsappUrl, '_blank');
+
+            // Input'u temizle ve balonu kapat
+            chatInput.value = '';
+            chatBubble.classList.remove('active');
         }
     </script>
 </body>
