@@ -175,9 +175,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Google Reklam Uzmanı Umut Yanardağ | Google Ads Danışmanlığı</title>
+    <!-- GÜNCELLENMİŞ HEAD BÖLÜMÜ -->
+    <title>Google Reklam Uzmanı Umut Yanardağ | 2026 Google Ads Danışmanlığı</title>
 
-    <meta name="description" content="Google Reklam Uzmanı Umut Yanardağ ile reklam bütçenizi kâra dönüştürün! 8+ yıl deneyim, 6+ Google sertifika. Google Ads, Meta Ads ve web tasarım için ücretsiz analiz talep edin.">
+    <meta name="description" content="Google Reklam Uzmanı Umut Yanardağ ile 2026’da reklam bütçenizi kâra dönüştürün. 8+ yıl deneyim, 6+ Google sertifika. Ücretsiz hesap analizi alın.">
 
     <meta name="author" content="Umut Yanardağ">
     <link rel="canonical" href="https://www.umutyanardag.com/">
@@ -312,7 +313,8 @@
             box-shadow: 0 25px 45px rgba(0,0,0,0.35);
         }
 
-        .cert-image-modal {
+        /* Sertifika ve Görsel Modal (Paylaşılan) */
+        .image-modal {
             position: fixed;
             inset: 0;
             background: rgba(255, 255, 255, 0.98);
@@ -326,12 +328,12 @@
             transition: all 0.3s ease;
         }
 
-        .cert-image-modal.active {
+        .image-modal.active {
             opacity: 1;
             visibility: visible;
         }
 
-        .cert-image-container {
+        .image-modal-container {
             position: relative;
             max-width: 85vw;
             max-height: 85vh;
@@ -345,23 +347,16 @@
             border: 1px solid rgba(37, 99, 235, 0.2);
         }
 
-        .cert-full-image {
+        .image-modal-container img {
             max-width: 100%;
             max-height: 70vh;
             object-fit: contain;
             border-radius: 12px;
-            cursor: pointer;
-            transition: transform 0.2s ease;
             border: 2px solid rgba(37, 99, 235, 0.3);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
-        .cert-full-image:hover {
-            transform: scale(1.02);
-            border-color: rgba(37, 99, 235, 0.8);
-        }
-
-        .cert-modal-close {
+        .image-modal-close {
             position: absolute;
             top: 15px;
             right: 15px;
@@ -381,47 +376,9 @@
             z-index: 10002;
         }
 
-        .cert-modal-close:hover {
+        .image-modal-close:hover {
             transform: rotate(90deg) scale(1.1);
             background: linear-gradient(135deg, #1E40AF, #2563EB);
-        }
-
-        .verify-button {
-            margin-top: 20px;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            padding: 14px 40px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
-            transition: all 0.3s ease;
-            border: 2px solid white;
-            opacity: 0;
-            visibility: hidden;
-            cursor: pointer;
-            z-index: 10002;
-            position: relative;
-            pointer-events: none;
-        }
-
-        .verify-button.active {
-            opacity: 1;
-            visibility: visible;
-            pointer-events: auto;
-        }
-
-        .verify-button:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.5);
-        }
-
-        .verify-button i {
-            font-size: 1.3rem;
         }
 
         .site-header {
@@ -692,6 +649,74 @@
         .main-content {
             margin-top: 70px;
         }
+
+        /* --- MODERN İÇERİK HARİTASI (PAGE MAP) STİLLERİ --- */
+        .page-map {
+            position: sticky;
+            top: 90px; /* Header yüksekliği + biraz boşluk */
+            background: #ffffff;
+            padding: 20px 25px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            margin: 30px auto 50px auto;
+            max-width: 1200px;
+            border: 1px solid rgba(59,130,246,0.15);
+            z-index: 100;
+            backdrop-filter: blur(5px);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .page-map h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .page-map h3 i {
+            color: var(--primary-blue);
+        }
+
+        .page-map .map-links {
+            display: flex;
+            flex-direction: column; /* Menü alt alta */
+            gap: 10px;
+        }
+
+        .page-map .map-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--text-gray);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(59,130,246,0.1);
+        }
+
+        .page-map .map-links a:last-child {
+            border-bottom: none;
+        }
+
+        .page-map .map-links a:hover {
+            color: var(--primary-blue);
+            transform: translateX(5px);
+        }
+
+        .page-map .map-links a i {
+            font-size: 0.8rem;
+            color: var(--primary-blue);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+        /* --- İÇERİK HARİTASI STİLLERİ SONU --- */
 
         .hero {
             padding: 60px 0 80px;
@@ -1208,6 +1233,119 @@
             border-radius: 40px;
             font-weight: 600;
             font-size: 0.9rem;
+        }
+
+        /* Armut Yorumları Bölümü */
+        .armut-reviews {
+            padding: 80px 40px;
+            background: #ffffff;
+            border-bottom: 1px solid rgba(59,130,246,0.1);
+        }
+
+        .armut-reviews .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .armut-reviews-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .armut-image-card {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 30px 50px -20px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: transform 0.4s ease;
+            border: 2px solid rgba(59,130,246,0.2);
+            position: sticky;
+            top: 180px; /* Header + page-map yüksekliğine göre ayarlandı */
+        }
+
+        .armut-image-card:hover {
+            transform: scale(1.02);
+            border-color: var(--primary-blue);
+        }
+
+        .armut-image-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .reviews-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .review-item {
+            background: var(--bg-light);
+            padding: 25px;
+            border-radius: 20px;
+            border-left: 4px solid #10B981;
+            box-shadow: 0 10px 25px -10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .review-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 15px 30px -10px rgba(16,185,129,0.2);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .reviewer-name {
+            font-weight: 700;
+            color: var(--primary-dark);
+            font-size: 1.2rem;
+        }
+
+        .review-date {
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            background: white;
+            padding: 4px 10px;
+            border-radius: 30px;
+        }
+
+        .review-service {
+            display: inline-block;
+            background: var(--soft-blue);
+            color: var(--primary-blue);
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .review-text {
+            color: var(--text-dark);
+            line-height: 1.7;
+            font-size: 0.95rem;
+            font-style: italic;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .review-text::before {
+            content: '"';
+            font-size: 3rem;
+            color: var(--primary-blue);
+            opacity: 0.3;
+            position: absolute;
+            left: -5px;
+            top: -15px;
+            font-family: serif;
         }
 
         /* Yeni SEO İçerik Bölümü Stilleri */
@@ -2017,6 +2155,14 @@
                 grid-template-columns: repeat(2, 1fr);
                 gap: 30px;
             }
+            .armut-reviews-grid {
+                grid-template-columns: 1fr;
+            }
+            .armut-image-card {
+                position: static;
+                max-width: 500px;
+                margin: 0 auto;
+            }
         }
 
         @media screen and (max-width: 768px) {
@@ -2087,12 +2233,12 @@
                 font-size: 2rem;
             }
 
-            .cert-image-container {
+            .image-modal-container {
                 padding: 20px;
                 max-width: 95vw;
             }
 
-            .cert-modal-close {
+            .image-modal-close {
                 width: 40px;
                 height: 40px;
                 font-size: 1.4rem;
@@ -2100,9 +2246,11 @@
                 right: 10px;
             }
 
-            .verify-button {
-                padding: 12px 30px;
-                font-size: 1rem;
+            /* Mobil için içerik haritası düzeni */
+            .page-map {
+                top: 80px;
+                padding: 15px;
+                margin: 15px 15px 30px 15px;
             }
         }
 
@@ -2166,14 +2314,11 @@
        <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- SERTİFİKA TAM BOY MODAL -->
-    <div class="cert-image-modal" id="certImageModal">
-        <div class="cert-image-container">
-            <img src="" alt="Sertifika Tam Boy" class="cert-full-image" id="certFullImage" onclick="toggleVerifyButton()">
-            <button class="cert-modal-close" onclick="closeCertImageModal()" aria-label="Sertifika modalını kapat">✕</button>
-            <a href="#" id="verifyButton" class="verify-button" target="_blank" onclick="return handleVerifyClick(event)" aria-label="Sertifikayı Google'da doğrula">
-                <i class="bi bi-patch-check-fill" aria-hidden="true"></i> Doğrulamayı Gör
-            </a>
+    <!-- GENEL GÖRSEL MODAL (Sertifika ve Pazar Payı Grafiği için) -->
+    <div class="image-modal" id="imageModal">
+        <div class="image-modal-container">
+            <img src="" alt="Büyük Görsel" id="modalFullImage">
+            <button class="image-modal-close" onclick="closeImageModal()" aria-label="Modalı kapat">✕</button>
         </div>
     </div>
 
@@ -2272,7 +2417,7 @@
                             <i class="bi bi-calendar-check" aria-hidden="true"></i>
                             Ücretsiz Hesap Analizi
                         </a>
-                        <a href="#services" class="btn-secondary">
+                        <a href="#hizmetler" class="btn-secondary">
                             <i class="bi bi-arrow-right" aria-hidden="true"></i>
                             Hizmetleri İncele
                         </a>
@@ -2294,7 +2439,7 @@
 
                     <div class="hero-seo-text">
                         <p>
-                            Sertifikalı Google Reklam Uzmanı Umut Yanardağ olarak,
+                            Sertifikalı Google Ads danışmanı Umut Yanardağ olarak,
                             <a href="/hizmetlerim/google-reklam-yonetimi">Google Ads danışmanlığı</a> ve
                             Meta reklam yönetimi
                             alanında 8+ yıllık deneyimle işletmelerin dijitalde büyümesine yardımcı oluyorum.
@@ -2309,12 +2454,12 @@
             </div>
         </section>
 
-        <!-- Services Section -->
-        <section class="services" id="services" aria-labelledby="services-heading">
+        <!-- Services Section (Reklam Yönetimi Hizmetlerim) -->
+        <section class="services" id="hizmetler" aria-labelledby="services-heading">
             <div class="services-container">
                 <div class="section-header">
                     <div class="section-badge">Uzmanlık Alanlarım</div>
-                    <h2 class="section-title" id="services-heading">Reklam Uzmanı ile Profesyonel Dijital Çözümler</h2>
+                    <h2 class="section-title" id="services-heading">Reklam Yönetimi Hizmetlerim</h2>
                     <p class="section-description">
                         6+ Google sertifikası ve 8 yıllık deneyimle işletmenizi
                         dijital dünyada bir adım öne taşıyorum.
@@ -2369,7 +2514,7 @@
             </div>
         </section>
 
-        <!-- SERTİFİKA ALANI -->
+        <!-- SERTİFİKA ALANI (Sertifikalarım) -->
         <section class="cert-ultra-section" id="google-certifications" aria-labelledby="cert-heading">
             <div class="cert-ultra-header">
                 <span class="cert-ultra-badge">Google Onaylı Uzmanlık Belgeleri</span>
@@ -2379,7 +2524,7 @@
 
             <div class="cert-ultra-grid">
                 <!-- 1 -->
-                <button class="cert-ultra-card" onclick="openCertImage('https://www.umutyanardag.com/resimler/google-ads-video-sertifikasi.webp', 'https://skillshop.credential.net/180065a0-2793-4684-8e37-da53bf08f129')" aria-label="Google Ads Video Sertifikasını görüntüle">
+                <button class="cert-ultra-card" onclick="openImageModal('https://www.umutyanardag.com/resimler/google-ads-video-sertifikasi.webp')" aria-label="Google Ads Video Sertifikasını görüntüle">
                     <div class="cert-badge-top">
                         <i class="bi bi-patch-check-fill" aria-hidden="true"></i>
                         Google Tarafından Doğrulandı
@@ -2391,7 +2536,7 @@
                 </button>
 
                 <!-- 2 -->
-                <button class="cert-ultra-card" onclick="openCertImage('https://www.umutyanardag.com/resimler/google-analytics-sertifikasyonu.webp', 'https://skillshop.credential.net/8faf9361-2ac5-4f25-a82c-98be167c5755')" aria-label="Google Analytics 4 Sertifikasını görüntüle">
+                <button class="cert-ultra-card" onclick="openImageModal('https://www.umutyanardag.com/resimler/google-analytics-sertifikasyonu.webp')" aria-label="Google Analytics 4 Sertifikasını görüntüle">
                     <div class="cert-badge-top">
                         <i class="bi bi-patch-check-fill" aria-hidden="true"></i>
                         Google Tarafından Doğrulandı
@@ -2403,7 +2548,7 @@
                 </button>
 
                 <!-- 3 -->
-                <button class="cert-ultra-card" onclick="openCertImage('https://www.umutyanardag.com/resimler/donusum-optimizasyonu-sertifikasi.webp', 'https://skillshop.credential.net/b90121e4-3a19-4378-88dc-963b80c477b0')" aria-label="Dönüşüm Optimizasyonu Sertifikasını görüntüle">
+                <button class="cert-ultra-card" onclick="openImageModal('https://www.umutyanardag.com/resimler/donusum-optimizasyonu-sertifikasi.webp')" aria-label="Dönüşüm Optimizasyonu Sertifikasını görüntüle">
                     <div class="cert-badge-top">
                         <i class="bi bi-patch-check-fill" aria-hidden="true"></i>
                         Google Tarafından Doğrulandı
@@ -2415,7 +2560,7 @@
                 </button>
 
                 <!-- 4 -->
-                <button class="cert-ultra-card" onclick="openCertImage('https://www.umutyanardag.com/resimler/google-ads-goruntulu-reklam-agi-sertifikasi.webp', 'https://skillshop.credential.net/09a902dc-802c-44ba-a4d4-23544e4915fe')" aria-label="Google Ads Görüntülü Reklam Ağı Sertifikasını görüntüle">
+                <button class="cert-ultra-card" onclick="openImageModal('https://www.umutyanardag.com/resimler/google-ads-goruntulu-reklam-agi-sertifikasi.webp')" aria-label="Google Ads Görüntülü Reklam Ağı Sertifikasını görüntüle">
                     <div class="cert-badge-top">
                         <i class="bi bi-patch-check-fill" aria-hidden="true"></i>
                         Google Tarafından Doğrulandı
@@ -2427,7 +2572,7 @@
                 </button>
 
                 <!-- 5 -->
-                <button class="cert-ultra-card" onclick="openCertImage('https://www.umutyanardag.com/resimler/google-ads-arama-agi-sertifikasi.webp', 'https://skillshop.credential.net/f410fcc6-44ca-4d31-9a0b-b89d6c68dd82')" aria-label="Google Ads Arama Ağı Sertifikasını görüntüle">
+                <button class="cert-ultra-card" onclick="openImageModal('https://www.umutyanardag.com/resimler/google-ads-arama-agi-sertifikasi.webp')" aria-label="Google Ads Arama Ağı Sertifikasını görüntüle">
                     <div class="cert-badge-top">
                         <i class="bi bi-patch-check-fill" aria-hidden="true"></i>
                         Google Tarafından Doğrulandı
@@ -2439,7 +2584,7 @@
                 </button>
 
                 <!-- 6 -->
-                <button class="cert-ultra-card" onclick="openCertImage('https://www.umutyanardag.com/resimler/cevrimdisi-satislari-arttirma-sertifikasi.webp', 'https://skillshop.credential.net/499d1171-c0eb-496d-b5a2-a8238b9140ed')" aria-label="Çevrimdışı Satışları Artırma Sertifikasını görüntüle">
+                <button class="cert-ultra-card" onclick="openImageModal('https://www.umutyanardag.com/resimler/cevrimdisi-satislari-arttirma-sertifikasi.webp')" aria-label="Çevrimdışı Satışları Artırma Sertifikasını görüntüle">
                     <div class="cert-badge-top">
                         <i class="bi bi-patch-check-fill" aria-hidden="true"></i>
                         Google Tarafından Doğrulandı
@@ -2453,11 +2598,11 @@
         </section>
 
         <!-- ========================================= -->
-        <!-- YENİ: UZMANLIK İÇERİKLERİ BÖLÜMÜ (ENTEGRE EDİLDİ) -->
+        <!-- YENİ: UZMANLIK İÇERİKLERİ BÖLÜMÜ -->
         <!-- ========================================= -->
 
-        <!-- GENEL İÇERİK BÖLÜMÜ (Blog Tadında) -->
-        <section class="seo-ultra-content" aria-labelledby="seo-content-heading">
+        <!-- GENEL İÇERİK BÖLÜMÜ (Blog Tadında) id'si neden-google-ads ve strateji olarak eklendi -->
+        <section class="seo-ultra-content" id="neden-google-ads" aria-labelledby="seo-content-heading">
             <div class="container">
                 <div class="section-header" style="margin-bottom: 40px;">
                     <div class="section-badge">Google Ads Rehberi</div>
@@ -2468,12 +2613,12 @@
                 <p>
                     2026 yılında dijital rekabet her zamankinden daha yoğun. Artık sadece reklam vermek yeterli değil;
                     doğru stratejiyle, doğru kitleye ve doğru teklif modeliyle ilerlemek gerekiyor.
-                    Profesyonel bir <strong>Google reklam uzmanı</strong>, işletmenizin reklam bütçesini planlayan,
+                    Profesyonel bir <strong>Google Ads danışmanı</strong>, işletmenizin reklam bütçesini planlayan,
                     yöneten ve sürekli optimize eden kişidir.
                 </p>
 
                 <p>
-                    Bir Google reklam uzmanı yalnızca kampanya kurmaz. Aynı zamanda:
+                    Bir dijital pazarlama uzmanı yalnızca kampanya kurmaz. Aynı zamanda:
                 </p>
 
                 <ul>
@@ -2488,26 +2633,26 @@
                 <p>
                     Günümüzde Google Ads sistemi yapay zekâ destekli teklif stratejileriyle çalışır.
                     Ancak bu sistemleri doğru beslemezseniz algoritma yanlış öğrenir ve bütçe boşa gider.
-                    İşte burada devreye deneyimli bir <strong>Google reklam yöneticisi</strong> girer.
+                    İşte burada devreye deneyimli bir <strong>google reklam yöneticisi</strong> girer.
                 </p>
 
                 <p>
                     2026 itibarıyla Performance Max kampanyaları, hedef ROAS modelleri ve gelişmiş dönüşüm izleme
-                    sistemleri daha karmaşık hale geldi. Bu nedenle bir <strong>Ads reklam yöneticisi</strong> ile çalışmak,
+                    sistemleri daha karmaşık hale geldi. Bu nedenle bir <strong>Ads uzmanı</strong> ile çalışmak,
                     rastgele kampanya açmaktan çok daha güvenli ve kârlıdır.
                 </p>
 
                 <p>
-                    Dijital pazarlama uzmanı olarak yaklaşımım, “tıklama almak” değil,
+                    Profesyonel reklam danışmanı olarak yaklaşımım, “tıklama almak” değil,
                     işletmenize gerçek müşteri kazandırmaktır. Çünkü önemli olan trafik değil, dönüşümdür. <a href="#faq">Sıkça sorulan sorular</a> bölümünde bu konuya daha detaylı değiniyorum.
                 </p>
 
 
-                <h2>Google Ads Danışmanlığı Süreci Nasıl İşler?</h2>
+                <h2 id="strateji">Google Ads Danışmanlığı Süreci Nasıl İşler?</h2>
 
                 <p>
                     Google Ads danışmanlığı sistematik bir süreçtir. Her işletmeye aynı kampanya modeli uygulanmaz.
-                    Profesyonel bir <strong>Google reklam uzmanı</strong>, sektörünüzü ve hedef kitlenizi analiz ederek özel bir yol haritası çıkarır.
+                    Bir <strong>Google reklamcı</strong>, sektörünüzü ve hedef kitlenizi analiz ederek özel bir yol haritası çıkarır.
                 </p>
 
                 <h3>1. Ücretsiz Ön Analiz</h3>
@@ -2526,7 +2671,7 @@
 
                 <h3>3. Dönüşüm Takibi Kurulumu</h3>
                 <p>
-                    Başarılı bir Google reklam yöneticisi için veri her şeydir.
+                    Başarılı bir google reklam yöneticisi için veri her şeydir.
                     Telefon aramaları, form doldurmalar, satışlar ve mesajlar ölçülmeden
                     optimizasyon yapılamaz.
                 </p>
@@ -2544,7 +2689,7 @@
                 </p>
 
 
-                <h2>Neden Profesyonel Google Reklam Uzmanı ile Çalışmalısınız?</h2>
+                <h2>Neden Profesyonel Google Ads Danışmanı ile Çalışmalısınız?</h2>
 
                 <p>
                     Google Ads paneli basit görünse de arka planda karmaşık algoritmalar çalışır.
@@ -2553,7 +2698,7 @@
                 </p>
 
                 <p>
-                    Profesyonel bir <strong>Google reklam uzmanı</strong> ile çalışmanın avantajları:
+                    Profesyonel bir <strong>dijital pazarlama uzmanı</strong> ile çalışmanın avantajları:
                 </p>
 
                 <ul>
@@ -2572,14 +2717,14 @@
 
                 <p>
                     Eğer reklam bütçenizi rastgele değil, stratejik şekilde büyütmek istiyorsanız,
-                    doğru Google reklam uzmanı ile çalışmanız gerekir.
+                    doğru Google Ads danışmanı ile çalışmanız gerekir.
                 </p>
 
 
                 <h2>İstanbul Google Reklam Uzmanı</h2>
 
                 <p>
-                    İstanbul merkezli hizmet veren bir <strong>Google reklam uzmanı</strong> olarak,
+                    İstanbul merkezli hizmet veren bir <strong>Google Ads uzmanı</strong> olarak,
                     özellikle Başakşehir ve çevresindeki işletmelerle aktif olarak çalışıyorum.
                     Bununla birlikte Türkiye genelinde uzaktan Google Ads danışmanlığı sunuyorum.
                 </p>
@@ -2612,14 +2757,15 @@
                     <p class="section-description">Reklam bütçenizi nereye ayıracağınıza karar vermenize yardımcı olacak güncel veriler.</p>
                 </div>
 
-                <img src="/resimler/search-engine-market-share-2026.webp" alt="2026 dünya geneli arama motoru pazar payı grafiği - Google liderliği" title="2026 Arama Motoru Pazar Payı Grafiği" loading="lazy" width="800" height="450" style="display: block; margin: 0 auto 40px auto; border-radius: 16px; box-shadow: 0 20px 30px -10px rgba(0,0,0,0.15); max-width: 100%; height: auto;">
+                <!-- Görsele tıklanabilir özellik eklendi -->
+                <img src="/resimler/search-engine-market-share-2026.webp" alt="2026 dünya geneli arama motoru pazar payı grafiği - Google liderliği" title="2026 Arama Motoru Pazar Payı Grafiği - Büyütmek için tıklayın" loading="lazy" width="800" height="450" style="display: block; margin: 0 auto 40px auto; border-radius: 16px; box-shadow: 0 20px 30px -10px rgba(0,0,0,0.15); max-width: 100%; height: auto; cursor: pointer;" onclick="openImageModal('/resimler/search-engine-market-share-2026.webp')">
 
                 <p>
                     2026 yılı itibariyle dijital pazarlama yatırımlarında en kritik soru şu:
                     Reklam bütçesi nereye ayrılmalı?
                 </p>
                 <p>
-                    StatCounter’ın 2025–2026 dünya geneli verilerine baktığımızda tablo oldukça net. Arama motoru pazarının yaklaşık %90’ı tek bir platformda toplanmış durumda: <a href="https://business.google.com/tr/google-ads/" target="_blank" rel="noopener noreferrer"><strong>Google Ads</strong></a>.
+                    StatCounter’ın 2025–2026 dünya geneli verilerine baktığımızda tablo oldukça net. Arama motoru pazarının yaklaşık %90’ı tek bir platformda toplanmış durumda: <a href="https://ads.google.com/" target="_blank" rel="noopener noreferrer"><strong>Google Ads</strong></a>.
                 </p>
 
                 <h3>🌍 2026 Dünya Geneli Arama Motoru Dağılımı</h3>
@@ -2632,7 +2778,7 @@
                     <li>DuckDuckGo → %1 civarı</li>
                 </ul>
                 <p>
-                    Bir Google Reklam Uzmanı olarak şunu net söyleyebilirim:
+                    Bir dijital pazarlama uzmanı olarak şunu net söyleyebilirim:
                     Bu tablo, reklam bütçesinin neden öncelikli olarak Google’a ayrılması gerektiğini açık şekilde gösteriyor.
                 </p>
 
@@ -2692,12 +2838,12 @@
                 <div class="section-header" style="margin-bottom: 40px;">
                     <div class="section-badge">Bilgi Bankası</div>
                     <h2 id="terimler-heading" class="section-title" style="font-size: 2.5rem;">Google Ads Terimleri (Az Bilinen Ama Çok Önemli Kavramlar)</h2>
-                    <p class="section-description">Profesyonel bir Google reklam uzmanı için veri her şeydir. İşte bu verileri anlamanızı sağlayacak temel kavramlar.</p>
+                    <p class="section-description">Profesyonel bir Google Ads danışmanı için veri her şeydir. İşte bu verileri anlamanızı sağlayacak temel kavramlar.</p>
                 </div>
 
                 <p>
                     Google Ads paneli dışarıdan basit görünse de arka planda birçok teknik kavram çalışır.
-                    Profesyonel bir <strong>Google reklam uzmanı</strong> ile çalışmanın en büyük farkı,
+                    Profesyonel bir <strong>Google reklam yöneticisi</strong> ile çalışmanın en büyük farkı,
                     bu terimleri doğru yorumlayıp stratejiye dönüştürebilmektir.
                     İşte Google Ads yönetiminde kritik ama çoğu işletmenin tam bilmediği kavramlar:
                 </p>
@@ -2715,7 +2861,7 @@
                     <p>
                         2026 yılında Google’ın akıllı teklif sistemleri büyük ölçüde hedef ROAS modeline dayanır.
                         Ancak doğru dönüşüm verisi olmadan ROAS stratejisi sağlıklı çalışmaz.
-                        Bu nedenle deneyimli bir <strong>Google reklam yöneticisi</strong>, önce veri altyapısını kurar.
+                        Bu nedenle deneyimli bir <strong>google reklam yöneticisi</strong>, önce veri altyapısını kurar.
                     </p>
                 </div>
 
@@ -2727,7 +2873,7 @@
                         Hangisi daha yüksek tıklama ve dönüşüm sağlıyorsa o versiyon kalır.
                     </p>
                     <p>
-                        Profesyonel bir <strong>Ads reklam yöneticisi</strong>,
+                        Profesyonel bir <strong>Ads uzmanı</strong>,
                         reklam metinlerini sürekli test eder. Çünkü küçük bir başlık değişikliği
                         bile dönüşüm oranını ciddi şekilde artırabilir.
                     </p>
@@ -2764,7 +2910,7 @@
                         Veriyi görmeden optimizasyon yapılamaz.
                     </p>
                     <p>
-                        Profesyonel bir <strong>Google reklam uzmanı</strong>,
+                        Profesyonel bir <strong>Google Ads danışmanı</strong>,
                         Google Tag Manager ve GA4 entegrasyonlarıyla doğru veri akışını kurar.
                         Bu sayede bütçe, gerçekten satış getiren kampanyalara yönlendirilir.
                     </p>
@@ -2775,6 +2921,93 @@
                     <strong>Google ücretsiz danışman</strong> görüşmesi talep ederek hesabınızı birlikte analiz edebiliriz.
                     Amacım teknik detayları sizin yerinize yönetmek ve işletmenize gerçek müşteri kazandırmaktır. <a href="#contact">Hemen iletişime geçin</a>.
                 </p>
+            </div>
+        </section>
+
+        <!-- ARMUT YORUMLARI BÖLÜMÜ (FAQ üzerine eklendi) -->
+        <section class="armut-reviews" id="armut-yorumlar" aria-labelledby="armut-heading">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">Müşteri Yorumları</div>
+                    <h2 class="section-title" id="armut-heading">Armut'ta 5 Yıldızlı Hizmet</h2>
+                    <p class="section-description">Armut uygulamasında teslim ettiğim işler hakkında aldığım 5 yıldızlı yorumlar.</p>
+                </div>
+
+                <div class="armut-reviews-grid">
+                    <!-- Sol taraf: Armut görseli (tıklanabilir) -->
+                    <div class="armut-image-card" onclick="openImageModal('https://www.umutyanardag.com/resimler/armut-ads-uzmani.webp')">
+                        <img src="https://www.umutyanardag.com/resimler/armut-ads-uzmani.webp" alt="Armut Uygulaması 5 Yıldızlı Yorumlar - Google Ads Uzmanı Umut Yanardağ" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'300\' viewBox=\'0 0 400 300\'%3E%3Crect width=\'400\' height=\'300\' fill=\'%23F2F4F7\'/%3E%3Ctext x=\'20\' y=\'50\' fill=\'%23333\' font-size=\'20\'%3EArmut 5 Yıldız%3C/text%3E%3Ctext x=\'20\' y=\'100\' fill=\'%23333\' font-size=\'14\'%3EYorumlar burada gösterilecek%3C/text%3E%3C/svg%3E'">
+                    </div>
+
+                    <!-- Sağ taraf: Yorum listesi -->
+                    <div class="reviews-list">
+                        <div class="review-item">
+                            <div class="review-header">
+                                <span class="reviewer-name">Özgur Ö.</span>
+                                <span class="review-date">07 Ara 2025</span>
+                            </div>
+                            <div class="review-service">Google Ads Uzmanı</div>
+                            <div class="review-text">
+                                Kendisi ile işi anlaştik ilk gunden reklamlarimdan telefon almaya basladim cok teşekkürler kesinlikle tavsiye ederim
+                            </div>
+                        </div>
+
+                        <div class="review-item">
+                            <div class="review-header">
+                                <span class="reviewer-name">Metin A.</span>
+                                <span class="review-date">03 Kas 2025</span>
+                            </div>
+                            <div class="review-service">Google Ads Uzmanı</div>
+                            <div class="review-text">
+                                Kısa sürede sonuca ulaştıran bir arkadaş.basta cekincelerim vardı ama bütün sorularımı net cevapladı ve 1 saat icinde reklamı yayına aldı...ads konusunda basarili bir arkadaş.aldıgı parayı sonuna kadar hakediyor...herkese tavsiye ederim
+                            </div>
+                        </div>
+
+                        <div class="review-item">
+                            <div class="review-header">
+                                <span class="reviewer-name">Mehmet Ali S.</span>
+                                <span class="review-date">06 Eki 2025</span>
+                            </div>
+                            <div class="review-service">Google Reklam Yönetimi</div>
+                            <div class="review-text">
+                                Gerçekten işini hakkıyla yapan bir uzman arkadaş aynı hizmeti 3 kat fiyat verenler oldu umut bey daha uygun fiyata daha güzel bir site yaptı ve bütün aşamaları bana sorarak teyit aldı gerçekten çok memnun kaldım gönül rahatlığıyla umut beyi tercih edebilirsiniz
+                            </div>
+                        </div>
+
+                        <div class="review-item">
+                            <div class="review-header">
+                                <span class="reviewer-name">Muhammed K.</span>
+                                <span class="review-date">31 Tem 2025</span>
+                            </div>
+                            <div class="review-service">Google Ads Uzmanı</div>
+                            <div class="review-text">
+                                Umut kardeşim işinin ehli tavsiye ederim beyaz eşya özel servis Ads ayarlarını iyi yapıyor herkese tavsiye ederim
+                            </div>
+                        </div>
+
+                        <div class="review-item">
+                            <div class="review-header">
+                                <span class="reviewer-name">Barış Y.</span>
+                                <span class="review-date">26 Tem 2025</span>
+                            </div>
+                            <div class="review-service">Google Ads Danışmanlık</div>
+                            <div class="review-text">
+                                İyikide umut kardeşimize denk gelmişim İşinde tecrübeli anlatımları gayet net karışk diyil herkese tavsiye ederim başarıların dileğiyle iyi çalışmalar
+                            </div>
+                        </div>
+
+                        <div class="review-item">
+                            <div class="review-header">
+                                <span class="reviewer-name">DİLARA D.</span>
+                                <span class="review-date">18 Nis 2025</span>
+                            </div>
+                            <div class="review-service">Google Ads Uzmanı</div>
+                            <div class="review-text">
+                                Umut Bey Google Ads konusunda oldukça profesyonel ve bilgili biri. Kampanyalarımızı detaylı şekilde analiz etti, bütçemizi en verimli şekilde kullanmamızı sağladı. Kısa sürede gözle görülür sonuçlar aldık. Süreç boyunca her sorumuza hızlı ve açıklayıcı dönüş yaptı. Güvenilir, ilgili ve çözüm odaklı bir hizmet almak isteyen herkese gönül rahatlığıyla tavsiye ederim.
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -2847,7 +3080,19 @@
                 </div>
             </div>
         </section>
-
+        <!-- MODERN İÇERİK HARİTASI (PAGE MAP) - Sabit ve alt alta -->
+<div class="page-map">
+    <h3><i class="bi bi-list-ul"></i> Sayfa İçeriği</h3>
+    <div class="map-links">
+        <a href="#neden-google-ads"><i class="bi bi-chevron-right"></i> Neden Google Ads?</a>
+        <a href="#hizmetler"><i class="bi bi-chevron-right"></i> Reklam Yönetimi Hizmetlerim</a>
+        <a href="#strateji"><i class="bi bi-chevron-right"></i> Reklam Stratejisi</a>
+        <a href="#google-certifications"><i class="bi bi-chevron-right"></i> Sertifikalarım</a>
+        <a href="#armut-yorumlar"><i class="bi bi-chevron-right"></i> Armut Yorumları</a>
+        <a href="#faq"><i class="bi bi-chevron-right"></i> Sık Sorulan Sorular</a>
+        <a href="#contact"><i class="bi bi-chevron-right"></i> İletişim</a>
+    </div>
+</div>
         <!-- FAQ SCHEMA -->
         <script type="application/ld+json">
 {
@@ -2898,7 +3143,7 @@
 }
 </script>
 
-        <!-- CTA Section -->
+        <!-- CTA Section - Reklam Bütçenizi Boşa Harcamayın (Sabit) -->
         <section class="cta" id="contact" aria-labelledby="cta-heading">
             <div class="cta-container">
                 <h2 class="cta-title" id="cta-heading">Reklam Bütçenizi Boşa Harcamayın</h2>
@@ -3104,7 +3349,7 @@
                 if (e.key === 'Escape') {
                     closeMenu();
                     closeCert();
-                    closeCertImageModal();
+                    closeImageModal();
 
                     const heroModal = safeGetElement('heroModal');
                     if (heroModal) heroModal.classList.remove('active');
@@ -3270,65 +3515,33 @@
                 });
             });
 
-            // Sertifika fonksiyonları
-            let currentVerifyUrl = '';
-            let verifyButtonVisible = false;
+            // --- GENEL GÖRSEL MODAL FONKSİYONLARI (Sertifika ve Pazar Payı için) ---
+            const imageModal = safeGetElement('imageModal');
+            const modalFullImage = safeGetElement('modalFullImage');
 
-            window.openCertImage = function(imagePath, verifyUrl) {
-                try {
-                    const modal = safeGetElement('certImageModal');
-                    const fullImage = safeGetElement('certFullImage');
-                    const verifyButton = safeGetElement('verifyButton');
-
-                    if (!modal || !fullImage || !verifyButton) return;
-
-                    fullImage.src = imagePath;
-                    verifyButton.href = verifyUrl;
-                    currentVerifyUrl = verifyUrl;
-
-                    verifyButton.classList.remove('active');
-                    verifyButtonVisible = false;
-
-                    modal.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                } catch (error) {
-                    console.error('Sertifika açılırken hata:', error);
-                    alert('Sertifika yüklenirken bir sorun oluştu.');
-                }
+            window.openImageModal = function(imagePath) {
+                if (!imageModal || !modalFullImage) return;
+                modalFullImage.src = imagePath;
+                imageModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
             };
 
-            window.toggleVerifyButton = function() {
-                const verifyButton = safeGetElement('verifyButton');
-                if (!verifyButton) return;
-
-                if (verifyButtonVisible && currentVerifyUrl) {
-                    window.open(currentVerifyUrl, '_blank');
-                } else {
-                    verifyButton.classList.add('active');
-                    verifyButtonVisible = true;
-                }
-            };
-
-            window.handleVerifyClick = function(event) {
-                if (verifyButtonVisible && currentVerifyUrl) {
-                    event.preventDefault();
-                    window.open(currentVerifyUrl, '_blank');
-                    return false;
-                }
-                return true;
-            };
-
-            window.closeCertImageModal = function() {
-                const modal = safeGetElement('certImageModal');
-                const verifyButton = safeGetElement('verifyButton');
-
-                if (modal) modal.classList.remove('active');
-                if (verifyButton) verifyButton.classList.remove('active');
-                verifyButtonVisible = false;
+            window.closeImageModal = function() {
+                if (!imageModal) return;
+                imageModal.classList.remove('active');
                 document.body.style.overflow = '';
             };
 
-            // Cert modal fonksiyonları
+            // Modal dışına tıklayınca kapatma
+            if (imageModal) {
+                imageModal.addEventListener('click', function(e) {
+                    if (e.target === imageModal) {
+                        closeImageModal();
+                    }
+                });
+            }
+
+            // --- PREMIUM SERTİFİKA MODAL FONKSİYONLARI (iframe) ---
             window.openCert = function(id) {
                 const modal = safeGetElement('certModal');
                 const frame = safeGetElement('certFrame');
