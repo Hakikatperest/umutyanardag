@@ -1176,6 +1176,7 @@
             gap: 10px;
         }
 
+        /* SERTİFİKA ALANI YENİ STİLLER */
         .cert-ultra-section {
             padding: 100px 40px;
             background: radial-gradient(circle at top left, rgba(37,99,235,0.08), transparent 40%), #f8fafc;
@@ -1215,35 +1216,79 @@
             margin: 0 auto;
         }
 
-        .cert-ultra-card {
-            position: relative;
-            display: block;
+        /* YENİ: Sertifika kartları için wrapper ve kart stilleri */
+        .cert-ultra-card-wrapper {
+            margin-bottom: 40px; /* Alt boşluk */
+            background: white;
             border-radius: 20px;
-            overflow: hidden;
-            transform-style: preserve-3d;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.1);
-            cursor: pointer;
-            border: none;
-            background: none;
-            width: 100%;
-            padding: 0;
+            padding: 25px 20px 20px 20px;
+            box-shadow: 0 15px 30px -10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(37,99,235,0.15);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .cert-ultra-card-wrapper:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 40px -15px rgba(37,99,235,0.3);
+            border-color: transparent;
         }
 
-        .cert-ultra-card:hover {
-            transform: rotateY(6deg) rotateX(4deg) scale(1.04);
-            box-shadow: 0 50px 100px rgba(37,99,235,0.35);
-        }
-
-        .cert-ultra-card img {
-            width: 100%;
+        .cert-ultra-card {
             display: block;
-            transition: transform 0.6s ease;
+            width: 100%;
+            padding: 20px 15px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #f8faff, #ffffff);
+            border: 2px solid rgba(37,99,235,0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            margin-bottom: 15px;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+        .cert-ultra-card:hover {
+            background: #ffffff;
+            border-color: #2563EB;
+            box-shadow: 0 10px 25px -5px rgba(37,99,235,0.2);
+        }
+        .cert-ultra-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1F2937;
+            margin-bottom: 5px;
+        }
+        .cert-ultra-card p {
+            color: #2563EB;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0;
         }
 
-        .cert-ultra-card:hover img {
-            transform: scale(1.08);
+        .cert-verify-btn {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            padding: 12px 20px;
+            background: linear-gradient(135deg,#2563EB,#1E40AF);
+            color: white;
+            font-weight: 600;
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: none;
+            width: 100%;
         }
+
+        .cert-verify-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(37,99,235,0.4);
+        }
+
+        /* Eski .cert-ultra-card img stilleri kaldırıldı, gerek yok */
 
         .cert-badge-top {
             position: absolute;
@@ -2664,77 +2709,95 @@
             </div>
 
             <div class="cert-ultra-grid">
-                <!-- 1 -->
-                <button class="cert-ultra-card" onclick="openImageModal('https://www.umutyanardag.com/resimler/google-ads-video-sertifikasi.webp')" aria-label="Google Ads Video Sertifikasını görüntüle">
-                    <div class="cert-badge-top">
-                        <i class="bi bi-patch-check-fill" aria-hidden="true"></i>
-                        Google Tarafından Doğrulandı
-                    </div>
-                    <img src="https://www.umutyanardag.com/resimler/google-ads-video-sertifikasi.webp" alt="Google Ads Video Sertifikası - Umut Yanardağ" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'200\' viewBox=\'0 0 300 200\'%3E%3Crect width=\'300\' height=\'200\' fill=\'%234285F4\'/%3E%3Ctext x=\'20\' y=\'50\' fill=\'white\' font-size=\'18\' font-family=\'Arial\'%3EGoogle Ads Video%3C/text%3E%3Ctext x=\'20\' y=\'80\' fill=\'white\' font-size=\'14\'%3EUmut Yanardağ%3C/text%3E%3C/svg%3E'">
-                    <div class="cert-ultra-overlay">
-                        <span>Büyütmek İçin Tıkla</span>
-                    </div>
-                </button>
+                <!-- 1: Google Ads Video Sertifikası -->
+                <div class="cert-ultra-card-wrapper">
+                    <button class="cert-ultra-card"
+                            onclick="openImageModal('https://www.umutyanardag.com/resimler/google-ads-video-sertifikasi.webp')">
+                        <h3>Google Ads Video Sertifikası</h3>
+                        <p>Google</p>
+                    </button>
+                    <a href="https://skillshop.credential.net/180065a0-2793-4684-8e37-da53bf08f129"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="cert-verify-btn">
+                       Resmi Olarak Doğrula
+                    </a>
+                </div>
 
-                <!-- 2 -->
-                <button class="cert-ultra-card" onclick="openImageModal('https://www.umutyanardag.com/resimler/google-analytics-sertifikasyonu.webp')" aria-label="Google Analytics 4 Sertifikasını görüntüle">
-                    <div class="cert-badge-top">
-                        <i class="bi bi-patch-check-fill" aria-hidden="true"></i>
-                        Google Tarafından Doğrulandı
-                    </div>
-                    <img src="https://www.umutyanardag.com/resimler/google-analytics-sertifikasyonu.webp" alt="Google Analytics 4 Sertifikası - Umut Yanardağ" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'200\' viewBox=\'0 0 300 200\'%3E%3Crect width=\'300\' height=\'200\' fill=\'%23EA4335\'/%3E%3Ctext x=\'20\' y=\'50\' fill=\'white\' font-size=\'18\' font-family=\'Arial\'%3EGoogle Analytics 4%3C/text%3E%3Ctext x=\'20\' y=\'80\' fill=\'white\' font-size=\'14\'%3EUmut Yanardağ%3C/text%3E%3C/svg%3E'">
-                    <div class="cert-ultra-overlay">
-                        <span>Büyütmek İçin Tıkla</span>
-                    </div>
-                </button>
+                <!-- 2: Google Analytics 4 Sertifikası -->
+                <div class="cert-ultra-card-wrapper">
+                    <button class="cert-ultra-card"
+                            onclick="openImageModal('https://www.umutyanardag.com/resimler/google-analytics-4-sertifikasi.webp')">
+                        <h3>Google Analytics 4 Sertifikası</h3>
+                        <p>Google</p>
+                    </button>
+                    <a href="https://skillshop.credential.net/8faf9361-2ac5-4f25-a82c-98be167c5755"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="cert-verify-btn">
+                       Resmi Olarak Doğrula
+                    </a>
+                </div>
 
-                <!-- 3 -->
-                <button class="cert-ultra-card" onclick="openImageModal('https://www.umutyanardag.com/resimler/donusum-optimizasyonu-sertifikasi.webp')" aria-label="Dönüşüm Optimizasyonu Sertifikasını görüntüle">
-                    <div class="cert-badge-top">
-                        <i class="bi bi-patch-check-fill" aria-hidden="true"></i>
-                        Google Tarafından Doğrulandı
-                    </div>
-                    <img src="https://www.umutyanardag.com/resimler/donusum-optimizasyonu-sertifikasi.webp" alt="Dönüşüm Optimizasyonu Sertifikası - Umut Yanardağ" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'200\' viewBox=\'0 0 300 200\'%3E%3Crect width=\'300\' height=\'200\' fill=\'%2334A853\'/%3E%3Ctext x=\'20\' y=\'50\' fill=\'white\' font-size=\'18\' font-family=\'Arial\'%3EDönüşüm Optimizasyonu%3C/text%3E%3Ctext x=\'20\' y=\'80\' fill=\'white\' font-size=\'14\'%3EUmut Yanardağ%3C/text%3E%3C/svg%3E'">
-                    <div class="cert-ultra-overlay">
-                        <span>Büyütmek İçin Tıkla</span>
-                    </div>
-                </button>
+                <!-- 3: Dönüşüm Optimizasyonu Sertifikası -->
+                <div class="cert-ultra-card-wrapper">
+                    <button class="cert-ultra-card"
+                            onclick="openImageModal('https://www.umutyanardag.com/resimler/donusum-optimizasyonu-sertifikasi.webp')">
+                        <h3>Dönüşüm Optimizasyonu Sertifikası</h3>
+                        <p>Google</p>
+                    </button>
+                    <a href="https://skillshop.credential.net/b90121e4-3a19-4378-88dc-963b80c477b0"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="cert-verify-btn">
+                       Resmi Olarak Doğrula
+                    </a>
+                </div>
 
-                <!-- 4 -->
-                <button class="cert-ultra-card" onclick="openImageModal('https://www.umutyanardag.com/resimler/google-ads-goruntulu-reklam-agi-sertifikasi.webp')" aria-label="Google Ads Görüntülü Reklam Ağı Sertifikasını görüntüle">
-                    <div class="cert-badge-top">
-                        <i class="bi bi-patch-check-fill" aria-hidden="true"></i>
-                        Google Tarafından Doğrulandı
-                    </div>
-                    <img src="https://www.umutyanardag.com/resimler/google-ads-goruntulu-reklam-agi-sertifikasi.webp" alt="Google Ads Görüntülü Reklam Ağı Sertifikası - Umut Yanardağ" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'200\' viewBox=\'0 0 300 200\'%3E%3Crect width=\'300\' height=\'200\' fill=\'%23FBBC05\'/%3E%3Ctext x=\'20\' y=\'50\' fill=\'white\' font-size=\'18\' font-family=\'Arial\'%3EGörüntülü Reklam Ağı%3C/text%3E%3Ctext x=\'20\' y=\'80\' fill=\'white\' font-size=\'14\'%3EUmut Yanardağ%3C/text%3E%3C/svg%3E'">
-                    <div class="cert-ultra-overlay">
-                        <span>Büyütmek İçin Tıkla</span>
-                    </div>
-                </button>
+                <!-- 4: Google Ads Görüntülü Reklam Ağı -->
+                <div class="cert-ultra-card-wrapper">
+                    <button class="cert-ultra-card"
+                            onclick="openImageModal('https://www.umutyanardag.com/resimler/google-ads-goruntulu-reklam-agi-sertifikasi.webp')">
+                        <h3>Google Ads Görüntülü Reklam Ağı</h3>
+                        <p>Google</p>
+                    </button>
+                    <a href="https://skillshop.credential.net/09a902dc-802c-44ba-a4d4-23544e4915fe"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="cert-verify-btn">
+                       Resmi Olarak Doğrula
+                    </a>
+                </div>
 
-                <!-- 5 -->
-                <button class="cert-ultra-card" onclick="openImageModal('https://www.umutyanardag.com/resimler/google-ads-arama-agi-sertifikasi.webp')" aria-label="Google Ads Arama Ağı Sertifikasını görüntüle">
-                    <div class="cert-badge-top">
-                        <i class="bi bi-patch-check-fill" aria-hidden="true"></i>
-                        Google Tarafından Doğrulandı
-                    </div>
-                    <img src="https://www.umutyanardag.com/resimler/google-ads-arama-agi-sertifikasi.webp" alt="Google Ads Arama Ağı Sertifikası - Umut Yanardağ" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'200\' viewBox=\'0 0 300 200\'%3E%3Crect width=\'300\' height=\'200\' fill=\'%234285F4\'/%3E%3Ctext x=\'20\' y=\'50\' fill=\'white\' font-size=\'18\' font-family=\'Arial\'%3EArama Ağı Sertifikası%3C/text%3E%3Ctext x=\'20\' y=\'80\' fill=\'white\' font-size=\'14\'%3EUmut Yanardağ%3C/text%3E%3C/svg%3E'">
-                    <div class="cert-ultra-overlay">
-                        <span>Büyütmek İçin Tıkla</span>
-                    </div>
-                </button>
+                <!-- 5: Google Ads Arama Ağı Sertifikası -->
+                <div class="cert-ultra-card-wrapper">
+                    <button class="cert-ultra-card"
+                            onclick="openImageModal('https://www.umutyanardag.com/resimler/google-ads-arama-agi-sertifikasi.webp')">
+                        <h3>Google Ads Arama Ağı Sertifikası</h3>
+                        <p>Google</p>
+                    </button>
+                    <a href="https://skillshop.credential.net/f410fcc6-44ca-4d31-9a0b-b89d6c68dd82"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="cert-verify-btn">
+                       Resmi Olarak Doğrula
+                    </a>
+                </div>
 
-                <!-- 6 -->
-                <button class="cert-ultra-card" onclick="openImageModal('https://www.umutyanardag.com/resimler/cevrimdisi-satislari-arttirma-sertifikasi.webp')" aria-label="Çevrimdışı Satışları Artırma Sertifikasını görüntüle">
-                    <div class="cert-badge-top">
-                        <i class="bi bi-patch-check-fill" aria-hidden="true"></i>
-                        Google Tarafından Doğrulandı
-                    </div>
-                    <img src="https://www.umutyanardag.com/resimler/cevrimdisi-satislari-arttirma-sertifikasi.webp" alt="Çevrimdışı Satışları Artırma Sertifikası - Umut Yanardağ" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'200\' viewBox=\'0 0 300 200\'%3E%3Crect width=\'300\' height=\'200\' fill=\'%2310B981\'/%3E%3Ctext x=\'20\' y=\'50\' fill=\'white\' font-size=\'18\' font-family=\'Arial\'%3EÇevrimdışı Satışları Artırma%3C/text%3E%3Ctext x=\'20\' y=\'80\' fill=\'white\' font-size=\'14\'%3EUmut Yanardağ%3C/text%3E%3C/svg%3E'">
-                    <div class="cert-ultra-overlay">
-                        <span>Büyütmek İçin Tıkla</span>
-                    </div>
-                </button>
+                <!-- 6: Çevrimdışı Satışları Artırma Sertifikası -->
+                <div class="cert-ultra-card-wrapper">
+                    <button class="cert-ultra-card"
+                            onclick="openImageModal('https://www.umutyanardag.com/resimler/cevrimdisi-satislari-artirma-sertifikasi.webp')">
+                        <h3>Çevrimdışı Satışları Artırma Sertifikası</h3>
+                        <p>Google</p>
+                    </button>
+                    <a href="https://skillshop.credential.net/499d1171-c0eb-496d-b5a2-a8238b9140ed"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="cert-verify-btn">
+                       Resmi Olarak Doğrula
+                    </a>
+                </div>
             </div>
         </section>
 
