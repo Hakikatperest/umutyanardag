@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
     <!-- SCHEMA 1: Person (worksFor + hasCredential eklendi) -->
-    <script type="application/ld+json">
+  <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -11,14 +11,36 @@
   "url": "https://www.umutyanardag.com",
   "jobTitle": "Google Reklam Uzmanı",
   "image": "https://www.umutyanardag.com/resimler/google-reklam-uzmani-ofisi.webp",
+
   "worksFor": {
     "@id": "https://www.umutyanardag.com/#business"
   },
+
   "sameAs": [
     "https://www.linkedin.com/in/umutyanardag/",
     "https://armut.com/hizmetveren/umut-yanardag-bartin-bartin-google-ads-danismanlik_72528447",
     "https://bionluk.com/umutyanardag74"
   ],
+
+  "knowsAbout": [
+    "Google Ads",
+    "Meta Ads",
+    "Dönüşüm Optimizasyonu",
+    "Performans Pazarlaması",
+    "Dijital Pazarlama Stratejisi",
+    "Web Site Tasarımı"
+  ],
+
+  "areaServed": {
+    "@type": "Country",
+    "name": "Turkey"
+  },
+
+  "award": [
+    "Google Ads Sertifikalı Uzman",
+    "Google Analytics 4 Sertifikalı"
+  ],
+
   "hasCredential": [
     {
       "@type": "EducationalOccupationalCredential",
@@ -26,10 +48,7 @@
       "recognizedBy": {
         "@type": "Organization",
         "name": "Google"
-      }
-    }
-  ]
-},
+      },
       "url": "https://skillshop.credential.net/180065a0-2793-4684-8e37-da53bf08f129"
     },
     {
@@ -80,7 +99,6 @@
   ]
 }
 </script>
-
     <!-- SCHEMA 2: ProfessionalService (id, openingHours, contactPoint eklendi) -->
     <script type="application/ld+json">
 {
@@ -103,10 +121,9 @@
     "@type": "Country",
     "name": "Turkey"
   },
-  "founder": {
-    "@type": "Person",
-    "name": "Umut Yanardağ"
-  },
+ "founder": {
+  "@id": "https://www.umutyanardag.com/#person"
+},
   "contactPoint": {
     "@type": "ContactPoint",
     "telephone": "+905303158752",
@@ -2337,7 +2354,7 @@
 
                 <div class="faq-item">
                     <button class="faq-question" aria-expanded="false">
-                        Hangi sektörlerlerde hizmet veriyorsunuz?
+                        Hangi sektörlerde hizmet veriyorsunuz?
                         <span class="faq-icon" aria-hidden="true">+</span>
                     </button>
                     <div class="faq-answer">
