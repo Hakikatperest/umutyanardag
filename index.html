@@ -265,6 +265,7 @@
             --text-gray: #6B7280;
             --white: #ffffff;
             --dark-yellow: #B8860B;
+            --star-color: #FFB800; /* Yıldız rengi */
 
             --icon-google: #34A853;
             --icon-instagram: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4);
@@ -693,46 +694,68 @@
             margin-top: 70px;
         }
 
-        /* --- MODERN İÇERİK HARİTASI (PAGE MAP) STİLLERİ - SABİT VERSİYON --- */
+        /* --- MODERN İÇERİK HARİTASI (PAGE MAP) STİLLERİ - AÇILIR KAPANIR VERSİYON --- */
         .page-map {
-            position: relative; /* Sticky değil, normal akışta */
+            position: relative;
             background: #ffffff;
             padding: 25px 30px;
             border-radius: 20px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-            margin: 30px auto 40px auto; /* Üstten ve alttan boşluk */
+            margin: 30px auto 40px auto;
             max-width: 1200px;
             border: 1px solid rgba(59,130,246,0.15);
             z-index: 10;
             backdrop-filter: blur(5px);
             background: rgba(255, 255, 255, 0.95);
-            /* Sabit konum - sayfa kaydıkça aşağı gelmez */
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
-
-        .page-map h3 {
+        .page-map:hover {
+            box-shadow: 0 20px 50px rgba(59,130,246,0.15);
+        }
+        .page-map-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+        .page-map-header h3 {
             font-size: 1.3rem;
             font-weight: 700;
-            margin-bottom: 20px;
             color: var(--primary-dark);
             display: flex;
             align-items: center;
             gap: 8px;
-            border-bottom: 2px solid var(--primary-blue);
-            padding-bottom: 10px;
+            margin-bottom: 0;
         }
-
-        .page-map h3 i {
+        .page-map-header h3 i {
             color: var(--primary-blue);
             font-size: 1.5rem;
         }
-
-        .page-map .map-links {
+        .page-map-toggle-icon {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            transition: transform 0.4s ease;
+        }
+        .page-map.active .page-map-toggle-icon {
+            transform: rotate(180deg);
+        }
+        .map-links {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            margin-top: 0;
+        }
+        .page-map.active .map-links {
+            max-height: 350px; /* Yeterli yükseklik */
+            margin-top: 20px;
+        }
+        .map-links {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
         }
-
-        .page-map .map-links a {
+        .map-links a {
             display: flex;
             align-items: center;
             gap: 10px;
@@ -746,16 +769,14 @@
             border-radius: 12px;
             border: 1px solid rgba(59,130,246,0.1);
         }
-
-        .page-map .map-links a:hover {
+        .map-links a:hover {
             color: var(--primary-blue);
             background: white;
             border-color: var(--primary-blue);
             transform: translateY(-3px);
             box-shadow: 0 10px 20px -10px var(--primary-blue);
         }
-
-        .page-map .map-links a i {
+        .map-links a i {
             font-size: 1rem;
             color: var(--primary-blue);
         }
@@ -909,6 +930,7 @@
             text-decoration: none;
             display: inline-flex;
             align-items: center;
+            justify-content: center; /* ORTALANDI */
             gap: 8px;
             box-shadow: 0 4px 6px -2px rgba(59, 130, 246, 0.3);
             white-space: nowrap;
@@ -928,6 +950,7 @@
     text-decoration: none;
     display: inline-flex;
     align-items: center;
+    justify-content: center; /* ORTALANDI */
     gap: 8px;
     box-shadow: 0 4px 6px -2px rgba(37, 211, 102, 0.3);
     white-space: nowrap;
@@ -982,6 +1005,7 @@
             text-decoration: none;
             display: inline-flex;
             align-items: center;
+            justify-content: center; /* ORTALANDI */
             gap: 8px;
             backdrop-filter: blur(5px);
             white-space: nowrap;
@@ -1412,6 +1436,16 @@
             font-weight: 600;
             margin-bottom: 15px;
         }
+        /* YILDIZ EKLENDİ */
+        .review-stars {
+            color: var(--star-color);
+            font-size: 1rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        .review-stars i {
+            margin-right: 2px;
+        }
 
         .review-text {
             color: var(--text-dark);
@@ -1701,6 +1735,7 @@
             text-decoration: none;
             display: inline-flex;
             align-items: center;
+            justify-content: center; /* ORTALANDI */
             gap: 8px;
             box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.2);
             white-space: nowrap;
@@ -1742,6 +1777,7 @@
             text-decoration: none;
             display: inline-flex;
             align-items: center;
+            justify-content: center; /* ORTALANDI */
             gap: 8px;
             white-space: nowrap;
             position: relative;
@@ -1786,6 +1822,7 @@
             text-decoration: none;
             display: inline-flex;
             align-items: center;
+            justify-content: center; /* ORTALANDI */
             gap: 8px;
             white-space: nowrap;
             box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.2);
@@ -2336,7 +2373,7 @@
                 padding: 20px;
                 margin: 20px 15px 30px 15px;
             }
-            .page-map .map-links {
+            .map-links {
                 grid-template-columns: 1fr;
             }
         }
@@ -2543,13 +2580,15 @@
 
         <!-- ========================================= -->
         <!-- MODERN İÇERİK HARİTASI (PAGE MAP) - HERO SONRASI, SERVICES ÖNCESİ -->
+        <!-- AÇILIR KAPANIR HALE GETİRİLDİ -->
         <!-- ========================================= -->
-        <div class="page-map">
-            <h3><i class="bi bi-list-ul"></i> Sayfa İçeriği</h3>
-            <div class="map-links">
-                <a href="#neden-google-ads"><i class="bi bi-chevron-right"></i> Neden Google Ads?</a>
+        <div class="page-map" id="pageMap">
+            <div class="page-map-header" onclick="togglePageMap()">
+                <h3><i class="bi bi-list-ul"></i> Sayfa İçeriği</h3>
+                <i class="fas fa-chevron-down page-map-toggle-icon" id="pageMapToggleIcon"></i>
+            </div>
+            <div class="map-links" id="pageMapLinks">
                 <a href="#hizmetler"><i class="bi bi-chevron-right"></i> Reklam Yönetimi Hizmetlerim</a>
-                <a href="#strateji"><i class="bi bi-chevron-right"></i> Reklam Stratejisi</a>
                 <a href="#google-certifications"><i class="bi bi-chevron-right"></i> Sertifikalarım</a>
                 <a href="#musteri-yorumlar"><i class="bi bi-chevron-right"></i> Müşteri Yorumları</a>
                 <a href="#faq"><i class="bi bi-chevron-right"></i> Sık Sorulan Sorular</a>
@@ -3044,6 +3083,10 @@
                                 <span class="review-date">07 Ara 2025</span>
                             </div>
                             <div class="review-service">Google Ads Uzmanı</div>
+                            <!-- 5 Yıldız eklendi -->
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
                             <div class="review-text">
                                 Kendisi ile işi anlaştik ilk gunden reklamlarimdan telefon almaya basladim cok teşekkürler kesinlikle tavsiye ederim
                             </div>
@@ -3055,6 +3098,10 @@
                                 <span class="review-date">03 Kas 2025</span>
                             </div>
                             <div class="review-service">Google Ads Uzmanı</div>
+                            <!-- 5 Yıldız eklendi -->
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
                             <div class="review-text">
                                 Kısa sürede sonuca ulaştıran bir arkadaş.basta cekincelerim vardı ama bütün sorularımı net cevapladı ve 1 saat icinde reklamı yayına aldı...ads konusunda basarili bir arkadaş.aldıgı parayı sonuna kadar hakediyor...herkese tavsiye ederim
                             </div>
@@ -3066,6 +3113,10 @@
                                 <span class="review-date">06 Eki 2025</span>
                             </div>
                             <div class="review-service">Google Reklam Yönetimi</div>
+                            <!-- 5 Yıldız eklendi -->
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
                             <div class="review-text">
                                 Gerçekten işini hakkıyla yapan bir uzman arkadaş aynı hizmeti 3 kat fiyat verenler oldu umut bey daha uygun fiyata daha güzel bir site yaptı ve bütün aşamaları bana sorarak teyit aldı gerçekten çok memnun kaldım gönül rahatlığıyla umut beyi tercih edebilirsiniz
                             </div>
@@ -3077,6 +3128,10 @@
                                 <span class="review-date">31 Tem 2025</span>
                             </div>
                             <div class="review-service">Google Ads Uzmanı</div>
+                            <!-- 5 Yıldız eklendi -->
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
                             <div class="review-text">
                                 Umut kardeşim işinin ehli tavsiye ederim beyaz eşya özel servis Ads ayarlarını iyi yapıyor herkese tavsiye ederim
                             </div>
@@ -3088,6 +3143,10 @@
                                 <span class="review-date">26 Tem 2025</span>
                             </div>
                             <div class="review-service">Google Ads Danışmanlık</div>
+                            <!-- 5 Yıldız eklendi -->
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
                             <div class="review-text">
                                 İyikide umut kardeşimize denk gelmişim İşinde tecrübeli anlatımları gayet net karışk diyil herkese tavsiye ederim başarıların dileğiyle iyi çalışmalar
                             </div>
@@ -3099,6 +3158,10 @@
                                 <span class="review-date">18 Nis 2025</span>
                             </div>
                             <div class="review-service">Google Ads Uzmanı</div>
+                            <!-- 5 Yıldız eklendi -->
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
                             <div class="review-text">
                                 Umut Bey Google Ads konusunda oldukça profesyonel ve bilgili biri. Kampanyalarımızı detaylı şekilde analiz etti, bütçemizi en verimli şekilde kullanmamızı sağladı. Kısa sürede gözle görülür sonuçlar aldık. Süreç boyunca her sorumuza hızlı ve açıklayıcı dönüş yaptı. Güvenilir, ilgili ve çözüm odaklı bir hizmet almak isteyen herkese gönül rahatlığıyla tavsiye ederim.
                             </div>
@@ -3653,6 +3716,17 @@
                 if (frame) frame.src = '';
                 document.body.style.overflow = '';
             };
+
+            // --- SAYFA İÇERİĞİ AÇILIR KAPANIR FONKSİYONU ---
+            window.togglePageMap = function() {
+                const pageMap = document.getElementById('pageMap');
+                if (pageMap) {
+                    pageMap.classList.toggle('active');
+                }
+            };
+
+            // Sayfa yüklendiğinde varsayılan olarak kapalı olsun isterseniz (isteğe bağlı)
+            // Ama açık olması daha iyi olabilir, şimdilik açık bırakıyoruz.
         })();
     </script>
 </body>
