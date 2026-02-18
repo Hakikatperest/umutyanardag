@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <!-- SCHEMA 1: Person (worksFor + hasCredential eklendi) -->
+    <!-- SCHEMA 1: Person (düzeltilmiş worksFor) -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -11,17 +11,15 @@
   "url": "https://www.umutyanardag.com",
   "jobTitle": "Google Reklam Uzmanı",
   "image": "https://www.umutyanardag.com/resimler/google-reklam-uzmani-ofisi.webp",
-
   "worksFor": {
+    "@type": "ProfessionalService",
     "@id": "https://www.umutyanardag.com/#business"
   },
-
   "sameAs": [
     "https://www.linkedin.com/in/umutyanardag/",
     "https://armut.com/hizmetveren/umut-yanardag-bartin-bartin-google-ads-danismanlik_72528447",
     "https://bionluk.com/umutyanardag74"
   ],
-
   "knowsAbout": [
     "Google Ads",
     "Meta Ads",
@@ -30,17 +28,20 @@
     "Dijital Pazarlama Stratejisi",
     "Web Site Tasarımı"
   ],
-
   "areaServed": {
     "@type": "Country",
     "name": "Turkey"
   },
-
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "İstanbul",
+    "addressRegion": "Başakşehir",
+    "addressCountry": "TR"
+  },
   "award": [
     "Google Ads Sertifikalı Uzman",
     "Google Analytics 4 Sertifikalı"
   ],
-
   "hasCredential": [
     {
       "@type": "EducationalOccupationalCredential",
@@ -99,7 +100,7 @@
   ]
 }
 </script>
-    <!-- SCHEMA 2: ProfessionalService (id, openingHours, contactPoint eklendi) -->
+    <!-- SCHEMA 2: ProfessionalService -->
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -151,7 +152,7 @@
 }
 </script>
 
-    <!-- SCHEMA 3: WebSite (YENİ) -->
+    <!-- SCHEMA 3: WebSite -->
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -166,18 +167,16 @@
 }
 </script>
     
-    <!-- FAVICON - EKLENDİ -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/resimler/umutyanardag-icon.png">
-    <link rel="shortcut icon" href="/resimler/umutyanardag-icon.png">
-    <link rel="apple-touch-icon" href="/resimler/umutyanardag-icon.png">
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%233B82F6'/%3E%3Ctext x='50' y='68' font-size='50' text-anchor='middle' fill='white' font-family='Arial'%3EU%3C/text%3E%3C/svg%3E">
+    <link rel="shortcut icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%233B82F6'/%3E%3Ctext x='50' y='68' font-size='50' text-anchor='middle' fill='white' font-family='Arial'%3EU%3C/text%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%233B82F6'/%3E%3Ctext x='50' y='68' font-size='50' text-anchor='middle' fill='white' font-family='Arial'%3EU%3C/text%3E%3C/svg%3E">
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- GÜNCELLENMİŞ TITLE -->
     <title>Google Reklam Uzmanı Umut Yanardağ | Google Ads Danışmanlığı</title>
     
-    <!-- GÜNCELLENMİŞ META DESCRIPTION -->
     <meta name="description" content="Google Reklam Uzmanı Umut Yanardağ ile reklam bütçenizi kâra dönüştürün! 8+ yıl deneyim, 6+ Google sertifika. Google Ads, Meta Ads ve web tasarım için ücretsiz analiz talep edin.">
     
     <meta name="author" content="Umut Yanardağ">
@@ -189,7 +188,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="robots" content="index, follow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -210,7 +209,6 @@
             overflow-x: hidden;
         }
 
-        /* Ana Renkler */
         :root {
             --primary-dark: #1F2937;
             --primary-blue: #3B82F6;
@@ -222,15 +220,13 @@
             --text-dark: #111827;
             --text-gray: #6B7280;
             --white: #ffffff;
-            --dark-yellow: #B8860B; /* Koyu sarı */
+            --dark-yellow: #B8860B;
             
-            /* Özel ikon renkleri */
             --icon-google: #34A853;
             --icon-instagram: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4);
             --icon-web: #000000;
         }
 
-        /* Gradient Text Stili - Ana Başlık için */
         .gradient-text {
             font-size: 1.8rem;
             font-weight: 800;
@@ -241,7 +237,6 @@
             text-decoration: none;
         }
 
-        /* SCROLL PROGRESS BAR */
         .scroll-progress {
             position: fixed;
             top: 0;
@@ -256,7 +251,6 @@
             box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
         }
 
-        /* SCROLL PERCENTAGE INDICATOR - KOYU SARI (ALTTA) */
         .scroll-percentage {
             position: fixed;
             bottom: 30px;
@@ -294,7 +288,6 @@
             color: white;
         }
 
-        /* WHATSAPP BUTONU */
         .whatsapp-float-button {
             position: fixed;
             bottom: 110px;
@@ -319,7 +312,6 @@
             box-shadow: 0 25px 45px rgba(0,0,0,0.35);
         }
 
-        /* SERTİFİKA TAM BOY MODAL - DÜZELTİLDİ */
         .cert-image-modal {
             position: fixed;
             inset: 0;
@@ -394,7 +386,6 @@
             background: linear-gradient(135deg, #1E40AF, #2563EB);
         }
 
-        /* DOĞRULAMA BUTONU - DÜZELTİLDİ */
         .verify-button {
             margin-top: 20px;
             background: linear-gradient(135deg, #25D366, #128C7E);
@@ -415,13 +406,13 @@
             cursor: pointer;
             z-index: 10002;
             position: relative;
-            pointer-events: none; /* Varsayılan olarak tıklanamaz */
+            pointer-events: none;
         }
 
         .verify-button.active {
             opacity: 1;
             visibility: visible;
-            pointer-events: auto; /* Aktif olduğunda tıklanabilir */
+            pointer-events: auto;
         }
 
         .verify-button:hover {
@@ -433,7 +424,6 @@
             font-size: 1.3rem;
         }
 
-        /* ÜST BAR */
         .site-header {
             position: fixed;
             top: 0;
@@ -2062,9 +2052,9 @@
     <div class="cert-image-modal" id="certImageModal">
         <div class="cert-image-container">
             <img src="" alt="Sertifika Tam Boy" class="cert-full-image" id="certFullImage" onclick="toggleVerifyButton()">
-            <button class="cert-modal-close" onclick="closeCertImageModal()">✕</button>
-            <a href="#" id="verifyButton" class="verify-button" target="_blank" onclick="return handleVerifyClick(event)">
-                <i class="bi bi-patch-check-fill"></i> Doğrulamayı Gör
+            <button class="cert-modal-close" onclick="closeCertImageModal()" aria-label="Sertifika modalını kapat">✕</button>
+            <a href="#" id="verifyButton" class="verify-button" target="_blank" onclick="return handleVerifyClick(event)" aria-label="Sertifikayı Google'da doğrula">
+                <i class="bi bi-patch-check-fill" aria-hidden="true"></i> Doğrulamayı Gör
             </a>
         </div>
     </div>
@@ -2087,7 +2077,7 @@
     <nav class="sidebar-nav" id="sidebarMenu" aria-label="Ana navigasyon">
         <div class="sidebar-header">
             <button class="sidebar-close" id="sidebarClose" aria-label="Menüyü kapat">
-                <i class="fas fa-times"></i>
+                <i class="fas fa-times" aria-hidden="true"></i>
             </button>
         </div>
 
@@ -2096,20 +2086,20 @@
                 <i class="fas fa-home" aria-hidden="true"></i> Ana Sayfa
             </a>
             
-            <a href="#" class="has-submenu" id="servicesMenu" aria-expanded="false">
+            <a href="#" class="has-submenu" id="servicesMenu" aria-expanded="false" aria-label="Hizmetler menüsü">
                 <i class="fas fa-rocket" aria-hidden="true"></i> Hizmetlerim <i class="fas fa-chevron-down submenu-icon" aria-hidden="true"></i>
             </a>
             <div class="submenu" id="servicesSubmenu">
-                <a href="/hizmetlerim/google-reklam-yonetimi">
+                <a href="/hizmetlerim/google-reklam-yonetimi" aria-label="Google Reklamları hizmeti">
                     <i class="fab fa-google" aria-hidden="true"></i> Google Reklamları
                 </a>
-                <a href="/hizmetlerim/instagram-reklam-yonetimi">
+                <a href="/hizmetlerim/instagram-reklam-yonetimi" aria-label="Instagram Reklamları hizmeti">
                     <i class="fab fa-instagram" aria-hidden="true"></i> Instagram Reklamları
                 </a>
-                <a href="/hizmetlerim/facebook-reklam-yonetimi">
+                <a href="/hizmetlerim/facebook-reklam-yonetimi" aria-label="Facebook Reklamları hizmeti">
                     <i class="fab fa-facebook" aria-hidden="true"></i> Facebook Reklamları
                 </a>
-                <a href="/hizmetlerim/web-site-tasarimi">
+                <a href="/hizmetlerim/web-site-tasarimi" aria-label="Web Site Tasarımı hizmeti">
                     <i class="fas fa-code" aria-hidden="true"></i> Web Site Tasarımı
                 </a>
             </div>
@@ -2128,17 +2118,17 @@
         </div>
 
         <div class="sidebar-cta">
-            <a href="https://wa.me/905303158752" target="_blank" class="sidebar-btn whatsapp">
+            <a href="https://wa.me/905303158752" target="_blank" class="sidebar-btn whatsapp" aria-label="WhatsApp ile iletişim">
                 <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
             </a>
-            <a href="tel:05303158752" class="sidebar-btn phone">
+            <a href="tel:05303158752" class="sidebar-btn phone" aria-label="Telefon ile ara">
                 <i class="fas fa-phone" aria-hidden="true"></i> 0530 315 87 52
             </a>
         </div>
     </nav>
 
     <!-- Overlay -->
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
 
     <!-- SEMANTIC MAIN -->
     <main class="main-content" id="main">
@@ -2214,46 +2204,46 @@
                 </div>
 
                 <div class="services-grid">
-                    <div class="service-card" onclick="window.location.href='/hizmetlerim/google-reklam-yonetimi'">
+                    <div class="service-card" onclick="window.location.href='/hizmetlerim/google-reklam-yonetimi'" role="link" tabindex="0" aria-label="Google Reklamları hizmet detayı">
                         <div class="service-icon">
-                            <img src="https://www.umutyanardag.com/resimler/google-icon.webp" alt="Google Reklam Uzmanı Google Ads Kampanya Yönetimi Hizmeti">
+                            <img src="https://www.umutyanardag.com/resimler/google-icon.webp" alt="Google Reklam Uzmanı Google Ads Kampanya Yönetimi Hizmeti" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%233B82F6\'%3E%3Cpath d=\'M12.545 10.239v3.821h5.445c-.712 2.315-2.647 3.972-5.445 3.972-3.332 0-6.033-2.701-6.033-6.032s2.701-6.032 6.033-6.032c1.498 0 2.866.549 3.921 1.453l2.814-2.814C17.503 2.988 15.139 2 12.545 2 7.021 2 2.543 6.477 2.543 12s4.478 10 10.002 10c8.396 0 10.249-7.85 9.426-11.748l-9.426-.013z\'/%3E%3C/svg%3E'">
                         </div>
                         <h3>Google Reklamları</h3>
                         <p>Arama, görüntülü, alışveriş ve remarketing kampanyalarıyla müşterilerinizi bulun. Sizin için reklamlarınızı kuruyor ve yönetiyorum.</p>
-                        <a href="/hizmetlerim/google-reklam-yonetimi" class="service-link">
+                        <a href="/hizmetlerim/google-reklam-yonetimi" class="service-link" aria-label="Google Reklamları detay">
                             Detaylı Bilgi <i class="bi bi-arrow-right" aria-hidden="true"></i>
                         </a>
                     </div>
 
-                    <div class="service-card" onclick="window.location.href='/hizmetlerim/instagram-reklam-yonetimi'">
+                    <div class="service-card" onclick="window.location.href='/hizmetlerim/instagram-reklam-yonetimi'" role="link" tabindex="0" aria-label="Instagram Reklamları hizmet detayı">
                         <div class="service-icon">
-                            <img src="https://www.umutyanardag.com/resimler/instagram-icon.webp" alt="Google Reklam Uzmanı Instagram Reklam Yönetimi Hizmeti">
+                            <img src="https://www.umutyanardag.com/resimler/instagram-icon.webp" alt="Google Reklam Uzmanı Instagram Reklam Yönetimi Hizmeti" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%23E4405F\'%3E%3Cpath d=\'M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1112.324 0 6.162 6.162 0 01-12.324 0zM12 16a4 4 0 110-8 4 4 0 010 8zm4.965-10.405a1.44 1.44 0 112.881.001 1.44 1.44 0 01-2.881-.001z\'/%3E%3C/svg%3E'">
                         </div>
                         <h3>Instagram Reklamları</h3>
                         <p>Görsel odaklı, hikaye ve keşfet reklamlarıyla markanızı büyütün. Instagram'da profilinizi geliştirmeniz ve doğru kitleye ulaşmanız için yanınızdayım.</p>
-                        <a href="/hizmetlerim/instagram-reklam-yonetimi" class="service-link">
+                        <a href="/hizmetlerim/instagram-reklam-yonetimi" class="service-link" aria-label="Instagram Reklamları detay">
                             Detaylı Bilgi <i class="bi bi-arrow-right" aria-hidden="true"></i>
                         </a>
                     </div>
 
-                    <div class="service-card" onclick="window.location.href='/hizmetlerim/facebook-reklam-yonetimi'">
+                    <div class="service-card" onclick="window.location.href='/hizmetlerim/facebook-reklam-yonetimi'" role="link" tabindex="0" aria-label="Facebook Reklamları hizmet detayı">
                         <div class="service-icon">
-                            <img src="https://www.umutyanardag.com/resimler/facebook-icon.webp" alt="Google Reklam Uzmanı Facebook Reklam Yönetimi Hizmeti">
+                            <img src="https://www.umutyanardag.com/resimler/facebook-icon.webp" alt="Google Reklam Uzmanı Facebook Reklam Yönetimi Hizmeti" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%231877F2\'%3E%3Cpath d=\'M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879v-6.99h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.99C18.343 21.128 22 16.991 22 12z\'/%3E%3C/svg%3E'">
                         </div>
                         <h3>Facebook Reklamları</h3>
                         <p>Hedef kitle odaklı, dönüşüm bazlı reklamlarla satışlarınızı artırın. Facebook'ta daha çok görünür olmak için benimle çalışabilirsiniz.</p>
-                        <a href="/hizmetlerim/facebook-reklam-yonetimi" class="service-link">
+                        <a href="/hizmetlerim/facebook-reklam-yonetimi" class="service-link" aria-label="Facebook Reklamları detay">
                             Detaylı Bilgi <i class="bi bi-arrow-right" aria-hidden="true"></i>
                         </a>
                     </div>
 
-                    <div class="service-card" onclick="window.location.href='/hizmetlerim/web-site-tasarimi'">
+                    <div class="service-card" onclick="window.location.href='/hizmetlerim/web-site-tasarimi'" role="link" tabindex="0" aria-label="Web Site Tasarımı hizmet detayı">
                         <div class="service-icon">
-                            <img src="https://www.umutyanardag.com/resimler/web-site-icon.webp" alt="Google Reklam Uzmanı SEO Uyumlu Web Site Tasarımı Hizmeti">
+                            <img src="https://www.umutyanardag.com/resimler/web-site-icon.webp" alt="Google Reklam Uzmanı SEO Uyumlu Web Site Tasarımı Hizmeti" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%23000000\'%3E%3Cpath d=\'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z\'/%3E%3C/svg%3E'">
                         </div>
                         <h3>Web Site Tasarımı</h3>
                         <p>Kurumsal web siteniz, mobil uyumlu tasarım ve SEO optimizasyonu. Sektörünüz için modern, kullanıcı dostu web sitenizi hazırlayabilirim.</p>
-                        <a href="/hizmetlerim/web-site-tasarimi" class="service-link">
+                        <a href="/hizmetlerim/web-site-tasarimi" class="service-link" aria-label="Web Site Tasarımı detay">
                             Detaylı Bilgi <i class="bi bi-arrow-right" aria-hidden="true"></i>
                         </a>
                     </div>
@@ -2262,81 +2252,81 @@
         </section>
 
         <!-- SERTİFİKA ALANI -->
-        <section class="cert-ultra-section" id="google-certifications">
+        <section class="cert-ultra-section" id="google-certifications" aria-labelledby="cert-heading">
             <div class="cert-ultra-header">
                 <span class="cert-ultra-badge">Google Onaylı Uzmanlık Belgeleri</span>
-                <h2>Google Başarı Sertifikalarım</h2>
+                <h2 id="cert-heading">Google Başarı Sertifikalarım</h2>
                 <p>Tüm sertifikalar Google Skillshop üzerinden resmi olarak doğrulanabilir.</p>
             </div>
 
             <div class="cert-ultra-grid">
                 <!-- 1 -->
-                <button class="cert-ultra-card" onclick="openCertImage('/resimler/google-ads-video-sertifikasi.webp', 'https://skillshop.credential.net/180065a0-2793-4684-8e37-da53bf08f129')">
+                <button class="cert-ultra-card" onclick="openCertImage('https://www.umutyanardag.com/resimler/google-ads-video-sertifikasi.webp', 'https://skillshop.credential.net/180065a0-2793-4684-8e37-da53bf08f129')" aria-label="Google Ads Video Sertifikasını görüntüle">
                     <div class="cert-badge-top">
-                        <i class="bi bi-patch-check-fill"></i>
+                        <i class="bi bi-patch-check-fill" aria-hidden="true"></i>
                         Google Tarafından Doğrulandı
                     </div>
-                    <img src="/resimler/google-ads-video-sertifikasi.webp" alt="Google Ads Video Sertifikası - Umut Yanardağ">
+                    <img src="https://www.umutyanardag.com/resimler/google-ads-video-sertifikasi.webp" alt="Google Ads Video Sertifikası - Umut Yanardağ" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'200\' viewBox=\'0 0 300 200\'%3E%3Crect width=\'300\' height=\'200\' fill=\'%234285F4\'/%3E%3Ctext x=\'20\' y=\'50\' fill=\'white\' font-size=\'18\' font-family=\'Arial\'%3EGoogle Ads Video%3C/text%3E%3Ctext x=\'20\' y=\'80\' fill=\'white\' font-size=\'14\'%3EUmut Yanardağ%3C/text%3E%3C/svg%3E'">
                     <div class="cert-ultra-overlay">
                         <span>Büyütmek İçin Tıkla</span>
                     </div>
                 </button>
 
                 <!-- 2 -->
-                <button class="cert-ultra-card" onclick="openCertImage('/resimler/google-analytics-sertifikasyonu.webp', 'https://skillshop.credential.net/8faf9361-2ac5-4f25-a82c-98be167c5755')">
+                <button class="cert-ultra-card" onclick="openCertImage('https://www.umutyanardag.com/resimler/google-analytics-sertifikasyonu.webp', 'https://skillshop.credential.net/8faf9361-2ac5-4f25-a82c-98be167c5755')" aria-label="Google Analytics 4 Sertifikasını görüntüle">
                     <div class="cert-badge-top">
-                        <i class="bi bi-patch-check-fill"></i>
+                        <i class="bi bi-patch-check-fill" aria-hidden="true"></i>
                         Google Tarafından Doğrulandı
                     </div>
-                    <img src="/resimler/google-analytics-sertifikasyonu.webp" alt="Google Analytics 4 Sertifikası - Umut Yanardağ">
+                    <img src="https://www.umutyanardag.com/resimler/google-analytics-sertifikasyonu.webp" alt="Google Analytics 4 Sertifikası - Umut Yanardağ" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'200\' viewBox=\'0 0 300 200\'%3E%3Crect width=\'300\' height=\'200\' fill=\'%23EA4335\'/%3E%3Ctext x=\'20\' y=\'50\' fill=\'white\' font-size=\'18\' font-family=\'Arial\'%3EGoogle Analytics 4%3C/text%3E%3Ctext x=\'20\' y=\'80\' fill=\'white\' font-size=\'14\'%3EUmut Yanardağ%3C/text%3E%3C/svg%3E'">
                     <div class="cert-ultra-overlay">
                         <span>Büyütmek İçin Tıkla</span>
                     </div>
                 </button>
 
                 <!-- 3 -->
-                <button class="cert-ultra-card" onclick="openCertImage('/resimler/donusum-optimizasyonu-sertifikasi.webp', 'https://skillshop.credential.net/b90121e4-3a19-4378-88dc-963b80c477b0')">
+                <button class="cert-ultra-card" onclick="openCertImage('https://www.umutyanardag.com/resimler/donusum-optimizasyonu-sertifikasi.webp', 'https://skillshop.credential.net/b90121e4-3a19-4378-88dc-963b80c477b0')" aria-label="Dönüşüm Optimizasyonu Sertifikasını görüntüle">
                     <div class="cert-badge-top">
-                        <i class="bi bi-patch-check-fill"></i>
+                        <i class="bi bi-patch-check-fill" aria-hidden="true"></i>
                         Google Tarafından Doğrulandı
                     </div>
-                    <img src="/resimler/donusum-optimizasyonu-sertifikasi.webp" alt="Dönüşüm Optimizasyonu Sertifikası - Umut Yanardağ">
+                    <img src="https://www.umutyanardag.com/resimler/donusum-optimizasyonu-sertifikasi.webp" alt="Dönüşüm Optimizasyonu Sertifikası - Umut Yanardağ" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'200\' viewBox=\'0 0 300 200\'%3E%3Crect width=\'300\' height=\'200\' fill=\'%2334A853\'/%3E%3Ctext x=\'20\' y=\'50\' fill=\'white\' font-size=\'18\' font-family=\'Arial\'%3EDönüşüm Optimizasyonu%3C/text%3E%3Ctext x=\'20\' y=\'80\' fill=\'white\' font-size=\'14\'%3EUmut Yanardağ%3C/text%3E%3C/svg%3E'">
                     <div class="cert-ultra-overlay">
                         <span>Büyütmek İçin Tıkla</span>
                     </div>
                 </button>
 
                 <!-- 4 -->
-                <button class="cert-ultra-card" onclick="openCertImage('/resimler/google-ads-goruntulu-reklam-agi-sertifikasi.webp', 'https://skillshop.credential.net/09a902dc-802c-44ba-a4d4-23544e4915fe')">
+                <button class="cert-ultra-card" onclick="openCertImage('https://www.umutyanardag.com/resimler/google-ads-goruntulu-reklam-agi-sertifikasi.webp', 'https://skillshop.credential.net/09a902dc-802c-44ba-a4d4-23544e4915fe')" aria-label="Google Ads Görüntülü Reklam Ağı Sertifikasını görüntüle">
                     <div class="cert-badge-top">
-                        <i class="bi bi-patch-check-fill"></i>
+                        <i class="bi bi-patch-check-fill" aria-hidden="true"></i>
                         Google Tarafından Doğrulandı
                     </div>
-                    <img src="/resimler/google-ads-goruntulu-reklam-agi-sertifikasi.webp" alt="Google Ads Görüntülü Reklam Ağı Sertifikası - Umut Yanardağ">
+                    <img src="https://www.umutyanardag.com/resimler/google-ads-goruntulu-reklam-agi-sertifikasi.webp" alt="Google Ads Görüntülü Reklam Ağı Sertifikası - Umut Yanardağ" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'200\' viewBox=\'0 0 300 200\'%3E%3Crect width=\'300\' height=\'200\' fill=\'%23FBBC05\'/%3E%3Ctext x=\'20\' y=\'50\' fill=\'white\' font-size=\'18\' font-family=\'Arial\'%3EGörüntülü Reklam Ağı%3C/text%3E%3Ctext x=\'20\' y=\'80\' fill=\'white\' font-size=\'14\'%3EUmut Yanardağ%3C/text%3E%3C/svg%3E'">
                     <div class="cert-ultra-overlay">
                         <span>Büyütmek İçin Tıkla</span>
                     </div>
                 </button>
 
                 <!-- 5 -->
-                <button class="cert-ultra-card" onclick="openCertImage('/resimler/google-ads-arama-agi-sertifikasi.webp', 'https://skillshop.credential.net/f410fcc6-44ca-4d31-9a0b-b89d6c68dd82')">
+                <button class="cert-ultra-card" onclick="openCertImage('https://www.umutyanardag.com/resimler/google-ads-arama-agi-sertifikasi.webp', 'https://skillshop.credential.net/f410fcc6-44ca-4d31-9a0b-b89d6c68dd82')" aria-label="Google Ads Arama Ağı Sertifikasını görüntüle">
                     <div class="cert-badge-top">
-                        <i class="bi bi-patch-check-fill"></i>
+                        <i class="bi bi-patch-check-fill" aria-hidden="true"></i>
                         Google Tarafından Doğrulandı
                     </div>
-                    <img src="/resimler/google-ads-arama-agi-sertifikasi.webp" alt="Google Ads Arama Ağı Sertifikası - Umut Yanardağ">
+                    <img src="https://www.umutyanardag.com/resimler/google-ads-arama-agi-sertifikasi.webp" alt="Google Ads Arama Ağı Sertifikası - Umut Yanardağ" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'200\' viewBox=\'0 0 300 200\'%3E%3Crect width=\'300\' height=\'200\' fill=\'%234285F4\'/%3E%3Ctext x=\'20\' y=\'50\' fill=\'white\' font-size=\'18\' font-family=\'Arial\'%3EArama Ağı Sertifikası%3C/text%3E%3Ctext x=\'20\' y=\'80\' fill=\'white\' font-size=\'14\'%3EUmut Yanardağ%3C/text%3E%3C/svg%3E'">
                     <div class="cert-ultra-overlay">
                         <span>Büyütmek İçin Tıkla</span>
                     </div>
                 </button>
 
                 <!-- 6 -->
-                <button class="cert-ultra-card" onclick="openCertImage('/resimler/cevrimdisi-satislari-arttirma-sertifikasi.webp', 'https://skillshop.credential.net/499d1171-c0eb-496d-b5a2-a8238b9140ed')">
+                <button class="cert-ultra-card" onclick="openCertImage('https://www.umutyanardag.com/resimler/cevrimdisi-satislari-arttirma-sertifikasi.webp', 'https://skillshop.credential.net/499d1171-c0eb-496d-b5a2-a8238b9140ed')" aria-label="Çevrimdışı Satışları Artırma Sertifikasını görüntüle">
                     <div class="cert-badge-top">
-                        <i class="bi bi-patch-check-fill"></i>
+                        <i class="bi bi-patch-check-fill" aria-hidden="true"></i>
                         Google Tarafından Doğrulandı
                     </div>
-                    <img src="/resimler/cevrimdisi-satislari-arttirma-sertifikasi.webp" alt="Çevrimdışı Satışları Artırma Sertifikası - Umut Yanardağ">
+                    <img src="https://www.umutyanardag.com/resimler/cevrimdisi-satislari-arttirma-sertifikasi.webp" alt="Çevrimdışı Satışları Artırma Sertifikası - Umut Yanardağ" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'200\' viewBox=\'0 0 300 200\'%3E%3Crect width=\'300\' height=\'200\' fill=\'%2310B981\'/%3E%3Ctext x=\'20\' y=\'50\' fill=\'white\' font-size=\'18\' font-family=\'Arial\'%3EÇevrimdışı Satışları Artırma%3C/text%3E%3Ctext x=\'20\' y=\'80\' fill=\'white\' font-size=\'14\'%3EUmut Yanardağ%3C/text%3E%3C/svg%3E'">
                     <div class="cert-ultra-overlay">
                         <span>Büyütmek İçin Tıkla</span>
                     </div>
@@ -2353,35 +2343,35 @@
                 </div>
 
                 <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-1">
                         Hangi sektörlerde hizmet veriyorsunuz?
                         <span class="faq-icon" aria-hidden="true">+</span>
                     </button>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faq-1">
                         <p>
-                            Başta <strong>Google Ads reklamları</strong> olmak üzere, <strong>Instagram & Facebook reklamları</strong>, <strong>Web site tasarımları</strong> ve <strong>Google Maps Kaydı (İşletme Konumu)</strong> hizmetleri vermekteyim.
+                            Başta <strong>Google Ads reklamları</strong> olmak üzere, <strong>Instagram ve Facebook reklamları</strong>, <strong>Web site tasarımları</strong> ve <strong>Google Maps Kaydı (İşletme Konumu)</strong> hizmetleri vermekteyim.
                         </p>
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-2">
                         Sektör deneyimleriniz neler? Referanslarınız var mı?
                         <span class="faq-icon" aria-hidden="true">+</span>
                     </button>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faq-2">
                         <p>
-                            Tabii ki, 8 yıldan uzun süredir dijital pazarlama alanında hizmet veriyorum. Bu süreçte sosyal medya hesapları, web siteleri, reklam platformları, grafik tasarım... Her alanda kendimi geliştirdim. Aynı zamanda <strong>Google Sertifikalı</strong> bir hizmet sağlayıcısıyım. 6 adet eğitim programına katıldım ve bunların sınavlarını başarılı bir şekilde geçerek sertifika kazandım. <strong>Armut uygulaması</strong> üzerinden de +100 iş teslimi yaptım. <a href="/hakkimda">Hakkımda</a> sayfamdan sertifikalarımı, <a href="/referanslar">Referanslarım</a> sayfamdan da iş ortaklarımı inceleyebilirsiniz.
+                            Tabii ki, 8 yıldan uzun süredir dijital pazarlama alanında hizmet veriyorum. Bu süreçte sosyal medya hesapları, web siteleri, reklam platformları, grafik tasarım... Her alanda kendimi geliştirdim. Aynı zamanda <strong>Google Sertifikalı</strong> bir hizmet sağlayıcısıyım. 6 adet eğitim programına katıldım ve bunların sınavlarını başarılı bir şekilde geçerek sertifika kazandım. <strong>Armut uygulaması</strong> üzerinden +100 iş teslimi yaptım. <a href="/hakkimda">Hakkımda</a> sayfamdan sertifikalarımı, <a href="/referanslar">Referanslarım</a> sayfamdan da iş ortaklarımı inceleyebilirsiniz.
                         </p>
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-3">
                         Bir şirket bünyesinde mi çalışıyorsunuz?
                         <span class="faq-icon" aria-hidden="true">+</span>
                     </button>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faq-3">
                         <p>
                             Evet, <strong>Web4Medya</strong> şirketi bünyesinde dijital pazarlama uzmanı olarak hizmet veriyorum. Aynı zamanda freelance olarak da hizmet verdiğim alanlar ve kendi müşteri portföyüm var. Yıllardır birlikte çalıştığım büyük ve küçük ölçekli firmalar var.
                         </p>
@@ -2389,11 +2379,11 @@
                 </div>
 
                 <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-4">
                         Ödeme yönteminiz neler?
                         <span class="faq-icon" aria-hidden="true">+</span>
                     </button>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faq-4">
                         <p>
                             Ödeme yöntemleri İbana Havale/EFT'nin haricinde <strong>kartla ödeme</strong> de yapabilirsiniz. Kartla ödemelerde 3 taksit seçeneğim vardır. İş öncesi ücretin yarısını, iş tesliminde diğer yarısını ödeyebilirsiniz. Her ne kadar kendimi ispat etmiş bir <strong>Google Reklam Uzmanı</strong> olsam da sizler için kolaylık olabilecek her adımı atmaya hazırım.
                         </p>
@@ -2401,11 +2391,11 @@
                 </div>
 
                 <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-5">
                         Hizmet teslim süreniz nedir?
                         <span class="faq-icon" aria-hidden="true">+</span>
                     </button>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faq-5">
                         <p>
                             Bu yapılan işe göre değişmekle birlikte genelde tüm hizmetleri <strong>aynı gün içinde teslim</strong> etmekteyim. Örneğin yerel, küçük ölçekli bir işletmeyseniz web sitenizi aynı gün içinde kurabilir, reklamlarınızı yine aynı gün içinde yayına alabilirim.
                         </p>
@@ -2422,10 +2412,10 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Hangi sektörlerlerde hizmet veriyorsunuz?",
+      "name": "Hangi sektörlerde hizmet veriyorsunuz?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Başta Google Ads reklamları olmak üzere, Instagram & Facebook reklamları, Web site tasarımları ve Google Maps Kaydı (İşletme Konumu) hizmetleri vermekteyim."
+        "text": "Başta Google Ads reklamları olmak üzere, Instagram ve Facebook reklamları, Web site tasarımları ve Google Maps Kaydı (İşletme Konumu) hizmetleri vermekteyim."
       }
     },
     {
@@ -2473,11 +2463,11 @@
                     size özel strateji oluşturalım. İşinizi internette büyütelim!
                 </p>
                 <div class="cta-buttons">
-                    <a href="tel:+905303158752" class="btn-white">
+                    <a href="tel:+905303158752" class="btn-white" aria-label="Telefon ile ara">
                         <i class="bi bi-telephone" aria-hidden="true"></i>
                         0530 315 87 52
                     </a>
-                    <a href="https://wa.me/905303158752?text=Merhaba%20Umut%20Bey,%20dijital%20pazarlama%20danışmanlığı%20hakkında%20bilgi%20almak%20istiyorum." class="btn-whatsapp" target="_blank">
+                    <a href="https://wa.me/905303158752?text=Merhaba%20Umut%20Bey,%20dijital%20pazarlama%20danışmanlığı%20hakkında%20bilgi%20almak%20istiyorum." class="btn-whatsapp" target="_blank" aria-label="WhatsApp ile iletişim">
                         <i class="bi bi-whatsapp" aria-hidden="true"></i>
                         WhatsApp'tan Yaz
                     </a>
@@ -2492,38 +2482,38 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <div class="footer-logo">
-                        <a href="#home">Umut Yanardağ</a>
+                        <a href="#home" aria-label="Ana sayfaya dön">Umut Yanardağ</a>
                     </div>
                     <p class="footer-about">
                         Google ve Meta sertifikalı dijital pazarlama uzmanı. 
                         8+ yıl deneyim, 5M+ yönetilen reklam bütçesi. Birbirinden farklı sektörlerde bilgi ve tecrübe birikimi. Dijitalde ilk doğru adım, doğru bir reklam uzmanıyla çalışmaktır.
                     </p>
                     <div class="footer-social">
-                        <a href="https://www.instagram.com/umut.ynrdg/" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-                        <a href="https://www.linkedin.com/in/umutyanardag/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-  <i class="bi bi-linkedin"></i>
+                        <a href="https://www.instagram.com/umut.ynrdg/" aria-label="Instagram profili"><i class="bi bi-instagram" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/in/umutyanardag/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profili">
+  <i class="bi bi-linkedin" aria-hidden="true"></i>
 </a>
-                        <a href="https://www.facebook.com/umut.yanardag74/" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-                        <a href="https://x.com/AdsU25912/" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                        <a href="https://www.facebook.com/umut.yanardag74/" aria-label="Facebook profili"><i class="bi bi-facebook" aria-hidden="true"></i></a>
+                        <a href="https://x.com/AdsU25912/" aria-label="Twitter profili"><i class="bi bi-twitter-x" aria-hidden="true"></i></a>
                     </div>
                 </div>
 
                 <div class="footer-col">
                     <h4>Hizmetlerim</h4>
                     <ul class="footer-links">
-                        <li><a href="/hizmetlerim/google-reklam-yonetimi"><i class="bi bi-chevron-right" aria-hidden="true"></i> Google Reklamları</a></li>
-                        <li><a href="/hizmetlerim/instagram-reklam-yonetimi"><i class="bi bi-chevron-right" aria-hidden="true"></i> Instagram Reklamları</a></li>
-                        <li><a href="/hizmetlerim/facebook-reklam-yonetimi"><i class="bi bi-chevron-right" aria-hidden="true"></i> Facebook Reklamları</a></li>
-                        <li><a href="/hizmetlerim/web-site-tasarimi"><i class="bi bi-chevron-right" aria-hidden="true"></i> Web Site Tasarımı</a></li>
+                        <li><a href="/hizmetlerim/google-reklam-yonetimi" aria-label="Google Reklamları"><i class="bi bi-chevron-right" aria-hidden="true"></i> Google Reklamları</a></li>
+                        <li><a href="/hizmetlerim/instagram-reklam-yonetimi" aria-label="Instagram Reklamları"><i class="bi bi-chevron-right" aria-hidden="true"></i> Instagram Reklamları</a></li>
+                        <li><a href="/hizmetlerim/facebook-reklam-yonetimi" aria-label="Facebook Reklamları"><i class="bi bi-chevron-right" aria-hidden="true"></i> Facebook Reklamları</a></li>
+                        <li><a href="/hizmetlerim/web-site-tasarimi" aria-label="Web Site Tasarımı"><i class="bi bi-chevron-right" aria-hidden="true"></i> Web Site Tasarımı</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
                     <h4>Kurumsal</h4>
                     <ul class="footer-links">
-                        <li><a href="/hakkimda"><i class="bi bi-chevron-right" aria-hidden="true"></i> Hakkımda</a></li>
-                        <li><a href="/referanslar"><i class="bi bi-chevron-right" aria-hidden="true"></i> Referanslarım</a></li>
-                        <li><a href="/blog-yazilarim"><i class="bi bi-chevron-right" aria-hidden="true"></i> Blog Yazılarım</a></li>
+                        <li><a href="/hakkimda" aria-label="Hakkımda"><i class="bi bi-chevron-right" aria-hidden="true"></i> Hakkımda</a></li>
+                        <li><a href="/referanslar" aria-label="Referanslarım"><i class="bi bi-chevron-right" aria-hidden="true"></i> Referanslarım</a></li>
+                        <li><a href="/blog-yazilarim" aria-label="Blog Yazılarım"><i class="bi bi-chevron-right" aria-hidden="true"></i> Blog Yazılarım</a></li>
                     </ul>
                 </div>
 
@@ -2531,14 +2521,14 @@
                     <h4>İletişim</h4>
                     <div class="footer-contact">
                         <p><i class="bi bi-geo-alt" aria-hidden="true"></i> İstanbul / Başakşehir</p>
-                        <p><i class="bi bi-telephone" aria-hidden="true"></i> <a href="tel:+905303158752">0530 315 87 52</a></p>
-                        <p><i class="bi bi-envelope" aria-hidden="true"></i> info@umutyanardag.com</p>
+                        <p><i class="bi bi-telephone" aria-hidden="true"></i> <a href="tel:+905303158752" aria-label="Telefon numarası">0530 315 87 52</a></p>
+                        <p><i class="bi bi-envelope" aria-hidden="true"></i> <a href="mailto:info@umutyanardag.com" aria-label="E-posta gönder">info@umutyanardag.com</a></p>
                     </div>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>©2018-2026 | Google Reklam Uzmanı Umut Yanardağ | Bu sitede <a href="https://policies.google.com/privacy" target="_blank">Google Gizlilik Politikası</a> ve <a href="https://policies.google.com/terms" target="_blank">Hizmet Şartları</a> geçerlidir.</p>
+                <p>©2018-2026 | Google Reklam Uzmanı Umut Yanardağ | Bu sitede <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Gizlilik Politikası</a> ve <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">Hizmet Şartları</a> geçerlidir.</p>
                 <div class="legal-links">
                     <a href="/sorumluluk-reddi">Sorumluluk Reddi</a>
                     <span class="separator" aria-hidden="true">|</span>
@@ -2551,9 +2541,9 @@
     </footer>
 
     <!-- Modern Premium Modal -->
-    <div class="hero-modal" id="heroModal">
+    <div class="hero-modal" id="heroModal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <div class="hero-modal-content">
-            <h2>Dijital Büyüme Stratejim</h2>
+            <h2 id="modal-title">Dijital Büyüme Stratejim</h2>
             <p>
                 Tanıtım ve müşteri odaklı kampanya kurulumu,
                 dönüşüm optimizasyonu ve veri analizi ile işletmenizi
@@ -2561,7 +2551,7 @@
             </p>
 
             <!-- Mini Dashboard - Canvas -->
-            <canvas id="growthChart" height="140" aria-label="Gelir artış grafiği"></canvas>
+            <canvas id="growthChart" width="400" height="140" style="max-width:100%; height:auto;" aria-label="Gelir artış grafiği" role="img"></canvas>
 
             <!-- Premium Ads Mockup -->
             <div class="ads-mockup">
@@ -2589,287 +2579,340 @@
     </div>
 
     <!-- PREMIUM CERTIFICATE MODAL (iframe) -->
-    <div class="cert-modal" id="certModal">
-        <div class="cert-overlay" onclick="closeCert()"></div>
+    <div class="cert-modal" id="certModal" role="dialog" aria-modal="true" aria-labelledby="cert-modal-title">
+        <div class="cert-overlay" onclick="closeCert()" aria-hidden="true"></div>
 
         <div class="cert-content">
             
             <div class="cert-header">
-                <div>
-                    <i class="bi bi-patch-check-fill"></i>
+                <div id="cert-modal-title">
+                    <i class="bi bi-patch-check-fill" aria-hidden="true"></i>
                     Google Tarafından Doğrulanmış Sertifika
                 </div>
-                <button class="cert-close" onclick="closeCert()">×</button>
+                <button class="cert-close" onclick="closeCert()" aria-label="Sertifika modalını kapat">×</button>
             </div>
 
-            <div class="cert-loader" id="certLoader"></div>
+            <div class="cert-loader" id="certLoader" aria-label="Yükleniyor..."></div>
 
-            <iframe id="certFrame" onload="hideLoader()"></iframe>
+            <iframe id="certFrame" title="Google Sertifika Doğrulama" onload="hideLoader()"></iframe>
 
         </div>
     </div>
 
     <script>
-        // Hamburger Menü
-        const menuToggle = document.getElementById('menuToggle');
-        const sidebarMenu = document.getElementById('sidebarMenu');
-        const sidebarClose = document.getElementById('sidebarClose');
-        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        (function() {
+            'use strict';
 
-        if (menuToggle) {
-            menuToggle.addEventListener('click', function() {
-                const expanded = this.getAttribute('aria-expanded') === 'true' ? false : true;
-                this.setAttribute('aria-expanded', expanded);
-                this.classList.toggle('active');
-                sidebarMenu.classList.toggle('active');
-                sidebarOverlay.classList.toggle('active');
-                document.body.style.overflow = expanded ? 'hidden' : '';
-            });
-        }
-
-        function closeMenu() {
-            if (menuToggle) {
-                menuToggle.classList.remove('active');
-                menuToggle.setAttribute('aria-expanded', 'false');
+            // Element kontrolleri ile güvenli kod
+            function safeGetElement(id) {
+                const el = document.getElementById(id);
+                if (!el) console.warn(`Element #${id} bulunamadı`);
+                return el;
             }
-            if (sidebarMenu) sidebarMenu.classList.remove('active');
-            if (sidebarOverlay) sidebarOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
 
-        if (sidebarClose) {
-            sidebarClose.addEventListener('click', closeMenu);
-        }
+            // Hamburger Menü
+            const menuToggle = safeGetElement('menuToggle');
+            const sidebarMenu = safeGetElement('sidebarMenu');
+            const sidebarClose = safeGetElement('sidebarClose');
+            const sidebarOverlay = safeGetElement('sidebarOverlay');
 
-        if (sidebarOverlay) {
-            sidebarOverlay.addEventListener('click', closeMenu);
-        }
+            if (menuToggle && sidebarMenu && sidebarOverlay) {
+                menuToggle.addEventListener('click', function() {
+                    const expanded = this.getAttribute('aria-expanded') === 'true' ? false : true;
+                    this.setAttribute('aria-expanded', expanded);
+                    this.classList.toggle('active');
+                    sidebarMenu.classList.toggle('active');
+                    sidebarOverlay.classList.toggle('active');
+                    document.body.style.overflow = expanded ? 'hidden' : '';
+                });
+            }
 
-        const sidebarLinks = document.querySelectorAll('.sidebar-links a');
-        sidebarLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                if (this.getAttribute('href') !== '#' && 
-                    !this.classList.contains('has-submenu')) {
+            function closeMenu() {
+                if (menuToggle) {
+                    menuToggle.classList.remove('active');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }
+                if (sidebarMenu) sidebarMenu.classList.remove('active');
+                if (sidebarOverlay) sidebarOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            if (sidebarClose) {
+                sidebarClose.addEventListener('click', closeMenu);
+            }
+
+            if (sidebarOverlay) {
+                sidebarOverlay.addEventListener('click', closeMenu);
+            }
+
+            // Sidebar linkleri
+            document.querySelectorAll('.sidebar-links a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (this.getAttribute('href') !== '#' && 
+                        !this.classList.contains('has-submenu')) {
+                        closeMenu();
+                    }
+                });
+            });
+
+            // Escape tuşu
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
                     closeMenu();
+                    closeCert();
+                    closeCertImageModal();
+                    
+                    const heroModal = safeGetElement('heroModal');
+                    if (heroModal) heroModal.classList.remove('active');
                 }
             });
-        });
 
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeMenu();
-                closeCert();
-                closeCertImageModal();
+            // Services submenu
+            const servicesMenu = safeGetElement('servicesMenu');
+            const servicesSubmenu = safeGetElement('servicesSubmenu');
+
+            if (servicesMenu && servicesSubmenu) {
+                servicesMenu.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const expanded = this.getAttribute('aria-expanded') === 'true' ? false : true;
+                    this.setAttribute('aria-expanded', expanded);
+                    this.classList.toggle('active');
+                    servicesSubmenu.classList.toggle('active');
+                });
             }
-        });
 
-        const servicesMenu = document.getElementById('servicesMenu');
-        const servicesSubmenu = document.getElementById('servicesSubmenu');
+            // Scroll progress
+            const scrollProgress = safeGetElement('scrollProgress');
+            const percentageValue = safeGetElement('percentageValue');
+            const scrollPercentage = safeGetElement('scrollPercentage');
 
-        if (servicesMenu && servicesSubmenu) {
-            servicesMenu.addEventListener('click', function(e) {
-                e.preventDefault();
-                const expanded = this.getAttribute('aria-expanded') === 'true' ? false : true;
-                this.setAttribute('aria-expanded', expanded);
-                this.classList.toggle('active');
-                servicesSubmenu.classList.toggle('active');
+            if (scrollProgress && percentageValue) {
+                window.addEventListener('scroll', function() {
+                    const scrollTop = window.scrollY;
+                    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+                    
+                    scrollProgress.style.transform = `scaleX(${scrollPercent / 100})`;
+                    percentageValue.textContent = `%${Math.round(scrollPercent)}`;
+                });
+            }
+
+            // Smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#' || !targetId) return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                        closeMenu();
+                    }
+                });
             });
-        }
 
-        const scrollProgress = document.getElementById('scrollProgress');
-        const percentageValue = document.getElementById('percentageValue');
+            // Hero modal
+            const heroModal = safeGetElement('heroModal');
+            if (heroModal) {
+                heroModal.addEventListener('click', (e) => {
+                    if (e.target === heroModal) {
+                        heroModal.classList.remove('active');
+                    }
+                });
+            }
 
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.scrollY;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollPercent = (scrollTop / docHeight) * 100;
-            
-            scrollProgress.style.transform = `scaleX(${scrollPercent / 100})`;
-            percentageValue.textContent = `%${Math.round(scrollPercent)}`;
-        });
+            // Chart.js - Sadece canvas varsa ve modal açıldığında
+            function initGrowthChart() {
+                const ctx = safeGetElement('growthChart');
+                if (!ctx || typeof Chart === 'undefined') return;
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
+                // Chart'ı temizle
+                if (window.growthChartInstance) {
+                    window.growthChartInstance.destroy();
+                }
+
+                try {
+                    window.growthChartInstance = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran'],
+                            datasets: [{
+                                label: 'Gelir Artışı (₺)',
+                                data: [8000, 12000, 15000, 22000, 31000, 42300],
+                                borderColor: '#3B82F6',
+                                backgroundColor: 'rgba(59,130,246,0.15)',
+                                tension: 0.4,
+                                fill: true
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: true,
+                            plugins: { 
+                                legend: { display: false },
+                                tooltip: { enabled: true }
+                            },
+                            scales: {
+                                x: { display: false },
+                                y: { display: false }
+                            },
+                            animation: {
+                                duration: 2000,
+                                easing: 'easeOutQuart'
+                            }
+                        }
+                    });
+                } catch (error) {
+                    console.error('Chart oluşturulamadı:', error);
+                }
+            }
+
+            // Modal açıldığında chart'ı başlat
+            if (heroModal) {
+                const observer = new MutationObserver((mutations) => {
+                    mutations.forEach((mutation) => {
+                        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                            if (heroModal.classList.contains('active')) {
+                                setTimeout(initGrowthChart, 100);
+                            }
+                        }
+                    });
+                });
+                observer.observe(heroModal, { attributes: true });
+            }
+
+            // Counter animasyonu
+            function animateCounter(el, target, suffix = '') {
+                if (!el) return;
+                let start = 0;
+                const duration = 2000;
+                const increment = target / (duration / 16);
                 
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({ behavior: 'smooth' });
-                    closeMenu();
-                }
-            });
-        });
-
-        const heroModal = document.getElementById('heroModal');
-        
-        heroModal.addEventListener('click', (e) => {
-            if (e.target === heroModal) {
-                heroModal.classList.remove('active');
-            }
-        });
-
-        function animateCounter(el, target, duration = 2000) {
-            let start = 0;
-            const increment = target / (duration / 16);
-            const timer = setInterval(() => {
-                start += increment;
-                if (start >= target) {
-                    if (target === 5) {
-                        el.textContent = '5M+';
+                const timer = setInterval(() => {
+                    start += increment;
+                    if (start >= target) {
+                        el.textContent = target + suffix;
+                        clearInterval(timer);
                     } else {
-                        el.textContent = target + '+';
+                        el.textContent = Math.floor(start) + (target === 5 ? 'M+' : (suffix || ''));
                     }
-                    clearInterval(timer);
-                } else {
-                    if (target === 5) {
-                        el.textContent = Math.floor(start) + 'M+';
+                }, 16);
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelectorAll('.stat-number').forEach(el => {
+                    const text = el.textContent;
+                    if (text.includes('5M+')) {
+                        el.textContent = '0M+';
+                        animateCounter(el, 5, 'M+');
                     } else {
-                        el.textContent = Math.floor(start);
+                        const value = parseInt(text.replace('+', '').replace('M', ''));
+                        if (!isNaN(value)) {
+                            const suffix = text.includes('+') ? '+' : '';
+                            el.textContent = '0' + suffix;
+                            animateCounter(el, value, suffix);
+                        }
                     }
-                }
-            }, 16);
-        }
+                });
+            });
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const statNumbers = document.querySelectorAll('.stat-number');
-            statNumbers.forEach(el => {
-                const text = el.textContent;
-                if (text.includes('5M+')) {
-                    el.textContent = '0M+';
-                    animateCounter(el, 5, 2000);
+            // FAQ
+            document.querySelectorAll('.faq-question').forEach(question => {
+                question.addEventListener('click', function() {
+                    const expanded = this.getAttribute('aria-expanded') === 'true' ? false : true;
+                    this.setAttribute('aria-expanded', expanded);
+                    this.closest('.faq-item').classList.toggle('active');
+                });
+            });
+
+            // Sertifika fonksiyonları
+            let currentVerifyUrl = '';
+            let verifyButtonVisible = false;
+
+            window.openCertImage = function(imagePath, verifyUrl) {
+                try {
+                    const modal = safeGetElement('certImageModal');
+                    const fullImage = safeGetElement('certFullImage');
+                    const verifyButton = safeGetElement('verifyButton');
+                    
+                    if (!modal || !fullImage || !verifyButton) return;
+                    
+                    fullImage.src = imagePath;
+                    verifyButton.href = verifyUrl;
+                    currentVerifyUrl = verifyUrl;
+                    
+                    verifyButton.classList.remove('active');
+                    verifyButtonVisible = false;
+                    
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                } catch (error) {
+                    console.error('Sertifika açılırken hata:', error);
+                    alert('Sertifika yüklenirken bir sorun oluştu.');
+                }
+            };
+
+            window.toggleVerifyButton = function() {
+                const verifyButton = safeGetElement('verifyButton');
+                if (!verifyButton) return;
+                
+                if (verifyButtonVisible && currentVerifyUrl) {
+                    window.open(currentVerifyUrl, '_blank');
                 } else {
-                    const value = parseInt(text.replace('+', ''));
-                    if (!isNaN(value)) {
-                        el.textContent = '0';
-                        animateCounter(el, value, 2000);
-                    }
+                    verifyButton.classList.add('active');
+                    verifyButtonVisible = true;
                 }
-            });
-        });
+            };
 
-        const faqItems = document.querySelectorAll('.faq-item');
-
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            question.addEventListener('click', () => {
-                const expanded = question.getAttribute('aria-expanded') === 'true' ? false : true;
-                question.setAttribute('aria-expanded', expanded);
-                item.classList.toggle('active');
-            });
-        });
-
-        const ctx = document.getElementById('growthChart');
-
-        if(ctx){
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran'],
-                    datasets: [{
-                        label: 'Gelir Artışı',
-                        data: [8000,12000,15000,22000,31000,42300],
-                        borderColor: '#3B82F6',
-                        backgroundColor: 'rgba(59,130,246,0.15)',
-                        tension: 0.4,
-                        fill: true
-                    }]
-                },
-                options: {
-                    plugins: { legend: { display:false }},
-                    scales: {
-                        x: { display:false },
-                        y: { display:false }
-                    },
-                    animation: {
-                        duration: 2000,
-                        easing: 'easeOutQuart'
-                    }
+            window.handleVerifyClick = function(event) {
+                if (verifyButtonVisible && currentVerifyUrl) {
+                    event.preventDefault();
+                    window.open(currentVerifyUrl, '_blank');
+                    return false;
                 }
-            });
-        }
+                return true;
+            };
 
-        function openCert(id){
-            const modal = document.getElementById("certModal");
-            const frame = document.getElementById("certFrame");
-            const loader = document.getElementById("certLoader");
+            window.closeCertImageModal = function() {
+                const modal = safeGetElement('certImageModal');
+                const verifyButton = safeGetElement('verifyButton');
+                
+                if (modal) modal.classList.remove('active');
+                if (verifyButton) verifyButton.classList.remove('active');
+                verifyButtonVisible = false;
+                document.body.style.overflow = '';
+            };
 
-            loader.style.display = "flex";
-            frame.src = "https://skillshop.credential.net/" + id;
+            // Cert modal fonksiyonları
+            window.openCert = function(id) {
+                const modal = safeGetElement('certModal');
+                const frame = safeGetElement('certFrame');
+                const loader = safeGetElement('certLoader');
+                
+                if (!modal || !frame || !loader) return;
+                
+                loader.style.display = 'flex';
+                frame.src = 'https://skillshop.credential.net/' + id;
+                
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            };
 
-            modal.classList.add("active");
-            document.body.style.overflow = "hidden";
-        }
+            window.hideLoader = function() {
+                const loader = safeGetElement('certLoader');
+                if (loader) loader.style.display = 'none';
+            };
 
-        function hideLoader(){
-            document.getElementById("certLoader").style.display = "none";
-        }
-
-        function closeCert(){
-            const modal = document.getElementById("certModal");
-            const frame = document.getElementById("certFrame");
-
-            modal.classList.remove("active");
-            frame.src = "";
-            document.body.style.overflow = "";
-        }
-
-        // SERTİFİKA GÖRÜNTÜLEME FONKSİYONLARI - SON DÜZELTME
-        let currentVerifyUrl = '';
-        let verifyButtonVisible = false;
-
-        function openCertImage(imagePath, verifyUrl) {
-            const modal = document.getElementById('certImageModal');
-            const fullImage = document.getElementById('certFullImage');
-            const verifyButton = document.getElementById('verifyButton');
-            
-            fullImage.src = imagePath;
-            verifyButton.href = verifyUrl;
-            currentVerifyUrl = verifyUrl;
-            
-            verifyButton.classList.remove('active');
-            verifyButtonVisible = false;
-            
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function toggleVerifyButton() {
-            const verifyButton = document.getElementById('verifyButton');
-            
-            if (verifyButtonVisible) {
-                // Buton zaten görünür, tıklandığında doğrulama sayfasına git
-                window.open(currentVerifyUrl, '_blank');
-                // İsteğe bağlı: butonu gizle
-                // verifyButton.classList.remove('active');
-                // verifyButtonVisible = false;
-            } else {
-                // Butonu göster
-                verifyButton.classList.add('active');
-                verifyButtonVisible = true;
-            }
-        }
-
-        // Doğrulama butonuna tıklandığında doğrudan yönlendirme yap
-        function handleVerifyClick(event) {
-            if (verifyButtonVisible && currentVerifyUrl) {
-                event.preventDefault(); // Varsayılan # davranışını engelle
-                window.open(currentVerifyUrl, '_blank');
-                return false;
-            }
-            return true;
-        }
-
-        function closeCertImageModal() {
-            const modal = document.getElementById('certImageModal');
-            const verifyButton = document.getElementById('verifyButton');
-            
-            modal.classList.remove('active');
-            verifyButton.classList.remove('active');
-            verifyButtonVisible = false;
-            document.body.style.overflow = '';
-        }
+            window.closeCert = function() {
+                const modal = safeGetElement('certModal');
+                const frame = safeGetElement('certFrame');
+                
+                if (modal) modal.classList.remove('active');
+                if (frame) frame.src = '';
+                document.body.style.overflow = '';
+            };
+        })();
     </script>
 </body>
 </html>
