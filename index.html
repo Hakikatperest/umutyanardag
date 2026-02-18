@@ -265,11 +265,17 @@
             --text-gray: #6B7280;
             --white: #ffffff;
             --dark-yellow: #B8860B;
-            --star-color: #FFB800; /* Yıldız rengi */
+            --star-color: #FFB800;
 
             --icon-google: #34A853;
             --icon-instagram: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4);
             --icon-web: #000000;
+
+            /* Floating Button Renkleri */
+            --gradient-1: #0A2463;
+            --gradient-3: #4ECDC4;
+            --accent: #FF6B6B;
+            --accent-light: #FFE66D;
         }
 
         .gradient-text {
@@ -296,30 +302,6 @@
             box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
         }
 
-       .whatsapp-float-button {
-    position: fixed;
-    bottom: 110px;  
-    right: 60px;   
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, #25D366, #128C7E);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 26px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
-    z-index: 9998;
-    transition: all 0.3s ease;
-    text-decoration: none;
-}
-
-        .whatsapp-float-button:hover {
-            transform: translateY(-6px) scale(1.1);
-            box-shadow: 0 25px 45px rgba(0,0,0,0.35);
-        }
-        
         /* Sertifika ve Görsel Modal (Paylaşılan) */
         .image-modal {
             position: fixed;
@@ -710,7 +692,7 @@
             margin-top: 0;
         }
         .page-map.active .map-links {
-            max-height: 350px; /* Yeterli yükseklik */
+            max-height: 350px;
             margin-top: 20px;
         }
         .map-links {
@@ -893,7 +875,7 @@
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            justify-content: center; /* ORTALANDI */
+            justify-content: center;
             gap: 8px;
             box-shadow: 0 4px 6px -2px rgba(59, 130, 246, 0.3);
             white-space: nowrap;
@@ -901,7 +883,7 @@
         .btn-whatsapp-green {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, #25D366, #128C7E); /* WhatsApp yeşili gradient */
+    background: linear-gradient(135deg, #25D366, #128C7E);
     color: white;
     border: none;
     padding: 14px 32px;
@@ -913,7 +895,7 @@
     text-decoration: none;
     display: inline-flex;
     align-items: center;
-    justify-content: center; /* ORTALANDI */
+    justify-content: center;
     gap: 8px;
     box-shadow: 0 4px 6px -2px rgba(37, 211, 102, 0.3);
     white-space: nowrap;
@@ -968,7 +950,7 @@
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            justify-content: center; /* ORTALANDI */
+            justify-content: center;
             gap: 8px;
             backdrop-filter: blur(5px);
             white-space: nowrap;
@@ -1331,7 +1313,7 @@
             transition: transform 0.4s ease;
             border: 2px solid rgba(59,130,246,0.2);
             position: sticky;
-            top: 180px; /* Header + page-map yüksekliğine göre ayarlandı */
+            top: 180px;
         }
 
         .armut-image-card:hover {
@@ -1399,7 +1381,6 @@
             font-weight: 600;
             margin-bottom: 15px;
         }
-        /* YILDIZ EKLENDİ */
         .review-stars {
             color: var(--star-color);
             font-size: 1rem;
@@ -1430,7 +1411,6 @@
             font-family: serif;
         }
 
-        /* Yeni SEO İçerik Bölümü Stilleri */
         .seo-ultra-content,
         .google-ads-terimler {
             padding: 80px 40px;
@@ -1698,7 +1678,7 @@
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            justify-content: center; /* ORTALANDI */
+            justify-content: center;
             gap: 8px;
             box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.2);
             white-space: nowrap;
@@ -1740,7 +1720,7 @@
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            justify-content: center; /* ORTALANDI */
+            justify-content: center;
             gap: 8px;
             white-space: nowrap;
             position: relative;
@@ -1785,7 +1765,7 @@
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            justify-content: center; /* ORTALANDI */
+            justify-content: center;
             gap: 8px;
             white-space: nowrap;
             box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.2);
@@ -2220,6 +2200,91 @@
             to { transform: rotate(360deg); }
         }
 
+        /* FLOATING BUTTONS - WEB4MEDYA'DAN ALINDI (Pulse Azaltıldı) */
+        .floating-cta {
+            position: fixed;
+            bottom: 120px;
+            right: 20px;
+            z-index: 9998;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .floating-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 1.9rem;
+            position: relative;
+            overflow: hidden;
+            color: white;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+        }
+
+        .floating-whatsapp {
+            background: #25D366; /* Düz yeşil, daha sade */
+            color: white;
+            /* Hafif ve zarif bir nabız animasyonu */
+            animation: softPulse 2.2s infinite ease-in-out;
+        }
+
+        .floating-phone {
+            background: linear-gradient(135deg, #2563EB, #1E40AF); /* Daha sade gradient */
+            color: white;
+        }
+
+        /* YENİ: Daha yumuşak pulse animasyonu */
+        @keyframes softPulse {
+            0% {
+                box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+            }
+            50% {
+                box-shadow: 0 8px 28px rgba(37, 211, 102, 0.6);
+            }
+            100% {
+                box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+            }
+        }
+
+        /* Floating butonlar için responsive düzenlemeler */
+        @media (max-width: 768px) {
+            .floating-cta {
+                bottom: 100px;
+                right: 15px;
+            }
+            .floating-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .floating-cta {
+                bottom: 80px;
+                right: 10px;
+                gap: 12px;
+            }
+            .floating-btn {
+                width: 55px;
+                height: 55px;
+                font-size: 1.5rem;
+            }
+        }
+
         @media screen and (max-width: 1200px) {
             .hero-title {
                 font-size: 3rem;
@@ -2294,21 +2359,6 @@
                 width: 280px;
             }
 
-            .whatsapp-float-button {
-                bottom: 90px;
-                right: 20px;
-                width: 55px;
-                height: 55px;
-                font-size: 22px;
-            }
-
-            .scroll-hourglass-pro {
-                width: 45px;
-                height: 90px;
-                right: 15px;
-                bottom: 90px;
-            }
-
             .cert-content {
                 height: 75vh;
             }
@@ -2332,7 +2382,6 @@
                 right: 10px;
             }
 
-            /* Mobil için içerik haritası düzeni */
             .page-map {
                 padding: 20px;
                 margin: 20px 15px 30px 15px;
@@ -2387,14 +2436,6 @@
 <body>
     <!-- SCROLL PROGRESS BAR (SADECE ÇİZGİ) -->
     <div class="scroll-progress" id="scrollProgress"></div>
-
-    <!-- WHATSAPP BUTONU (SABİT) -->
-    <a href="https://wa.me/905303158752"
-       class="whatsapp-float-button"
-       target="_blank"
-       aria-label="WhatsApp ile iletişime geç">
-       <i class="fab fa-whatsapp"></i>
-    </a>
 
     <!-- GENEL GÖRSEL MODAL (Sertifika ve Pazar Payı Grafiği için) -->
     <div class="image-modal" id="imageModal">
@@ -3056,7 +3097,6 @@
                                 <span class="review-date">03 Kas 2025</span>
                             </div>
                             <div class="review-service">Google Ads Uzmanı Hizmeti Satın Aldı</div>
-                            <!-- 5 Yıldız eklendi -->
                             <div class="review-stars">
                                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                             </div>
@@ -3071,7 +3111,6 @@
                                 <span class="review-date">06 Eki 2025</span>
                             </div>
                             <div class="review-service">Google Reklam Yönetimi Hizmeti Satın Aldı</div>
-                            <!-- 5 Yıldız eklendi -->
                             <div class="review-stars">
                                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                             </div>
@@ -3086,7 +3125,6 @@
                                 <span class="review-date">31 Tem 2025</span>
                             </div>
                             <div class="review-service">Google Ads Uzmanı Hizmeti Satın Aldı</div>
-                            <!-- 5 Yıldız eklendi -->
                             <div class="review-stars">
                                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                             </div>
@@ -3101,7 +3139,6 @@
                                 <span class="review-date">26 Tem 2025</span>
                             </div>
                             <div class="review-service">Google Ads Danışmanlık Hizmeti Satın Aldı</div>
-                            <!-- 5 Yıldız eklendi -->
                             <div class="review-stars">
                                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                             </div>
@@ -3116,7 +3153,6 @@
                                 <span class="review-date">18 Nis 2025</span>
                             </div>
                             <div class="review-service">Google Ads Uzmanı Hizmeti Satın Aldı</div>
-                            <!-- 5 Yıldız eklendi -->
                             <div class="review-stars">
                                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                             </div>
@@ -3269,6 +3305,16 @@
             </div>
         </section>
     </main>
+
+    <!-- FLOATING CTA BUTONLARI - WEB4MEDYA'DAN ALINDI (Pulse Azaltıldı) -->
+    <div class="floating-cta">
+        <a href="https://wa.me/905303158752" class="floating-btn floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp üzerinden mesaj gönderin">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="tel:+905303158752" class="floating-btn floating-phone" aria-label="Telefon ile arayın">
+            <i class="fas fa-phone-alt"></i>
+        </a>
+    </div>
 
     <!-- SEMANTIC FOOTER -->
     <footer class="site-footer">
@@ -3679,5 +3725,7 @@
                     pageMap.classList.toggle('active');
                 }
             };
+        })();
+    </script>
 </body>
 </html>
