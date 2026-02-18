@@ -116,41 +116,52 @@
 }
 </script>
     <!-- SCHEMA 2: ProfessionalService -->
-    <script type="application/ld+json">
+   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "@id": "https://www.umutyanardag.com/#business",
+
   "name": "Umut Yanardağ - Google Reklam Uzmanı",
+  "description": "Google Ads danışmanlığı, Meta reklam yönetimi ve dönüşüm odaklı web tasarımı hizmeti sunan sertifikalı dijital pazarlama uzmanı.",
   "image": "https://www.umutyanardag.com/resimler/google-reklam-uzmani-ofisi.webp",
   "url": "https://www.umutyanardag.com/",
   "telephone": "+905303158752",
   "priceRange": "$$",
+
+  "parentOrganization": {
+    "@id": "https://www.umutyanardag.com/#organization"
+  },
+
+  "founder": {
+    "@id": "https://www.umutyanardag.com/#person"
+  },
+
   "openingHoursSpecification": [{
-  "@type": "OpeningHoursSpecification",
-  "dayOfWeek": [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday"
-  ],
-  "opens": "09:00",
-  "closes": "18:00"
-}],
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "opens": "09:00",
+    "closes": "18:00"
+  }],
+
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "İstanbul",
     "addressRegion": "Başakşehir",
     "addressCountry": "TR"
   },
+
   "areaServed": {
     "@type": "Country",
     "name": "Turkey"
   },
- "founder": {
-  "@id": "https://www.umutyanardag.com/#person"
-},
+
   "contactPoint": {
     "@type": "ContactPoint",
     "telephone": "+905303158752",
@@ -158,6 +169,7 @@
     "areaServed": "TR",
     "availableLanguage": "Turkish"
   },
+
   "makesOffer": [
     {
       "@type": "Service",
@@ -183,8 +195,12 @@
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": "https://www.umutyanardag.com/#website",
   "url": "https://www.umutyanardag.com/",
   "name": "Umut Yanardağ",
+  "publisher": {
+    "@id": "https://www.umutyanardag.com/#organization"
+  },
   "potentialAction": {
     "@type": "SearchAction",
     "target": "https://www.umutyanardag.com/?s={search_term_string}",
