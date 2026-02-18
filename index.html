@@ -100,6 +100,21 @@
   ]
 }
 </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+   "@id": "https://www.umutyanardag.com/#organization",
+  "name": "Umut Yanardağ",
+  "url": "https://www.umutyanardag.com",
+  "logo": "https://www.umutyanardag.com/resimler/google-reklam-uzmani-ofisi.webp",
+  "sameAs": [
+    "https://www.linkedin.com/in/umutyanardag/",
+    "https://www.instagram.com/umut.ynrdg/",
+    "https://www.facebook.com/umut.yanardag74/"
+  ]
+}
+</script>
     <!-- SCHEMA 2: ProfessionalService -->
     <script type="application/ld+json">
 {
@@ -111,7 +126,18 @@
   "url": "https://www.umutyanardag.com",
   "telephone": "+905303158752",
   "priceRange": "$$",
-  "openingHours": "Mo-Fr 09:00-18:00",
+  "openingHoursSpecification": [{
+  "@type": "OpeningHoursSpecification",
+  "dayOfWeek": [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday"
+  ],
+  "opens": "09:00",
+  "closes": "18:00"
+}],
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "İstanbul",
@@ -2985,7 +3011,7 @@
         </section>
 
         <!-- MÜŞTERİ YORUMLARI BÖLÜMÜ (FAQ üzerine eklendi) -->
-        <section class="armut-reviews" id="armut-yorumlar" aria-labelledby="armut-heading">
+        <section class="armut-reviews" id="musteri-yorumlar" aria-labelledby="armut-heading">
             <div class="container">
                 <div class="section-header">
                     <div class="section-badge">Müşteri Yorumları</div>
@@ -3062,7 +3088,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
         </section>
 
         <!-- FAQ Section -->
