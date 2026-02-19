@@ -957,15 +957,6 @@
                     if(e.target === imageModal) closeImageModal();
                 });
             }
-
-            // Resimlere tıklanınca büyütme (ref-image içindeki img)
-            document.querySelectorAll('.ref-image img').forEach(img => {
-                img.addEventListener('click', function(e){
-                    e.stopPropagation();
-                    openImageModal(this.src);
-                });
-            });
-
             // aktive edilmiş kartta butonun linki çalışır, stopPropagation ile kart toggle'ı engellenmiş.
         })();
     </script>
