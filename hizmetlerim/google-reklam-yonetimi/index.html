@@ -740,6 +740,7 @@
         }
         /* --- İÇERİK HARİTASI STİLLERİ SONU --- */
 
+        /* ===== HERO ANİMASYONLU İKONLAR ===== */
         .hero {
             padding: 60px 0 80px;
             background:
@@ -779,16 +780,17 @@
         }
 
         .hero-inner {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 40px;
-            text-align: center;
             position: relative;
             z-index: 2;
         }
 
         .hero-content {
-            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
         }
 
         .hero-badge {
@@ -822,9 +824,10 @@
             display: inline-block;
             overflow: hidden;
         }
-.hero-title br + span {
-    color: var(--dark-yellow);
-}
+        .hero-title br + span {
+            color: var(--dark-yellow);
+        }
+
         .hero-keyword {
             background: linear-gradient(90deg, #2563EB, #1E40AF);
             -webkit-background-clip: text;
@@ -866,7 +869,7 @@
         .hero-cta {
             display: flex;
             gap: 16px;
-            margin-bottom: 48px;
+            margin-bottom: 32px;
             flex-wrap: wrap;
             justify-content: center;
         }
@@ -892,43 +895,43 @@
             white-space: nowrap;
         }
         .btn-whatsapp-green {
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(135deg, #25D366, #128C7E);
-    color: white;
-    border: none;
-    padding: 14px 32px;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    box-shadow: 0 4px 6px -2px rgba(37, 211, 102, 0.3);
-    white-space: nowrap;
-}
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 6px -2px rgba(37, 211, 102, 0.3);
+            white-space: nowrap;
+        }
 
-.btn-whatsapp-green::after {
-    content: '';
-    position: absolute;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 60%);
-    top: -50%;
-    left: -50%;
-    transform: rotate(25deg);
-    animation: shine 4s infinite linear;
-}
+        .btn-whatsapp-green::after {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 60%);
+            top: -50%;
+            left: -50%;
+            transform: rotate(25deg);
+            animation: shine 4s infinite linear;
+        }
 
-.btn-whatsapp-green:hover {
-    background: linear-gradient(135deg, #128C7E, #0e6b5c);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 12px -4px rgba(37, 211, 102, 0.4);
-}
+        .btn-whatsapp-green:hover {
+            background: linear-gradient(135deg, #128C7E, #0e6b5c);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 12px -4px rgba(37, 211, 102, 0.4);
+        }
 
         .btn-primary::after {
             content: '';
@@ -981,6 +984,7 @@
             gap: 48px;
             align-items: center;
             justify-content: center;
+            margin-top: 20px;
         }
 
         .stat-item {
@@ -1004,6 +1008,11 @@
             letter-spacing: 0.5px;
             font-weight: 500;
             white-space: nowrap;
+        }
+
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
         .hero-seo-text {
@@ -1363,6 +1372,144 @@
             }
         }
 
+        /* ===== ANİMASYONLU İKONLAR BÖLÜMÜ (Müşteri Yorumları Üstünde) ===== */
+        .animated-icons-section {
+            padding: 60px 40px;
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+            text-align: center;
+            border-bottom: 1px solid rgba(59,130,246,0.1);
+        }
+
+        .animated-icons-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .animated-icons-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 40px;
+        }
+
+        .animated-icons-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .animated-icon-item {
+            width: 120px;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: iconFloat 3s infinite ease-in-out;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+        }
+
+        .animated-icon-item:nth-child(1) { animation-delay: 0s; }
+        .animated-icon-item:nth-child(2) { animation-delay: 0.2s; }
+        .animated-icon-item:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-15px) scale(1.1); }
+        }
+
+        /* Google Ads Logo */
+        .animated-google-logo img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            filter: drop-shadow(0 8px 15px rgba(0,0,0,0.15));
+            transition: transform 0.4s ease;
+        }
+
+        .animated-icon-item:hover .animated-google-logo img {
+            transform: scale(1.08);
+        }
+
+        /* Büyüteç */
+        .animated-magnifier {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .animated-magnifier-glass {
+            width: 85px;
+            height: 85px;
+            border: 6px solid #e0e0e0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 40px rgba(66,133,244,0.6), inset 0 0 20px rgba(255,255,255,0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 45px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .animated-magnifier-glass::before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 50%);
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            animation: shine 3s infinite;
+        }
+
+        .animated-magnifier-glass::after {
+            content: "🔍";
+            font-size: 50px;
+            opacity: 0.95;
+            filter: drop-shadow(0 5px 5px rgba(0,0,0,0.2));
+        }
+
+        /* Grafik */
+        .animated-chart {
+            width: 90px;
+            height: 90px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 10px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .animated-chart-bar {
+            width: 18px;
+            background: linear-gradient(to top, #4285F4, #2b7be5);
+            border-radius: 6px 6px 0 0;
+            animation: chartGrow 1.8s infinite alternate;
+            box-shadow: 0 -5px 10px rgba(66,133,244,0.5);
+        }
+
+        .animated-chart-bar:nth-child(1) { height: 45px; animation-delay: 0s; }
+        .animated-chart-bar:nth-child(2) { height: 65px; animation-delay: 0.3s; background: linear-gradient(to top, #DB4437, #e66b5f); }
+        .animated-chart-bar:nth-child(3) { height: 35px; animation-delay: 0.6s; background: linear-gradient(to top, #F4B400, #f7c53b); }
+        .animated-chart-bar:nth-child(4) { height: 55px; animation-delay: 0.9s; background: linear-gradient(to top, #0F9D58, #3bb77a); }
+        .animated-chart-bar:nth-child(5) { height: 75px; animation-delay: 1.2s; background: linear-gradient(to top, #4285F4, #7aa7f0); }
+
+        @keyframes chartGrow {
+            0% { transform: scaleY(0.8); opacity: 0.8; }
+            100% { transform: scaleY(1.2); opacity: 1; }
+        }
+
         .armut-reviews {
             padding: 80px 40px;
             background: #ffffff;
@@ -1375,9 +1522,9 @@
         }
 
         .armut-reviews-grid {
-    display: flex;
-    justify-content: center;
-}
+            display: flex;
+            justify-content: center;
+        }
 
         .armut-image-card {
             border-radius: 24px;
@@ -1402,12 +1549,12 @@
         }
 
         .reviews-list {
-             display: flex;
-    flex-direction: column;
-    gap: 30px;
-    max-width: 800px; 
-    width: 100%;
-    margin: 0 auto;     
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 800px; 
+            width: 100%;
+            margin: 0 auto;     
         }
 
         .review-item {
@@ -1552,7 +1699,7 @@
             border-bottom-color: var(--modern-blue);
         }
 
-        /* Fiyat Paketi Stili - Modern Renkli Çerçeve - ADS REKLAM VERMEK TASARIMI */
+        /* Fiyat Paketi Stili - YAN YANA VE RENKLİ ÇERÇEVELİ */
         .pricing-section {
             padding: 60px 40px 100px;
             background: linear-gradient(135deg, #f0f9ff 0%, #e6f0fa 100%);
@@ -1561,115 +1708,128 @@
         .pricing-container {
             display: flex;
             justify-content: center;
+            align-items: stretch;
             flex-wrap: wrap;
-            gap: 30px;
-            max-width: 1400px;
+            gap: 24px;
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
         }
 
         .package-card {
+            flex: 0 0 300px;
             background: var(--white);
-            border-radius: var(--radius, 16px);
-            box-shadow: var(--shadow, 0 10px 40px rgba(0, 0, 0, 0.08));
-            padding: 40px 30px;
-            width: 100%;
-            max-width: 380px;
-            transition: var(--transition, all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1));
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+            padding: 20px 18px;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            border: 1px solid var(--gray-light, #E3E8EE);
+            border: 3px solid transparent;
+            background-image: linear-gradient(white, white), 
+                              linear-gradient(135deg, #3B82F6, #10B981, #FBBF24, #EF4444);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
         }
 
         .package-card:hover {
-            transform: translateY(-15px);
-            box-shadow: var(--shadow-hover, 0 20px 60px rgba(0, 0, 0, 0.12));
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
         }
 
         .package-card.popular {
-            border: 2px solid var(--primary, #4285F4);
-            transform: scale(1.05);
+            border: 3px solid transparent;
+            background-image: linear-gradient(white, white), 
+                              linear-gradient(135deg, #4285F4, #8B5CF6, #EC4899);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            box-shadow: 0 15px 40px rgba(66,133,244,0.2);
         }
 
         .package-card.popular::before {
             content: 'POPÜLER';
             position: absolute;
-            top: 20px;
+            top: 15px;
             right: -30px;
             background: linear-gradient(135deg, #FF4757, #DC3545);
             color: white;
-            padding: 6px 40px;
-            font-size: 0.8rem;
+            padding: 4px 35px;
+            font-size: 0.7rem;
             font-weight: 700;
             transform: rotate(45deg);
+            letter-spacing: 0.5px;
+            z-index: 10;
         }
 
         .package-badge {
             display: inline-block;
-            padding: 8px 20px;
+            padding: 5px 14px;
             border-radius: 50px;
-            font-size: 0.9rem;
+            font-size: 0.75rem;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
+            letter-spacing: 0.3px;
+            color: white;
         }
 
         .badge-basic {
             background: linear-gradient(135deg, #4285F4, #3367D6);
-            color: white;
         }
 
         .badge-standard {
             background: linear-gradient(135deg, #34A853, #2E8B57);
-            color: white;
         }
 
         .badge-premium {
             background: linear-gradient(135deg, #FBBC05, #F9AB00);
-            color: var(--dark, #1A1F36);
+            color: #1A1F36;
         }
 
         .package-title {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--dark, #1A1F36);
+            margin-bottom: 6px;
+            color: #1A1F36;
         }
 
         .package-price {
-            font-size: 3rem;
+            font-size: 2rem;
             font-weight: 800;
-            margin: 20px 0;
-            color: var(--dark, #1A1F36);
+            margin: 8px 0 10px;
+            color: #1A1F36;
         }
 
         .package-price span {
-            font-size: 1rem;
-            color: var(--gray, #697386);
+            font-size: 0.85rem;
+            color: #697386;
             font-weight: 500;
         }
 
         .package-description {
-            color: var(--gray, #697386);
-            margin-bottom: 30px;
-            font-size: 0.95rem;
-            line-height: 1.6;
+            color: #697386;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+            line-height: 1.4;
         }
 
         .package-features {
             list-style: none;
-            margin-bottom: 35px;
+            margin-bottom: 15px;
         }
 
         .package-features li {
-            padding: 10px 0;
-            border-bottom: 1px solid var(--gray-light, #E3E8EE);
+            padding: 6px 0;
+            border-bottom: 1px solid #E3E8EE;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
+            font-size: 0.85rem;
         }
 
         .package-features li i {
-            color: var(--secondary, #34A853);
-            font-size: 1.1rem;
+            color: #34A853;
+            font-size: 0.9rem;
+            width: 18px;
         }
 
         .package-features li:last-child {
@@ -1679,13 +1839,14 @@
         .package-cta {
             display: block;
             width: 100%;
-            padding: 16px;
-            border-radius: var(--radius-sm, 12px);
+            padding: 12px;
+            border-radius: 8px;
             font-weight: 600;
             text-align: center;
             text-decoration: none;
-            transition: var(--transition, all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1));
-            margin-top: 10px;
+            transition: all 0.3s ease;
+            margin-top: 5px;
+            font-size: 0.9rem;
         }
 
         .package-cta.whatsapp {
@@ -1694,13 +1855,55 @@
         }
 
         .package-cta.phone {
-            background: linear-gradient(135deg, var(--primary, #4285F4), var(--primary-dark, #3367D6));
+            background: linear-gradient(135deg, #4285F4, #3367D6);
             color: white;
+            margin-top: 8px;
         }
 
         .package-cta:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Tablet görünümü - 2 kart yan yana */
+        @media screen and (max-width: 992px) {
+            .package-card {
+                flex: 0 0 calc(50% - 24px);
+                max-width: 350px;
+            }
+        }
+
+        /* Mobil görünüm - 1 kart alt alta */
+        @media screen and (max-width: 768px) {
+            .package-card {
+                flex: 0 0 100%;
+                max-width: 400px;
+            }
+            .animated-icons-row {
+                gap: 30px;
+            }
+            .animated-icon-item {
+                width: 100px;
+                height: 100px;
+            }
+            .animated-google-logo img {
+                width: 80px;
+                height: 80px;
+            }
+            .animated-magnifier-glass {
+                width: 70px;
+                height: 70px;
+            }
+            .animated-magnifier-glass::after {
+                font-size: 40px;
+            }
+            .animated-chart {
+                width: 80px;
+                height: 80px;
+            }
+            .animated-chart-bar {
+                width: 14px;
+            }
         }
 
         .faq {
@@ -2564,7 +2767,7 @@
                 padding: 40px 20px;
             }
             .package-price {
-                font-size: 3rem;
+                font-size: 2rem;
             }
         }
 
@@ -2605,8 +2808,8 @@
             }
         }
         .hero-name {
-    color: var(--dark-yellow);
-}
+            color: var(--dark-yellow);
+        }
     </style>
 </head>
 <body>
@@ -2694,7 +2897,7 @@
 
     <!-- SEMANTIC MAIN -->
     <main class="main-content" id="main">
-        <!-- Hero Section - Google Reklam Vermek İstiyorum Özel -->
+        <!-- Hero Section -->
         <section class="hero" id="home" aria-labelledby="hero-heading">
             <div class="hero-inner">
                 <div class="hero-content">
@@ -2704,22 +2907,22 @@
 
                     <h1 class="hero-title" id="hero-heading">
                        <span class="hero-keyword">Google Reklam Vermek İstiyorum</span>
-<br>
-<span class="hero-name">Doğru Stratejiyle Başlayalım</span>
+                       <br>
+                       <span class="hero-name">Reklam Yönetimi için Uzmanla Çalışın</span>
                     </h1>
 
                     <p class="hero-description">
-                        Ben <a href="https://www.umutyanardag.com/" style="color: var(--primary-blue); font-weight: 700; text-decoration: none;">Google Ads uzmanı</a>yım. Ama yaptığım iş sadece kampanya açmak değil. Ben işletmelerin reklam bütçesini alıp onu kâra dönüştürmekle ilgileniyorum. Google'da reklam vermek kolaydır. Kârlı reklam vermek ise uzmanlık ister.
+                        Ben Google Ads uzmanıyım. Ama yaptığım iş sadece kampanya açmak değil. Ben işletmelerin reklam bütçesini kâra dönüştürmekle ilgileniyorum. Google'da reklam vermek kolaydır. Kârlı reklam vermek ise uzmanlık ister.
                     </p>
                     <div class="hero-cta">
                       <a href="https://wa.me/905303158752?text=Merhaba%20Umut%20Bey,%20Google%20reklam%20vermek%20istiyorum%20konusunda%20bilgi%20almak%20istiyorum." class="btn-whatsapp-green" target="_blank">
-    <i class="fab fa-whatsapp" aria-hidden="true"></i>
-    Ücretsiz Reklam Analizi
-</a>
-                        <a href="#pricing" class="btn-secondary">
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                        Ücretsiz Reklam Analizi
+                      </a>
+                      <a href="#pricing" class="btn-secondary">
                             <i class="bi bi-arrow-right" aria-hidden="true"></i>
                             Paketi İncele
-                        </a>
+                      </a>
                     </div>
                     <div class="hero-stats">
                         <div class="stat-item">
@@ -2738,7 +2941,6 @@
                 </div>
             </div>
         </section>
-
         <!-- ========================================= -->
         <!-- MODERN İÇERİK HARİTASI (PAGE MAP) -->
         <!-- ========================================= -->
@@ -2748,79 +2950,141 @@
                 <i class="fas fa-chevron-down page-map-toggle-icon" id="pageMapToggleIcon"></i>
             </div>
             <div class="map-links" id="pageMapLinks">
-                <a href="#hizmet-detay"><i class="bi bi-chevron-right"></i> Google Reklam Stratejisi</a>
                 <a href="#pricing"><i class="bi bi-chevron-right"></i> Reklam Paketleri</a>
-                <a href="#musteri-yorumlar"><i class="bi bi-chevron-right"></i> Müşteri Yorumları</a>
-                <a href="#sertifikalar"><i class="bi bi-chevron-right"></i> Sertifikalar</a>
+                <a href="#musteri-yorumlar"><i class="bi bi-chevron-right"></i> Müşteri Yorumlarım</a>
+                <a href="#sertifikalar"><i class="bi bi-chevron-right"></i> Sertifikalarım</a>
                 <a href="#sss"><i class="bi bi-chevron-right"></i> Sık Sorulan Sorular</a>
                 <a href="#contact"><i class="bi bi-chevron-right"></i> İletişim</a>
             </div>
         </div>
 
-        <!-- PAKETLER BÖLÜMÜ - ADS REKLAM VERMEK TASARIMI İLE -->
+        <!-- PAKETLER BÖLÜMÜ - YAN YANA VE RENKLİ ÇERÇEVELİ -->
         <section class="pricing-section" id="pricing">
             <div class="section-header">
                 <div class="section-badge">Google Ads Paketleri</div>
                 <h2 class="section-title">Profesyonel Google Reklam Yönetimi Paketlerimiz</h2>
-                <p class="section-description">İşletmenizin bütçesine ve ihtiyaçlarına uygun, performans odaklı reklam yönetimi paketleri</p>
+                <p class="section-description">İşletmenizin bütçesine ve ihtiyaçlarına uygun, performans odaklı reklam yönetimi paketleri. Hangi paketi seçeceğinize karar veremezseniz satın alma öncesinde bana danışabilirsiniz.</p>
             </div>
             
             <div class="pricing-container">
                 <!-- BASIC PACKAGE - Başlangıç Paketi -->
                 <div class="package-card">
-                    <div class="package-badge badge-basic">BAŞLANGIÇ REKLAM PAKETİ</div>
+                    <div class="package-badge badge-basic">BAŞLANGIÇ</div>
                     <h3 class="package-title">Google Ads Yönetimi</h3>
                     <div class="package-price">5.000₺<span>/ay</span></div>
-                    <p class="package-description">Aylık reklam bütçesi <strong>10.000₺ - 30.000₺</strong> arasında olan işletmeler için ideal başlangıç paketi.</p>
+                    <p class="package-description">Aylık 10-30K ₺ bütçeli işletmeler için</p>
                     
                     <ul class="package-features">
-                        <li><i class="fas fa-check-circle"></i> Reklamlarınız aynı gün yayınlanır</li>
-                        <li><i class="fas fa-check-circle"></i> Reklam bütçeniz en doğru şekilde yönetilir</li>
-                        <li><i class="fas fa-check-circle"></i> Düzenli optimizasyon ve raporlama</li>
-                        <li><i class="fas fa-check-circle"></i> Haftalık performans analizi</li>
-                        <li><i class="fas fa-check-circle"></i> Negatif anahtar kelime çalışması</li>
+                        <li><i class="fas fa-check-circle"></i> Sektör ve Bütçe Analizi</li>
+                        <li><i class="fas fa-check-circle"></i> Kampanya Kurulumu</li>
+                        <li><i class="fas fa-check-circle"></i> Haftalık Optimizasyon</li>
+                        <li><i class="fas fa-check-circle"></i> Aynı Gün Reklam Yayını</li>
+                        <li><i class="fas fa-check-circle"></i> 7/12 Whatsapp Destek Hattı</li>
                     </ul>
                     
-                    <a href="https://wa.me/905303158752?text=Merhaba,%20Başlangıç%20paketiniz%20hakkında%20bilgi%20almak%20istiyorum." class="package-cta whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp'tan İletişim</a>
+                    <a href="https://wa.me/905303158752?text=Merhaba,%20Başlangıç%20paketiniz%20hakkında%20bilgi%20almak%20istiyorum." class="package-cta whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                     <a href="tel:05303158752" class="package-cta phone"><i class="fas fa-phone-alt"></i> Hemen Ara</a>
                 </div>
                 
                 <!-- STANDARD PACKAGE - Popüler Paket -->
                 <div class="package-card popular">
-                    <div class="package-badge badge-standard">STANDART REKLAM PAKETİ</div>
+                    <div class="package-badge badge-standard">STANDART</div>
                     <h3 class="package-title">Google Ads Yönetimi</h3>
                     <div class="package-price">10.000₺<span>/ay</span></div>
-                    <p class="package-description">Aylık reklam bütçesi <strong>30.000₺ - 100.000₺</strong> arasında olan işletmeler için kapsamlı paket.</p>
+                    <p class="package-description">Aylık 30-100K ₺ bütçeli işletmeler için</p>
                     
                     <ul class="package-features">
-                        <li><i class="fas fa-check-circle"></i> Başlangıç paketindeki tüm özellikler</li>
-                        <li><i class="fas fa-check-circle"></i> Gelişmiş rakip analizi</li>
-                        <li><i class="fas fa-check-circle"></i> Haftalık strateji toplantıları</li>
-                        <li><i class="fas fa-check-circle"></i> Çoklu kampanyalar ve reklam grupları</li>
-                        <li><i class="fas fa-check-circle"></i> Dönüşüm takip ve optimizasyonu</li>
+                        <li><i class="fas fa-check-circle"></i> Sektör ve Bütçe Analizi</li>
+                        <li><i class="fas fa-check-circle"></i> Çoklu Kampanya Kurulumu</li>
+                        <li><i class="fas fa-check-circle"></i> Günlük Optimizasyon</li>
+                        <li><i class="fas fa-check-circle"></i> Aynı Gün Reklam Yayını</li>
+                        <li><i class="fas fa-check-circle"></i> 7/24 Whatsapp Destek Hattı</li>
                     </ul>
                     
-                    <a href="https://wa.me/905303158752?text=Merhaba,%20Standart%20paketiniz%20hakkında%20bilgi%20almak%20istiyorum." class="package-cta whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp'tan İletişim</a>
+                    <a href="https://wa.me/905303158752?text=Merhaba,%20Standart%20paketiniz%20hakkında%20bilgi%20almak%20istiyorum." class="package-cta whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                     <a href="tel:05303158752" class="package-cta phone"><i class="fas fa-phone-alt"></i> Hemen Ara</a>
                 </div>
                 
                 <!-- PREMIUM PACKAGE - Premium Paket -->
                 <div class="package-card">
-                    <div class="package-badge badge-premium">PREMIUM REKLAM PAKETİ</div>
+                    <div class="package-badge badge-premium">PREMIUM</div>
                     <h3 class="package-title">Google Ads Yönetimi</h3>
                     <div class="package-price">15.000₺<span>/ay</span></div>
-                    <p class="package-description">Aylık reklam bütçesi <strong>100.000₺ ve üzeri</strong> olan kurumsal işletmeler için özel paket.</p>
+                    <p class="package-description">Aylık 100K+ ₺ bütçeli kurumsal işletmeler için</p>
                     
                     <ul class="package-features">
-                        <li><i class="fas fa-check-circle"></i> Standart paketindeki tüm özellikler</li>
-                        <li><i class="fas fa-check-circle"></i> Özel hesap yöneticisi</li>
-                        <li><i class="fas fa-check-circle"></i> Haftalık detaylı raporlama</li>
-                        <li><i class="fas fa-check-circle"></i> Çok kanallı reklam stratejisi</li>
-                        <li><i class="fas fa-check-circle"></i> Maksimum performans odaklı optimizasyon</li>
+                        <li><i class="fas fa-check-circle"></i> Sektör, Rakip ve Bütçe Analizi</li>
+                        <li><i class="fas fa-check-circle"></i> Çoklu ve Max Performans Kampanya</li>
+                        <li><i class="fas fa-check-circle"></i> Günlük Optimizasyon</li>
+                        <li><i class="fas fa-check-circle"></i> Detaylı Raporlandırma</li>
+                        <li><i class="fas fa-check-circle"></i> 7/24 Sesli ve Whatsapp Destek</li>
                     </ul>
                     
-                    <a href="https://wa.me/905303158752?text=Merhaba,%20Premium%20paketiniz%20hakkında%20bilgi%20almak%20istiyorum." class="package-cta whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp'tan İletişim</a>
+                    <a href="https://wa.me/905303158752?text=Merhaba,%20Premium%20paketiniz%20hakkında%20bilgi%20almak%20istiyorum." class="package-cta whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                     <a href="tel:05303158752" class="package-cta phone"><i class="fas fa-phone-alt"></i> Hemen Ara</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================ -->
+        <!-- YENİ BÖLÜM: "Kendim Google Reklam Vermek İstiyorum Diyenler İçin Adım Adım Rehber (2026)" -->
+        <!-- ================================================ -->
+        <section class="seo-ultra-content" id="rehber" style="background: #ffffff; border-bottom: none;">
+            <div class="container">
+                <!-- 3 Animasyonlu İkon (isteğe bağlı buraya eklenebilir, header'daki animasyonları kullanabiliriz) -->
+                <div class="animated-icons-row" style="margin-bottom: 40px; justify-content: center;">
+                    <div class="animated-icon-item">
+                        <div class="animated-google-logo">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Ads_logo.svg"
+                                 alt="Google Ads Logo" width="100" height="100" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="animated-icon-item">
+                        <div class="animated-magnifier">
+                            <div class="animated-magnifier-glass"></div>
+                        </div>
+                    </div>
+                    <div class="animated-icon-item">
+                        <div class="animated-chart">
+                            <div class="animated-chart-bar"></div>
+                            <div class="animated-chart-bar"></div>
+                            <div class="animated-chart-bar"></div>
+                            <div class="animated-chart-bar"></div>
+                            <div class="animated-chart-bar"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 style="font-size: 2.2rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 40px; text-align: center;">
+                    Kendim Google Reklam Vermek İstiyorum Diyenler İçin Adım Adım Rehber (2026)
+                </h2>
+
+                <!-- H3: 1. Google Ads Hesabı Nasıl Açılır? -->
+                <h3>1. Google Ads Hesabı Nasıl Açılır?</h3>
+                <p>Google reklam vermek istiyorum dediğinizde ilk adım bir Google Ads hesabı oluşturmaktır. Bunun için <strong>ads.google.com</strong> adresine giderek “Hemen Başlayın” butonuna tıklayın. Mevcut bir Gmail hesabınızla giriş yapabilir ya da yeni bir hesap oluşturabilirsiniz. Hesap açılışı tamamen ücretsizdir. İlk aşamada sizden fatura bilgileri ve ödeme yöntemi (kredi kartı veya banka havalesi) istenecektir. Ödeme bilgilerini girdikten sonra hesabınız aktif hale gelir, ancak kampanyalarınız yayına girmeden önce bütçe ve hedefleme ayarlarını yapmanız gerekir.</p>
+
+                <!-- H3: 2. İlk Kampanya Nasıl Kurulur? -->
+                <h3>2. İlk Kampanya Nasıl Kurulur?</h3>
+                <p>Hesabınızı açtıktan sonra “Yeni Kampanya” butonuna tıklayarak ilk reklamınızı oluşturabilirsiniz. Google Ads size kampanya hedefini soracaktır: Web sitesi trafiği, satış, potansiyel müşteri adayları, mağaza ziyaretleri vb. İşletmenizin önceliğine göre birini seçin. Ardından kampanya türü olarak “Arama Ağı” (metin reklamlar) genellikle en hızlı sonuç veren seçenektir. Daha sonra <strong>anahtar kelimeler</strong> belirleyin: potansiyel müşterilerinizin Google’da hangi kelimeleri aradığını düşünün. Reklam metninizi yazın (başlık, açıklama). Günlük bütçe ve teklif stratejisi belirleyip kampanyanızı kaydedin. Reklamlarınız inceleme sürecinden sonra yayına girecektir.</p>
+
+                <!-- H3: 3. Günlük Bütçe Nasıl Belirlenir? -->
+                <h3>3. Günlük Bütçe Nasıl Belirlenir?</h3>
+                <p>Google Ads’de bütçe belirlemek tamamen sizin elinizde. Minimum günlük bütçe 50 TL’dir. Ancak verimli sonuç almak için sektörünüzdeki ortalama tıklama maliyetlerini (CPC) bilmeniz gerekir. Örneğin avukatlık gibi rekabetçi sektörlerde tıklama başına maliyet 50-100 TL iken, daha niş alanlarda 5-10 TL olabilir. Günde kaç tıklama hedeflediğinize göre bir bütçe belirleyin. Unutmayın: Düşük bütçeyle yüksek hacimli anahtar kelimelerde görünmek zordur. Ben danışmanlık verirken size en uygun bütçeyi, hedef kitlenize ulaşabileceğiniz minimum seviyeyi hesaplayarak söylerim.</p>
+
+                <!-- H3: 4. Hangi Reklam Türü Seçilmelidir? -->
+                <h3>4. Hangi Reklam Türü Seçilmelidir?</h3>
+                <p>Google Ads’te pek çok reklam türü var: Arama Ağı (metin reklamlar), Görüntülü Reklam Ağı (banner), Alışveriş (ürün görselleri), Video (YouTube) ve Uygulama kampanyaları. İşletmeniz e-ticaret yapıyorsa Alışveriş reklamları altın değerindedir. Yerel bir hizmet sunuyorsanız Arama Ağı ve harita reklamları (Lokal Hizmet Reklamları) idealdir. Marka bilinirliği istiyorsanız YouTube ya da Görüntülü reklamları tercih edin. İlk kez reklam verecekler için Arama Ağı en güvenli başlangıçtır. Profesyonel destek almak isterseniz, hangi türün size en fazla dönüşümü getireceğini analiz edip ona göre bir strateji belirlerim.</p>
+
+                <!-- H3: 5. Profesyonel Destek Ne Zaman Gerekir? -->
+                <h3>5. Profesyonel Destek Ne Zaman Gerekir?</h3>
+                <p>Eğer reklam bütçeniz belirli bir seviyenin üzerindeyse (örneğin aylık 5.000 TL+), reklam hesabınızı kendi başınıza yönetmek zaman kaybına ve bütçe israfına yol açabilir. Google Ads dinamik bir platformdur; anahtar kelime optimizasyonu, negatif kelime ekleme, dönüşüm takibi kurulumu, A/B testleri, kalite puanı iyileştirme gibi sürekli yapılması gereken işlemler vardır. Ayrıca rakiplerinizi analiz etmek, yeni kampanya fırsatlarını yakalamak için uzman bakışı gerekir. <strong>Kısacası, eğer paranızın karşılığını fazlasıyla almak, zamandan tasarruf etmek ve kârlılığınızı maksimize etmek istiyorsanız profesyonel destek şarttır.</strong> Benim sunduğum reklam yönetimi paketleri tam da bu noktada devreye girer. İster başlangıç paketiyle başlayın, ister premium paketle; bütçenizi boşa harcamayın, her kuruşun dönüşüm getirdiği bir sistemi birlikte kuralım.</p>
+
+                <!-- Google Ads örnek reklam görseli -->
+                <div style="margin: 50px 0; text-align: center; cursor: pointer;" onclick="openImageModal('https://www.umutyanardag.com/resimler/google-ads-ornek-reklam.webp')">
+                    <img src="https://www.umutyanardag.com/resimler/google-ads-ornek-reklam.webp" 
+                         alt="Google Ads Örnek Reklam Görseli" 
+                         style="max-width: 100%; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); border: 1px solid rgba(37,99,235,0.2);">
+                    <p style="margin-top: 15px; color: var(--primary-blue); font-weight: 500;">⬆️ Görsele tıklayarak büyütebilirsiniz.</p>
                 </div>
             </div>
         </section>
@@ -2831,7 +3095,7 @@
                 <div class="section-header" style="margin-bottom: 40px;">
                     <div class="section-badge">Google Ads Stratejisi</div>
                     <h2 id="hizmet-detay-heading" class="section-title">Google Reklam Vermek İstiyorsanız, Doğru Stratejiyle Başlayalım</h2>
-                    <p class="section-description"><a href="https://www.umutyanardag.com/hakkimda" style="color: var(--primary-blue); font-weight: 600;">Hakkımda</a> daha fazla bilgi için <a href="https://www.umutyanardag.com/hakkimda" style="color: var(--primary-blue); font-weight: 600;">Hakkımda sayfamızı</a> ziyaret edebilirsiniz. Müşteri yorumlarımızı görmek için <a href="https://www.umutyanardag.com/referanslar" style="color: var(--primary-blue); font-weight: 600;">Referanslar</a> sayfamıza göz atabilirsiniz.</p>
+                    <p class="section-description">Hakkımda daha fazla bilgi için <a href="https://www.umutyanardag.com/hakkimda" style="color: var(--primary-blue); font-weight: 600;">Hakkımda sayfamı</a> ziyaret edebilirsiniz. Satın alım öncesi bana istediğiniz soruları sorabilirsiniz. Reklam planlamasını birlikte yapalım, birlikte başaralım.</p>
                 </div>
 
                 <h3>🤝 Benim İçin Önce İlişki Gelir</h3>
@@ -2890,18 +3154,50 @@
                 
                 <p style="margin-top: 30px; padding: 20px; background: var(--soft-blue); border-radius: 12px;">
                     <i class="fas fa-info-circle" style="color: var(--primary-blue); margin-right: 8px;"></i> 
-                    <strong>Daha fazla bilgi için:</strong> <a href="https://www.umutyanardag.com/hakkimda" style="color: var(--primary-blue); font-weight: 600;">Hakkımda sayfamı</a> ziyaret edebilir, <a href="https://www.umutyanardag.com/referanslar" style="color: var(--primary-blue); font-weight: 600;">Referanslarım</a> üzerinden daha önce çalıştığım işletmelerin yorumlarını inceleyebilirsiniz.
+                    <strong> Her sektör için ayrı bir reklam stratejisi oluşturmak en doğrusudur. Ezber hizmet değil, dönüşüm odaklı gerçek performans kampanyaları hedefliyorum.
                 </p>
             </div>
         </section>
 
-        <!-- MÜŞTERİ YORUMLARI BÖLÜMÜ (Özgünleştirildi) -->
+        <!-- ANİMASYONLU İKONLAR BÖLÜMÜ (Müşteri Yorumları Üstünde) -->
+        <section class="animated-icons-section" id="animated-icons">
+            <div class="animated-icons-container">
+                <h2 class="animated-icons-title">Google Ads Uzmanlığımızı Sizler için Geliştirdik</h2>
+                <div class="animated-icons-row">
+                    <div class="animated-icon-item">
+                        <div class="animated-google-logo">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Ads_logo.svg"
+                                 alt="Google Ads Logo"
+                                 width="100"
+                                 height="100"
+                                 loading="lazy">
+                        </div>
+                    </div>
+                    <div class="animated-icon-item">
+                        <div class="animated-magnifier">
+                            <div class="animated-magnifier-glass"></div>
+                        </div>
+                    </div>
+                    <div class="animated-icon-item">
+                        <div class="animated-chart">
+                            <div class="animated-chart-bar"></div>
+                            <div class="animated-chart-bar"></div>
+                            <div class="animated-chart-bar"></div>
+                            <div class="animated-chart-bar"></div>
+                            <div class="animated-chart-bar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MÜŞTERİ YORUMLARI BÖLÜMÜ -->
         <section class="armut-reviews" id="musteri-yorumlar" aria-labelledby="armut-heading">
             <div class="container">
                 <div class="section-header">
                     <div class="section-badge">Müşteri Yorumları</div>
                     <h2 class="section-title" id="armut-heading">Google Ads Hizmetim Hakkında Yorumlar</h2>
-                    <p class="section-description">Birlikte çalıştığım işletmelerin Google Ads yönetimim hakkındaki gerçek yorumları. Daha fazla yorum için <a href="https://www.umutyanardag.com/referanslar" style="color: var(--primary-blue); font-weight: 600;">Referanslar</a> sayfamızı ziyaret edebilirsiniz.</p>
+                    <p class="section-description">Birlikte çalıştığım işletmelerin Google Ads yönetimim hakkındaki gerçek yorumları. Tamamı gerçek olan yorumlar teyit edilebilir. Karar vermenizde sizlere yardımcı olabilir.</p>
                 </div>
                 <div class="reviews-list">
                     <div class="review-item"><div class="review-header"><span class="reviewer-name">Mehmet Ali Ş.</span><span class="review-date">15 Şub 2026</span></div><div class="review-service">Google Ads Yönetimi</div><div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><div class="review-text">Umut Bey ile 6 aydır çalışıyoruz. İlk ay reklam bütçemizin %30'unu boşa harcadığımızı fark etti ve düzeltti. Şimdi aynı bütçeyle 2 kat fazla müşteri alıyoruz. İşini gerçekten hakkıyla yapan bir uzman.</div></div>
@@ -3013,7 +3309,7 @@
             <div class="faq-container">
                 <div class="section-header">
                     <div class="section-badge">Sık Sorulan Sorular</div>
-                    <h2 class="section-title" id="faq-heading">Google Reklam Vermek İstiyorum: Merak Edilenler</h2>
+                    <h2 class="section-title" id="faq-heading">Google Reklam Vermek İstiyorum: 2026 Merak Edilenler</h2>
                 </div>
 
                 <div class="faq-item">
