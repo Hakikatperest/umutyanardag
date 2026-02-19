@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17846613936"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-17846613936');
+</script>
     <!-- SCHEMA 1: Person (düzeltilmiş worksFor) -->
   <script type="application/ld+json">
 {
@@ -1543,151 +1552,155 @@
             border-bottom-color: var(--modern-blue);
         }
 
-        /* Fiyat Paketi Stili - Modern Renkli Çerçeve */
+        /* Fiyat Paketi Stili - Modern Renkli Çerçeve - ADS REKLAM VERMEK TASARIMI */
         .pricing-section {
             padding: 60px 40px 100px;
             background: linear-gradient(135deg, #f0f9ff 0%, #e6f0fa 100%);
         }
 
         .pricing-container {
-            max-width: 500px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
-        .pricing-card {
-            background: white;
-            border-radius: 40px;
-            padding: 50px 40px;
-            box-shadow: 0 30px 60px -20px rgba(37,99,235,0.4);
-            border: 3px solid transparent;
-            background-image: linear-gradient(white, white), 
-                              linear-gradient(135deg, #3B82F6, #10B981, #FBBF24, #EF4444);
-            background-origin: border-box;
-            background-clip: padding-box, border-box;
-            transition: all 0.4s ease;
-            text-align: center;
+        .package-card {
+            background: var(--white);
+            border-radius: var(--radius, 16px);
+            box-shadow: var(--shadow, 0 10px 40px rgba(0, 0, 0, 0.08));
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 380px;
+            transition: var(--transition, all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1));
             position: relative;
             overflow: hidden;
+            border: 1px solid var(--gray-light, #E3E8EE);
         }
 
-        .pricing-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 40px 80px -20px #2563EB;
+        .package-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-hover, 0 20px 60px rgba(0, 0, 0, 0.12));
         }
 
-        .pricing-card::before {
-            content: '';
+        .package-card.popular {
+            border: 2px solid var(--primary, #4285F4);
+            transform: scale(1.05);
+        }
+
+        .package-card.popular::before {
+            content: 'POPÜLER';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 40%, rgba(59,130,246,0.1), transparent 60%);
-            animation: rotate 20s infinite linear;
-            z-index: 0;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .pricing-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #2563EB, #1E40AF);
+            top: 20px;
+            right: -30px;
+            background: linear-gradient(135deg, #FF4757, #DC3545);
             color: white;
-            padding: 8px 25px;
-            border-radius: 40px;
+            padding: 6px 40px;
+            font-size: 0.8rem;
             font-weight: 700;
+            transform: rotate(45deg);
+        }
+
+        .package-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 50px;
             font-size: 0.9rem;
-            letter-spacing: 1px;
-            margin-bottom: 25px;
-            position: relative;
-            z-index: 1;
-            box-shadow: 0 10px 20px -5px rgba(37,99,235,0.4);
-        }
-
-        .pricing-title {
-            font-size: 2.2rem;
-            font-weight: 800;
-            margin-bottom: 10px;
-            color: #1F2937;
-            position: relative;
-            z-index: 1;
-        }
-
-        .pricing-price {
-            font-size: 4rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #2563EB, #10B981);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            font-weight: 700;
             margin-bottom: 20px;
-            position: relative;
-            z-index: 1;
-            line-height: 1.2;
         }
 
-        .pricing-price span {
+        .badge-basic {
+            background: linear-gradient(135deg, #4285F4, #3367D6);
+            color: white;
+        }
+
+        .badge-standard {
+            background: linear-gradient(135deg, #34A853, #2E8B57);
+            color: white;
+        }
+
+        .badge-premium {
+            background: linear-gradient(135deg, #FBBC05, #F9AB00);
+            color: var(--dark, #1A1F36);
+        }
+
+        .package-title {
             font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--text-gray);
-            background: none;
-            -webkit-background-clip: unset;
-            background-clip: unset;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark, #1A1F36);
         }
 
-        .pricing-features {
+        .package-price {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 20px 0;
+            color: var(--dark, #1A1F36);
+        }
+
+        .package-price span {
+            font-size: 1rem;
+            color: var(--gray, #697386);
+            font-weight: 500;
+        }
+
+        .package-description {
+            color: var(--gray, #697386);
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .package-features {
             list-style: none;
-            margin: 30px 0;
-            position: relative;
-            z-index: 1;
-            text-align: left;
+            margin-bottom: 35px;
         }
 
-        .pricing-features li {
-            padding: 12px 0;
-            color: #374151;
-            font-size: 1.05rem;
+        .package-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--gray-light, #E3E8EE);
             display: flex;
             align-items: center;
             gap: 12px;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
-        .pricing-features li i {
-            color: #10B981;
-            font-size: 1.2rem;
-            width: 24px;
+        .package-features li i {
+            color: var(--secondary, #34A853);
+            font-size: 1.1rem;
         }
 
-        .pricing-btn {
+        .package-features li:last-child {
+            border-bottom: none;
+        }
+
+        .package-cta {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            border-radius: var(--radius-sm, 12px);
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            transition: var(--transition, all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1));
+            margin-top: 10px;
+        }
+
+        .package-cta.whatsapp {
             background: linear-gradient(135deg, #25D366, #128C7E);
             color: white;
-            border: none;
-            padding: 18px 40px;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            width: 100%;
-            box-shadow: 0 15px 30px -8px rgba(37,211,102,0.4);
-            position: relative;
-            z-index: 1;
-            border: 2px solid transparent;
         }
 
-        .pricing-btn:hover {
+        .package-cta.phone {
+            background: linear-gradient(135deg, var(--primary, #4285F4), var(--primary-dark, #3367D6));
+            color: white;
+        }
+
+        .package-cta:hover {
             transform: translateY(-3px);
-            box-shadow: 0 20px 40px -8px #128C7E;
-            background: linear-gradient(135deg, #128C7E, #0e6b5c);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
         .faq {
@@ -2550,7 +2563,7 @@
             .pricing-card {
                 padding: 40px 20px;
             }
-            .pricing-price {
+            .package-price {
                 font-size: 3rem;
             }
         }
@@ -2736,7 +2749,7 @@
             </div>
             <div class="map-links" id="pageMapLinks">
                 <a href="#hizmet-detay"><i class="bi bi-chevron-right"></i> Google Reklam Stratejisi</a>
-                <a href="#pricing"><i class="bi bi-chevron-right"></i> Aylık Yönetim Paketi</a>
+                <a href="#pricing"><i class="bi bi-chevron-right"></i> Reklam Paketleri</a>
                 <a href="#musteri-yorumlar"><i class="bi bi-chevron-right"></i> Müşteri Yorumları</a>
                 <a href="#sertifikalar"><i class="bi bi-chevron-right"></i> Sertifikalar</a>
                 <a href="#sss"><i class="bi bi-chevron-right"></i> Sık Sorulan Sorular</a>
@@ -2744,22 +2757,70 @@
             </div>
         </div>
 
-        <!-- FİYAT PAKETİ BÖLÜMÜ - Sayfa içeriğinin hemen altında -->
+        <!-- PAKETLER BÖLÜMÜ - ADS REKLAM VERMEK TASARIMI İLE -->
         <section class="pricing-section" id="pricing">
+            <div class="section-header">
+                <div class="section-badge">Google Ads Paketleri</div>
+                <h2 class="section-title">Profesyonel Google Reklam Yönetimi Paketlerimiz</h2>
+                <p class="section-description">İşletmenizin bütçesine ve ihtiyaçlarına uygun, performans odaklı reklam yönetimi paketleri</p>
+            </div>
+            
             <div class="pricing-container">
-                <div class="pricing-card">
-                    <div class="pricing-badge">🔥 En Çok Tercih Edilen</div>
-                    <h2 class="pricing-title">Aylık Google Reklam Yönetimi</h2>
-                    <div class="pricing-price">5.000₺ <span>/ay</span></div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check-circle"></i> Sektörünüze ve bütçenize özel reklam kurulur.</li>
-                        <li><i class="fas fa-check-circle"></i> Başarılı bir reklam için rekabet analizi yapılır ve bilgilendirilir.</li>
-                        <li><i class="fas fa-check-circle"></i> Reklamlarınızın performansı yakından takip edilir ve gerekli optimizasyon çalışmaları yapılır.</li>
-                        <li><i class="fas fa-check-circle"></i> Reklamlarınız aynı gün içinde yayına alınır.</li>
+                <!-- BASIC PACKAGE - Başlangıç Paketi -->
+                <div class="package-card">
+                    <div class="package-badge badge-basic">BAŞLANGIÇ REKLAM PAKETİ</div>
+                    <h3 class="package-title">Google Ads Yönetimi</h3>
+                    <div class="package-price">5.000₺<span>/ay</span></div>
+                    <p class="package-description">Aylık reklam bütçesi <strong>10.000₺ - 30.000₺</strong> arasında olan işletmeler için ideal başlangıç paketi.</p>
+                    
+                    <ul class="package-features">
+                        <li><i class="fas fa-check-circle"></i> Reklamlarınız aynı gün yayınlanır</li>
+                        <li><i class="fas fa-check-circle"></i> Reklam bütçeniz en doğru şekilde yönetilir</li>
+                        <li><i class="fas fa-check-circle"></i> Düzenli optimizasyon ve raporlama</li>
+                        <li><i class="fas fa-check-circle"></i> Haftalık performans analizi</li>
+                        <li><i class="fas fa-check-circle"></i> Negatif anahtar kelime çalışması</li>
                     </ul>
-                    <a href="https://wa.me/905303158752?text=Merhaba%20Umut%20Bey,%20Aylık%20Google%20Reklam%20Yönetimi%20paketini%20satın%20almak%20istiyorum." class="pricing-btn" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Hemen Satın Al
-                    </a>
+                    
+                    <a href="https://wa.me/905303158752?text=Merhaba,%20Başlangıç%20paketiniz%20hakkında%20bilgi%20almak%20istiyorum." class="package-cta whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp'tan İletişim</a>
+                    <a href="tel:05303158752" class="package-cta phone"><i class="fas fa-phone-alt"></i> Hemen Ara</a>
+                </div>
+                
+                <!-- STANDARD PACKAGE - Popüler Paket -->
+                <div class="package-card popular">
+                    <div class="package-badge badge-standard">STANDART REKLAM PAKETİ</div>
+                    <h3 class="package-title">Google Ads Yönetimi</h3>
+                    <div class="package-price">10.000₺<span>/ay</span></div>
+                    <p class="package-description">Aylık reklam bütçesi <strong>30.000₺ - 100.000₺</strong> arasında olan işletmeler için kapsamlı paket.</p>
+                    
+                    <ul class="package-features">
+                        <li><i class="fas fa-check-circle"></i> Başlangıç paketindeki tüm özellikler</li>
+                        <li><i class="fas fa-check-circle"></i> Gelişmiş rakip analizi</li>
+                        <li><i class="fas fa-check-circle"></i> Haftalık strateji toplantıları</li>
+                        <li><i class="fas fa-check-circle"></i> Çoklu kampanyalar ve reklam grupları</li>
+                        <li><i class="fas fa-check-circle"></i> Dönüşüm takip ve optimizasyonu</li>
+                    </ul>
+                    
+                    <a href="https://wa.me/905303158752?text=Merhaba,%20Standart%20paketiniz%20hakkında%20bilgi%20almak%20istiyorum." class="package-cta whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp'tan İletişim</a>
+                    <a href="tel:05303158752" class="package-cta phone"><i class="fas fa-phone-alt"></i> Hemen Ara</a>
+                </div>
+                
+                <!-- PREMIUM PACKAGE - Premium Paket -->
+                <div class="package-card">
+                    <div class="package-badge badge-premium">PREMIUM REKLAM PAKETİ</div>
+                    <h3 class="package-title">Google Ads Yönetimi</h3>
+                    <div class="package-price">15.000₺<span>/ay</span></div>
+                    <p class="package-description">Aylık reklam bütçesi <strong>100.000₺ ve üzeri</strong> olan kurumsal işletmeler için özel paket.</p>
+                    
+                    <ul class="package-features">
+                        <li><i class="fas fa-check-circle"></i> Standart paketindeki tüm özellikler</li>
+                        <li><i class="fas fa-check-circle"></i> Özel hesap yöneticisi</li>
+                        <li><i class="fas fa-check-circle"></i> Haftalık detaylı raporlama</li>
+                        <li><i class="fas fa-check-circle"></i> Çok kanallı reklam stratejisi</li>
+                        <li><i class="fas fa-check-circle"></i> Maksimum performans odaklı optimizasyon</li>
+                    </ul>
+                    
+                    <a href="https://wa.me/905303158752?text=Merhaba,%20Premium%20paketiniz%20hakkında%20bilgi%20almak%20istiyorum." class="package-cta whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp'tan İletişim</a>
+                    <a href="tel:05303158752" class="package-cta phone"><i class="fas fa-phone-alt"></i> Hemen Ara</a>
                 </div>
             </div>
         </section>
