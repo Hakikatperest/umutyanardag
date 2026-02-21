@@ -2,13 +2,31 @@
 <html lang="tr">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17846613936"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17831951098"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'AW-17846613936');
+  gtag('config', 'AW-17831951098');
+</script>
+    <!-- Event snippet for Tıkla ve ara conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-17831951098/7O1TCJexwfwbEPr197ZC',
+      'value': 1.0,
+      'currency': 'TRY',
+      'event_callback': callback
+  });
+  return false;
+}
 </script>
     <!-- SCHEMA 1: Person (güncellendi) -->
   <script type="application/ld+json">
