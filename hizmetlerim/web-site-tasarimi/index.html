@@ -247,8 +247,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Chart.js Kütüphanesi -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-    <!-- Lottie Player -->
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@1.7.1/dist/lottie-player.js"></script>
     <style>
         * {
             margin: 0;
@@ -742,86 +740,35 @@
         }
         /* --- İÇERİK HARİTASI STİLLERİ SONU --- */
 
-        /* ===== HERO ANİMASYONLU İKONLAR ===== */
+        /* ===== HERO ANİMASYONSUZ, ORTALANMIŞ VERSİYON ===== */
         .hero {
             padding: 60px 0 80px;
-            background:
-                radial-gradient(circle at 20% 20%, rgba(59,130,246,0.15), transparent 40%),
-                radial-gradient(circle at 80% 80%, rgba(16,185,129,0.15), transparent 40%),
-                #f8fafc;
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
             position: relative;
             overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-            z-index: 0;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at center, rgba(59,130,246,0.25), transparent 60%);
-            animation: lightMove 8s infinite linear;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        @keyframes lightMove {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            min-height: 500px;
+            display: flex;
+            align-items: center;
         }
 
         .hero-inner {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 0 40px;
+            padding: 0 20px;
             position: relative;
             z-index: 2;
             display: flex;
-            align-items: center;
-            gap: 3rem;
-        }
-
-        .hero-left {
-            flex: 1.1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            animation: fadeUp 1s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
-            opacity: 0;
-        }
-
-        lottie-player {
-            width: 100%;
-            max-width: 550px;
-            height: auto;
-            filter: drop-shadow(0 25px 30px -10px rgba(0,0,0,0.3));
-        }
-
-        .hero-right {
-            flex: 1;
-            display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            color: #1e2c37;
-            animation: fadeUp 1s 0.2s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
-            opacity: 0;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
         }
 
         .hero-content {
             max-width: 900px;
             margin: 0 auto;
-            text-align: left;
+            text-align: center;
         }
 
         .hero-badge {
@@ -846,15 +793,13 @@
         }
 
         .hero-title {
-            font-size: 3.2rem;
+            font-size: 3.5rem;
             font-weight: 800;
             line-height: 1.15;
             color: #111827;
             margin-bottom: 20px;
-            position: relative;
-            display: inline-block;
-            overflow: hidden;
         }
+        
         .hero-title br + span {
             color: var(--dark-yellow);
         }
@@ -866,34 +811,11 @@
             color: transparent;
         }
 
-        .hero-title {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-title::after {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 60%);
-            top: -50%;
-            left: -50%;
-            transform: rotate(25deg);
-            animation: shine 4s infinite linear;
-            pointer-events: none;
-        }
-
-        @keyframes shine {
-            from { transform: translateX(-100%) rotate(25deg); }
-            to { transform: translateX(100%) rotate(25deg); }
-        }
-
         .hero-description {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--text-gray);
-            max-width: 650px;
-            margin: 0 auto 32px 0;
+            max-width: 750px;
+            margin: 0 auto 32px;
             line-height: 1.6;
         }
 
@@ -902,7 +824,7 @@
             gap: 16px;
             margin-bottom: 32px;
             flex-wrap: wrap;
-            justify-content: flex-start;
+            justify-content: center;
         }
 
         .btn-primary {
@@ -946,34 +868,10 @@
             white-space: nowrap;
         }
 
-        .btn-whatsapp-green::after {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 60%);
-            top: -50%;
-            left: -50%;
-            transform: rotate(25deg);
-            animation: shine 4s infinite linear;
-        }
-
         .btn-whatsapp-green:hover {
             background: linear-gradient(135deg, #128C7E, #0e6b5c);
             transform: translateY(-2px);
             box-shadow: 0 8px 12px -4px rgba(37, 211, 102, 0.4);
-        }
-
-        .btn-primary::after {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 60%);
-            top: -50%;
-            left: -50%;
-            transform: rotate(25deg);
-            animation: shine 4s infinite linear;
         }
 
         .btn-primary:hover {
@@ -1014,7 +912,7 @@
             display: flex;
             gap: 48px;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: center;
             margin-top: 20px;
         }
 
@@ -1026,14 +924,14 @@
         }
 
         .stat-number {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 700;
             color: var(--dark-yellow);
             line-height: 1.2;
         }
 
         .stat-label {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--dark-yellow);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -1227,143 +1125,7 @@
             gap: 10px;
         }
 
-        /* ===== ANİMASYONLU İKONLAR BÖLÜMÜ ===== */
-        .animated-icons-section {
-            padding: 60px 40px;
-            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
-            text-align: center;
-            border-bottom: 1px solid rgba(59,130,246,0.1);
-        }
-
-        .animated-icons-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .animated-icons-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary-dark);
-            margin-bottom: 40px;
-        }
-
-        .animated-icons-row {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 60px;
-            flex-wrap: wrap;
-        }
-
-        .animated-icon-item {
-            width: 120px;
-            height: 120px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            animation: iconFloat 3s infinite ease-in-out;
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
-        }
-
-        .animated-icon-item:nth-child(1) { animation-delay: 0s; }
-        .animated-icon-item:nth-child(2) { animation-delay: 0.2s; }
-        .animated-icon-item:nth-child(3) { animation-delay: 0.4s; }
-
-        @keyframes iconFloat {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-15px) scale(1.1); }
-        }
-
-        /* Web Tasarım Logo */
-        .animated-web-logo img {
-            width: 100px;
-            height: 100px;
-            object-fit: contain;
-            filter: drop-shadow(0 8px 15px rgba(0,0,0,0.15));
-            transition: transform 0.4s ease;
-        }
-
-        .animated-icon-item:hover .animated-web-logo img {
-            transform: scale(1.08);
-        }
-
-        /* Büyüteç */
-        .animated-magnifier {
-            position: relative;
-            width: 100px;
-            height: 100px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .animated-magnifier-glass {
-            width: 85px;
-            height: 85px;
-            border: 6px solid #e0e0e0;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(5px);
-            box-shadow: 0 0 40px rgba(66,133,244,0.6), inset 0 0 20px rgba(255,255,255,0.3);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 45px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .animated-magnifier-glass::before {
-            content: "";
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 50%);
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            animation: shine 3s infinite;
-        }
-
-        .animated-magnifier-glass::after {
-            content: "🔍";
-            font-size: 50px;
-            opacity: 0.95;
-            filter: drop-shadow(0 5px 5px rgba(0,0,0,0.2));
-        }
-
-        /* Grafik */
-        .animated-chart {
-            width: 90px;
-            height: 90px;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            gap: 8px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 10px;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        .animated-chart-bar {
-            width: 18px;
-            background: linear-gradient(to top, #4285F4, #2b7be5);
-            border-radius: 6px 6px 0 0;
-            animation: chartGrow 1.8s infinite alternate;
-            box-shadow: 0 -5px 10px rgba(66,133,244,0.5);
-        }
-
-        .animated-chart-bar:nth-child(1) { height: 45px; animation-delay: 0s; }
-        .animated-chart-bar:nth-child(2) { height: 65px; animation-delay: 0.3s; background: linear-gradient(to top, #DB4437, #e66b5f); }
-        .animated-chart-bar:nth-child(3) { height: 35px; animation-delay: 0.6s; background: linear-gradient(to top, #F4B400, #f7c53b); }
-        .animated-chart-bar:nth-child(4) { height: 55px; animation-delay: 0.9s; background: linear-gradient(to top, #0F9D58, #3bb77a); }
-        .animated-chart-bar:nth-child(5) { height: 75px; animation-delay: 1.2s; background: linear-gradient(to top, #4285F4, #7aa7f0); }
-
-        @keyframes chartGrow {
-            0% { transform: scaleY(0.8); opacity: 0.8; }
-            100% { transform: scaleY(1.2); opacity: 1; }
-        }
+        /* ===== ANİMASYONLU İKONLAR BÖLÜMÜ KALDIRILDI ===== */
 
         .seo-ultra-content {
             padding: 80px 40px;
@@ -1450,11 +1212,11 @@
         }
 
         .package-card {
-            flex: 0 0 300px;
+            flex: 0 0 320px;
             background: var(--white);
             border-radius: 16px;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
-            padding: 20px 18px;
+            padding: 24px 22px;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -1519,21 +1281,21 @@
         }
 
         .package-title {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 700;
             margin-bottom: 6px;
             color: #1A1F36;
         }
 
         .package-price {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 800;
             margin: 8px 0 10px;
             color: #1A1F36;
         }
 
         .package-price span {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: #697386;
             font-weight: 500;
         }
@@ -1541,7 +1303,7 @@
         .package-description {
             color: #697386;
             margin-bottom: 15px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             line-height: 1.4;
         }
 
@@ -1551,12 +1313,12 @@
         }
 
         .package-features li {
-            padding: 6px 0;
+            padding: 8px 0;
             border-bottom: 1px solid #E3E8EE;
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
         }
 
         .package-features li i {
@@ -1579,7 +1341,7 @@
             text-decoration: none;
             transition: all 0.3s ease;
             margin-top: 5px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
         .package-cta.whatsapp {
@@ -1612,30 +1374,11 @@
                 flex: 0 0 100%;
                 max-width: 400px;
             }
-            .animated-icons-row {
-                gap: 30px;
+            .hero-title {
+                font-size: 2.5rem;
             }
-            .animated-icon-item {
-                width: 100px;
-                height: 100px;
-            }
-            .animated-web-logo img {
-                width: 80px;
-                height: 80px;
-            }
-            .animated-magnifier-glass {
-                width: 70px;
-                height: 70px;
-            }
-            .animated-magnifier-glass::after {
-                font-size: 40px;
-            }
-            .animated-chart {
-                width: 80px;
-                height: 80px;
-            }
-            .animated-chart-bar {
-                width: 14px;
+            .hero-description {
+                font-size: 1.1rem;
             }
         }
 
@@ -2348,16 +2091,14 @@
         .floating-whatsapp {
             background: linear-gradient(135deg, #25D366, #128C7E);
             color: white;
-            /* Hafif ve zarif bir nabız animasyonu */
             animation: softPulse 2.2s infinite ease-in-out;
         }
 
         .floating-phone {
-            background: linear-gradient(135deg, #2563EB, #1E40AF); /* Daha sade gradient */
+            background: linear-gradient(135deg, #2563EB, #1E40AF);
             color: white;
         }
 
-        /* YENİ: Daha yumuşak pulse animasyonu */
         @keyframes softPulse {
             0% {
                 box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
@@ -2370,7 +2111,6 @@
             }
         }
 
-        /* Floating butonlar için responsive düzenlemeler */
         @media (max-width: 768px) {
             .floating-cta {
                 bottom: 100px;
@@ -2397,27 +2137,6 @@
         }
 
         @media screen and (max-width: 1200px) {
-            .hero-inner {
-                flex-direction: column-reverse;
-                text-align: center;
-                padding: 2rem 1.8rem;
-            }
-            .hero-left { width: 85%; max-width: 480px; margin-top: 1rem; }
-            .hero-right { align-items: center; width: 100%; }
-            .hero-title {
-                font-size: 3rem;
-                text-align: center;
-            }
-            .hero-description {
-                margin-left: auto;
-                margin-right: auto;
-            }
-            .hero-cta {
-                justify-content: center;
-            }
-            .hero-stats {
-                justify-content: center;
-            }
             .services-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -2449,14 +2168,26 @@
                 justify-content: center;
             }
             .hero-title {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
             .hero-description {
-                font-size: 1.1rem;
+                font-size: 1rem;
+            }
+            .hero-cta {
+                flex-direction: column;
+                width: 100%;
+            }
+            .btn-whatsapp-green, .btn-secondary {
+                width: 100%;
+                justify-content: center;
             }
             .hero-stats {
-                flex-wrap: wrap;
-                gap: 24px;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            .stat-item {
+                align-items: center;
             }
             .services-grid {
                 grid-template-columns: 1fr;
@@ -2524,23 +2255,7 @@
 
         @media screen and (max-width: 480px) {
             .hero-title {
-                font-size: 2rem;
-            }
-            .hero-cta {
-                flex-direction: column;
-                width: 100%;
-            }
-            .btn-primary, .btn-secondary {
-                width: 100%;
-                justify-content: center;
-            }
-            .hero-stats {
-                flex-direction: column;
-                align-items: center;
-                gap: 20px;
-            }
-            .stat-item {
-                align-items: center;
+                font-size: 1.9rem;
             }
             .cta-title {
                 font-size: 2rem;
@@ -2620,6 +2335,10 @@
                 </a>
             </div>
 
+            <a href="/blog-yazilarim/">
+                <i class="fas fa-blog" aria-hidden="true"></i> Blog Yazılarım
+            </a>
+
             <a href="/hakkimda">
                 <i class="fas fa-user-circle" aria-hidden="true"></i> Hakkımda
             </a>
@@ -2644,23 +2363,10 @@
 
     <!-- SEMANTIC MAIN -->
     <main class="main-content" id="main">
-        <!-- Hero Section -->
+        <!-- Hero Section - Artık ortalanmış ve animasyonsuz -->
         <section class="hero" id="home" aria-labelledby="hero-heading">
             <div class="hero-inner">
-                <!-- SOL: Lottie animasyon -->
-                <div class="hero-left">
-                    <lottie-player
-                        src="https://lottie.host/1f3d4c2b-8b6e-4f6b-9c0a-7b4c6d8e9f0a/WebDesign.json"
-                        background="transparent"
-                        speed="1"
-                        style="width: 100%; height: auto;"
-                        loop
-                        autoplay>
-                    </lottie-player>
-                </div>
-
-                <!-- SAĞ: içerik -->
-                <div class="hero-right">
+                <div class="hero-content">
                     <div class="hero-badge">
                         <i class="bi bi-code-slash" aria-hidden="true"></i> Web Tasarım Uzmanı
                     </div>
@@ -2716,7 +2422,7 @@
             </div>
         </div>
 
-        <!-- PAKETLER BÖLÜMÜ - YAN YANA VE RENKLİ ÇERÇEVELİ -->
+        <!-- PAKETLER BÖLÜMÜ - GÜNCELLENMİŞ İÇERİK -->
         <section class="pricing-section" id="pricing">
             <div class="section-header">
                 <div class="section-badge">Web Tasarım Paketleri</div>
@@ -2725,60 +2431,59 @@
             </div>
             
             <div class="pricing-container">
-                <!-- BASIC PACKAGE - Kurumsal Paket -->
+                <!-- BASIC PACKAGE - Başlangıç Paketi -->
                 <div class="package-card">
-                    <div class="package-badge badge-basic">KURUMSAL</div>
-                    <h3 class="package-title">Kurumsal Web Sitesi</h3>
-                    <div class="package-price">12.500₺<span>/tek sefer</span></div>
-                    <p class="package-description">KOBİ ve kurumlar için profesyonel çözüm</p>
+                    <div class="package-badge badge-basic">BAŞLANGIÇ</div>
+                    <h3 class="package-title">Başlangıç Web Sitesi</h3>
+                    <div class="package-price">5.000₺<span>/tek sefer</span></div>
                     
                     <ul class="package-features">
-                        <li><i class="fas fa-check-circle"></i> Özel Tasarım, 5 Sayfa</li>
-                        <li><i class="fas fa-check-circle"></i> Mobil Uyumlu (Responsive)</li>
-                        <li><i class="fas fa-check-circle"></i> SEO Uyumlu Alt Yapı</li>
-                        <li><i class="fas fa-check-circle"></i> Hızlı Teslimat (7-10 Gün)</li>
-                        <li><i class="fas fa-check-circle"></i> 3 Ay Ücretsiz Destek</li>
+                        <li><i class="fas fa-check-circle"></i> Tek Sayfalık Modern Web Sitesi</li>
+                        <li><i class="fas fa-check-circle"></i> Mobil Uyumlu & Profesyonel Tasarım</li>
+                        <li><i class="fas fa-check-circle"></i> 1 Yıl Domain & Hosting Dahil</li>
+                        <li><i class="fas fa-check-circle"></i> Google Reklam Uyumlu</li>
+                        <li><i class="fas fa-check-circle"></i> Aynı Gün Teslim</li>
+                    </ul>
+                    
+                    <a href="https://wa.me/905303158752?text=Merhaba,%20Başlangıç%20web%20sitesi%20paketiniz%20hakkında%20bilgi%20almak%20istiyorum." class="package-cta whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    <a href="tel:05303158752" class="package-cta phone"><i class="fas fa-phone-alt"></i> Hemen Ara</a>
+                </div>
+                
+                <!-- STANDARD PACKAGE - Kurumsal Paket (Popüler) -->
+                <div class="package-card popular">
+                    <div class="package-badge badge-standard">KURUMSAL</div>
+                    <h3 class="package-title">Kurumsal Web Sitesi</h3>
+                    <div class="package-price">10.000₺<span>/tek sefer</span></div>
+                    
+                    <ul class="package-features">
+                        <li><i class="fas fa-check-circle"></i> 2-5 İç Sayfalık Modern Web Sitesi</li>
+                        <li><i class="fas fa-check-circle"></i> Mobil Uyumlu & Profesyonel Tasarım</li>
+                        <li><i class="fas fa-check-circle"></i> 1 Yıl Domain & Hosting Dahil</li>
+                        <li><i class="fas fa-check-circle"></i> Google Reklam Uyumlu</li>
+                        <li><i class="fas fa-check-circle"></i> Ücretsiz Teknik Destek</li>
+                        <li><i class="fas fa-check-circle"></i> Aynı Gün Teslim</li>
                     </ul>
                     
                     <a href="https://wa.me/905303158752?text=Merhaba,%20Kurumsal%20web%20sitesi%20paketiniz%20hakkında%20bilgi%20almak%20istiyorum." class="package-cta whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                     <a href="tel:05303158752" class="package-cta phone"><i class="fas fa-phone-alt"></i> Hemen Ara</a>
                 </div>
                 
-                <!-- STANDARD PACKAGE - Popüler E-Ticaret Paketi -->
-                <div class="package-card popular">
-                    <div class="package-badge badge-standard">E-TİCARET</div>
-                    <h3 class="package-title">E-Ticaret Sitesi</h3>
-                    <div class="package-price">18.500₺<span>/tek sefer</span></div>
-                    <p class="package-description">Online satış yapmak isteyenler için</p>
-                    
-                    <ul class="package-features">
-                        <li><i class="fas fa-check-circle"></i> Özel Tasarım, Sınırsız Ürün</li>
-                        <li><i class="fas fa-check-circle"></i> Mobil Uyumlu, Hızlı Altyapı</li>
-                        <li><i class="fas fa-check-circle"></i> SEO & Google Shopping Uyumu</li>
-                        <li><i class="fas fa-check-circle"></i> Ödeme Entegrasyonu (Iyzico vb.)</li>
-                        <li><i class="fas fa-check-circle"></i> 3 Ay Ücretsiz Destek</li>
-                    </ul>
-                    
-                    <a href="https://wa.me/905303158752?text=Merhaba,%20E-ticaret%20paketiniz%20hakkında%20bilgi%20almak%20istiyorum." class="package-cta whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                    <a href="tel:05303158752" class="package-cta phone"><i class="fas fa-phone-alt"></i> Hemen Ara</a>
-                </div>
-                
-                <!-- PREMIUM PACKAGE - Premium Paket -->
+                <!-- PREMIUM PACKAGE - Özel Paket -->
                 <div class="package-card">
-                    <div class="package-badge badge-premium">ÖZEL ÇÖZÜM</div>
-                    <h3 class="package-title">Özel Yazılım & Kurumsal</h3>
-                    <div class="package-price">25.000₺<span class="small">+ /tek sefer</span></div>
-                    <p class="package-description">Özel ihtiyaçlar ve projeler için</p>
+                    <div class="package-badge badge-premium">ÖZEL</div>
+                    <h3 class="package-title">Özel Web Sitesi</h3>
+                    <div class="package-price">20.000₺<span>/tek sefer</span></div>
                     
                     <ul class="package-features">
-                        <li><i class="fas fa-check-circle"></i> İhtiyaca Özel Tasarım & Yazılım</li>
-                        <li><i class="fas fa-check-circle"></i> Gelişmiş Panel & Özellikler</li>
-                        <li><i class="fas fa-check-circle"></i> Yüksek Performanslı Altyapı</li>
-                        <li><i class="fas fa-check-circle"></i> Detaylı Raporlandırma</li>
-                        <li><i class="fas fa-check-circle"></i> 6 Ay Öncelikli Destek</li>
+                        <li><i class="fas fa-check-circle"></i> 6-10 İç Sayfalık Modern Web Sitesi</li>
+                        <li><i class="fas fa-check-circle"></i> Mobil Uyumlu & Profesyonel Tasarım</li>
+                        <li><i class="fas fa-check-circle"></i> 1 Yıl Domain & Hosting Dahil</li>
+                        <li><i class="fas fa-check-circle"></i> Google Reklam Uyumlu</li>
+                        <li><i class="fas fa-check-circle"></i> SEO Altyapılı</li>
+                        <li><i class="fas fa-check-circle"></i> 2-3 Günde Teslim</li>
                     </ul>
                     
-                    <a href="https://wa.me/905303158752?text=Merhaba,%20Özel%20çözüm%20paketiniz%20hakkında%20bilgi%20almak%20istiyorum." class="package-cta whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    <a href="https://wa.me/905303158752?text=Merhaba,%20Özel%20web%20sitesi%20paketiniz%20hakkında%20bilgi%20almak%20istiyorum." class="package-cta whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                     <a href="tel:05303158752" class="package-cta phone"><i class="fas fa-phone-alt"></i> Hemen Ara</a>
                 </div>
             </div>
@@ -2789,29 +2494,6 @@
         <!-- ================================================ -->
         <section class="seo-ultra-content" id="hizmet-detay" aria-labelledby="hizmet-detay-heading">
             <div class="container">
-                <!-- 3 Animasyonlu İkon -->
-                <div class="animated-icons-row" style="margin-bottom: 40px; justify-content: center;">
-                    <div class="animated-icon-item">
-                        <div class="animated-web-logo">
-                            <img src="https://cdn-icons-png.flaticon.com/512/1055/1055666.png"
-                                 alt="Web Tasarım İkonu" width="100" height="100" loading="lazy">
-                        </div>
-                    </div>
-                    <div class="animated-icon-item">
-                        <div class="animated-magnifier">
-                            <div class="animated-magnifier-glass"></div>
-                        </div>
-                    </div>
-                    <div class="animated-icon-item">
-                        <div class="animated-chart">
-                            <div class="animated-chart-bar"></div>
-                            <div class="animated-chart-bar"></div>
-                            <div class="animated-chart-bar"></div>
-                            <div class="animated-chart-bar"></div>
-                            <div class="animated-chart-bar"></div>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="section-header" style="margin-bottom: 40px;">
                     <div class="section-badge">Web Tasarım Stratejisi</div>
@@ -2897,7 +2579,7 @@
 
                 <div class="faq-item">
                     <button class="faq-question" aria-expanded="false" aria-controls="faq-2">Web sitesi fiyatlarınız nedir?<span class="faq-icon" aria-hidden="true">+</span></button>
-                    <div class="faq-answer" id="faq-2"><p>Yukarıda güncel paket fiyatlarımızı görebilirsiniz. Kurumsal web sitesi 12.500₺, E-ticaret sitesi 18.500₺, Özel çözümler ise 25.000₺+ başlangıç fiyatlarındadır. Fiyatlar, projenizin detaylarına ve ihtiyaçlarınıza göre netleşir. Size özel teklif için lütfen iletişime geçin.</p></div>
+                    <div class="faq-answer" id="faq-2"><p>Yukarıda güncel paket fiyatlarımızı görebilirsiniz. Başlangıç web sitesi 5.000₺, Kurumsal web sitesi 10.000₺, Özel web sitesi ise 20.000₺ başlangıç fiyatlarındadır. Fiyatlar, projenizin detaylarına ve ihtiyaçlarınıza göre netleşir. Size özel teklif için lütfen iletişime geçin.</p></div>
                 </div>
 
                 <div class="faq-item">
@@ -2941,7 +2623,7 @@
       "name": "Web sitesi fiyatlarınız nedir?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Kurumsal web sitesi 12.500₺, E-ticaret sitesi 18.500₺, Özel çözümler ise 25.000₺+ başlangıç fiyatlarındadır."
+        "text": "Başlangıç web sitesi 5.000₺, Kurumsal web sitesi 10.000₺, Özel web sitesi 20.000₺ başlangıç fiyatlarındadır."
       }
     },
     {
@@ -3029,6 +2711,7 @@
                     <ul class="footer-links">
                         <li><a href="/hakkimda" aria-label="Hakkımda"><i class="bi bi-chevron-right" aria-hidden="true"></i> Hakkımda</a></li>
                         <li><a href="/referanslar" aria-label="Referanslarım"><i class="bi bi-chevron-right" aria-hidden="true"></i> Referanslarım</a></li>
+                        <li><a href="/blog-yazilarim" aria-label="Blog Yazılarım"><i class="bi bi-chevron-right" aria-hidden="true"></i> Blog Yazılarım</a></li>
                     </ul>
                 </div>
 
