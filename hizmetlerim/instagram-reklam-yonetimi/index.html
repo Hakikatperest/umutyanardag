@@ -3183,6 +3183,25 @@ function gtag_report_conversion(url) {
                 element.classList.toggle('active');
             };
         })();
+       // FAQ Açılır Kapanır
+document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', function () {
+        const faqItem = this.closest('.faq-item');
+        const isActive = faqItem.classList.contains('active');
+
+        // Tüm açık soruları kapat
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.classList.remove('active');
+            item.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+
+        // Eğer kapalıysa aç
+        if (!isActive) {
+            faqItem.classList.add('active');
+            this.setAttribute('aria-expanded', 'true');
+        }
+    });
+});
     </script>
 </body>
 </html>
