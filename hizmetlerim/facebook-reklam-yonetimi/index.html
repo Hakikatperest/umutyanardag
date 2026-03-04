@@ -1753,7 +1753,25 @@ function gtag_report_conversion(url) {
             .footer-grid { grid-template-columns: 1fr; }
             .cert-ultra-grid { grid-template-columns: 1fr; }
             .cta-buttons { flex-direction: column; }
-            
+            /* MOBİLDE PAKET KARTLARI TAM GENİŞLİK */
+@media screen and (max-width: 768px) {
+
+    .pricing-section {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+    }
+
+    .pricing-container {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .package-card {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+
+}
             /* Floating butonlar için responsive düzenlemeler - AYNI */
             .floating-cta {
                 bottom: 100px;
@@ -2007,7 +2025,7 @@ function gtag_report_conversion(url) {
                 <div class="footer-col"><h4>Kurumsal</h4><ul class="footer-links"><li><a href="/hakkimda"><i class="bi bi-chevron-right"></i> Hakkımda</a></li><li><a href="/referanslar"><i class="bi bi-chevron-right"></i> Referanslarım</a></li></ul></div>
                 <div class="footer-col"><h4>İletişim</h4><div class="footer-contact"><p><i class="bi bi-geo-alt"></i> İstanbul / Başakşehir</p><p><i class="bi bi-telephone"></i> <a href="tel:+905303158752">0530 315 87 52</a></p><p><i class="bi bi-envelope"></i> <a href="mailto:info@umutyanardag.com">info@umutyanardag.com</a></p></div></div>
             </div>
-            <div class="footer-bottom"><p>©2018-2026 | Facebook Reklam Uzmanı Umut Yanardağ | <a href="https://policies.google.com/privacy">Gizlilik</a> | <a href="https://policies.google.com/terms">Hizmet Şartları</a></p><div class="legal-links"><a href="/sorumluluk-reddi">Sorumluluk Reddi</a><span>|</span><a href="/kullanim-sartlari">Kullanım Şartları</a></div></div>
+            <div class="footer-bottom"><p>©2018-2026 | Facebook Reklam Uzmanı Umut Yanardağ | <a href="https://policies.google.com/privacy">Gizlilik</a> | <a href="https://policies.google.com/terms">Hizmet Şartları</a></p><div class="legal-links"></div></div>
         </div>
     </footer>
     <script>
