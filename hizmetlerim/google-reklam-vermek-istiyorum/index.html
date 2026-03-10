@@ -2834,6 +2834,79 @@ function gtag_report_conversion(url) {
         .hero-name {
             color: var(--dark-yellow);
         }
+         /* =========================
+MOBİL HARİTA DÜZENİ
+=========================*/
+
+@media (max-width:768px){
+
+/* harita container padding */
+.site-footer > div:first-child{
+padding:0 15px !important;
+}
+
+/* iframe yüksekliği */
+.site-footer iframe{
+height:320px !important;
+border-radius:20px !important;
+}
+
+/* harita alt bilgi */
+.site-footer [style*="justify-content: space-between"]{
+flex-direction:column !important;
+gap:15px;
+text-align:center;
+}
+
+/* butonlar ortalanır */
+.site-footer [style*="display: flex; gap: 12px"]{
+width:100%;
+justify-content:center !important;
+flex-wrap:wrap;
+}
+
+/* konum kartları */
+.site-footer [style*="flex-wrap: wrap; gap: 20px"]{
+flex-direction:column;
+align-items:center;
+}
+
+.site-footer [style*="flex-wrap: wrap; gap: 20px"] > div{
+width:100%;
+max-width:420px;
+border-radius:25px !important;
+}
+
+/* footer grid mobil */
+.footer-grid{
+grid-template-columns:1fr !important;
+gap:35px;
+text-align:center;
+}
+
+.footer-contact p{
+justify-content:center;
+}
+
+.footer-social{
+justify-content:center;
+}
+
+}
+
+/* ekstra küçük ekran */
+@media (max-width:480px){
+
+.site-footer iframe{
+height:280px !important;
+}
+
+.site-footer [style*="display: flex; gap: 12px"] a{
+width:100%;
+justify-content:center;
+}
+
+}
     </style>
 </head>
 <body>
