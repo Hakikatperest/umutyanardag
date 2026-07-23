@@ -30,11 +30,83 @@
     align-items:center;
     justify-content:center;
     padding:64px 24px;
-    background-image:
-      radial-gradient(circle at 18% 15%, rgba(90,79,224,.10), transparent 45%),
-      radial-gradient(circle at 85% 80%, rgba(90,79,224,.06), transparent 40%);
+    position:relative;
+    overflow:hidden;
   }
+
+  /* ---------- futuristic background layer ---------- */
+  .hero-bg{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    overflow:hidden;
+    pointer-events:none;
+  }
+  .hero-bg svg{ position:absolute; inset:0; width:100%; height:100%; }
+
+  .orb{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(50px);
+    animation:orbFloat 9s ease-in-out infinite;
+  }
+  .orb-1{ width:340px; height:340px; top:-90px; left:-100px;
+    background:radial-gradient(circle at 35% 35%, rgba(90,79,224,.35), rgba(90,79,224,0) 70%); }
+  .orb-2{ width:280px; height:280px; bottom:-80px; right:-60px;
+    background:radial-gradient(circle at 40% 40%, rgba(90,141,255,.30), rgba(90,141,255,0) 70%);
+    animation-delay:-3s; }
+  .orb-3{ width:180px; height:180px; top:12%; right:10%;
+    background:radial-gradient(circle at 40% 40%, rgba(150,110,255,.25), rgba(150,110,255,0) 70%);
+    animation-delay:-5.5s; }
+
+  .glass{
+    position:absolute;
+    border-radius:22px;
+    background:linear-gradient(135deg, rgba(255,255,255,.65), rgba(255,255,255,.15));
+    border:1px solid rgba(255,255,255,.7);
+    box-shadow:0 20px 40px -20px rgba(90,79,224,.25), inset 0 1px 0 rgba(255,255,255,.8);
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+    animation:panelFloat 7s ease-in-out infinite;
+  }
+  .glass-1{ width:96px; height:96px; top:9%; left:7%; transform:rotate(-14deg); animation-delay:-1s; }
+  .glass-2{ width:64px; height:64px; top:20%; left:16%; border-radius:16px; transform:rotate(10deg); animation-delay:-3.4s; }
+  .glass-3{ width:110px; height:110px; bottom:10%; right:8%; transform:rotate(16deg); animation-delay:-2.2s; }
+  .glass-4{ width:56px; height:56px; bottom:22%; right:18%; border-radius:14px; transform:rotate(-8deg); animation-delay:-4.6s; }
+
+  .cube{
+    position:absolute;
+    border-radius:10px;
+    background:linear-gradient(135deg, rgba(90,79,224,.28), rgba(90,141,255,.10));
+    border:1px solid rgba(90,79,224,.30);
+    animation:panelFloat 8s ease-in-out infinite;
+  }
+  .cube-1{ width:20px; height:20px; top:32%; left:9%; animation-delay:-2s; }
+  .cube-2{ width:14px; height:14px; bottom:30%; right:12%; animation-delay:-5s; }
+
+  @keyframes orbFloat{
+    0%,100%{ transform:translate(0,0) scale(1); }
+    50%{ transform:translate(14px,-18px) scale(1.06); }
+  }
+  @keyframes panelFloat{
+    0%,100%{ transform:translateY(0) rotate(var(--r,0deg)); }
+    50%{ transform:translateY(-14px) rotate(var(--r,0deg)); }
+  }
+  @keyframes netPulse{
+    0%,100%{ opacity:.28; }
+    50%{ opacity:.6; }
+  }
+  @keyframes dashMove{
+    to{ stroke-dashoffset:-240; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .orb, .glass, .cube{ animation:none; }
+    .hero-bg svg *{ animation:none !important; }
+  }
+
   .wrap{
+    position:relative;
+    z-index:1;
     max-width:760px;
     width:100%;
     text-align:center;
@@ -65,11 +137,32 @@
     line-height:1.08;
     letter-spacing:-.02em;
   }
-  h1 .accent{ color:var(--blue); }
+  .name-stage{
+    perspective:900px;
+    margin-top:10px;
+  }
   h1 .name{
     display:block;
-    color:var(--text);
-    margin-top:6px;
+    margin:0;
+    font-weight:700;
+    letter-spacing:-.01em;
+    background:linear-gradient(100deg, var(--text) 15%, var(--blue) 45%, var(--text) 75%);
+    background-size:220% 100%;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    filter:drop-shadow(0 14px 22px rgba(90,79,224,.20));
+    transform-style:preserve-3d;
+    will-change:transform;
+    transition:transform .05s linear;
+    animation:sheen 5s ease-in-out infinite;
+  }
+  @keyframes sheen{
+    0%,100%{ background-position:0% 50%; }
+    50%{ background-position:100% 50%; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    h1 .name{ animation:none; transition:none; transform:none !important; }
   }
   .role{
     font-family:'JetBrains Mono', monospace;
@@ -82,7 +175,7 @@
     gap:10px;
   }
   .role .bar{ width:26px; height:1px; background:var(--border); }
- 
+
   /* browser mock — signature element */
   .browser{
     margin:0 auto 32px;
@@ -133,7 +226,7 @@
     vertical-align:middle;
   }
   @keyframes blink{ 50%{ opacity:0; } }
- 
+
   p.desc{
     color:var(--muted);
     font-size:16px;
@@ -142,7 +235,7 @@
     margin:0 auto 40px;
   }
   p.desc b{ color:var(--text); font-weight:600; }
- 
+
   .cta{
     display:flex;
     gap:14px;
@@ -178,7 +271,7 @@
     animation:pulse-green 2.2s ease-out infinite;
   }
   .btn-wa:hover{ box-shadow:0 8px 24px -10px rgba(34,197,94,.45); }
- 
+
   @keyframes pulse-blue{
     0%{ box-shadow:0 0 0 0 rgba(90,79,224,.45); }
     70%{ box-shadow:0 0 0 14px rgba(90,79,224,0); }
@@ -192,7 +285,7 @@
   @media (prefers-reduced-motion: reduce){
     .btn-phone, .btn-wa{ animation:none; }
   }
- 
+
   .trust{
     display:flex;
     gap:22px;
@@ -203,7 +296,7 @@
   }
   .trust span{ display:flex; align-items:center; gap:7px; }
   .trust svg{ width:14px; height:14px; color:var(--whatsapp); flex-shrink:0; }
- 
+
   @media (max-width:480px){
     .cta{ flex-direction:column; }
     .btn{ justify-content:center; width:100%; }
@@ -213,11 +306,11 @@
 <body>
   <div class="wrap">
     <div class="eyebrow"><span class="dot"></span>Web4Medya</div>
- 
-    <h1>Web Tasarım Uzmanı<span class="name">Umut <span class="accent">Yanardağ</span></span></h1>
- 
+
+    <h1>Web Tasarım Uzmanı<span class="name-stage"><span class="name" id="nameEl">Umut Yanardağ</span></span></h1>
+
     <div class="role"><span class="bar"></span>umutyanardag.com<span class="bar"></span></div>
- 
+
     <div class="browser">
       <div class="browser-bar">
         <div class="traffic"><span></span><span></span><span></span></div>
@@ -225,10 +318,10 @@
       </div>
       <div class="browser-body">
         <div><span class="tag">&lt;h1&gt;</span><span class="txt">Merhaba, ben Umut 👋</span><span class="tag">&lt;/h1&gt;</span></div>
-        <div><span class="tag">&lt;p&gt;</span><span class="txt">Hızlı, modern ve SEO uyumlu siteler tasarlıyorum</span><span class="cursor"></span></div>
+        <div><span class="tag">&lt;p&gt;</span><span class="txt">Hızlı, modern ve SEO uyumlu siteler tasarlıyorum.</span><span class="cursor"></span></div>
       </div>
     </div>
- 
+
     <div class="cta">
       <a class="btn btn-phone" href="tel:+905303158752">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -239,7 +332,7 @@
         WhatsApp İletişim
       </a>
     </div>
- 
+
     <div class="trust">
       <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Hızlı Teslim</span>
       <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Ücretsiz Revize</span>
@@ -247,6 +340,27 @@
       <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Doğrudan İletişim</span>
     </div>
   </div>
+
+  <script>
+    var nameEl = document.getElementById('nameEl');
+    var ticking = false;
+    function applyTilt(){
+      var y = window.scrollY || window.pageYOffset || 0;
+      var progress = Math.max(-1, Math.min(1, y / 220));
+      var rotateX = progress * -18;
+      var rotateY = progress * 10;
+      var translateZ = Math.abs(progress) * 30;
+      nameEl.style.transform =
+        'perspective(900px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateZ(' + translateZ + 'px)';
+      ticking = false;
+    }
+    window.addEventListener('scroll', function(){
+      if(!ticking){
+        window.requestAnimationFrame(applyTilt);
+        ticking = true;
+      }
+    }, { passive: true });
+    applyTilt();
+  </script>
 </body>
 </html>
- 
