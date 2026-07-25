@@ -323,11 +323,6 @@ em.acc{font-style:italic;font-weight:400;color:var(--gold)}
 .strip-track li{display:flex;align-items:center;gap:clamp(22px,3vw,42px);padding-inline:clamp(11px,1.5vw,21px);font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--ink-50);white-space:nowrap}
 .strip-track li::after{content:"";width:4px;height:4px;background:var(--gold);transform:rotate(45deg);opacity:.7}
 .strip:hover .strip-track{animation-play-state:paused}
-
-/* ═══ İSTATİSTİK ═════════════════════════════════════════════ */
-.stats{position:relative;z-index:6;margin-top:calc(-1 * clamp(52px,7vw,88px))}
-.stats-card{
-  background:var(--ivory);border-radius:var(--r-xl);
   box-shadow:var(--sh-lg),0 0 0 1px rgba(27,35,56,.05);
   display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden;
 }
@@ -661,42 +656,43 @@ em.acc{font-style:italic;font-weight:400;color:var(--gold)}
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}
-  [data-rv]{opacity:1;transform:none}
+  [data-rv]{opacity:1;translate:none;scale:none}
   .intro>*,.hero-art figure,.art-frame,.art-chip{opacity:1;animation:none}
   .strip-track{animation:none}
 }
 
-/* ── LQIP: her görselin 24px bulanık önizlemesi (gömülü) ──
-   Gerçek görsel yüklenene kadar zemin bu; ani beyaz sıçrama olmaz. */
-.lq-hero-suit{background-image:url(data:image/webp;base64,UklGRtAAAABXRUJQVlA4IMQAAAAwBQCdASoSABgAPulmp0+pJaMiKA1RIB0JQBWGXqdABKHYMYKc6aQJP37E0TE8/9QZAAD+8Ms40XdSayK4lIvyA+4jJEPsyARox2+k9gE2y2BaoVnWFUVeji6wfu4lEWw0YUugYpphXC2Zbwok50CfaVZvayW3cyaSGjD9Jfg/4/2q781BaEo0iIfVOeREMmf2o8uPqhH8K6gWd+GVa2FhA721yVRfJgpaBRTcnGfOabZDgzddfv+cX/VZeoMSMb1UMuAA);background-color:#745845}
-.lq-hero-dress{background-image:url(data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAACQBACdASoTABgAPulmrVApJSQiqAqpIB0JZwDKAA9oMSpbFsIeU3qiaiR2wAAA/vQy4sjT2DtITmUinPBRRPBLJbQGBvJGbmlFun6oeOV7U6Q3gNjGIEKd1qgibKCXLbDmQ/He78hcWmXqqwfF+fMyyspHk+m216C6eXTW2sp0d3CnrR9KAAAA);background-color:#79746d}
-.lq-hero-shirts{background-image:url(data:image/webp;base64,UklGRrYAAABXRUJQVlA4IKoAAADQBACdASoYABIAPulmrk+pJSSiKAqpIB0JaQDGBA92tVU5oubIgzinzLPthxgtAAD+F4+mlQS/22NrGLdf1k5KqmQRqbq695BAlgyERL88RYALAFXSXRPMU/k27E/WfOR8rW32CauOvLX4KL/eZig3YxW8+K4SZzywS0hZjN1hBaLDycNbQQNuV/+zdAIos0NwhcUVeLWclnUjAt/9zRmfwqwztTXVJKUAAA==);background-color:#747879}
-.lq-hero-needle{background-image:url(data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADQAwCdASoYABgAPuleq0+pJKOqMBgIAUAdCWkAz2QPQ80wOByHRQAA/u7e1CQdX2d7/+iVNMQIZjE9PWCb3njVoXg/wJtY5PY+pOJMDvIiyAAA);background-color:#121519}
-.lq-svc-kuru{background-image:url(data:image/webp;base64,UklGRrIAAABXRUJQVlA4IKYAAABwBQCdASoTABgAPuloqlCpJaOiqAqpIB0JYwDGfYyKcKuVre7rY46dd8bT1CzQjZCejgtwAP6+OPrJWOIVGREwDL85oLYF92bpvvj5cGDc27iw3nAoaCWe0JtuD2X11Cdyj/Ya1kOaohwtV6F7R5Eb/mV4L1slCNkRaTY8Opi04i9tmxQ0X4VSFKuYKXHQtNf5euzdQbo0Vrpm02/8jIpuxo/zfUAA);background-color:#7a7e85}
-.lq-svc-gelinlik{background-image:url(data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAADwBACdASoTABgAPulqrVGpJaQiqAgBIB0JZQCo9BE99wLGl0vUmUku5RM4QuHcfIAA/hloyPTD3mupF/pYOaHa9ZRx7EEHvbETxehvDcpDwxO5H3X26cQa942Vwpa1bdczPlhu29cw9Z03NaYwJJpi/qiyD2VbAh4rKRRxdp1CjiaXIiSvXmJhfWXHpQkkOgAAAA==);background-color:#796c5e}
-.lq-svc-terzi{background-image:url(data:image/webp;base64,UklGRgoBAABXRUJQVlA4IP4AAADwBQCdASoTABgAPulqrVGpJaQiqAgBIB0JYwCdAd0jf1M9OmRPPzWw9gnF6MiGuuMACYgoYmtAAAD+2+SZjjz+HAXYrs0pQ06ACq68MP6Bb5VPt5qPcAuZj5cFUNUlNVvVJqAjK4OBNDrDLhLssTqhhXyZC8zM/MMQvzTjh65cV3wlRvYqLJZSMnYQV13i/N/WIcWL2Pf3UGpKflZ3dT1pVuwSIf5yTrg6mOcRwZAd2aKRDeab3IjyOvqGrpm4m9hpKd7n5L3czzlyTSMWkYrG9lA3XgO30I1Z131domdOpHMbsELn7WBBMEJzE1M2DoCCYHJ/gBq9nCPjn1SAAA==);background-color:#6e6155}
-.lq-svc-utu{background-image:url(data:image/webp;base64,UklGRtoAAABXRUJQVlA4IM4AAACQBQCdASoTABgAPulmq1ApJSOiqAqpIB0JQBBGjjvP/gHgamV8/yrgUSwUZRbMY9e/YGK8AAD+01UsBTzyfs80+j4GO3ngZih/pT5iwVaAgZ3LvQd0O/dCPAvVFNY8JodtMNEg7+cQOXJ/vDTLfO07l0l+kiHSqmytUPhH/YR/ny95dcvgAj8r/zIjyeqNBNMQHsxxqufzreTHPMWvQO/dT5N8lAAiArXBpSxNbnJgjC2Rn/QPX+2ycjRRmjXc4dmWo8mPPBnPuskPyEJQAA==);background-color:#6d6a69}
-.lq-svc-tekstil{background-image:url(data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAADwBACdASoTABgAPuliqk4pJaOiKA1RIB0JYwC7AYuQZYSqTMQJaNadHFj82ViXoQAA/p7EIi84zd6yFgOwgnnMxQpIa3K+L+jv97CU0HTRGJj9hRE5PzSgy2yC71HwLrLC0mgdeliDdV6DPDB2b+zLH3yKRDK24t/kxtpa++fSnrkWBFdqZ5GAAAAAAA==);background-color:#846c5e}
-.lq-svc-ayakkabi{background-image:url(data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAAAQBQCdASoTABgAPulsrlGpJaQiqAgBIB0JZwDMWBBfjUOEvQRcIBTGY0SN0t2O+JIgAP7eAv+zkIr7DfsYrJwFw0TWImr6SNdNeIVB58MpnCj6VbbCNV22tV3JpODBTiZwcoqE4CA9LPTfnIlwFT+8fjnNIxxL2gjrSUUteqqGGULBZHEgLdxUUMn45HcFfky/3w5hAGsoAA==);background-color:#2c2e2e}
-.lq-why-atolye{background-image:url(data:image/webp;base64,UklGRrIAAABXRUJQVlA4IKYAAACQBQCdASoTABgAPulmrFApJSQiqAqpIB0JZQC06YyKcKWCDqjAunKbcrhV+ee+V9y5y8aQAAD+5yUAOfKFWVDtKbnqkUXHw5LZryN13GsqCj3Iu6TKwxDImp7/76nPU0+sA1iRe9pMBh7Jjkp2K1JoIlC24nV1MMsnb/FeNI2JC2lfrC5unkWeePMjrO6DCFtx604nycOh+jU6Rg7VMBFaZkycAAAA);background-color:#8e8479}
-.lq-why-detay{background-image:url(data:image/webp;base64,UklGRioBAABXRUJQVlA4IB4BAABQBQCdASoYABgAPulqrVGpJaQiqAgBIB0JZQDA3Yu4d3A0eP0QpxnbUvqpjrWBaptgxgAA/uUoVpiTk5EIoWHht2dHuMSzJ/H7IeDXgkmUY24gkq1TXaOndJe2ZzqmKWHLl+JQx/5GBnD3R8iQ9+tVpYJ0dPrZpGhpJnM1IZ5PSRQ9QAPoXWaU0nR4Hl3Np+rYKt5mN2kv/TTI0FvD9weQ7+wVRjT7+C/0RBk+5VcK277b+ULTuC3v/s0srnkJ7MLvHm/TbQj7OsRbQjgoFn8uk1rlZDfQxEMXjW93I/ftnZq2zlKcIwQpW7xqlK51vY701OiJOlhaz+SQMFhVTi+g2nCvBwuDyfWnV5sR3EnIZ+4rnl65ICq29Gu5YAAA);background-color:#4b5348}
-.lq-ba1-once{background-image:url(data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAACwAwCdASoYABAAPulgqE0pJaOiMAgBIB0JZwAAWZ4bqVXKVP5HcADN6oooZWElIkXgU4srAE3bbD+sTtlQnHyaflDgGjITj9pt4L2plKlN0CAvvld/VW+HN+fHA1bxnqzMbAzaEAfMoGrywRvPeV2R1Gfq5Oq4RweCCLEQmZfAJzD7UstppbDyAAA=);background-color:#6f6f70}
-.lq-ba1-sonra{background-image:url(data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAAAwBACdASoYABAAPulmq00pJiQiMAgBIB0JZwDM0CIHv1UKbCV78Q3JpIAA/tOFIAhtQ1tj7TT0GyRrsarccMgR6WZBwAVZSdbFGT8D46fMxFXZfjJ+tyqiDI1TZQa0e+6OS7+XnGmOfc1TwyR7EJ1eUBuogAAA);background-color:#afb2ab}
-.lq-ba2-once{background-image:url(data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAwBACdASoYABAAPuliqk2pJaQiMAgBIB0JYgC1I/7AwB5rswX/y+HIDsgA/uyvD663RgxiMKbQ/RarwcPkcHrQY3EGLdlQ5rAkHYCuVaqlbXdVxK59XeoAesHThQbgZP2Va7+CQkrgAA==);background-color:#373546}
-.lq-ba2-sonra{background-image:url(data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAAAwBACdASoYABAAPulgqE0pJaOiMAgBIB0JYwDCgBZWqL7BvN6SWaWrnkwA/nwjQ4JD4LNtKaPHt6C15YkzDqfKm9vjb8jZMalk6Q+tVgBkQNJwFje8cHNkEXolC5aV/ya42BIUXUzJIO85wdmODLUSbjqPoo90fNbgvO8qXnxNyy/99SVzdWgSg1hM/gAA);background-color:#5c6466}
-.lq-ba3-once{background-image:url(data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAAAwBACdASoYABAAPulgqE0pJaOiMAgBIB0JZQC2yBkvPU4TtnfrR7XKkgAA/t4U9jVMbnm0G70mRNTvmcZ0M5d+E4DYpjhEdjVCl8lu5zzXgpwteKycXosgzSMiTXyAaE3YIAGD06OXd7L5Zp2LFIu0RVUOAAAA);background-color:#92837a}
-.lq-ba3-sonra{background-image:url(data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAAAwBACdASoYABAAPuleqE0pJSQiMAgBIB0JZwDCgCIMZK4PDkHjS1OvdEAA/ugg0EM3vzy5SGZNekbdxYnmbKcQKY7DUr5fIxYIzAKD+d3JhfuDXEI+l0NqMwAAAA==);background-color:#d8d5c8}
-.lq-g1{background-image:url(data:image/webp;base64,UklGRsYAAABXRUJQVlA4ILoAAABwBQCdASoTABgAPulmq1ApJSOiqAqpIB0JYwC06YyoZaTclhzS1HUxUvubAgP0PFN4odAAAP6NN6Y2VkdUroKHhPZ5/TnHDBlsUTt3sZ693AdgLftfkLC6Mgaeppvpb4+hkDnNUApQRz7++sXV0vitT0+AMc8X6kMDGjBW14+by5pEDMbtZq7ujex7UIYf/hFZ8raAuW/YMW7DOYnAH4IHyBT1EPYXAzUOlCzRICh3XqvvUKCfsxAgAAA=);background-color:#a0887a}
-.lq-g2{background-image:url(data:image/webp;base64,UklGRr4AAABXRUJQVlA4ILIAAABwBQCdASoYABIAPulqqlCpJaOiqAqpIB0JZQDE2dwAbp9ZcMtZbzQkgb7lEArwb9ePek0AAP7ddtpaqayReLerzzH4cc3onFgkD4r8jksxEuy+AIA+qBq2aF8DuV6NbUTbK4Jev/lxwRNtSH5yrHB2WrZOPe2nITQRzdGRBz2MPb7LnemIXs6U6PiYMxVpEXVMDjjoSbXA/b6eJP6omsH0IEEgrxe5Kwa2YFKf4Wz7mUQA);background-color:#5a5853}
-.lq-g3{background-image:url(data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAACQBACdASoYABIAPulcqk0pJKQiMBgMASAdCWUAzNAQ8NJxFbz7hVFbj3diSIAA/uy6oOOAEDFy18r+D0rrmY+P5ZsLuuT0/WaPza/BwXMtMpxEAqcxKfOSHYaAMUl9mPcL3CTNfQr0plyZHvuWVxo5k2AAAA==);background-color:#303936}
-.lq-g4{background-image:url(data:image/webp;base64,UklGRr4AAABXRUJQVlA4ILIAAABQBQCdASoTABgAPuloqlCpJaOiqAqpIB0JYwCdAYxsZO+ro7mgijfuiIMjtC81i2gZmAAA/u7fMfNVCsvGr7z1cnk0zybiV/q5Fvk/Gr6lE1H83lIfLv+4FKS3zbbJd2NRaDjlzDxm5O+iOA96xKkUai1N8DoSXrZ7OzrfOFXQ6wDI9lG88DGsfYeexDTpW5X4DzzR+A4lEs2/KWpFgUX0BUMR3rda8y3tfHPijuPEgHgA);background-color:#918a81}
-.lq-g5{background-image:url(data:image/webp;base64,UklGRrIAAABXRUJQVlA4IKYAAADwBACdASoYABIAPulsrlGpJaQiqAgBIB0JZwDM0BEdIHF3SKpHPcO8KR6gG/eUcUAA/uEuH9ZS361W/7bI+vbJ9aXTsO+wWkTLMr/MU8jO6U/wMmW46Dfz23t8hgXkPixgslSCP3wkXyvxKdARJMO6ieE6S+w4hhNUpY3Xufw8bKzheLfBKLc77Pv1l06jNpadcV6yOoJTsPYrCvu0PWI1T6L1ugAA);background-color:#979a9c}
-.lq-g6{background-image:url(data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAACQBACdASoTABgAPuloq1ApJiOiqAqpIB0JZQC06BEN9G9A616lmMrywkn28egA/tMRJ8M3Dp2mpk3Wv2VHdf1YlzmbCvaN+FKbb12uGqv/WaguRT6z6L+0PySQiCPZcYL8nkMmdr7zf02X8Q1vi2Htum4arCkby5vZV4P09cp+IY9ePiHOxq8XgAA=);background-color:#bfb3a3}
-.lq-g7{background-image:url(data:image/webp;base64,UklGRrQAAABXRUJQVlA4IKgAAAAQBQCdASoYABIAPulsrVGpJaQiqAgBIB0JaQAALbbeDk8h7Ojd0l1XTbeUg7baZvKAAP70bhdwGBMHrAv1kAyIWxn1+xzvhxfmsnvjDy+wIPir5R3z20CNtNM3XyHjGN9zE+NCD1VNkevH3yP/HSgwmU0Phn5mUYUOK3xrGzPMfRz19zFbDkcGIIYb/PUXiyVsJj/A14OPCtmtIQFk2QxBs6/EDmhAAAA=);background-color:#3d3f41}
-.lq-g8{background-image:url(data:image/webp;base64,UklGRvgAAABXRUJQVlA4IOwAAABQBQCdASoYABIAPulqqlCpJaOiqAqpIB0JQBOmZgHANo+PIn7rk/wToY8PAVNKJyR8B8AA/q2Ki1s4Wf/7m2LrjsHCv3yxjcaF2F5wHEusMSjnNRFxI6fm3F52QLRhtpEDTosfrMhwNuaR+22rLjrNhHCnu4Vx/ikyC5LlTWMrva57LpYBfDfEYuHK5rwtlLwgFKJ1BDPuUfE6RsTp9FNn7R9SRtZA094se769swTVwvlacqaQNWaS/dUfl3Za46UNTLe/ldNEW42AtRcBVcDNNZL1xAF37eXTNuKhBGEyBVQw7LUTUSJOrjJgAA==);background-color:#786a63}
-.lq-dukkan{background-image:url(data:image/webp;base64,UklGRsQAAABXRUJQVlA4ILgAAADwBACdASoYABIAPulqqVCpJaOiqAqpIB0JZQDO7AvEMucUxPutsR60ae34zRMyIGgA3h8pRwHdl8d3/mA3xJfXqz9c02uLbbBAaistimouoscv8mmbcmEdI7/dddn1gqML6baJ7UEDUgkVAN2J6T8Kmu9vVA/EhMWqDeQV3wsRMgBCBXPoas9qBHTRudQyrvw8QEagMp1T72GV8HpMfKVgW5n9RwSJ5lBk/673E5KdIyyXItzBwAAA);background-color:#5e5b5b}
+/* ── LQIP: her görselin baskın rengi ──
+   Not: dosyadaki asıl sürümde bunlara ek olarak her kuralda 24px'lik
+   bulanık önizleme (base64 webp) da var — 8,6 KB, sohbete basılmadı.
+   Aşağıdaki renk sürümü tek başına sorunsuz çalışır. */
+.lq-hero-suit{background-color:#745845}
+.lq-hero-dress{background-color:#79746d}
+.lq-hero-shirts{background-color:#747879}
+.lq-hero-needle{background-color:#121519}
+.lq-svc-kuru{background-color:#7a7e85}
+.lq-svc-gelinlik{background-color:#796c5e}
+.lq-svc-terzi{background-color:#6e6155}
+.lq-svc-utu{background-color:#6d6a69}
+.lq-svc-tekstil{background-color:#846c5e}
+.lq-svc-ayakkabi{background-color:#2c2e2e}
+.lq-why-atolye{background-color:#8e8479}
+.lq-why-detay{background-color:#4b5348}
+.lq-ba1-once{background-color:#6f6f70}
+.lq-ba1-sonra{background-color:#afb2ab}
+.lq-ba2-once{background-color:#373546}
+.lq-ba2-sonra{background-color:#5c6466}
+.lq-ba3-once{background-color:#92837a}
+.lq-ba3-sonra{background-color:#d8d5c8}
+.lq-g1{background-color:#a0887a}
+.lq-g2{background-color:#5a5853}
+.lq-g3{background-color:#303936}
+.lq-g4{background-color:#918a81}
+.lq-g5{background-color:#979a9c}
+.lq-g6{background-color:#bfb3a3}
+.lq-g7{background-color:#3d3f41}
+.lq-g8{background-color:#786a63}
+.lq-dukkan{background-color:#5e5b5b}
 </style>
-
 <noscript><style>
   /* JS kapalıysa: görseller ve bölümler yine de görünür olmalı.
      Animasyon kaybolur, içerik kalır. */
@@ -973,7 +969,6 @@ em.acc{font-style:italic;font-weight:400;color:var(--gold)}
     <ul><li>Gelinlik</li><li>Abiye</li><li>Takım Elbise</li><li>Mont</li><li>Kaban</li><li>Battaniye</li><li>Yorgan</li><li>Ayakkabı</li><li>Perde</li><li>Paça &amp; Kısaltma</li><li>Fermuar</li><li>Ütü &amp; Pres</li></ul>
   </div>
 </div>
-
 <!-- ══════════════════ HİZMETLER ══════════════════ -->
 <section class="sec bg-ivory" id="hizmetler">
   <div class="wrap">
@@ -1259,7 +1254,6 @@ em.acc{font-style:italic;font-weight:400;color:var(--gold)}
     </div>
   </div>
 </section>
-
 <!-- ══════════════════ YORUMLAR ══════════════════ -->
 <section class="sec bg-navy" id="yorumlar">
   <div class="wrap">
@@ -1742,4 +1736,3 @@ em.acc{font-style:italic;font-weight:400;color:var(--gold)}
 </script>
 </body>
 </html>
-
