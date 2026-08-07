@@ -1,256 +1,1084 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Umut Yanardağ | Web Tasarım Uzmanı</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>PARROT™ — The CEO of the Sky</title>
+<meta name="description" content="A completely serious website about the world's most important bird.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../images/cut/kus2.webp">
 <style>
   :root{
-    --bg:#F4F5FA;
-    --surface:#FFFFFF;
-    --surface-2:#ECEEF7;
-    --border:#DDE1EE;
-    --text:#161A2B;
-    --muted:#666E85;
-    --blue:#5A4FE0;
-    --blue-soft:rgba(90,79,224,.12);
-    --whatsapp:#22C55E;
+    --black:#050506;
+    --charcoal:#0c0d10;
+    --panel:rgba(255,255,255,0.045);
+    --panel-border:rgba(255,255,255,0.09);
+    --white:#f4f5f7;
+    --gray:#8a8d95;
+    --gray-dim:#55585f;
+    --blue:#2f6bff;
+    --blue-soft:#8ab4ff;
+    --blue-dim:rgba(47,107,255,0.35);
+    --font-display:'Bricolage Grotesque', ui-sans-serif, sans-serif;
+    --font-body:'Inter', ui-sans-serif, sans-serif;
   }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
+  *{box-sizing:border-box;}
+  html{background:var(--black); scroll-behavior:auto;}
   body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:'IBM Plex Sans', sans-serif;
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:64px 24px;
-    background-image:
-      radial-gradient(circle at 18% 15%, rgba(90,79,224,.10), transparent 45%),
-      radial-gradient(circle at 85% 80%, rgba(90,79,224,.06), transparent 40%);
+    margin:0;
+    background:var(--black);
+    color:var(--white);
+    font-family:var(--font-body);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    cursor:none;
   }
-  .wrap{
-    max-width:760px;
-    width:100%;
-    text-align:center;
+  @media (pointer:coarse){ body{ cursor:auto; } #cursor{ display:none; } }
+
+  #bg-canvas{ position:fixed; inset:0; width:100vw; height:100vh; z-index:0; display:block; }
+
+  #grain{
+    position:fixed; inset:0; z-index:3; pointer-events:none; opacity:0.05; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
+  #vignette{
+    position:fixed; inset:0; z-index:2; pointer-events:none;
+    background:radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0) 35%, rgba(0,0,0,0.55) 100%);
+  }
+
+  #cursor{
+    position:fixed; top:0; left:0; width:16px; height:16px; margin:-8px 0 0 -8px;
+    border:1.5px solid var(--blue-soft); border-radius:50%; z-index:200; pointer-events:none;
+    mix-blend-mode:difference; transition:background 0.2s ease;
+  }
+  #cursor.hover{ background:var(--blue-soft); }
+
+  /* Loader */
+  #loader{
+    position:fixed; inset:0; z-index:300; background:var(--black);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1.1rem;
+    transition:opacity 0.8s ease;
+  }
+  #loader.done{ opacity:0; pointer-events:none; }
+  #loader .lbl{ font-family:var(--font-body); font-size:0.72rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--gray-dim); }
+  #loader .track{ width:180px; height:2px; background:rgba(255,255,255,0.08); border-radius:99px; overflow:hidden; }
+  #loader .fill{ height:100%; width:0%; background:linear-gradient(90deg,var(--blue),var(--blue-soft)); transition:width 0.3s ease; }
+
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:1.6rem clamp(1.2rem,4vw,3rem);
+    pointer-events:none;
+  }
+  .brand{
+    font-family:var(--font-display); font-weight:800; font-size:0.95rem; letter-spacing:0.08em;
+    display:flex; align-items:center; gap:0.5rem; pointer-events:auto;
+  }
+  .brand .dot{ width:7px; height:7px; border-radius:50%; background:var(--blue); box-shadow:0 0 10px var(--blue); }
+  .header-right{ display:flex; align-items:center; gap:1.4rem; pointer-events:auto; }
+  #sound-toggle{
+    background:var(--panel); border:1px solid var(--panel-border); color:var(--white);
+    font-family:var(--font-body); font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase;
+    padding:0.5rem 0.9rem; border-radius:99px; cursor:none; backdrop-filter:blur(8px);
+  }
+  #chapter-counter{ font-family:var(--font-body); font-size:0.72rem; color:var(--gray); letter-spacing:0.08em; font-variant-numeric:tabular-nums; }
+
+  #progress-rail{ position:fixed; top:0; left:0; right:0; height:2px; background:rgba(255,255,255,0.06); z-index:101; }
+  #progress-fill{ height:100%; width:0%; background:linear-gradient(90deg,var(--blue),var(--blue-soft)); box-shadow:0 0 12px var(--blue); }
+
+  main{ position:relative; z-index:1; }
+
+  .scene{
+    position:relative; min-height:100vh; width:100%;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    padding:6rem 1.4rem; text-align:center;
+  }
+  .scene.tall{ min-height:135vh; }
+
   .eyebrow{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    padding:8px 16px;
-    border:1px solid var(--border);
-    background:var(--surface);
-    border-radius:999px;
-    font-family:'JetBrains Mono', monospace;
-    font-size:13px;
-    color:var(--muted);
-    letter-spacing:.02em;
-    margin-bottom:32px;
+    font-family:var(--font-body); font-weight:600; font-size:0.7rem; letter-spacing:0.38em;
+    text-transform:uppercase; color:var(--blue-soft); margin-bottom:1.1rem; opacity:0.9;
   }
-  .eyebrow .dot{
-    width:7px; height:7px; border-radius:50%;
-    background:var(--whatsapp);
-    box-shadow:0 0 0 3px rgba(34,197,94,.18);
+  .eyebrow .num{ color:var(--gray); font-weight:500; }
+
+  h1.headline{
+    font-family:var(--font-display); font-weight:800; letter-spacing:-0.025em; line-height:0.96;
+    font-size:clamp(2.4rem, 7.4vw, 6.4rem); margin:0 0 1rem 0; max-width:16ch;
   }
-  h1{
-    font-family:'Space Grotesk', sans-serif;
-    font-weight:700;
-    font-size:clamp(38px, 6.5vw, 64px);
-    line-height:1.08;
-    letter-spacing:-.02em;
+  h1.headline .accent{ color:var(--blue-soft); }
+  .sub{
+    font-family:var(--font-body); font-weight:400; font-size:clamp(0.95rem,1.6vw,1.15rem);
+    color:var(--gray); max-width:38ch; margin:0 auto; line-height:1.6;
   }
-  h1 .accent{ color:var(--blue); }
-  h1 .name{
-    display:block;
-    color:var(--text);
-    margin-top:6px;
+
+  .scroll-hint{
+    position:absolute; bottom:2.6rem; left:50%; transform:translateX(-50%);
+    font-family:var(--font-body); font-size:0.7rem; letter-spacing:0.28em; text-transform:uppercase;
+    color:var(--gray-dim); display:flex; flex-direction:column; align-items:center; gap:0.6rem;
   }
-  .role{
-    font-family:'JetBrains Mono', monospace;
-    color:var(--blue);
-    font-size:15px;
-    margin:20px 0 28px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
+  .scroll-hint .line{ width:1px; height:34px; background:linear-gradient(var(--blue),transparent); animation:pulse-line 1.8s ease-in-out infinite; }
+  @keyframes pulse-line{ 0%,100%{opacity:0.25;} 50%{opacity:1;} }
+
+  .reveal{ opacity:0; transform:translateY(28px); }
+
+  .thought-field{ position:relative; width:100%; max-width:640px; height:280px; margin-top:1rem; }
+  .chip{
+    position:absolute; padding:0.7rem 1.2rem; border-radius:99px; background:var(--panel);
+    border:1px solid var(--panel-border); backdrop-filter:blur(10px); font-size:0.95rem; font-weight:500;
+    white-space:nowrap; animation:float-chip 6s ease-in-out infinite;
   }
-  .role .bar{ width:26px; height:1px; background:var(--border); }
- 
-  /* browser mock — signature element */
-  .browser{
-    margin:0 auto 32px;
-    max-width:520px;
-    border:1px solid var(--border);
-    border-radius:12px;
-    background:var(--surface);
-    overflow:hidden;
-    text-align:left;
-    box-shadow:0 24px 48px -28px rgba(22,26,43,.18);
+  @keyframes float-chip{ 0%,100%{ transform:translateY(0px);} 50%{ transform:translateY(-14px);} }
+
+  .chart-row{ display:flex; flex-wrap:wrap; gap:1.1rem; justify-content:center; margin-top:2.2rem; }
+  .chart-card{
+    width:190px; background:var(--panel); border:1px solid var(--panel-border); border-radius:14px;
+    padding:1rem 1.1rem 1.2rem; backdrop-filter:blur(10px); text-align:left;
   }
-  .browser-bar{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    padding:10px 14px;
-    background:var(--surface-2);
-    border-bottom:1px solid var(--border);
+  .chart-card .ctitle{ font-size:0.68rem; color:var(--gray); letter-spacing:0.03em; line-height:1.3; min-height:2.4em; margin-bottom:0.8rem; }
+  .bars{ display:flex; align-items:flex-end; gap:6px; height:70px; }
+  .bars i{ flex:1; background:linear-gradient(180deg,var(--blue-soft),var(--blue)); border-radius:3px 3px 0 0; height:0%; display:block; box-shadow:0 0 10px var(--blue-dim); transition:height 1.1s cubic-bezier(.2,.9,.25,1); }
+
+  .duck-audience{ display:grid; grid-template-columns:repeat(9,1fr); gap:0.35rem; max-width:460px; margin:2rem auto 0; }
+  .duck-audience span{ font-size:1.3rem; display:inline-block; animation:duck-bounce 1.2s ease-in-out infinite; }
+  @keyframes duck-bounce{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-6px);} }
+
+  .os-panel{
+    margin-top:2rem; width:min(420px,86vw); background:rgba(8,9,11,0.75); border:1px solid var(--panel-border);
+    border-radius:16px; padding:1.6rem 1.7rem; text-align:left; backdrop-filter:blur(14px);
+    box-shadow:0 30px 80px rgba(0,0,0,0.6);
   }
-  .browser-bar .traffic{ display:flex; gap:6px; }
-  .browser-bar .traffic span{ width:9px; height:9px; border-radius:50%; background:#C7CBDC; }
-  .browser-bar .url{
-    flex:1;
-    font-family:'JetBrains Mono', monospace;
-    font-size:12px;
-    color:var(--muted);
-    background:var(--bg);
-    border:1px solid var(--border);
-    border-radius:6px;
-    padding:5px 10px;
-    text-align:center;
-  }
-  .browser-body{
-    padding:20px 22px;
-    font-family:'JetBrains Mono', monospace;
-    font-size:13px;
-    color:var(--muted);
-    line-height:1.7;
-  }
-  .browser-body .tag{ color:#5A4FE0; }
-  .browser-body .txt{ color:var(--text); }
-  .cursor{
-    display:inline-block;
-    width:7px; height:14px;
-    background:var(--blue);
-    margin-left:2px;
-    animation:blink 1.1s step-end infinite;
-    vertical-align:middle;
-  }
-  @keyframes blink{ 50%{ opacity:0; } }
- 
-  p.desc{
-    color:var(--muted);
-    font-size:16px;
-    line-height:1.7;
-    max-width:560px;
-    margin:0 auto 40px;
-  }
-  p.desc b{ color:var(--text); font-weight:600; }
- 
+  .os-panel .os-title{ font-family:var(--font-display); font-weight:700; font-size:1.05rem; margin-bottom:0.3rem; }
+  .os-panel .os-sub{ font-size:0.75rem; color:var(--gray); margin-bottom:1.1rem; }
+  .os-bar-track{ height:6px; background:rgba(255,255,255,0.08); border-radius:99px; overflow:hidden; cursor:none; }
+  .os-bar-fill{ height:100%; width:0%; background:linear-gradient(90deg,var(--blue),var(--blue-soft)); }
+  .os-pct{ font-size:0.7rem; color:var(--blue-soft); margin-top:0.5rem; font-variant-numeric:tabular-nums; }
+  .os-tip{ font-size:0.68rem; color:var(--gray-dim); margin-top:0.9rem; opacity:0; }
+
   .cta{
-    display:flex;
-    gap:14px;
-    justify-content:center;
-    flex-wrap:wrap;
-    margin-bottom:36px;
+    margin-top:2.2rem; display:inline-flex; align-items:center; gap:0.6rem; cursor:none;
+    background:var(--white); color:var(--black); font-family:var(--font-body); font-weight:600;
+    font-size:0.92rem; padding:1rem 1.7rem; border-radius:99px; border:none; letter-spacing:0.01em;
+    text-decoration:none; transition:transform 0.35s cubic-bezier(.2,.9,.25,1);
   }
-  .btn{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    padding:15px 26px;
-    border-radius:10px;
-    font-weight:600;
-    font-size:15px;
-    text-decoration:none;
-    border:1px solid transparent;
-    transition:transform .15s ease, box-shadow .15s ease;
-    position:relative;
+  .cta:hover{ transform:translateY(-3px); }
+
+  footer{
+    position:relative; z-index:1; padding:3rem 1.4rem 4rem; text-align:center;
+    font-size:0.72rem; color:var(--gray-dim); letter-spacing:0.02em; line-height:1.8;
   }
-  .btn:hover{ transform:translateY(-2px); }
-  .btn svg{ width:18px; height:18px; flex-shrink:0; }
-  .btn-phone{
-    background:var(--blue);
-    color:#FFFFFF;
-    border-color:var(--blue);
-    animation:pulse-blue 2.2s ease-out infinite;
+  footer a{ color:var(--gray); text-decoration:none; border-bottom:1px solid var(--gray-dim); }
+
+  .stamp{
+    display:inline-block; margin-top:1.4rem; border:2px solid var(--blue-soft); color:var(--blue-soft);
+    font-family:var(--font-display); font-weight:800; letter-spacing:0.15em; padding:0.35rem 1rem;
+    transform:rotate(-6deg); border-radius:6px; opacity:0; font-size:0.85rem;
   }
-  .btn-phone:hover{ box-shadow:0 8px 24px -10px var(--blue-soft); }
-  .btn-wa{
-    background:var(--whatsapp);
-    color:#FFFFFF;
-    animation:pulse-green 2.2s ease-out infinite;
-  }
-  .btn-wa:hover{ box-shadow:0 8px 24px -10px rgba(34,197,94,.45); }
- 
-  @keyframes pulse-blue{
-    0%{ box-shadow:0 0 0 0 rgba(90,79,224,.45); }
-    70%{ box-shadow:0 0 0 14px rgba(90,79,224,0); }
-    100%{ box-shadow:0 0 0 0 rgba(90,79,224,0); }
-  }
-  @keyframes pulse-green{
-    0%{ box-shadow:0 0 0 0 rgba(34,197,94,.45); }
-    70%{ box-shadow:0 0 0 14px rgba(34,197,94,0); }
-    100%{ box-shadow:0 0 0 0 rgba(34,197,94,0); }
-  }
+
+  .twist{ margin-top:1.4rem; font-family:var(--font-display); font-weight:700; font-size:clamp(1.4rem,3vw,2rem); color:var(--blue-soft); opacity:0; }
+
+  ::selection{ background:var(--blue); color:#fff; }
+
   @media (prefers-reduced-motion: reduce){
-    .btn-phone, .btn-wa{ animation:none; }
-  }
- 
-  .trust{
-    display:flex;
-    gap:22px;
-    justify-content:center;
-    flex-wrap:wrap;
-    font-size:13px;
-    color:var(--muted);
-  }
-  .trust span{ display:flex; align-items:center; gap:7px; }
-  .trust svg{ width:14px; height:14px; color:var(--whatsapp); flex-shrink:0; }
- 
-  @media (max-width:480px){
-    .cta{ flex-direction:column; }
-    .btn{ justify-content:center; width:100%; }
+    *{ animation-duration:0.001s !important; animation-iteration-count:1 !important; transition-duration:0.001s !important; }
+    .reveal{ opacity:1 !important; transform:none !important; }
   }
 </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="eyebrow"><span class="dot"></span>Web4Medya · Kurumsal & E-Ticaret Web Tasarım</div>
- 
-    <h1>Web Tasarım Uzmanı<span class="name">Umut <span class="accent">Yanardağ</span></span></h1>
- 
-    <div class="role"><span class="bar"></span>umutyanardag.com<span class="bar"></span></div>
- 
-    <div class="browser">
-      <div class="browser-bar">
-        <div class="traffic"><span></span><span></span><span></span></div>
-        <div class="url">umutyanardag.com</div>
-      </div>
-      <div class="browser-body">
-        <div><span class="tag">&lt;h1&gt;</span><span class="txt">Merhaba, ben Umut 👋</span><span class="tag">&lt;/h1&gt;</span></div>
-        <div><span class="tag">&lt;p&gt;</span><span class="txt">Hızlı, modern ve SEO uyumlu siteler tasarlıyorum.</span><span class="cursor"></span></div>
-      </div>
-    </div>
- 
-    <p class="desc">
-      İşletmenizin dijital yüzünü tek elden, uçtan uca tasarlıyorum. <b>Kurumsal ve e-ticaret</b> siteleri, responsive tasarım ve temiz kod yapısıyla hem hızlı hem SEO uyumlu bir sonuç alıyorsunuz.
-    </p>
- 
-    <div class="cta">
-      <a class="btn btn-phone" href="tel:+905303158752">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        0530 315 87 52
-      </a>
-      <a class="btn btn-wa" href="https://wa.me/905303158752" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.3 0-.5 0-.1-.7-1.7-1-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.1-1.4-.1-.1-.2-.2-.5-.3z"/><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
-        WhatsApp İletişim
-      </a>
-    </div>
- 
-    <div class="trust">
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Hızlı Teslim</span>
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Ücretsiz Revize</span>
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>SEO Uyumlu Kod</span>
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Doğrudan İletişim</span>
-    </div>
+
+<canvas id="bg-canvas"></canvas>
+<div id="vignette"></div>
+<div id="grain"></div>
+<div id="cursor"></div>
+
+<div id="loader">
+  <div class="lbl">Briefing the executive</div>
+  <div class="track"><div class="fill" id="loaderFill"></div></div>
+</div>
+
+<div id="progress-rail"><div id="progress-fill"></div></div>
+
+<header>
+  <div class="brand"><span class="dot"></span> PARROT™</div>
+  <div class="header-right">
+    <span id="chapter-counter">01 / 10</span>
+    <button id="sound-toggle" type="button">🔈 Sound off</button>
   </div>
+</header>
+
+<main>
+
+  <!-- 00 HERO -->
+  <section class="scene" id="s0" data-name="hero">
+    <div class="eyebrow reveal"><span class="num">Chapter 01</span> — Executive Introduction</div>
+    <h1 class="headline reveal">The Bird You<br>Never Asked For.</h1>
+    <p class="sub reveal">Presenting the self-appointed Chief Executive Officer of the sky. Unelected. Unbothered. Unreasonably confident.</p>
+    <div class="scroll-hint"><span>Proceed at your own risk</span><span class="line"></span></div>
+  </section>
+
+  <!-- 01 BRAIN -->
+  <section class="scene" id="s1" data-name="brain">
+    <div class="eyebrow reveal"><span class="num">Chapter 02</span> — Inside The Mind</div>
+    <h1 class="headline reveal">A Look Inside<br>The <span class="accent">Executive Brain.</span></h1>
+    <div class="thought-field">
+      <div class="chip reveal" style="top:6%; left:4%; animation-delay:0.1s;">Where bread? 🍞</div>
+      <div class="chip reveal" style="top:28%; right:2%; animation-delay:0.6s;">Attack toddler?</div>
+      <div class="chip reveal" style="top:54%; left:10%; animation-delay:1.1s;">Steal fries.</div>
+      <div class="chip reveal" style="top:76%; right:10%; animation-delay:1.6s;">World domination.</div>
+      <div class="chip reveal" style="top:2%; right:28%; animation-delay:2.1s;">Q3 projections: bread-based.</div>
+    </div>
+  </section>
+
+  <!-- 02 GIANT -->
+  <section class="scene tall" id="s2" data-name="giant">
+    <div class="eyebrow reveal"><span class="num">Chapter 03</span> — Field Report</div>
+    <h1 class="headline reveal">Average Monday.</h1>
+    <p class="sub reveal">City-wide productivity down 40%. One bird, immeasurably up.</p>
+    <div class="stamp" id="stolenStamp">ASSET SEIZED</div>
+  </section>
+
+  <!-- 03 SPACE -->
+  <section class="scene" id="s3" data-name="space">
+    <div class="eyebrow reveal"><span class="num">Chapter 04</span> — Off-Site</div>
+    <h1 class="headline reveal">Gravity Is Just<br>A <span class="accent">Suggestion.</span></h1>
+    <p class="sub reveal">Currently out of office, orbiting the concept of consequences.</p>
+  </section>
+
+  <!-- 04 TED -->
+  <section class="scene tall" id="s4" data-name="ted">
+    <div class="eyebrow reveal"><span class="num">Chapter 05</span> — Keynote</div>
+    <h1 class="headline reveal">On Leadership,<br>By A Parrot.</h1>
+    <div class="chart-row">
+      <div class="chart-card reveal">
+        <div class="ctitle">Bread Consumption vs. Happiness</div>
+        <div class="bars"><i data-h="35"></i><i data-h="55"></i><i data-h="70"></i><i data-h="98"></i></div>
+      </div>
+      <div class="chart-card reveal">
+        <div class="ctitle">Probability Of Stealing Your Sandwich</div>
+        <div class="bars"><i data-h="60"></i><i data-h="80"></i><i data-h="92"></i><i data-h="100"></i></div>
+      </div>
+      <div class="chart-card reveal">
+        <div class="ctitle">Wing Confidence Index</div>
+        <div class="bars"><i data-h="90"></i><i data-h="95"></i><i data-h="99"></i><i data-h="100"></i></div>
+      </div>
+    </div>
+    <div class="duck-audience" id="duckAudience"></div>
+  </section>
+
+  <!-- 05 TUNNEL -->
+  <section class="scene tall" id="s5" data-name="tunnel">
+    <div class="eyebrow reveal"><span class="num">Chapter 06</span> — Transition</div>
+    <h1 class="headline reveal">Entering Another<br><span class="accent">Dimension.</span></h1>
+  </section>
+
+  <!-- 06 LAPTOP -->
+  <section class="scene" id="s6" data-name="laptop">
+    <div class="eyebrow reveal"><span class="num">Chapter 07</span> — Product Launch</div>
+    <h1 class="headline reveal">Introducing<br>Bird OS.</h1>
+    <div class="os-panel reveal">
+      <div class="os-title">Bird OS v1.0</div>
+      <div class="os-sub">Launching…</div>
+      <div class="os-bar-track" id="osBarTrack"><div class="os-bar-fill" id="osBarFill"></div></div>
+      <div class="os-pct" id="osPct">0%</div>
+      <div class="os-tip" id="osTip">Still loading. Since 2019.</div>
+    </div>
+  </section>
+
+  <!-- 07 MOON -->
+  <section class="scene" id="s7" data-name="moon">
+    <div class="eyebrow reveal"><span class="num">Chapter 08</span> — One Small Step</div>
+    <h1 class="headline reveal">One Small Step<br>For Bird.</h1>
+    <p class="sub reveal">One giant leap for bread-kind.</p>
+  </section>
+
+  <!-- 08 CHASE -->
+  <section class="scene tall" id="s8" data-name="chase">
+    <div class="eyebrow reveal"><span class="num">Chapter 09</span> — Breaking News</div>
+    <h1 class="headline reveal">The CEO Is<br>Being <span class="accent">Pursued.</span></h1>
+    <p class="sub reveal">An unidentified sparrow has entered the chat.</p>
+    <div class="twist" id="twistLine">Turns out... the sparrow wins.</div>
+  </section>
+
+  <!-- 09 FINAL -->
+  <section class="scene tall" id="s9" data-name="final">
+    <div class="eyebrow reveal"><span class="num">Chapter 10</span> — Closing Remarks</div>
+    <h1 class="headline reveal">So…<br>did you really spend<br>4 minutes looking at a bird?</h1>
+    <a class="cta reveal" id="hireBtn" href="https://www.web4medya.com" target="_blank" rel="noopener">Hire our web agency, before we make another site like this →</a>
+  </section>
+
+</main>
+
+<footer>
+  This website had absolutely no purpose.<br>
+  Except proving we can build impossible websites.
+  <br><br>© PARROT™ Executive Office — All rights reserved, mostly to bread.
+  <br><br><a href="https://www.web4medya.com" target="_blank" rel="noopener">web4medya.com</a>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ============================================================
+     0. SETUP / GLOBAL STATE
+  ============================================================ */
+  var hasGSAP = !!window.gsap;
+  var hasST = !!window.ScrollTrigger;
+  if (hasGSAP && hasST) { gsap.registerPlugin(ScrollTrigger); }
+
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var mouseX = 0, mouseY = 0, targetMouseX = 0, targetMouseY = 0;
+  window.addEventListener('mousemove', function(e){
+    targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+    targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+  });
+
+  /* ============================================================
+     1. CUSTOM CURSOR
+  ============================================================ */
+  var cursorEl = document.getElementById('cursor');
+  var cursorX = 0, cursorY = 0;
+  window.addEventListener('mousemove', function(e){ cursorX = e.clientX; cursorY = e.clientY; });
+  (function cursorLoop(){
+    var lx = 0, ly = 0;
+    function tick(){
+      lx += (cursorX - lx) * 0.22;
+      ly += (cursorY - ly) * 0.22;
+      cursorEl.style.transform = 'translate(' + lx + 'px,' + ly + 'px)';
+      requestAnimationFrame(tick);
+    }
+    tick();
+  })();
+  document.querySelectorAll('button, a, .chart-card').forEach(function(el){
+    el.addEventListener('mouseenter', function(){ cursorEl.classList.add('hover'); });
+    el.addEventListener('mouseleave', function(){ cursorEl.classList.remove('hover'); });
+  });
+
+  /* ============================================================
+     2. SIMPLE SOUND (WebAudio, gated behind gesture)
+  ============================================================ */
+  var audioCtx = null, soundOn = false;
+  function ensureAudio(){ if (!audioCtx){ try{ audioCtx = new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} } }
+  function blip(freq, dur, type, vol){
+    if (!soundOn || !audioCtx) return;
+    var o = audioCtx.createOscillator(), g = audioCtx.createGain();
+    o.type = type || 'sine'; o.frequency.value = freq;
+    g.gain.value = (vol||0.06);
+    g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + dur);
+    o.connect(g); g.connect(audioCtx.destination);
+    o.start(); o.stop(audioCtx.currentTime + dur);
+  }
+  function coo(){ blip(520,0.18,'sine',0.05); setTimeout(function(){blip(420,0.22,'sine',0.045);}, 140); }
+  function pop(){ blip(880,0.08,'triangle',0.05); }
+  function noiseBurst(){
+    if (!soundOn || !audioCtx) return;
+    var bufferSize = Math.floor(audioCtx.sampleRate * 0.3);
+    var buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+    var data = buffer.getChannelData(0);
+    for (var i=0;i<bufferSize;i++){ data[i] = (Math.random()*2-1) * (1 - i/bufferSize); }
+    var src = audioCtx.createBufferSource(); src.buffer = buffer;
+    var g = audioCtx.createGain(); g.gain.value = 0.04;
+    src.connect(g); g.connect(audioCtx.destination); src.start();
+  }
+  var soundBtn = document.getElementById('sound-toggle');
+  soundBtn.addEventListener('click', function(){
+    ensureAudio();
+    soundOn = !soundOn;
+    soundBtn.textContent = soundOn ? '🔊 Sound on' : '🔈 Sound off';
+    if (soundOn) coo();
+  });
+
+  /* ============================================================
+     3. THREE.JS SCENE
+  ============================================================ */
+  var canvas = document.getElementById('bg-canvas');
+  var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias:true, alpha:false, powerPreference:'high-performance' });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1, 1.75));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setClearColor(0x050506, 1);
+  renderer.outputEncoding = THREE.sRGBEncoding;
+
+  var scene = new THREE.Scene();
+  scene.fog = new THREE.FogExp2(0x0a0b0f, 0.018);
+
+  var camera = new THREE.PerspectiveCamera(50, window.innerWidth/window.innerHeight, 0.1, 800);
+  camera.position.set(0,1.6,9);
+
+  var ambient = new THREE.AmbientLight(0x33344a, 0.9);
+  scene.add(ambient);
+  var keyLight = new THREE.DirectionalLight(0xffffff, 1.1);
+  keyLight.position.set(4,8,6);
+  scene.add(keyLight);
+  var rimLight = new THREE.PointLight(0x2f6bff, 2.4, 40);
+  rimLight.position.set(-3,2,4);
+  scene.add(rimLight);
+
+  var CH_SPACING = 60;
+  function chZ(i){ return -i*CH_SPACING; }
+
+  function makeDotTexture(){
+    var c = document.createElement('canvas'); c.width = c.height = 64;
+    var ctx = c.getContext('2d');
+    var g = ctx.createRadialGradient(32,32,0,32,32,32);
+    g.addColorStop(0,'rgba(255,255,255,1)');
+    g.addColorStop(0.4,'rgba(255,255,255,0.7)');
+    g.addColorStop(1,'rgba(255,255,255,0)');
+    ctx.fillStyle = g; ctx.fillRect(0,0,64,64);
+    return new THREE.CanvasTexture(c);
+  }
+  var dotTexture = makeDotTexture();
+
+  function makeTextTexture(text, opts){
+    opts = opts || {};
+    var c = document.createElement('canvas'); c.width = 256; c.height = 128;
+    var ctx = c.getContext('2d');
+    ctx.fillStyle = opts.bg || 'rgba(0,0,0,0)';
+    ctx.fillRect(0,0,256,128);
+    ctx.fillStyle = opts.color || '#f4f5f7';
+    ctx.font = '700 54px Georgia, serif';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(text, 128, 64);
+    return new THREE.CanvasTexture(c);
+  }
+
+  function edges(mesh, color, opacity){
+    var eg = new THREE.EdgesGeometry(mesh.geometry, 20);
+    var em = new THREE.LineBasicMaterial({ color: color||0x2f6bff, transparent:true, opacity: opacity===undefined?0.25:opacity });
+    var line = new THREE.LineSegments(eg, em);
+    mesh.add(line);
+    return line;
+  }
+
+  /* ============================================================
+     4. THE BIRD — PHOTO BILLBOARD
+        Prosedurel 3D model yerine gercek fotograflar.
+        Her bolum kendi karesini kullanir; duzlem her zaman
+        kameraya bakar, en-boy orani dokudan hesaplanir.
+  ============================================================ */
+  var PHOTOS = [
+    '../images/cut/kus1.webp','../images/cut/kus2.webp','../images/cut/kus3.webp',
+    '../images/cut/kus4.webp','../images/cut/kus5.webp','../images/cut/kus6.webp',
+    '../images/cut/kus7.webp'
+  ];
+  // bolum -> foto indeksi (0 tabanli). null = kus gorunmez.
+  var CHAPTER_PHOTO = [1, 2, 6, 0, 3, null, 4, 5, 3, 6];
+
+  var loadMgr = new THREE.LoadingManager();
+  var texLoader = new THREE.TextureLoader(loadMgr);
+  var photoTex = [];
+  var photoAspect = [];
+
+  PHOTOS.forEach(function(src, i){
+    photoAspect[i] = 1;
+    photoTex[i] = texLoader.load(src, function(t){
+      t.encoding = THREE.sRGBEncoding;
+      t.minFilter = THREE.LinearFilter;
+      t.generateMipmaps = false;
+      if (t.image && t.image.height){ photoAspect[i] = t.image.width / t.image.height; }
+      rebuildBirdGeometry();
+    });
+    photoTex[i].encoding = THREE.sRGBEncoding;
+  });
+
+  // Kus grubu: duzlem + (bolume gore) kask
+  var bird = new THREE.Group();
+  scene.add(bird);
+
+  var birdMat = new THREE.MeshBasicMaterial({
+    map: photoTex[1], transparent:true, opacity:1,
+    depthWrite:false, side:THREE.DoubleSide, toneMapped:false
+  });
+  var BIRD_H = 2.6;
+  var birdMesh = new THREE.Mesh(new THREE.PlaneGeometry(BIRD_H, BIRD_H), birdMat);
+  birdMesh.position.y = BIRD_H * 0.5;
+  bird.add(birdMesh);
+
+  var currentPhoto = 1;
+  function rebuildBirdGeometry(){
+    var a = photoAspect[currentPhoto] || 1;
+    birdMesh.geometry.dispose();
+    birdMesh.geometry = new THREE.PlaneGeometry(BIRD_H * a, BIRD_H);
+    birdMesh.position.y = BIRD_H * 0.5;
+  }
+  function setPhoto(i){
+    if (i === null || i === currentPhoto) return;
+    currentPhoto = i;
+    birdMat.map = photoTex[i];
+    birdMat.needsUpdate = true;
+    rebuildBirdGeometry();
+  }
+
+  // uzay kaskı — fotografin onunde saydam kure, her fotografla calisir
+  var helmet = new THREE.Mesh(
+    new THREE.SphereGeometry(BIRD_H * 0.62, 20, 16),
+    new THREE.MeshStandardMaterial({ color:0xbfd6ff, roughness:0.05, metalness:0.1, transparent:true, opacity:0.22, depthWrite:false })
+  );
+  helmet.position.y = BIRD_H * 0.62;
+  helmet.visible = false;
+  bird.add(helmet);
+  edges(helmet, 0x8ab4ff, 0.3);
+
+  // takipci kus (chase bolumu)
+  var chaserMat = new THREE.MeshBasicMaterial({ map: photoTex[2], transparent:true, depthWrite:false, side:THREE.DoubleSide, toneMapped:false });
+  var chaser = new THREE.Mesh(new THREE.PlaneGeometry(1.1,1.1), chaserMat);
+  chaser.visible = false;
+  scene.add(chaser);
+
+  /* ============================================================
+     5. ENVIRONMENT GROUPS (one per chapter, positioned along Z)
+  ============================================================ */
+  var chapterGroups = [];
+  for (var ci=0; ci<10; ci++){ var cg = new THREE.Group(); cg.position.z = chZ(ci); scene.add(cg); chapterGroups.push(cg); }
+
+  /* -- Chapter 0: hero dust + feathers -- */
+  var dustGeo = new THREE.BufferGeometry();
+  var dustCount = 260;
+  var dustPos = new Float32Array(dustCount*3);
+  for (var d=0; d<dustCount; d++){
+    dustPos[d*3] = (Math.random()-0.5)*14;
+    dustPos[d*3+1] = Math.random()*6;
+    dustPos[d*3+2] = (Math.random()-0.5)*10 + 2;
+  }
+  dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPos,3));
+  var dustMat = new THREE.PointsMaterial({ size:0.06, map:dotTexture, color:0x9fb6ff, transparent:true, opacity:0.55, depthWrite:false, blending:THREE.AdditiveBlending });
+  chapterGroups[0].add(new THREE.Points(dustGeo, dustMat));
+
+  var featherGeo = new THREE.PlaneGeometry(0.18,0.4);
+  var featherMat = new THREE.MeshStandardMaterial({ color:0xd7d9dd, roughness:0.7, side:THREE.DoubleSide, transparent:true, opacity:0.9 });
+  var feathers = [];
+  for (var f=0; f<18; f++){
+    var fm = new THREE.Mesh(featherGeo, featherMat.clone());
+    fm.position.set((Math.random()-0.5)*8, Math.random()*7, (Math.random()-0.5)*6 + 1);
+    fm.rotation.set(Math.random()*Math.PI, Math.random()*Math.PI, Math.random()*Math.PI);
+    fm.userData.phase = Math.random()*Math.PI*2;
+    fm.userData.speed = 0.3 + Math.random()*0.4;
+    chapterGroups[0].add(fm);
+    feathers.push(fm);
+  }
+
+  /* -- Chapter 1: brain neuron cloud -- */
+  var brainGroup = new THREE.Group(); chapterGroups[1].add(brainGroup);
+  var neuronMat = new THREE.MeshStandardMaterial({ color:0x2f6bff, emissive:0x2f6bff, emissiveIntensity:0.9, roughness:0.3 });
+  var neurons = [];
+  for (var n=0; n<16; n++){
+    var nm = new THREE.Mesh(new THREE.SphereGeometry(0.07,8,8), neuronMat.clone());
+    var r = 2.2 + Math.random()*1.4;
+    var th = Math.random()*Math.PI*2, ph = Math.random()*Math.PI;
+    nm.position.set(r*Math.sin(ph)*Math.cos(th), 1.4 + r*Math.cos(ph)*0.6, r*Math.sin(ph)*Math.sin(th));
+    nm.userData.phase = Math.random()*Math.PI*2;
+    brainGroup.add(nm); neurons.push(nm);
+  }
+  var brainHazeGeo = new THREE.BufferGeometry();
+  var hazeCount = 400;
+  var hazePos = new Float32Array(hazeCount*3);
+  for (var h=0; h<hazeCount; h++){
+    var rr = Math.random()*3.6;
+    var t1 = Math.random()*Math.PI*2, t2 = Math.random()*Math.PI;
+    hazePos[h*3] = rr*Math.sin(t2)*Math.cos(t1);
+    hazePos[h*3+1] = 1.4 + rr*Math.cos(t2)*0.6;
+    hazePos[h*3+2] = rr*Math.sin(t2)*Math.sin(t1);
+  }
+  brainHazeGeo.setAttribute('position', new THREE.BufferAttribute(hazePos,3));
+  var brainHazeMat = new THREE.PointsMaterial({ size:0.045, map:dotTexture, color:0x7fa0ff, transparent:true, opacity:0.35, depthWrite:false, blending:THREE.AdditiveBlending });
+  brainGroup.add(new THREE.Points(brainHazeGeo, brainHazeMat));
+
+  /* -- Chapter 2: city + drone -- */
+  var cityGroup = new THREE.Group(); chapterGroups[2].add(cityGroup);
+  var buildingMat = new THREE.MeshStandardMaterial({ color:0x141518, roughness:0.8 });
+  for (var b=0; b<40; b++){
+    var bw = 1 + Math.random()*1.8;
+    var bh = 1.5 + Math.random()*7;
+    var bx = (Math.random()-0.5)*40;
+    var bz = (Math.random()-0.5)*20 - 4;
+    if (Math.abs(bx) < 3 && bz > -8) continue;
+    var bmesh = new THREE.Mesh(new THREE.BoxGeometry(bw,bh,bw), buildingMat);
+    bmesh.position.set(bx, bh/2, bz);
+    cityGroup.add(bmesh); edges(bmesh, 0x2f6bff, 0.08);
+  }
+  var ground = new THREE.Mesh(new THREE.PlaneGeometry(120,120), new THREE.MeshStandardMaterial({ color:0x08090b, roughness:1 }));
+  ground.rotation.x = -Math.PI/2; cityGroup.add(ground);
+
+  var droneGroup = new THREE.Group(); droneGroup.position.set(3,7,2); cityGroup.add(droneGroup);
+  var droneBody = new THREE.Mesh(new THREE.BoxGeometry(0.35,0.12,0.35), new THREE.MeshStandardMaterial({ color:0x22242a, roughness:0.4, metalness:0.5 }));
+  droneGroup.add(droneBody);
+  var droneProps = [];
+  [[0.3,0.3],[-0.3,0.3],[0.3,-0.3],[-0.3,-0.3]].forEach(function(p){
+    var arm = new THREE.Mesh(new THREE.CylinderGeometry(0.015,0.015,0.42,6), droneBody.material);
+    arm.rotation.z = Math.PI/2; arm.position.set(p[0]*0.7,0,p[1]*0.7); arm.rotation.y = Math.atan2(p[1],p[0]);
+    droneGroup.add(arm);
+    var prop = new THREE.Mesh(new THREE.BoxGeometry(0.28,0.01,0.03), new THREE.MeshStandardMaterial({color:0x555860}));
+    prop.position.set(p[0],0.03,p[1]);
+    droneGroup.add(prop); droneProps.push(prop);
+  });
+
+  /* -- Chapter 3: space / earth / stars -- */
+  var spaceGroup = new THREE.Group(); chapterGroups[3].add(spaceGroup);
+  function makeEarthTexture(){
+    var c = document.createElement('canvas'); c.width = 512; c.height = 256;
+    var ctx = c.getContext('2d');
+    var grad = ctx.createLinearGradient(0,0,0,256);
+    grad.addColorStop(0,'#0e3a72'); grad.addColorStop(1,'#08213f');
+    ctx.fillStyle = grad; ctx.fillRect(0,0,512,256);
+    ctx.fillStyle = '#1f5c3a';
+    for (var i=0;i<50;i++){
+      var ex = Math.random()*512, ey = Math.random()*256, er = 10+Math.random()*40;
+      ctx.beginPath(); ctx.ellipse(ex,ey,er,er*0.5,Math.random()*Math.PI,0,Math.PI*2); ctx.fill();
+    }
+    ctx.fillStyle = 'rgba(255,255,255,0.25)';
+    for (var j=0;j<20;j++){
+      var cx=Math.random()*512, cy=Math.random()*256, cr=15+Math.random()*30;
+      ctx.beginPath(); ctx.ellipse(cx,cy,cr,cr*0.35,0,0,Math.PI*2); ctx.fill();
+    }
+    return new THREE.CanvasTexture(c);
+  }
+  var earth = new THREE.Mesh(new THREE.SphereGeometry(6,32,32), new THREE.MeshStandardMaterial({ map:makeEarthTexture(), roughness:0.85 }));
+  earth.position.set(0,-9,-4);
+  spaceGroup.add(earth); edges(earth, 0x2f6bff, 0.06);
+
+  var starGeo = new THREE.BufferGeometry();
+  var starCount = 1400;
+  var starPos = new Float32Array(starCount*3);
+  for (var s=0; s<starCount; s++){
+    starPos[s*3] = (Math.random()-0.5)*160;
+    starPos[s*3+1] = (Math.random()-0.5)*100 + 10;
+    starPos[s*3+2] = (Math.random()-0.5)*160 - 30;
+  }
+  starGeo.setAttribute('position', new THREE.BufferAttribute(starPos,3));
+  var starMat = new THREE.PointsMaterial({ size:0.09, map:dotTexture, color:0xffffff, transparent:true, opacity:0.85, depthWrite:false });
+  spaceGroup.add(new THREE.Points(starGeo, starMat));
+
+  var satellite = new THREE.Mesh(new THREE.BoxGeometry(0.2,0.2,0.4), new THREE.MeshStandardMaterial({color:0xaaaaaa, metalness:0.6, roughness:0.3}));
+  spaceGroup.add(satellite);
+
+  /* -- Chapter 4: TED stage -- */
+  var tedGroup = new THREE.Group(); chapterGroups[4].add(tedGroup);
+  var stageFloor = new THREE.Mesh(new THREE.CylinderGeometry(5,5,0.2,40), new THREE.MeshStandardMaterial({ color:0x0c0d10, roughness:0.4, metalness:0.3 }));
+  stageFloor.position.y = -0.1; tedGroup.add(stageFloor); edges(stageFloor, 0x2f6bff, 0.15);
+  var podium = new THREE.Mesh(new THREE.BoxGeometry(0.6,1.1,0.4), new THREE.MeshStandardMaterial({ color:0x141518, roughness:0.5 }));
+  podium.position.set(0,0.55,0.2); tedGroup.add(podium); edges(podium, 0x2f6bff, 0.2);
+  var spotL1 = new THREE.SpotLight(0xffddaa, 3, 20, 0.5, 0.4);
+  spotL1.position.set(-3,6,3); spotL1.target.position.set(0,1,0); tedGroup.add(spotL1, spotL1.target);
+  var spotL2 = new THREE.SpotLight(0x8ab4ff, 2.4, 20, 0.5, 0.4);
+  spotL2.position.set(3,6,3); spotL2.target.position.set(0,1,0); tedGroup.add(spotL2, spotL2.target);
+
+  /* -- Chapter 5: feather tunnel -- */
+  var tunnelGroup = new THREE.Group(); chapterGroups[5].add(tunnelGroup);
+  var tunnelCount = 500;
+  var tunnelGeo = new THREE.BufferGeometry();
+  var tunnelPos = new Float32Array(tunnelCount*3);
+  var tunnelColors = new Float32Array(tunnelCount*3);
+  var colorA = new THREE.Color(0x2f6bff), colorB = new THREE.Color(0xf4f5f7);
+  for (var tp=0; tp<tunnelCount; tp++){
+    var ang = Math.random()*Math.PI*2;
+    var rad = 2.6 + Math.random()*0.6;
+    tunnelPos[tp*3] = Math.cos(ang)*rad;
+    tunnelPos[tp*3+1] = Math.sin(ang)*rad;
+    tunnelPos[tp*3+2] = (Math.random()-0.5)*70;
+    var mixC = colorA.clone().lerp(colorB, Math.random());
+    tunnelColors[tp*3] = mixC.r; tunnelColors[tp*3+1] = mixC.g; tunnelColors[tp*3+2] = mixC.b;
+  }
+  tunnelGeo.setAttribute('position', new THREE.BufferAttribute(tunnelPos,3));
+  tunnelGeo.setAttribute('color', new THREE.BufferAttribute(tunnelColors,3));
+  var tunnelMat = new THREE.PointsMaterial({ size:0.12, map:dotTexture, vertexColors:true, transparent:true, opacity:0.9, depthWrite:false, blending:THREE.AdditiveBlending });
+  var tunnelPoints = new THREE.Points(tunnelGeo, tunnelMat);
+  tunnelGroup.add(tunnelPoints);
+
+  /* -- Chapter 6: laptop -- */
+  var laptopGroup = new THREE.Group(); chapterGroups[6].add(laptopGroup);
+  var lapBase = new THREE.Mesh(new THREE.BoxGeometry(1.1,0.06,0.75), new THREE.MeshStandardMaterial({ color:0x1b1c20, roughness:0.4, metalness:0.4 }));
+  lapBase.position.set(1,0.5,0); laptopGroup.add(lapBase); edges(lapBase, 0x2f6bff, 0.2);
+  var lapScreen = new THREE.Mesh(new THREE.BoxGeometry(1.1,0.7,0.04), new THREE.MeshStandardMaterial({ color:0x0a0a0c, emissive:0x11284d, emissiveIntensity:0.6, roughness:0.3 }));
+  lapScreen.position.set(1,0.9,-0.35); lapScreen.rotation.x = -0.35; laptopGroup.add(lapScreen); edges(lapScreen, 0x2f6bff, 0.3);
+
+  /* -- Chapter 7: moon -- */
+  var moonGroup = new THREE.Group(); chapterGroups[7].add(moonGroup);
+  var moonSurface = new THREE.Mesh(new THREE.SphereGeometry(30,32,32,0,Math.PI*2,0,Math.PI/2), new THREE.MeshStandardMaterial({ color:0x9ea1a8, roughness:1 }));
+  moonSurface.position.y = -30; moonGroup.add(moonSurface);
+  for (var cr=0; cr<10; cr++){
+    var crater = new THREE.Mesh(new THREE.SphereGeometry(0.3+Math.random()*0.6,10,8), new THREE.MeshStandardMaterial({color:0x86888e, roughness:1}));
+    crater.position.set((Math.random()-0.5)*10, -0.15, (Math.random()-0.5)*10 - 2);
+    crater.scale.y = 0.2;
+    moonGroup.add(crater);
+  }
+  var flagPole = new THREE.Mesh(new THREE.CylinderGeometry(0.025,0.025,1.6,6), new THREE.MeshStandardMaterial({color:0xcccccc, metalness:0.6, roughness:0.3}));
+  flagPole.position.set(2,0.8,-1); moonGroup.add(flagPole);
+  var flagCloth = new THREE.Mesh(new THREE.PlaneGeometry(0.7,0.42), new THREE.MeshStandardMaterial({ map:makeTextTexture('BREAD', {color:'#050506', bg:'#8ab4ff'}), side:THREE.DoubleSide }));
+  flagCloth.position.set(2.35,1.4,-1); moonGroup.add(flagCloth);
+
+  /* -- Chapter 8: chase -- */
+  var chaseGroup = new THREE.Group(); chapterGroups[8].add(chaseGroup);
+  var debrisGeo = new THREE.BufferGeometry();
+  var debrisCount = 200;
+  var debrisPos = new Float32Array(debrisCount*3);
+  for (var db=0; db<debrisCount; db++){
+    debrisPos[db*3] = (Math.random()-0.5)*10;
+    debrisPos[db*3+1] = Math.random()*5;
+    debrisPos[db*3+2] = (Math.random()-0.5)*10;
+  }
+  debrisGeo.setAttribute('position', new THREE.BufferAttribute(debrisPos,3));
+  var debrisMat = new THREE.PointsMaterial({ size:0.1, map:dotTexture, color:0xff6a3d, transparent:true, opacity:0.75, depthWrite:false, blending:THREE.AdditiveBlending });
+  chaseGroup.add(new THREE.Points(debrisGeo, debrisMat));
+  var chaseBuildings = [];
+  for (var cb=0; cb<10; cb++){
+    var cbw = 1+Math.random(); var cbh = 2+Math.random()*4;
+    var cbm = new THREE.Mesh(new THREE.BoxGeometry(cbw,cbh,cbw), new THREE.MeshStandardMaterial({color:0x1a1210, roughness:0.9}));
+    cbm.position.set((Math.random()-0.5)*14, cbh/2, (Math.random()-0.5)*8-4);
+    cbm.userData.baseH = cbh;
+    chaseGroup.add(cbm); edges(cbm, 0xff5b3d, 0.15);
+    chaseBuildings.push(cbm);
+  }
+
+  /* -- Chapter 9: sunset -- */
+  var finalGroup = new THREE.Group(); chapterGroups[9].add(finalGroup);
+  var sun = new THREE.Mesh(new THREE.SphereGeometry(3.2,24,24), new THREE.MeshStandardMaterial({ color:0xffb066, emissive:0xff8c42, emissiveIntensity:1.4, roughness:1 }));
+  sun.position.set(0,2,-14); finalGroup.add(sun);
+  var perch = new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.08,3,8), new THREE.MeshStandardMaterial({color:0x2a1f18, roughness:0.9}));
+  perch.rotation.z = Math.PI/2; perch.position.set(0,-0.15,0); finalGroup.add(perch);
+  var emberGeo = new THREE.BufferGeometry();
+  var emberCount = 120;
+  var emberPos = new Float32Array(emberCount*3);
+  for (var em2=0; em2<emberCount; em2++){
+    emberPos[em2*3] = (Math.random()-0.5)*10;
+    emberPos[em2*3+1] = Math.random()*4;
+    emberPos[em2*3+2] = (Math.random()-0.5)*8;
+  }
+  emberGeo.setAttribute('position', new THREE.BufferAttribute(emberPos,3));
+  var emberMat = new THREE.PointsMaterial({ size:0.07, map:dotTexture, color:0xffb066, transparent:true, opacity:0.6, depthWrite:false, blending:THREE.AdditiveBlending });
+  finalGroup.add(new THREE.Points(emberGeo, emberMat));
+
+  /* ============================================================
+     6. KEYFRAMES
+  ============================================================ */
+  var K = [
+    { camPos:{x:0,y:1.7,z:9},    camLook:{x:0,y:1.4,z:0},          fov:50, fog:0x0a0b0f, fogD:0.02,  bird:{x:0,y:0,z:0},       bScale:1 },
+    { camPos:{x:0,y:1.6,z:-51},  camLook:{x:0,y:1.5,z:-60},        fov:62, fog:0x140a1f, fogD:0.012, bird:{x:0,y:0.2,z:-60},   bScale:0.75 },
+    { camPos:{x:0,y:2.6,z:-108}, camLook:{x:0,y:9,z:-120},         fov:72, fog:0x1a1410, fogD:0.006, bird:{x:0,y:8,z:-120},    bScale:5 },
+    { camPos:{x:0,y:3,z:-166},   camLook:{x:1,y:2.2,z:-180},       fov:46, fog:0x00010a, fogD:0.0025,bird:{x:2,y:3,z:-180},    bScale:1.2 },
+    { camPos:{x:0,y:2.2,z:-231}, camLook:{x:0,y:1.6,z:-240},       fov:44, fog:0x1a0f08, fogD:0.01,  bird:{x:0,y:0.9,z:-240},  bScale:0.85 },
+    { camPos:{x:0,y:0,z:-271},   camLook:{x:0,y:0,z:-300},         fov:74, fog:0x05070f, fogD:0.02,  bird:{x:0,y:-6,z:-300},   bScale:0.4 },
+    { camPos:{x:0.6,y:1.7,z:-352},camLook:{x:0.6,y:1.2,z:-360},    fov:44, fog:0x0b0d12, fogD:0.02,  bird:{x:-0.6,y:0,z:-360}, bScale:0.9 },
+    { camPos:{x:0,y:1.4,z:-411}, camLook:{x:0.5,y:0.6,z:-420},     fov:46, fog:0x22262c, fogD:0.012, bird:{x:0,y:0.15,z:-420}, bScale:0.9 },
+    { camPos:{x:0,y:2.3,z:-471}, camLook:{x:0.3,y:1.8,z:-480},     fov:58, fog:0x220a08, fogD:0.014, bird:{x:0,y:1.2,z:-480},  bScale:0.9 },
+    { camPos:{x:0,y:1.8,z:-548}, camLook:{x:0,y:1,z:-540},         fov:40, fog:0x2a1408, fogD:0.014, bird:{x:0,y:0.15,z:-540}, bScale:0.9 }
+  ];
+  var chapterNames = ['hero','brain','giant','space','ted','tunnel','laptop','moon','chase','final'];
+
+  function lerp(a,b,t){ return a+(b-a)*t; }
+  function smoothstep(t){ t = Math.max(0,Math.min(1,t)); return t*t*(3-2*t); }
+
+  var _c1 = new THREE.Color(), _c2 = new THREE.Color();
+
+  /* ============================================================
+     7. SCROLL-DRIVEN CAMERA
+  ============================================================ */
+  var chapterRanges = [];
+  function measureChapters(){
+    chapterRanges = [];
+    document.querySelectorAll('.scene').forEach(function(sec){
+      var rect = sec.getBoundingClientRect();
+      var top = rect.top + window.scrollY;
+      chapterRanges.push({ start: top, end: top + rect.height });
+    });
+  }
+  window.addEventListener('load', measureChapters);
+  measureChapters();
+  setTimeout(measureChapters, 400);
+  setTimeout(measureChapters, 1200);
+
+  var oneTime = { stolen:false, confetti:false, chase:false };
+
+  function triggerConfetti(){
+    var host = document.getElementById('s4');
+    for (var i=0;i<40;i++){
+      (function(){
+        var p = document.createElement('div');
+        var colors = ['#2f6bff','#8ab4ff','#f4f5f7','#8a8d95'];
+        p.style.position = 'absolute';
+        p.style.left = (45 + Math.random()*10) + '%';
+        p.style.top = '10%';
+        p.style.width = '6px'; p.style.height = '10px';
+        p.style.background = colors[Math.floor(Math.random()*colors.length)];
+        p.style.opacity = '0.9';
+        p.style.pointerEvents = 'none';
+        p.style.zIndex = '4';
+        p.style.borderRadius = '2px';
+        host.appendChild(p);
+        var dx = (Math.random()-0.5)*400, rot = Math.random()*720-360;
+        if (hasGSAP){
+          gsap.to(p, { x:dx, y: 260+Math.random()*180, rotation: rot, opacity:0, duration: 1.6+Math.random()*0.8, ease:'power1.out', onComplete:function(){ p.remove(); } });
+        } else { setTimeout(function(){ p.remove(); }, 1800); }
+      })();
+    }
+  }
+
+  var progressFill = document.getElementById('progress-fill');
+  var chapterCounterEl = document.getElementById('chapter-counter');
+  var lastCounter = -1;
+
+  function updateChapterCounter(idx){
+    if (idx === lastCounter) return;
+    lastCounter = idx;
+    var n = idx + 1;
+    chapterCounterEl.textContent = (n < 10 ? '0' + n : n) + ' / 10';
+  }
+
+  function updateProgressBar(){
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - window.innerHeight;
+    var p = max > 0 ? (window.scrollY / max) : 0;
+    progressFill.style.width = (p * 100).toFixed(2) + '%';
+  }
+
+  function updateFrame(){
+    if (!chapterRanges.length){ requestAnimationFrame(updateFrame); return; }
+    var scrollY = window.scrollY;
+    var idx = 0, localT = 0;
+    for (var i=0;i<chapterRanges.length;i++){
+      var r = chapterRanges[i];
+      if (scrollY >= r.start && scrollY < r.end){ idx = i; localT = (scrollY-r.start)/Math.max(1,(r.end-r.start)); break; }
+      if (i === chapterRanges.length-1 && scrollY >= r.end){ idx = i; localT = 1; }
+    }
+    var nextIdx = Math.min(idx+1, K.length-1);
+    var kfA = K[idx], kfB = K[nextIdx];
+    var te = smoothstep(localT);
+
+    camera.fov = lerp(kfA.fov, kfB.fov, te);
+    camera.updateProjectionMatrix();
+
+    mouseX += (targetMouseX - mouseX) * 0.05;
+    mouseY += (targetMouseY - mouseY) * 0.05;
+
+    var shakeX = 0, shakeY = 0;
+    if (chapterNames[idx] === 'chase'){
+      shakeX = (Math.random()-0.5)*0.18;
+      shakeY = (Math.random()-0.5)*0.12;
+    }
+
+    camera.position.set(
+      lerp(kfA.camPos.x, kfB.camPos.x, te) + mouseX*0.5 + shakeX,
+      lerp(kfA.camPos.y, kfB.camPos.y, te) + mouseY*0.25 + shakeY,
+      lerp(kfA.camPos.z, kfB.camPos.z, te)
+    );
+    camera.lookAt(
+      lerp(kfA.camLook.x, kfB.camLook.x, te),
+      lerp(kfA.camLook.y, kfB.camLook.y, te),
+      lerp(kfA.camLook.z, kfB.camLook.z, te)
+    );
+
+    var mixFog = _c1.set(kfA.fog).lerp(_c2.set(kfB.fog), te);
+    scene.fog.color.copy(mixFog);
+    renderer.setClearColor(mixFog, 1);
+    scene.fog.density = lerp(kfA.fogD, kfB.fogD, te);
+    keyLight.color.copy(mixFog.clone().lerp(new THREE.Color(0xffffff), 0.6));
+
+    bird.position.set(
+      lerp(kfA.bird.x,kfB.bird.x,te),
+      lerp(kfA.bird.y,kfB.bird.y,te),
+      lerp(kfA.bird.z,kfB.bird.z,te)
+    );
+    bird.scale.setScalar(lerp(kfA.bScale,kfB.bScale,te));
+    // billboard: duzlem daima kameraya donuk
+    bird.quaternion.copy(camera.quaternion);
+
+    var visibleIdx = te > 0.5 ? nextIdx : idx;
+    var visibleName = chapterNames[visibleIdx];
+
+    for (var gi=0; gi<chapterGroups.length; gi++){
+      chapterGroups[gi].visible = (gi === idx || gi === nextIdx);
+    }
+
+    var wanted = CHAPTER_PHOTO[visibleIdx];
+    bird.visible = (wanted !== null);
+    if (wanted !== null) setPhoto(wanted);
+    helmet.visible = (visibleName === 'moon' || visibleName === 'space');
+
+    if (satellite){
+      var st = performance.now()*0.0004;
+      satellite.position.set(Math.cos(st)*4 + bird.position.x, Math.sin(st*0.7)*1.5 + bird.position.y + 1, Math.sin(st)*4 + bird.position.z);
+    }
+    droneProps.forEach(function(p){ p.rotation.y += 0.6; });
+    if (idx === 2){
+      var droneT = smoothstep(Math.max(0, (localT-0.55)/0.45));
+      droneGroup.position.x = lerp(3, 0.4, droneT);
+      droneGroup.position.y = lerp(7, 1.6, droneT);
+      droneGroup.visible = droneT < 0.96;
+    }
+    if (idx === 2 && localT > 0.75 && !oneTime.stolen){
+      oneTime.stolen = true;
+      var stamp = document.getElementById('stolenStamp');
+      if (hasGSAP) gsap.to(stamp, { opacity:1, duration:0.5, ease:'back.out(3)' });
+      else stamp.style.opacity = '1';
+      pop();
+    }
+    if (idx === 4 && localT > 0.4 && !oneTime.confetti){
+      oneTime.confetti = true;
+      triggerConfetti();
+      noiseBurst();
+    }
+    if (idx === 8 && localT > 0.55 && !oneTime.chase){
+      oneTime.chase = true;
+      var twist = document.getElementById('twistLine');
+      if (hasGSAP) gsap.to(twist, { opacity:1, y:0, duration:0.7, ease:'power2.out' });
+      else twist.style.opacity = '1';
+    }
+
+    chaser.visible = (visibleName === 'chase');
+    if (chaser.visible){
+      var ct = performance.now()*0.002;
+      chaser.position.set(
+        bird.position.x + Math.sin(ct)*1.4 + 0.9,
+        bird.position.y + Math.cos(ct*1.3)*0.6 + 1.6,
+        bird.position.z + 2.4
+      );
+      chaser.quaternion.copy(camera.quaternion);
+    }
+    if (idx === 8){
+      var fall = smoothstep(Math.max(0,(localT-0.6)/0.4));
+      chaseBuildings.forEach(function(cbm, ii){
+        cbm.rotation.z = fall * (ii%2===0?0.4:-0.4);
+        cbm.position.y = cbm.userData.baseH/2 * (1 - fall*0.3);
+      });
+    }
+
+    updateChapterCounter(idx);
+    updateProgressBar();
+    requestAnimationFrame(updateFrame);
+  }
+
+  /* ============================================================
+     8. AMBIENT ANIMATION LOOP
+  ============================================================ */
+  var clock = new THREE.Clock();
+  function ambientLoop(){
+    var t = clock.getElapsedTime();
+
+    // fotograf hafifce nefes alsin
+    birdMesh.position.y = BIRD_H * 0.5 + Math.sin(t*1.4)*0.03;
+    birdMesh.rotation.z = Math.sin(t*0.6)*0.02;
+
+    feathers.forEach(function(fm){
+      fm.position.y -= 0.004;
+      fm.position.x += Math.sin(t*fm.userData.speed + fm.userData.phase)*0.003;
+      fm.rotation.z += 0.01;
+      if (fm.position.y < -1){ fm.position.y = 7; }
+    });
+
+    neurons.forEach(function(nm){
+      var b2 = 0.6 + Math.sin(t*3 + nm.userData.phase)*0.4;
+      nm.material.emissiveIntensity = Math.max(0.1,b2);
+    });
+    brainGroup.rotation.y = t*0.06;
+
+    tunnelPoints.rotation.z = t*0.15;
+    tunnelPoints.position.z = (t*14) % 70;
+
+    sun.material.emissiveIntensity = 1.2 + Math.sin(t*0.5)*0.2;
+
+    renderer.render(scene, camera);
+    requestAnimationFrame(ambientLoop);
+  }
+
+  function onResize(){
+    var w = window.innerWidth, h = window.innerHeight;
+    renderer.setSize(w,h);
+    camera.aspect = w/h;
+    camera.updateProjectionMatrix();
+    measureChapters();
+  }
+  window.addEventListener('resize', onResize);
+
+  requestAnimationFrame(updateFrame);
+  requestAnimationFrame(ambientLoop);
+
+  /* ============================================================
+     9. LOADER
+  ============================================================ */
+  var loaderEl = document.getElementById('loader');
+  var loaderFill = document.getElementById('loaderFill');
+  loadMgr.onProgress = function(url, loaded, total){
+    loaderFill.style.width = ((loaded/Math.max(1,total))*100) + '%';
+  };
+  function finishLoading(){
+    loaderFill.style.width = '100%';
+    loaderEl.classList.add('done');
+    setTimeout(function(){ loaderEl.style.display = 'none'; measureChapters(); }, 900);
+  }
+  loadMgr.onLoad = finishLoading;
+  loadMgr.onError = finishLoading;
+  // guvenlik agi: dokular takilirsa site yine de acilsin
+  setTimeout(finishLoading, 6000);
+
+  /* ============================================================
+     10. DOM ANIMATIONS (reveal, charts, ducks, OS bar)
+  ============================================================ */
+  var ducks = document.getElementById('duckAudience');
+  for (var dq=0; dq<27; dq++){
+    var sp = document.createElement('span');
+    sp.textContent = '🦆';
+    sp.style.animationDelay = (Math.random()*1.2).toFixed(2) + 's';
+    ducks.appendChild(sp);
+  }
+
+  if (hasGSAP && hasST && !reduceMotion){
+    document.querySelectorAll('.reveal').forEach(function(el){
+      gsap.to(el, {
+        opacity:1, y:0, duration:0.9, ease:'power3.out',
+        scrollTrigger:{ trigger:el, start:'top 88%', toggleActions:'play none none reverse' }
+      });
+    });
+
+    document.querySelectorAll('.bars').forEach(function(bar){
+      ScrollTrigger.create({
+        trigger: bar, start:'top 85%', once:true,
+        onEnter: function(){
+          bar.querySelectorAll('i').forEach(function(b, bi){
+            setTimeout(function(){ b.style.height = b.getAttribute('data-h') + '%'; }, bi*110);
+          });
+        }
+      });
+    });
+
+    ScrollTrigger.create({
+      trigger:'#s6', start:'top 70%', once:true,
+      onEnter: function(){
+        var fill = document.getElementById('osBarFill');
+        var pct = document.getElementById('osPct');
+        var tip = document.getElementById('osTip');
+        var v = { n:0 };
+        gsap.to(v, { n:99, duration:3.2, ease:'power2.out', onUpdate:function(){
+          fill.style.width = v.n + '%';
+          pct.textContent = Math.round(v.n) + '%';
+        }, onComplete:function(){
+          gsap.to(tip, { opacity:1, duration:0.6 });
+        }});
+      }
+    });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.style.opacity = 1; el.style.transform = 'none'; });
+    document.querySelectorAll('.bars i').forEach(function(b){ b.style.height = b.getAttribute('data-h') + '%'; });
+    document.getElementById('osBarFill').style.width = '99%';
+    document.getElementById('osPct').textContent = '99%';
+    document.getElementById('osTip').style.opacity = 1;
+  }
+
+  // OS cubuguna tiklayinca asla bitmesin
+  var osTrack = document.getElementById('osBarTrack');
+  osTrack.addEventListener('click', function(){
+    var fill = document.getElementById('osBarFill');
+    var pct = document.getElementById('osPct');
+    fill.style.width = '99%';
+    pct.textContent = '99%';
+    pop();
+  });
+
+})();
+</script>
 </body>
 </html>
- 
